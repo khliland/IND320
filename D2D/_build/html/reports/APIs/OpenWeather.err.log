@@ -17,20 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-BASE_URL = "http://api.openweathermap.org/data/2.5/weather?"
+BASE_URL = "http://api.openweathermap.org/data/2.5/forecast?"
 API_KEY = open('../../No_sync/api_key','r').read()
 CITY = "Ski"
 
-url = BASE_URL + "q=" + CITY + "&appid=" + API_KEY
+urlF = BASE_URL + "q=" + CITY + "&appid=" + API_KEY
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-Cell [0;32mIn [2], line 2[0m
-[1;32m      1[0m BASE_URL [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttp://api.openweathermap.org/data/2.5/weather?[39m[38;5;124m"[39m
+Cell [0;32mIn [8], line 2[0m
+[1;32m      1[0m BASE_URL [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttp://api.openweathermap.org/data/2.5/forecast?[39m[38;5;124m"[39m
 [0;32m----> 2[0m API_KEY [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m../../No_sync/api_key[39;49m[38;5;124;43m'[39;49m[43m,[49m[38;5;124;43m'[39;49m[38;5;124;43mr[39;49m[38;5;124;43m'[39;49m[43m)[49m[38;5;241m.[39mread()
 [1;32m      3[0m CITY [38;5;241m=[39m [38;5;124m"[39m[38;5;124mSki[39m[38;5;124m"[39m
-[1;32m      5[0m url [38;5;241m=[39m BASE_URL [38;5;241m+[39m [38;5;124m"[39m[38;5;124mq=[39m[38;5;124m"[39m [38;5;241m+[39m CITY [38;5;241m+[39m [38;5;124m"[39m[38;5;124m&appid=[39m[38;5;124m"[39m [38;5;241m+[39m API_KEY
+[1;32m      5[0m urlF [38;5;241m=[39m BASE_URL [38;5;241m+[39m [38;5;124m"[39m[38;5;124mq=[39m[38;5;124m"[39m [38;5;241m+[39m CITY [38;5;241m+[39m [38;5;124m"[39m[38;5;124m&appid=[39m[38;5;124m"[39m [38;5;241m+[39m API_KEY
 
 File [0;32m~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282[0m, in [0;36m_modified_open[0;34m(file, *args, **kwargs)[0m
 [1;32m    275[0m [38;5;28;01mif[39;00m file [38;5;129;01min[39;00m {[38;5;241m0[39m, [38;5;241m1[39m, [38;5;241m2[39m}:
