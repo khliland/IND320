@@ -437,7 +437,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://api.openweathermap.org/data/2.5/weather?&quot;</span>
-<span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/api_key&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/api_key_OpenWeather&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">CITY</span> <span class="o">=</span> <span class="s2">&quot;Ski&quot;</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="s2">&quot;q=&quot;</span> <span class="o">+</span> <span class="n">CITY</span> <span class="o">+</span> <span class="s2">&quot;&amp;appid=&quot;</span> <span class="o">+</span> <span class="n">API_KEY</span>
@@ -495,7 +495,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The current temperature in Ski is 20.52°C
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The current temperature in Ski is 21.11°C
 </pre></div>
 </div>
 </div>
@@ -527,6 +527,28 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 <span class="n">CITY</span> <span class="o">=</span> <span class="s2">&quot;Ski&quot;</span>
 
 <span class="n">urlF</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="s2">&quot;q=&quot;</span> <span class="o">+</span> <span class="n">CITY</span> <span class="o">+</span> <span class="s2">&quot;&amp;appid=&quot;</span> <span class="o">+</span> <span class="n">API_KEY</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://api.openweathermap.org/data/2.5/forecast?&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/api_key&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">CITY</span> <span class="o">=</span> <span class="s2">&quot;Ski&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">urlF</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="s2">&quot;q=&quot;</span> <span class="o">+</span> <span class="n">CITY</span> <span class="o">+</span> <span class="s2">&quot;&amp;appid=&quot;</span> <span class="o">+</span> <span class="n">API_KEY</span>
+
+<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../../No_sync/api_key&#39;
 </pre></div>
 </div>
 </div>
@@ -590,46 +612,46 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-08-04 12:00:00
-2023-08-04 15:00:00
-2023-08-04 18:00:00
-2023-08-04 21:00:00
-2023-08-05 00:00:00
-2023-08-05 03:00:00
-2023-08-05 06:00:00
-2023-08-05 09:00:00
-2023-08-05 12:00:00
-2023-08-05 15:00:00
-2023-08-05 18:00:00
-2023-08-05 21:00:00
-2023-08-06 00:00:00
-2023-08-06 03:00:00
-2023-08-06 06:00:00
-2023-08-06 09:00:00
-2023-08-06 12:00:00
-2023-08-06 15:00:00
-2023-08-06 18:00:00
-2023-08-06 21:00:00
-2023-08-07 00:00:00
-2023-08-07 03:00:00
-2023-08-07 06:00:00
-2023-08-07 09:00:00
-2023-08-07 12:00:00
-2023-08-07 15:00:00
-2023-08-07 18:00:00
-2023-08-07 21:00:00
-2023-08-08 00:00:00
-2023-08-08 03:00:00
-2023-08-08 06:00:00
-2023-08-08 09:00:00
-2023-08-08 12:00:00
-2023-08-08 15:00:00
-2023-08-08 18:00:00
-2023-08-08 21:00:00
-2023-08-09 00:00:00
-2023-08-09 03:00:00
-2023-08-09 06:00:00
-2023-08-09 09:00:00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-19 15:00:00
+2023-05-19 18:00:00
+2023-05-19 21:00:00
+2023-05-20 00:00:00
+2023-05-20 03:00:00
+2023-05-20 06:00:00
+2023-05-20 09:00:00
+2023-05-20 12:00:00
+2023-05-20 15:00:00
+2023-05-20 18:00:00
+2023-05-20 21:00:00
+2023-05-21 00:00:00
+2023-05-21 03:00:00
+2023-05-21 06:00:00
+2023-05-21 09:00:00
+2023-05-21 12:00:00
+2023-05-21 15:00:00
+2023-05-21 18:00:00
+2023-05-21 21:00:00
+2023-05-22 00:00:00
+2023-05-22 03:00:00
+2023-05-22 06:00:00
+2023-05-22 09:00:00
+2023-05-22 12:00:00
+2023-05-22 15:00:00
+2023-05-22 18:00:00
+2023-05-22 21:00:00
+2023-05-23 00:00:00
+2023-05-23 03:00:00
+2023-05-23 06:00:00
+2023-05-23 09:00:00
+2023-05-23 12:00:00
+2023-05-23 15:00:00
+2023-05-23 18:00:00
+2023-05-23 21:00:00
+2023-05-24 00:00:00
+2023-05-24 03:00:00
+2023-05-24 06:00:00
+2023-05-24 09:00:00
+2023-05-24 12:00:00
 </pre></div>
 </div>
 </div>
@@ -664,7 +686,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a7e3a422ac9475e46682080e7a2e46b5eb180650bc47e739e8d1ffcba342e8e0.png" src="../_images/a7e3a422ac9475e46682080e7a2e46b5eb180650bc47e739e8d1ffcba342e8e0.png" />
+<img alt="../_images/2ad2f1efc33cc17c8c4a1da9a8691b98be842fb95af909acaf61b6bdab053b47.png" src="../_images/2ad2f1efc33cc17c8c4a1da9a8691b98be842fb95af909acaf61b6bdab053b47.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -699,7 +721,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/028c58a19779b202f64b59a766b9f5ad550655a243eb88ec4d344d4fa8f98dd5.png" src="../_images/028c58a19779b202f64b59a766b9f5ad550655a243eb88ec4d344d4fa8f98dd5.png" />
+<img alt="../_images/9191f502561018031c9133b61d9dbfd0838ad31eea2cda362bdd37381d7fc1e7.png" src="../_images/9191f502561018031c9133b61d9dbfd0838ad31eea2cda362bdd37381d7fc1e7.png" />
 </div>
 </div>
 </section>

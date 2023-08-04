@@ -408,13 +408,14 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a connection object &#39;conn&#39; for the MySQL database &#39;u492297623_student1&#39; on port 3306 at server 145.14.151.151 with username &#39;u492297623_stud1&#39;</span>
 <span class="c1"># and password &#39;Student1&#39;.</span>
 <span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="c1"># Establishing a connection to the MySQL database</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
     <span class="n">host</span><span class="o">=</span><span class="s1">&#39;145.14.151.151&#39;</span><span class="p">,</span>
     <span class="n">port</span><span class="o">=</span><span class="mi">3306</span><span class="p">,</span>
     <span class="n">user</span><span class="o">=</span><span class="s1">&#39;u492297623_stud1&#39;</span><span class="p">,</span>
-    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;Student1&#39;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="n">PWD</span><span class="p">,</span>
     <span class="n">database</span><span class="o">=</span><span class="s1">&#39;u492297623_student1&#39;</span>
 <span class="p">)</span>
 
