@@ -5,11 +5,10 @@ format: jb-book
 root: intro
 chapters:
 - file: markdown
-- file: notebooks
 - file: markdown-notebooks
-- file: APIs/OpenWeather
   sections:
   - file: APIs/OpenWeather
+- file: notebooks
   sections:
   - file: Databases/MySQL
   - file: Databases/Cassandra
