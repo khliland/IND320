@@ -5,10 +5,13 @@ format: jb-book
 root: General/Introduction
 chapters:
 - file: Decision_making/Decision_making
-- file: APIs/APIs
+- file: Data_sources/Data_sources
+- file: Data_sources/Databases/Databases
   sections:
-  - file: APIs/OpenWeather
-- file: Databases/Databases
+  - file: Data_sources/Databases/MySQL
+  - file: Data_sources/Databases/Cassandra
+- file: Data_sources/APIs/APIs
   sections:
-  - file: Databases/MySQL
-  - file: Databases/Cassandra
+  - file: Data_sources/APIs/OpenWeather
+- file: Machine_Learning/Machine_Learning
+- file: Deployment/Deployment
