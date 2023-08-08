@@ -2,13 +2,13 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: General/Introduction
 chapters:
-- file: markdown
-- file: markdown-notebooks
+- file: Decision_making/Decision_making
+- file: APIs/APIs
   sections:
   - file: APIs/OpenWeather
-- file: notebooks
+- file: Databases/Databases
   sections:
   - file: Databases/MySQL
   - file: Databases/Cassandra
