@@ -4,4 +4,5 @@ numpy
 datetime
 requests
 json
-cassandra
+cassandra-driver
+flask

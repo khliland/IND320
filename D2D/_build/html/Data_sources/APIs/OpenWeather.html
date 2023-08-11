@@ -63,8 +63,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data_sources/APIs/OpenWeather';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Machine Learning" href="../../Machine_Learning/Machine_Learning.html" />
-    <link rel="prev" title="APIs" href="APIs.html" />
+    <link rel="next" title="Data quality" href="../../Data_quality/Data_quality.html" />
+    <link rel="prev" title="REST API" href="REST.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -156,18 +156,19 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Decision_making/Decision_making.html">Data-driven decision making</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Decision_making/Decision_making.html">Data-Driven Decision Making</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data_sources.html">Data sources</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Databases/Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Databases/MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Databases/Cassandra.html">Cassandra</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="APIs.html">APIs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="REST.html">REST API</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Demonstration of API using OpenWeather.org</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data_quality/Data_quality.html">Data quality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Machine_Learning/Machine_Learning.html">Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Deployment/Deployment.html">Deployment</a></li>
 </ul>
@@ -442,32 +443,10 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://api.openweathermap.org/data/2.5/weather?&quot;</span>
-<span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/api_key_OpenWeather&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/api_key_OpenWeather&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">CITY</span> <span class="o">=</span> <span class="s2">&quot;Ski&quot;</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="s2">&quot;q=&quot;</span> <span class="o">+</span> <span class="n">CITY</span> <span class="o">+</span> <span class="s2">&quot;&amp;appid=&quot;</span> <span class="o">+</span> <span class="n">API_KEY</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://api.openweathermap.org/data/2.5/weather?&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/api_key_OpenWeather&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">CITY</span> <span class="o">=</span> <span class="s2">&quot;Ski&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">url</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="s2">&quot;q=&quot;</span> <span class="o">+</span> <span class="n">CITY</span> <span class="o">+</span> <span class="s2">&quot;&amp;appid=&quot;</span> <span class="o">+</span> <span class="n">API_KEY</span>
-
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../../No_sync/api_key_OpenWeather&#39;
 </pre></div>
 </div>
 </div>
@@ -522,7 +501,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The current temperature in Ski is 20.24°C
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The current temperature in Ski is 18.70°C
 </pre></div>
 </div>
 </div>
@@ -537,7 +516,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sunrise today is at 05:05 and sunset is at 21:40
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sunrise today is at 05:21 and sunset is at 21:22
 </pre></div>
 </div>
 </div>
@@ -550,7 +529,6 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://api.openweathermap.org/data/2.5/forecast?&quot;</span>
-<span class="n">API_KEY</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/api_key&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">CITY</span> <span class="o">=</span> <span class="s2">&quot;Ski&quot;</span>
 
 <span class="n">urlF</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="s2">&quot;q=&quot;</span> <span class="o">+</span> <span class="n">CITY</span> <span class="o">+</span> <span class="s2">&quot;&amp;appid=&quot;</span> <span class="o">+</span> <span class="n">API_KEY</span>
@@ -617,46 +595,46 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-19 15:00:00
-2023-05-19 18:00:00
-2023-05-19 21:00:00
-2023-05-20 00:00:00
-2023-05-20 03:00:00
-2023-05-20 06:00:00
-2023-05-20 09:00:00
-2023-05-20 12:00:00
-2023-05-20 15:00:00
-2023-05-20 18:00:00
-2023-05-20 21:00:00
-2023-05-21 00:00:00
-2023-05-21 03:00:00
-2023-05-21 06:00:00
-2023-05-21 09:00:00
-2023-05-21 12:00:00
-2023-05-21 15:00:00
-2023-05-21 18:00:00
-2023-05-21 21:00:00
-2023-05-22 00:00:00
-2023-05-22 03:00:00
-2023-05-22 06:00:00
-2023-05-22 09:00:00
-2023-05-22 12:00:00
-2023-05-22 15:00:00
-2023-05-22 18:00:00
-2023-05-22 21:00:00
-2023-05-23 00:00:00
-2023-05-23 03:00:00
-2023-05-23 06:00:00
-2023-05-23 09:00:00
-2023-05-23 12:00:00
-2023-05-23 15:00:00
-2023-05-23 18:00:00
-2023-05-23 21:00:00
-2023-05-24 00:00:00
-2023-05-24 03:00:00
-2023-05-24 06:00:00
-2023-05-24 09:00:00
-2023-05-24 12:00:00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-08-11 15:00:00
+2023-08-11 18:00:00
+2023-08-11 21:00:00
+2023-08-12 00:00:00
+2023-08-12 03:00:00
+2023-08-12 06:00:00
+2023-08-12 09:00:00
+2023-08-12 12:00:00
+2023-08-12 15:00:00
+2023-08-12 18:00:00
+2023-08-12 21:00:00
+2023-08-13 00:00:00
+2023-08-13 03:00:00
+2023-08-13 06:00:00
+2023-08-13 09:00:00
+2023-08-13 12:00:00
+2023-08-13 15:00:00
+2023-08-13 18:00:00
+2023-08-13 21:00:00
+2023-08-14 00:00:00
+2023-08-14 03:00:00
+2023-08-14 06:00:00
+2023-08-14 09:00:00
+2023-08-14 12:00:00
+2023-08-14 15:00:00
+2023-08-14 18:00:00
+2023-08-14 21:00:00
+2023-08-15 00:00:00
+2023-08-15 03:00:00
+2023-08-15 06:00:00
+2023-08-15 09:00:00
+2023-08-15 12:00:00
+2023-08-15 15:00:00
+2023-08-15 18:00:00
+2023-08-15 21:00:00
+2023-08-16 00:00:00
+2023-08-16 03:00:00
+2023-08-16 06:00:00
+2023-08-16 09:00:00
+2023-08-16 12:00:00
 </pre></div>
 </div>
 </div>
@@ -691,7 +669,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2ad2f1efc33cc17c8c4a1da9a8691b98be842fb95af909acaf61b6bdab053b47.png" src="../../_images/2ad2f1efc33cc17c8c4a1da9a8691b98be842fb95af909acaf61b6bdab053b47.png" />
+<img alt="../../_images/4370ad7a9d2fff60432c4c49150f4094a96cd6b7a5f8518e97b56818c73f9036.png" src="../../_images/4370ad7a9d2fff60432c4c49150f4094a96cd6b7a5f8518e97b56818c73f9036.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -726,7 +704,7 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9191f502561018031c9133b61d9dbfd0838ad31eea2cda362bdd37381d7fc1e7.png" src="../../_images/9191f502561018031c9133b61d9dbfd0838ad31eea2cda362bdd37381d7fc1e7.png" />
+<img alt="../../_images/32a585e435cac1942df1fa81234376bed0d81038eedd737d713b26e2c388a8ae.png" src="../../_images/32a585e435cac1942df1fa81234376bed0d81038eedd737d713b26e2c388a8ae.png" />
 </div>
 </div>
 </section>
@@ -764,20 +742,20 @@ The VS Code extensino <em>JSON viewer</em> is recommended for viewing downloaded
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="APIs.html"
+       href="REST.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">APIs</p>
+        <p class="prev-next-title">REST API</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../Machine_Learning/Machine_Learning.html"
+       href="../../Data_quality/Data_quality.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Machine Learning</p>
+        <p class="prev-next-title">Data quality</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -12,6 +12,8 @@ chapters:
   - file: Data_sources/Databases/Cassandra
 - file: Data_sources/APIs/APIs
   sections:
+  - file: Data_sources/APIs/REST
   - file: Data_sources/APIs/OpenWeather
+- file: Data_quality/Data_quality
 - file: Machine_Learning/Machine_Learning
 - file: Deployment/Deployment

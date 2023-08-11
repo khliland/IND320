@@ -156,18 +156,19 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Decision_making/Decision_making.html">Data-driven decision making</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Decision_making/Decision_making.html">Data-Driven Decision Making</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data_sources.html">Data sources</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="Databases.html">Databases</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Cassandra.html">Cassandra</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../APIs/APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../APIs/REST.html">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../APIs/OpenWeather.html">Demonstration of API using OpenWeather.org</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data_quality/Data_quality.html">Data quality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Machine_Learning/Machine_Learning.html">Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Deployment/Deployment.html">Deployment</a></li>
 </ul>
@@ -414,7 +415,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a connection object &#39;conn&#39; for the MySQL database &#39;u492297623_student1&#39; on port 3306 at server 145.14.151.151 with username &#39;u492297623_stud1&#39;</span>
 <span class="c1"># and password &#39;Student1&#39;.</span>
 <span class="kn">import</span> <span class="nn">mysql.connector</span>
-<span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="c1"># Establishing a connection to the MySQL database</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
@@ -427,35 +428,6 @@ document.write(`
 
 <span class="c1"># Creating a cursor object to execute SQL queries</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Make a connection object &#39;conn&#39; for the MySQL database &#39;u492297623_student1&#39; on port 3306 at server 145.14.151.151 with username &#39;u492297623_stud1&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># and password &#39;Student1&#39;.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">mysql.connector</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Establishing a connection to the MySQL database</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">host</span><span class="o">=</span><span class="s1">&#39;145.14.151.151&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">port</span><span class="o">=</span><span class="mi">3306</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">database</span><span class="o">=</span><span class="s1">&#39;u492297623_student1&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="p">)</span>
-
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../../No_sync/password_khliland&#39;
 </pre></div>
 </div>
 </div>

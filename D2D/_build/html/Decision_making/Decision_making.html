@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Data-driven decision making &#8212; Data to Decision - IND320</title>
+    <title>Data-Driven Decision Making &#8212; Data to Decision - IND320</title>
   
   
   
@@ -156,18 +156,19 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data-driven decision making</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data-Driven Decision Making</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data_sources/Data_sources.html">Data sources</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Data_sources/Databases/Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Data_sources/Databases/MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Data_sources/Databases/Cassandra.html">Cassandra</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Data_sources/APIs/APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Data_sources/APIs/REST.html">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Data_sources/APIs/OpenWeather.html">Demonstration of API using OpenWeather.org</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Data_quality/Data_quality.html">Data quality</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Machine_Learning/Machine_Learning.html">Machine Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Deployment/Deployment.html">Deployment</a></li>
 </ul>
@@ -371,7 +372,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -382,11 +385,29 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data-driven decision making</h1>
+    <h1>Data-Driven Decision Making</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-driven">Data-Driven</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#know-your-objectives">1. Know your objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-relevant-data">2. Find relevant data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data">3. Pre-process data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-data">4. Analyse data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-decisions">5. Make decisions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-decision-making">Data and decision making</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboards-vs-reports">Dashboards vs Reports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -397,7 +418,124 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="data-driven-decision-making">
-<h1>Data-driven decision making<a class="headerlink" href="#data-driven-decision-making" title="Permalink to this headline">#</a></h1>
+<h1>Data-Driven Decision Making<a class="headerlink" href="#data-driven-decision-making" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>We will only cover the basics of DDDM.</p></li>
+<li><p>Many facets of “Data to Decision” can be placed under the DDDM umbrella.</p></li>
+</ul>
+<section id="data-driven">
+<h2>Data-Driven<a class="headerlink" href="#data-driven" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Make informed decisions that are based on facts rather than intuition or guesswork</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Clive_Humby">Clive Humby 2006</a> -“Data is the new oil”</p>
+<ul>
+<li><p>Big data</p></li>
+<li><p>Blindly collecting data and looking for patterns is not likely to result in long term profits and revolutionary discoveries.</p></li>
+</ul>
+</li>
+</ul>
+<section id="know-your-objectives">
+<h3>1. Know your objectives<a class="headerlink" href="#know-your-objectives" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>A well-rounded data analyst:</p>
+<ul>
+<li><p>Understands the business and the competitive market.</p></li>
+<li><p>Asks the right questions about the problems in the industry.</p></li>
+<li><p>Identifies and understands the problems thoroughly.</p></li>
+<li><p>Makes better inferences with data based on the foundational knowledge.</p></li>
+</ul>
+</li>
+<li><p>Before collecting data, a data analyst should:</p>
+<ul>
+<li><p>Identify the business questions that need to be answered to achieve organizational goals.</p></li>
+<li><p>Determine the precise questions that need to be answered to inform the strategy.</p></li>
+<li><p>Streamline the data collection process and avoid wasting resources.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="find-relevant-data">
+<h3>2. Find relevant data<a class="headerlink" href="#find-relevant-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Identify the data sources</strong>. This could include databases, web-driven feedback forms, social media, and other sources.</p></li>
+<li><p><strong>Coordinate the data sources</strong>. This may involve identifying common variables and ensuring that the data is in a consistent format.</p></li>
+<li><p><strong>Consider the future use of the data</strong>. Is it only needed for this project, or could it be used for other projects in the future? If so, you should develop a strategy to present the data in a way that is accessible in other scenarios.</p></li>
+<li><p>In “Data to Decision” we will call this part <strong>Data sources</strong>.</p></li>
+</ul>
+</section>
+<section id="pre-process-data">
+<h3>3. Pre-process data<a class="headerlink" href="#pre-process-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Data cleaning is important:</strong> 80% of a data analyst’s time is spent cleaning and organizing data, while only 20% is spent analyzing it. This shows that having clean data is essential for accurate analysis.</p></li>
+<li><p><strong>Data cleaning is the process of preparing raw data for analysis.</strong> Data cleaning involves a variety of tasks, such as:</p>
+<ul>
+<li><p>Identifying and removing incorrect data</p></li>
+<li><p>Filling in missing data</p></li>
+<li><p>Formatting the data in a consistent way</p></li>
+<li><p>Standardizing the data</p></li>
+</ul>
+</li>
+<li><p><strong>To start data cleaning, build tables to organize and catalog the data:</strong> This will help you to better understand the data and identify any problems.
+Create a data dictionary: This is a table that catalogs each of your variables and translates them into what they mean to you in the context of this particular project.</p></li>
+<li><p>In “Data to Decision” we will call this <strong>Data quality</strong></p></li>
+</ul>
+</section>
+<section id="analyse-data">
+<h3>4. Analyse data<a class="headerlink" href="#analyse-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Once you’ve cleaned the data, you can start to analyze it using statistical models.</strong> This involves building models to test the data and answer the business questions you identified earlier in the process.</p></li>
+<li><p><strong>There are three different ways to present your findings:</strong></p>
+<ul>
+<li><p><strong>Descriptive information:</strong> This is just the facts.</p></li>
+<li><p><strong>Inferential information:</strong> This includes the facts, plus an interpretation of what those facts indicate in the context of a particular project.</p></li>
+<li><p><strong>Predictive information:</strong> This is an inference based on facts and advice for further action based on your reasoning.</p></li>
+</ul>
+</li>
+<li><p>Clarifying how the information will be most effectively presented will help you remain organized when it comes time to interpret the data.</p></li>
+<li><p>We will use graphics to condense data into interpretable information.</p></li>
+<li><p>In “Data to Decision” we will call this <strong>Machine Learning</strong></p></li>
+</ul>
+</section>
+<section id="make-decisions">
+<h3>5. Make decisions<a class="headerlink" href="#make-decisions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Did the analysis:</p>
+<ul>
+<li><p>confirm suspicions?</p></li>
+<li><p>shed new light on previously accepted “facts”?</p></li>
+<li><p>find something deviating from expectations?</p></li>
+<li><p>reveal flaws or weeknesses?</p></li>
+</ul>
+</li>
+<li><p>In “Data to Decision” we might not make decisions ourselves, but we will perform <strong>Deployment</strong></p></li>
+</ul>
+</section>
+</section>
+<section id="data-and-decision-making">
+<h2>Data and decision making<a class="headerlink" href="#data-and-decision-making" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Simon Jackson defines the following <a class="reference external" href="https://medium.com/&#64;drsimonj/five-flavours-of-decision-making-with-data-ae4d544f0d81">Five flavours of decision making</a>:</p>
+<ul>
+<li><p><strong>Data-driven</strong>: Commiting to a decision that will be taken from data before seing it. This means trusting that the DDDM pipeline is well designed and working.</p></li>
+<li><p><strong>Data-inspired</strong>: Making decision after looking at data or visualisations, believing that you see trends, patterns or anomalies. This means you have used data, but haven’t made your choices on testable assumptions but more vague notions.</p></li>
+<li><p><strong>Data-aspired</strong>: Making decisions without data, but having a plan of collecting and analysing data at a later stage. This means you at least wish to collect data, but do not commit to changing your decision if data-based evidence comes at a later time.</p></li>
+<li><p><strong>Data-ignorant</strong>: Making decisions without considering data. This means you either do not have data available, haven’t been able to leverage data or go against the evidence found by analysis.</p></li>
+<li><p><strong>Data-tortured</strong>: First making a decision, then looking through data until you find something that seems to support your case. This means you are biased by your own beliefs when looking at data, possibly grasping for straws. “If you torture the data long enough, it will confess to anything” ~ losely after Ronald Coase in the early 60’s.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="dashboards-vs-reports">
+<h2>Dashboards vs Reports<a class="headerlink" href="#dashboards-vs-reports" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://graduate.northeastern.edu/resources/data-driven-decision-making/">DDDM: A Primer for beginners</a> (Inspiration for this presentation)</p></li>
+<li><p><a class="reference external" href="https://medium.com/&#64;drsimonj/five-flavours-of-decision-making-with-data-ae4d544f0d81">Five flavours of decision making</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/EevYFzAqJ2M">Making Data-driven Decisions in Business | Google Data Analytics Certificate</a> (23m:41s)</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -458,6 +596,30 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-driven">Data-Driven</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#know-your-objectives">1. Know your objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-relevant-data">2. Find relevant data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-process-data">3. Pre-process data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyse-data">4. Analyse data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-decisions">5. Make decisions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-decision-making">Data and decision making</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dashboards-vs-reports">Dashboards vs Reports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
