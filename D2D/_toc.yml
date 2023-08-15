@@ -2,18 +2,34 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: General/Introduction
-chapters:
-- file: Decision_making/Decision_making
-- file: Data_sources/Data_sources
-- file: Data_sources/Databases/Databases
-  sections:
-  - file: Data_sources/Databases/MySQL
-  - file: Data_sources/Databases/Cassandra
-- file: Data_sources/APIs/APIs
-  sections:
-  - file: Data_sources/APIs/REST
-  - file: Data_sources/APIs/OpenWeather
-- file: Data_quality/Data_quality
-- file: Machine_Learning/Machine_Learning
-- file: Deployment/Deployment
+root: 0_General/Introduction
+parts:
+  - caption: Data-Driven Decision Making
+    chapters:
+    - file: 1_Decision_making/Data_pipeline
+      sections:
+      - file: 1_Decision_making/Decision_making
+      - file: 1_Decision_making/Dashboards_reports
+  - caption: Data Sources
+    chapters:
+    - file: 2_Data_sources/Formats/Formats
+      sections:
+      - file: 2_Data_sources/Formats/Data_formats
+      - file: 2_Data_sources/Formats/Streaming_data
+    - file: 2_Data_sources/Databases/Databases
+      sections:
+      - file: 2_Data_sources/Databases/MySQL
+      - file: 2_Data_sources/Databases/Cassandra
+    - file: 2_Data_sources/APIs/APIs
+      sections:
+      - file: 2_Data_sources/APIs/REST
+      - file: 2_Data_sources/APIs/OpenWeather
+  - caption: Data quality
+    chapters:
+    - file: 3_Data_quality/Data_quality
+  - caption: Machine Learning
+    chapters:
+    - file: 4_Machine_Learning/Machine_Learning
+  - caption: Deployment
+    chapters:
+    - file: 5_Deployment/Deployment
