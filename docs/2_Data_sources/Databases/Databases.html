@@ -52,6 +52,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -416,10 +417,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-categories">Main categories</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">Categories</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">Relational databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql">NoSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-databases">Vector databases</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -434,12 +438,17 @@ document.write(`
   <section id="databases">
 <h1>Databases<a class="headerlink" href="#databases" title="Permalink to this headline">#</a></h1>
 <p>This chapter will give a brief introduction to databases on a level sufficient for usage in the course. As many databases use SQL (Structured Query Language / “sequel”) or a variation of this, we will also show SQL examples.</p>
-<section id="main-categories">
-<h2>Main categories<a class="headerlink" href="#main-categories" title="Permalink to this headline">#</a></h2>
+<section id="categories">
+<h2>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Relational databases/SQL, e.g., MySQL, Microsoft SQL, Oracle DB</p></li>
-<li><p>NoSQL, e.g., Cassandra, Spark</p></li>
+<li><p>NoSQL, e.g., Cassandra, Spark</p>
+<ul>
+<li><p>Traditional tables, but no relations between tables</p></li>
+<li><p>Vector databases</p></li>
 <li><p>Graph databases</p></li>
+</ul>
+</li>
 </ul>
 <p>This list is non-exhaustive both with regard to categories and examples.</p>
 <section id="relational-databases">
@@ -458,7 +467,48 @@ document.write(`
 </li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/Databases_SQL_relation.png"><img alt="../../_images/Databases_SQL_relation.png" src="../../_images/Databases_SQL_relation.png" style="width: 600px;" /></a>
+<p>We will be using MySQL as an example of this category</p>
 </section>
+<section id="nosql">
+<h3>NoSQL<a class="headerlink" href="#nosql" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Cacheable, parallelizable, scalable to exabytes of data.</p>
+<ul>
+<li><p>E.g., XML databases for querying XML documents based on attributes.</p></li>
+<li><p>May not use tables at all, only key-value pairs and corresponding unstructured data/objects.</p></li>
+</ul>
+</li>
+<li><p>Some use a subset of SQL commands (NoSQL = Non-relational SQL).</p>
+<ul>
+<li><p>Trades a bit more strict querying for speed and scale.</p></li>
+</ul>
+</li>
+</ul>
+<p>We will be using Cassandra as an example of this category.</p>
+</section>
+<section id="vector-databases">
+<h3>Vector databases<a class="headerlink" href="#vector-databases" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Like NoSQL, these are made to overcome limitations in relational databases.</p></li>
+<li><p>Data stored as high-dimensional vectors representing features or attributes.</p>
+<ul>
+<li><p>E.g., transformations or embeddings.</p></li>
+</ul>
+</li>
+<li><p>Applied in natural language processing (NLP), computer vision (CV), recommendation systems (RS), etc. when searching for similar objects.</p>
+<ul>
+<li><p>E.g., find the image most similar to my search image.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">Wikipedia: NoSQL</a></p></li>
+<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/semantic-kernel/memories/vector-db">Microsoft Learn: Vector databases</a></p></li>
+</ul>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -531,10 +581,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-categories">Main categories</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">Categories</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">Relational databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql">NoSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-databases">Vector databases</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 
