@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../2_Data_sources/Databases/Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/Databases/MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/Databases/Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/Databases/Spark.html">Spark</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../2_Data_sources/APIs/APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -394,7 +395,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -410,6 +413,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-business-you-might-also-have">In a business you might also have:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -421,6 +433,62 @@ document.write(`
                   
   <section id="data-pipeline">
 <h1>Data pipeline<a class="headerlink" href="#data-pipeline" title="Permalink to this headline">#</a></h1>
+<p>Depending on roles and mindset there are different ways to think of the data pipeline in a project or business. Some, possibly exaggerated/pre-concieved, viewpoints:</p>
+<ul class="simple">
+<li><p><em>Researcher</em>: Concerned with the validity and accuracy of the data, as well as the methods used to collect and clean it.</p>
+<ul>
+<li><p>Ensure that the data is collected in a way that is representative of the population of interest.</p></li>
+<li><p>Clean the data to remove any errors or inconsistencies.</p></li>
+<li><p>Use appropriate statistical methods to analyze the data.</p></li>
+<li><p>Interpret the results of the analysis and draw conclusions.</p></li>
+</ul>
+</li>
+<li><p><em>Engineer</em>: Responsible for the design and implementation of the data pipeline. May also be involved in the maintenance and troubleshooting of the system.</p>
+<ul>
+<li><p>Design a data pipeline that is efficient and scalable.</p></li>
+<li><p>Implement the data pipeline using secure and reliable technologies.</p></li>
+<li><p>Monitor the data pipeline for performance and errors.</p></li>
+<li><p>Troubleshoot and fix problems with the data pipeline.</p></li>
+</ul>
+</li>
+</ul>
+<section id="in-a-business-you-might-also-have">
+<h2>In a business you might also have:<a class="headerlink" href="#in-a-business-you-might-also-have" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><em>Middle manager</em>: Responsible for overseeing the data pipeline and ensuring that it meets the needs of the organization. May also be involved in the budgeting and staffing of the data team.</p>
+<ul>
+<li><p>Set goals and priorities for the data pipeline.</p></li>
+<li><p>Allocate resources to the data team.</p></li>
+<li><p>Track the progress of the data pipeline.</p></li>
+<li><p>Communicate the status of the data pipeline to stakeholders.</p></li>
+</ul>
+</li>
+<li><p><em>Consultant</em>: Brought in to provide expertise on specific aspects of the data pipeline, such as data collection, cleaning, or analysis.</p>
+<ul>
+<li><p>Provide advice on the best practices for collecting, cleaning, and analyzing data.</p></li>
+<li><p>Help to troubleshoot problems with the data pipeline.</p></li>
+<li><p>Train the data team on new technologies or methods.</p></li>
+</ul>
+</li>
+<li><p><em>CEO</em>: Ultimately responsible for the data pipeline and its impact on the organization. May not be directly involved in the day-to-day operations of the data team, but should have a high-level understanding of the data pipeline and its importance.</p>
+<ul>
+<li><p>Set the overall vision for the data pipeline.</p></li>
+<li><p>Ensure that the data pipeline is aligned with the strategic goals of the organization.</p></li>
+<li><p>Make decisions about the budget and staffing of the data team.</p></li>
+<li><p>Communicate the importance of data to the rest of the organization.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/Data_pipeline.png"><img alt="../_images/Data_pipeline.png" src="../_images/Data_pipeline.png" style="width: 700px;" /></a>
+<ul class="simple">
+<li><p>A form of summary is shown above.</p></li>
+<li><p>This aligns well with <a class="reference internal" href="Decision_making.html"><span class="doc std std-doc">Data-Driven Decision Modelling</span></a>.</p></li>
+<li><p>The end result may be a <a class="reference internal" href="Dashboards_reports.html"><span class="doc std std-doc">dashboard or report</span></a> for monitoring, exploration, documentation, etc.</p></li>
+</ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -483,6 +551,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-business-you-might-also-have">In a business you might also have:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -20,6 +20,7 @@ parts:
       sections:
       - file: 2_Data_sources/Databases/MySQL
       - file: 2_Data_sources/Databases/Cassandra
+      - file: 2_Data_sources/Databases/Spark
     - file: 2_Data_sources/APIs/APIs
       sections:
       - file: 2_Data_sources/APIs/REST

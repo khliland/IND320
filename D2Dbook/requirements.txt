@@ -9,3 +9,4 @@ cassandra-driver
 flask
 scikit-learn
 plotly
+river

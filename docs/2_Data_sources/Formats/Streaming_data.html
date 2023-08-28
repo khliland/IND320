@@ -174,6 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Databases/Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Databases/MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Databases/Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Databases/Spark.html">Spark</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../APIs/APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -394,7 +395,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -410,6 +413,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-reading-of-twitch-chat">Live reading of Twitch chat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -421,6 +437,123 @@ document.write(`
                   
   <section id="streaming-data">
 <h1>Streaming data<a class="headerlink" href="#streaming-data" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Data that can be loaded chunk-wise (single or a few at the time).</p></li>
+<li><p>Data flowing through a socket/pipe/streaming API/…</p></li>
+<li><p>Typically requires:</p>
+<ul>
+<li><p>Checking if stream is active.</p></li>
+<li><p>A reactive reading mechanism or time delayed loop to check for updates.</p></li>
+<li><p>Error/exception checking/handling.</p></li>
+<li><p>A receiving enitity that can use the incomming data, e.g., printing to screen, updating graphics, updating a model, predicting some outcome/state/quantity, …</p></li>
+</ul>
+</li>
+</ul>
+<section id="live-reading-of-twitch-chat">
+<h2>Live reading of Twitch chat<a class="headerlink" href="#live-reading-of-twitch-chat" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Requires a free account on <a class="reference external" href="https://twitch.tv">Twitch</a> and obtaining an <a class="reference external" href="https://twitchapps.com/tmi/">oauth autentication token</a>.</p></li>
+<li><p>We will use River’s <a class="reference external" href="https://riverml.xyz/0.18.0/api/stream/TwitchChatStream/">TwitchChatStream</a> to handle the live streamed data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if user is logged in (&quot;==&quot; active chat)</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;zackrawrr&quot;</span> <span class="c1"># Change this to the user you want to check</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://decapi.me/twitch/uptime/&quot;</span><span class="o">+</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">is_online</span> <span class="o">=</span> <span class="n">response</span> <span class="o">!=</span> <span class="n">user</span><span class="o">+</span><span class="s2">&quot; is offline&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_online</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect to the Twitch chat using River</span>
+<span class="kn">from</span> <span class="nn">river</span> <span class="kn">import</span> <span class="n">stream</span>
+
+<span class="n">oauth</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/twitch_oauth&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">twitch_chat</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">TwitchChatStream</span><span class="p">(</span>
+    <span class="n">nickname</span><span class="o">=</span><span class="s2">&quot;khliland&quot;</span><span class="p">,</span> <span class="c1"># Exchange with your Twitch username</span>
+    <span class="n">token</span><span class="o">=</span><span class="n">oauth</span><span class="p">,</span>
+    <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If the user is online, print the first 5 messages</span>
+<span class="k">if</span> <span class="n">is_online</span><span class="p">:</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">twitch_chat</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">messages</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puh, that&#39;s enough!&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="n">messages</span> <span class="o">-=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 8, 28, 9, 21, 58, 735896), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;nyunos&#39;, &#39;msg&#39;: &#39;D:&#39;}
+{&#39;dt&#39;: datetime.datetime(2023, 8, 28, 9, 21, 58, 735896), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;buttabiskithead&#39;, &#39;msg&#39;: &quot;You&#39;re literally the only person I come to twitch for&quot;}
+{&#39;dt&#39;: datetime.datetime(2023, 8, 28, 9, 21, 58, 735896), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;palsbro&#39;, &#39;msg&#39;: &#39;some of the twitch memes can be funny but lots are just annoying true&#39;}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 8, 28, 9, 21, 58, 957610), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;hitorinishitekure&#39;, &#39;msg&#39;: &#39;agreed&#39;}
+{&#39;dt&#39;: datetime.datetime(2023, 8, 28, 9, 21, 59, 128597), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;kake72&#39;, &#39;msg&#39;: &quot;Have you enabled the setting where banned people can&#39;t watch the stream?&quot;}
+Puh, that&#39;s enough!
+</pre></div>
+</div>
+</div>
+</div>
+<section id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Here, River has formated everything nicely for us as dictionaries.</p>
+<ul>
+<li><p>River’s streaming format is based on dictionaries to minimize overhead.</p></li>
+</ul>
+</li>
+<li><p>See escpecially the <em>datetime</em> formatting.</p></li>
+<li><p>We will return to River and streaming Machine Learning later in the book.</p></li>
+</ul>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<p>Make a clock  using <a class="reference external" href="http://worldtimeapi.org/">World Time API</a></p>
+<ul class="simple">
+<li><p>Pull the current time from <em>http://worldtimeapi.org/api/timezone/Europe/Oslo</em> every second.</p></li>
+<li><p>Print only the <em>hours:minutes:seconds.decimals</em></p></li>
+<li><p>Print an error message if this fails.</p></li>
+<li><p>Stop after 10 seconds</p></li>
+</ul>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://riverml.xyz/">River</a></p>
+<ul>
+<li><p><a class="reference external" href="https://riverml.xyz/0.18.0/api/stream/TwitchChatStream/">TwitchChatSream</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://twitch.tv">Twitch</a></p>
+<ul>
+<li><p><a class="reference external" href="https://twitchapps.com/tmi/">oauth autentication token</a>.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://worldtimeapi.org/">World Time API</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -481,6 +614,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#live-reading-of-twitch-chat">Live reading of Twitch chat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
