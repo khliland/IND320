@@ -418,7 +418,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-s-database">Instructor’s database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revealing-structure">Revealing structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-data">Extract data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-power-of-ai-tools">Example of the power of AI tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-new-data">Add new data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-data">Removing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commiting-changes">Commiting changes</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -431,12 +441,27 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="mysql">
-<h1>MySQL<a class="headerlink" href="#mysql" title="Permalink to this headline">#</a></h1>
-<p>A true and tested free relational database.</p>
+<h1><a class="reference external" href="https://www.mysql.com/">MySQL</a><a class="headerlink" href="#mysql" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>A true and tested relational database <a class="reference external" href="https://en.wikipedia.org/wiki/MySQL">released in 1995</a>.</p>
+<ul>
+<li><p>Originally from Swedish company MySQL AB.</p></li>
+<li><p>Later acquired by Sun who were then acquired by Oracle.</p></li>
+</ul>
+</li>
+<li><p>Freeware version and full enterprise versions for many platforms.</p></li>
+<li><p>Lately also supports native JSON and NoSQL document store.</p></li>
+<li><p>Easily installed directly in Windows, Mac, Linux, etc. or using Docker, Homebrew, etc.</p></li>
+</ul>
+<section id="instructor-s-database">
+<h2>Instructor’s database<a class="headerlink" href="#instructor-s-database" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>An example of accessing an online, editable database.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a connection object &#39;conn&#39; for the MySQL database &#39;u492297623_student1&#39; on port 3306 at server 145.14.151.151 with username &#39;u492297623_stud1&#39;</span>
-<span class="c1"># and password &#39;Student1&#39;.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a connection object &#39;connection&#39; for the MySQL database &#39;u492297623_student1&#39; on port 3306 at server 145.14.151.151 with username &#39;u492297623_stud1&#39;</span>
+<span class="c1"># and password given by instructor.</span>
 <span class="kn">import</span> <span class="nn">mysql.connector</span>
 <span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
@@ -455,6 +480,56 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="revealing-structure">
+<h3>Revealing structure<a class="headerlink" href="#revealing-structure" title="Permalink to this headline">#</a></h3>
+<p>If the tables of a database and their structure is given in advance, this can be queried.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Executing a SQL query to retrieve all the tables present in the database</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SHOW TABLES;&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="c1"># Fetching all the rows from the result set</span>
+<span class="n">tabs</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># Printing the retrieved data</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tabs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;students&#39;,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Executing a SQL query to describe the table &#39;students&#39; present in the database</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;DESCRIBE students;&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="c1"># Fetching all the rows from the result set</span>
+<span class="n">studs</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># Printing the retrieved data</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">studs</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;main_key&#39;, &#39;int(11)&#39;, &#39;NO&#39;, &#39;PRI&#39;, None, &#39;&#39;)
+(&#39;first_name&#39;, &#39;text&#39;, &#39;NO&#39;, &#39;&#39;, None, &#39;&#39;)
+(&#39;study_program&#39;, &#39;text&#39;, &#39;NO&#39;, &#39;&#39;, None, &#39;&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-data">
+<h3>Extract data<a class="headerlink" href="#extract-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Executing the SQL query to select all data from the &#39;students&#39; table</span>
@@ -477,10 +552,47 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="example-of-the-power-of-ai-tools">
+<h3>Example of the power of AI tools<a class="headerlink" href="#example-of-the-power-of-ai-tools" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Instructor wrote “Select only students whose name starts with ‘A’” with Copilot activated.</p></li>
+<li><p>Copilot automatically generated the query.</p></li>
+<li><p>Instructor corrected ‘name’ to ‘first_name’</p></li>
+<li><p>It worked!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only students whose name starts with &#39;A&#39;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM students WHERE first_name LIKE &#39;J%&#39;;&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="c1"># Fetching all the rows from the result set</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+
+<span class="c1"># Printing the retrieved data</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;John&#39;, &#39;Industrial Economics&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-new-data">
+<h3>Add new data<a class="headerlink" href="#add-new-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>If the primary key is duplicated, this will return an error</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert a new row into the first_test table with the values 3, &#39;Pete&#39;, &#39;Data Science&#39;</span>
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO students VALUES (3, &#39;Pete&#39;, &#39;Data Science&#39;);&quot;</span>
+<span class="c1"># This can result in an error if the primary key already exists</span>
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -489,8 +601,38 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Increment the main_key and insert new data</span>
-<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO students SELECT COALESCE(MAX(main_key) + 1, 1), &#39;Anita&#39;, &#39;Paramedic&#39; FROM students;&quot;</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO students SELECT COALESCE(MAX(main_key) + 1, 1), &#39;Anita&#39;, &#39;Plant Science&#39; FROM students;&quot;</span>
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="c1"># (AUTO_INCREMENT can be set at the table creation to avoid having to do this)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="removing-data">
+<h3>Removing data<a class="headerlink" href="#removing-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Delete a single record or data that follows a pattern.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete all rows from the students table where main_key &gt; 2</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;DELETE FROM students WHERE main_key &gt; 2;&quot;</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="commiting-changes">
+<h3>Commiting changes<a class="headerlink" href="#commiting-changes" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>All changes to the data using mysql.connector.cursor are local until committed.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Push data from the cursor to the database</span>
+<span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -504,9 +646,24 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+</section>
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<p>Make a Python function that takes an SQL statement as input, opens a connection, executes the statement and closes the connection.</p>
+<ul class="simple">
+<li><p>Make a Python function that takes an SQL query as input, opens a connection, executes the statement, closes the connection and returns any results.</p></li>
+<li><p>Assume that password, username, database name, etc. are stored in a dictionary. Make another version of the function that takes a query and the dictionary as input and returns any results.</p></li>
+<li><p>Test both functions with SELECT and INSERT INTO statements.</p></li>
+</ul>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mysql.com/">MySQL webpage</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/MySQL">Wikipedia: MySQL</a>.</p></li>
+<li><p><a class="reference external" href="https://youtu.be/Cz3WcZLRaWc?si=D5CQt3CSSmUg1jkV">YouTube: MySQL - The basics // Learn SQL in 23 Easy Steps</a> (17m:16s)</p></li>
+<li><p><a class="reference external" href="https://www.sqltutorial.org/sql-cheat-sheet/">SQL Cheat Sheet</a> with tons of examples from <a class="reference external" href="https://www.sqltutorial.org/">SQL Tutorial</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -577,7 +734,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-s-database">Instructor’s database</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#revealing-structure">Revealing structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-data">Extract data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-power-of-ai-tools">Example of the power of AI tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-new-data">Add new data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-data">Removing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commiting-changes">Commiting changes</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 

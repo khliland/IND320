@@ -5,8 +5,11 @@ pandas
 datetime
 requests
 json
+river
 cassandra-driver
+pyspark
+mysql.connector
 flask
+pyjstat
 scikit-learn
 plotly
-river

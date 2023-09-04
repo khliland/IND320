@@ -395,7 +395,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -411,6 +413,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">Web APIs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json">JSON</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-json-query-and-json-stat-return">Example with JSON query and JSON-stat return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -422,6 +437,308 @@ document.write(`
                   
   <section id="apis">
 <h1>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>Application Programming Interface</p></li>
+<li><p>A standardised interface for access to:</p>
+<ul>
+<li><p>data and transfers,</p></li>
+<li><p>programs and services,</p></li>
+<li><p>general communication between apps/programs.</p></li>
+</ul>
+</li>
+<li><p>The “hidden” version of a User Interface letting computers and programs communicate.</p></li>
+<li><p>Can be limited (by owners) on:</p>
+<ul>
+<li><p>number of requests per time unit,</p></li>
+<li><p>access codes/credentials.</p></li>
+</ul>
+</li>
+</ul>
+<section id="web-apis">
+<h2>Web APIs<a class="headerlink" href="#web-apis" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Hyper Text Transfer Protocol (HTTP) based queries and answers using <a class="reference external" href="https://www.w3schools.com/tags/ref_httpmethods.asp">POST or GET methods</a>.</p></li>
+<li><p>Each API has its own hierachy and possibilites for querying.</p></li>
+<li><p>URLs used for querying using the GET method typically consist of:</p>
+<ul>
+<li><p>a server address: <em>http://api.openweathermap.org</em>,</p></li>
+<li><p>a hierarchy with descriptive names: <em>/data/2.5/forecast</em>, and</p></li>
+<li><p>a question mark marking the beginning of user supplied named variables with<br />
+contents joined by ampersands: <em>?q=London&amp;appid=MY_API_KEY</em></p></li>
+</ul>
+</li>
+<li><p>Variations in naming include <em>data / api</em>, <em>q / query</em>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>A full query can look like this: <em>https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r?geo=DK&amp;geo=NO&amp;geo=SE&amp;geo=DE&amp;geo=UK&amp;coicop=CP00&amp;unit=RCH_MV12MAVR</em></p>
+<ul>
+<li><p>Here there are filters at work to extract various countries and data.</p></li>
+</ul>
+</li>
+<li><p>For the POST method, the server address and hierarchy has the same format, but the query text is “POSTed” separately (see example below).</p></li>
+<li><p>APIs are not eternal.</p>
+<ul>
+<li><p>Formats are changed over time.</p></li>
+<li><p>Sometimes different formatting can be accessed by the 1.0/1.1, etc. part of the URL.</p></li>
+</ul>
+</li>
+</ul>
+<section id="json">
+<h3>JSON<a class="headerlink" href="#json" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>The query can be a JSON string, e.g., <em>{‘city’: ‘London’, ‘year’: ‘2000’}</em> which can be sent separately,<br />
+see example below using POST.</p></li>
+<li><p>Also the returned contents are often JSON formatted.</p></li>
+</ul>
+</section>
+</section>
+<section id="example-with-json-query-and-json-stat-return">
+<h2>Example with JSON query and JSON-stat return<a class="headerlink" href="#example-with-json-query-and-json-stat-return" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Statistics Norway (SSB)</p></li>
+<li><p>Traffic accident data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyjstat</span> <span class="kn">import</span> <span class="n">pyjstat</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># API for Statistics Norway, table of traffic accidents</span>
+<span class="n">POST_URL</span> <span class="o">=</span> <span class="s1">&#39;https://data.ssb.no/api/v0/en/table/06794&#39;</span>
+<span class="c1"># Paste the URL into a browser to see all the options</span>
+
+<span class="c1"># The payload is the JSON-stat dataset identifier</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Skadegrad&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;01&quot;</span><span class="p">,</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span> <span class="s2">&quot;02&quot;</span><span class="p">,</span> <span class="s2">&quot;04&quot;</span><span class="p">,</span> <span class="s2">&quot;05&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Kjonn&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Trafikkantgruppe&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;7&quot;</span><span class="p">,</span> <span class="s2">&quot;8&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;ContentsCode&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;SkaddDrept&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Tid&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;item&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;1999M01&quot;</span><span class="p">,</span> <span class="s2">&quot;1999M02&quot;</span><span class="p">,</span> <span class="s2">&quot;1999M03&quot;</span><span class="p">,</span> <span class="s2">&quot;2023M06&quot;</span><span class="p">,</span> <span class="s2">&quot;2023M07&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">}</span> 
+                      <span class="p">],</span> 
+                      <span class="s2">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;json-stat2&quot;</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_URL</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">payload</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 200 = OK</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract DataFrame from JSON-stat</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pyjstat</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(250, 6)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>degree of damage</th>
+      <th>sex</th>
+      <th>group of road user</th>
+      <th>contents</th>
+      <th>month</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M01</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M02</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M03</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>2023M06</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>2023M07</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># New payload with less restrictions</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Skadegrad&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Kjonn&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Trafikkantgruppe&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;ContentsCode&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">},</span> 
+                      <span class="p">{</span> <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Tid&quot;</span><span class="p">,</span> <span class="s2">&quot;selection&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;*&quot;</span> <span class="p">]</span> <span class="p">}</span> <span class="p">}</span> 
+                      <span class="p">],</span> 
+                      <span class="s2">&quot;response&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;json-stat2&quot;</span> <span class="p">}</span> <span class="p">}</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">POST_URL</span><span class="p">,</span> <span class="n">json</span> <span class="o">=</span> <span class="n">payload</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># 200 = OK</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pyjstat</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;dataframe&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_all</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(28320, 6)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>degree of damage</th>
+      <th>sex</th>
+      <th>group of road user</th>
+      <th>contents</th>
+      <th>month</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M01</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M02</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M03</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M04</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Killed</td>
+      <td>Males</td>
+      <td>Drivers of car</td>
+      <td>Persons killed or injured</td>
+      <td>1999M05</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/ByGJQzlzxQg?si=xE0PjNncYbAgpsig">YouTube: What is an API (in 5 minutes)</a> (4m:55s)</p></li>
+<li><p><a class="reference external" href="https://www.ssb.no/en/api/pxwebapi">SSB instruction video</a> (2m:30s)</p></li>
+<li><p><a class="reference external" href="https://www.ssb.no/en/api/api-eksempler-pa-kode">SSB API code examples</a></p></li>
+<li><p><a class="reference external" href="https://ec.europa.eu/eurostat/web/main/data/database">Eurostats data tree</a></p></li>
+<li><p><a class="reference external" href="https://wikis.ec.europa.eu/display/EUROSTATHELP/API+Statistics+-+data+query">Eurostats API</a></p></li>
+</ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -484,6 +801,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-apis">Web APIs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json">JSON</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-json-query-and-json-stat-return">Example with JSON query and JSON-stat return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

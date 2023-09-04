@@ -421,8 +421,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-cassandra">Spark and Cassandra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-views">Database views</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-dataframe">Spark DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation-grouping-and-filtering">Aggregation, grouping and filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-data-to-cassandra">Write data to Cassandra</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -465,12 +468,12 @@ document.write(`
 <li><p>Automatically downloaded and applied with the following configuration.</p></li>
 </ul>
 </li>
-<li><p>A <a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/python/reference/api/pyspark.sql.SparkSession.html">SparkSession</a> instantiates Spark, applies configurations and connects to a data source.</p></li>
+<li><p>A <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html">SparkSession</a> instantiates Spark, applies configurations and connects to a data source.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-<span class="n">sparkSession</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;SparkCassandraApp&#39;</span><span class="p">)</span><span class="o">.</span>\
+<span class="n">spark</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s1">&#39;SparkCassandraApp&#39;</span><span class="p">)</span><span class="o">.</span>\
     <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.jars.packages&#39;</span><span class="p">,</span> <span class="s1">&#39;com.datastax.spark:spark-cassandra-connector_2.12:3.4.1&#39;</span><span class="p">)</span><span class="o">.</span>\
     <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.cassandra.connection.host&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost&#39;</span><span class="p">)</span><span class="o">.</span>\
     <span class="n">config</span><span class="p">(</span><span class="s1">&#39;spark.sql.extensions&#39;</span><span class="p">,</span> <span class="s1">&#39;com.datastax.spark.connector.CassandraSparkExtensions&#39;</span><span class="p">)</span><span class="o">.</span>\
@@ -481,16 +484,20 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/09/04 13:50:06 WARN Utils: Your hostname, Kristians-MacBook-Pro.local resolves to a loopback address: 127.0.0.1; using 10.42.33.224 instead (on interface en0)
+23/09/04 13:50:06 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Ivy Default Cache set to: /Users/kristian/.ivy2/cache
+The jars for the packages stored in: /Users/kristian/.ivy2/jars
+com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-f0757387-edf6-41f8-ad40-20cb337ec9ac;1.0
+	confs: [default]
+	found com.datastax.spark#spark-cassandra-connector_2.12;3.4.1 in central
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:: loading settings :: url = jar:file:/Users/kristian/miniforge3/envs/tf_M1/lib/python3.10/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ivy Default Cache set to: /Users/kristian/.ivy2/cache
-The jars for the packages stored in: /Users/kristian/.ivy2/jars
-com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-35370cd7-c95b-421a-807b-f29cf6ac2d95;1.0
-	confs: [default]
-	found com.datastax.spark#spark-cassandra-connector_2.12;3.4.1 in central
-	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
 	found org.scala-lang.modules#scala-collection-compat_2.12;2.11.0 in central
 	found com.datastax.oss#java-driver-core-shaded;4.13.0 in central
 	found com.datastax.oss#native-protocol;1.5.0 in central
@@ -500,9 +507,7 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found io.dropwizard.metrics#metrics-core;4.1.18 in central
 	found org.hdrhistogram#HdrHistogram;2.1.12 in central
 	found org.reactivestreams#reactive-streams;1.0.3 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in central
+	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in central
 	found com.github.spotbugs#spotbugs-annotations;3.1.12 in central
 	found com.google.code.findbugs#jsr305;3.0.2 in central
 	found com.datastax.oss#java-driver-mapper-runtime;4.13.0 in central
@@ -510,7 +515,7 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found org.apache.commons#commons-lang3;3.10 in central
 	found com.thoughtworks.paranamer#paranamer;2.8 in central
 	found org.scala-lang#scala-reflect;2.12.11 in central
-:: resolution report :: resolve 279ms :: artifacts dl 27ms
+:: resolution report :: resolve 254ms :: artifacts dl 20ms
 	:: modules in use:
 	com.datastax.oss#java-driver-core-shaded;4.13.0 from central in [default]
 	com.datastax.oss#java-driver-mapper-runtime;4.13.0 from central in [default]
@@ -537,17 +542,16 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   19  |   0   |   0   |   0   ||   19  |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-35370cd7-c95b-421a-807b-f29cf6ac2d95
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:: retrieving :: org.apache.spark#spark-submit-parent-f0757387-edf6-41f8-ad40-20cb337ec9ac
 	confs: [default]
-	0 artifacts copied, 19 already retrieved (0kB/14ms)
+	0 artifacts copied, 19 already retrieved (0kB/9ms)
+23/09/04 13:50:06 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/08/28 09:28:50 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Setting default log level to &quot;WARN&quot;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting default log level to &quot;WARN&quot;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/08/28 09:28:50 WARN Utils: Service &#39;SparkUI&#39; could not bind on port 4040. Attempting port 4041.
 </pre></div>
 </div>
 </div>
@@ -555,20 +559,17 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># .load() is used to load data from Cassandra table as a Spark DataFrame.</span>
-<span class="n">sparkSession</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;my_first_table&quot;</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="s2">&quot;my_first_keyspace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;my_first_table&quot;</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="s2">&quot;my_first_keyspace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/08/28 09:28:52 WARN ControlConnection: [s0] Error connecting to Node(endPoint=localhost/127.0.0.1:9042, hostId=null, hashCode=50a8b790), trying next node (ConnectionInitException: [s0|control|id: 0xcf6fd472, L:/127.0.0.1:49207 - R:localhost/127.0.0.1:9042] Protocol initialization request, step 1 (OPTIONS): unexpected failure (java.lang.IllegalArgumentException: Unsupported request opcode: 0 in protocol 127))
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+--------+-------+
 |ind| company|  model|
 +---+--------+-------+
-|  3|Polestar|      3|
 |  1|   Tesla|Model S|
 |  2|   Tesla|Model 3|
+|  3|Polestar|      3|
 +---+--------+-------+
 </pre></div>
 </div>
@@ -587,33 +588,78 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create view for simpler SQL queries</span>
-<span class="n">sparkSession</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;my_first_table&quot;</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="s2">&quot;my_first_keyspace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;my_first_table_view&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;table_with_uuid&quot;</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="s2">&quot;my_first_keyspace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;my_first_table_view&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="spark-dataframe">
-<h3><a class="reference external" href="https://spark.apache.org/docs/3.1.1/api/python/reference/api/pyspark.sql.DataFrame.html">Spark DataFrame</a><a class="headerlink" href="#spark-dataframe" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html">Spark DataFrame</a><a class="headerlink" href="#spark-dataframe" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Related to a Pandas data frame, but can be distributed over compute nodes.</p></li>
 <li><p>Various functions like filters, statistical calculations, groupBy, Pandas functions (mapInPandas), joins, etc.</p></li>
 <li><p>Export to Pandas and JSON.</p></li>
+<li><p>Reads many formats, including SQL, JSON, Excel, …</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only Tesla company</span>
-<span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;company = &#39;Tesla&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read CSV file into Spark DataFrame</span>
+<span class="n">planets</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s2">&quot;../../data/planets.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">planets</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+-------+-------+
-|ind|company|  model|
-+---+-------+-------+
-|  1|  Tesla|Model S|
-|  2|  Tesla|Model 3|
-+---+-------+-------+
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+-------+---------+
+| planet| distance|
++-------+---------+
+|Mercury| 0.387 AU|
+|  Venus| 0.723 AU|
+|  Earth| 1.000 AU|
+|   Mars| 1.524 AU|
+|Jupiter| 5.203 AU|
+| Saturn| 9.546 AU|
+| Uranus|19.218 AU|
+|Neptune|30.069 AU|
++-------+---------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select only Tesla company</span>
+<span class="c1">#             DataFrame                    --&gt;</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s2">&quot;company = &#39;Tesla&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
+|                  id|company|  model|  price|
++--------------------+-------+-------+-------+
+|2a28b300-4b19-11e...|  Tesla|Model S|21000.0|
+|2a283dd0-4b19-11e...|  Tesla|Model S|20000.0|
++--------------------+-------+-------+-------+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Equivalent to the above but in pure SQL</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view where company = &#39;Tesla&#39;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
+|                  id|company|  model|  price|
++--------------------+-------+-------+-------+
+|2a28b300-4b19-11e...|  Tesla|Model S|21000.0|
+|2a283dd0-4b19-11e...|  Tesla|Model S|20000.0|
++--------------------+-------+-------+-------+
 </pre></div>
 </div>
 </div>
@@ -621,7 +667,292 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select all data from the view and convert it to Pandas DataFrame</span>
-<span class="n">sparkSession</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>company</th>
+      <th>model</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2a290120-4b19-11ee-8fb7-47776a2dd8a7</td>
+      <td>Oldsmobile</td>
+      <td>Model 6C</td>
+      <td>135000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2a28b300-4b19-11ee-8fb7-47776a2dd8a7</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>21000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2a283dd0-4b19-11ee-8fb7-47776a2dd8a7</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View data as a table and select only Tesla company</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">company</span> <span class="o">==</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span> <span class="c1"># Equivalent to &quot;company = &#39;Tesla&#39;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>company</th>
+      <th>model</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2a283dd0-4b19-11ee-8fb7-47776a2dd8a7</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2a28b300-4b19-11ee-8fb7-47776a2dd8a7</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>21000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter also on price &gt; 20000</span>
+<span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">company</span> <span class="o">==</span> <span class="s1">&#39;Tesla&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="p">))</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>company</th>
+      <th>model</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2a28b300-4b19-11ee-8fb7-47776a2dd8a7</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>21000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="aggregation-grouping-and-filtering">
+<h3>Aggregation, grouping and filtering<a class="headerlink" href="#aggregation-grouping-and-filtering" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>These can be combined in many ways.</p></li>
+<li><p>Starting from the left.</p></li>
+<li><p>Order is important.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aggregate prices by company and sort by company name</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">&quot;company&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="s2">&quot;avg&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;company&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>company</th>
+      <th>avg(price)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Oldsmobile</td>
+      <td>135000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tesla</td>
+      <td>20500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="write-data-to-cassandra">
+<h3>Write data to Cassandra<a class="headerlink" href="#write-data-to-cassandra" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>One can append or overwrite data in existing database tables.</p></li>
+<li><p>PySpark is picky regarding data formats.</p>
+<ul>
+<li><p>Reading data from the existing table and extracting formatting is possible.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create two new cars in a Pandas DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">newCars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mi">459</span><span class="p">,</span> <span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Escort&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">460</span><span class="p">,</span> <span class="s1">&#39;Ford&#39;</span><span class="p">,</span> <span class="s1">&#39;Transit&#39;</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ind&#39;</span><span class="p">,</span> <span class="s1">&#39;company&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">])</span>
+<span class="n">newCars</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ind</th>
+      <th>company</th>
+      <th>model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>459</td>
+      <td>Ford</td>
+      <td>Escort</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>460</td>
+      <td>Ford</td>
+      <td>Transit</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the Pandas DataFrame to Spark DataFrame and save it to Cassandra (append mode)</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">newCars</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;my_first_table&quot;</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="s2">&quot;my_first_keyspace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">&quot;append&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 23:&gt;                                                       (0 + 10) / 10]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if the new cars are in the table</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;org.apache.spark.sql.cassandra&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">options</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="s2">&quot;my_first_table&quot;</span><span class="p">,</span> <span class="n">keyspace</span><span class="o">=</span><span class="s2">&quot;my_first_keyspace&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">load</span><span class="p">()</span><span class="o">.</span><span class="n">createOrReplaceTempView</span><span class="p">(</span><span class="s2">&quot;my_first_table_view2&quot;</span><span class="p">)</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;select * from my_first_table_view2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toPandas</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -664,6 +995,18 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
     </tr>
     <tr>
       <th>2</th>
+      <td>460</td>
+      <td>Ford</td>
+      <td>Transit</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>459</td>
+      <td>Ford</td>
+      <td>Escort</td>
+    </tr>
+    <tr>
+      <th>4</th>
       <td>3</td>
       <td>Polestar</td>
       <td>3</td>
@@ -672,7 +1015,31 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stop Spark session</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">spark</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ConnectionRefusedError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Spark session already stopped.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sparkbyexamples.com/pyspark-tutorial/">PySpark Tutorial For Beginners (sparkbyexample.com)</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">PySpark documentation</a></p>
+<ul>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html">PySpark DataFrame</a></p></li>
+<li><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html">PySpark SparkSession</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://youtu.be/3-pnWVWyH-s?si=5AfOao23gqgh19en">YouTube: PySpark Tutorial: Spark SQL &amp; DataFrame Basics</a> (17m:12s)</p></li>
+</ul>
 </section>
 </section>
 
@@ -746,8 +1113,11 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-cassandra">Spark and Cassandra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-views">Database views</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-dataframe">Spark DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation-grouping-and-filtering">Aggregation, grouping and filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-data-to-cassandra">Write data to Cassandra</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 
