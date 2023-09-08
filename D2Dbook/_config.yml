@@ -43,7 +43,13 @@ parse:
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
 sphinx:
+  recursive_update: true
   config:
+    nb_ipywidgets_js:
+        # Load IPywidgets bundle for embedding.
+        "https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@0.20.0/dist/embed-amd.js":
+            "data-jupyter-widgets-cdn": "https://cdn.jsdelivr.net/npm/"
+            "crossorigin": "anonymous"
     # Make sure Plotly can be used in Sphinx
     suppress_warnings: ["mystnb.unknown_mime_type"]
     html_js_files:

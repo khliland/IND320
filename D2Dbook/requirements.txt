@@ -6,7 +6,7 @@ datetime
 requests
 json
 river
-cassandra-driver
+cassandra-driver # May need GitHub version
 pyspark
 mysql.connector
 flask
