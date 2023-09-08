@@ -4,7 +4,6 @@ numpy
 pandas
 datetime
 requests
-json
 river
 cassandra-driver # May need GitHub version
 pyspark
