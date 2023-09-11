@@ -28,6 +28,7 @@ parts:
   - caption: Data quality
     chapters:
     - file: 3_Data_quality/Data_quality
+#    - file: 3_Data_quality/Noise_reduction
   - caption: Machine Learning
     chapters:
     - file: 4_Machine_Learning/Machine_Learning
