@@ -52,7 +52,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -185,7 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../3_Data_quality/Data_quality.html">TBA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/Data_quality.html">Pre-processing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/Noise_reduction.html">Noise reduction</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -435,7 +437,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="apis">
+  <section class="tex2jax_ignore mathjax_ignore" id="apis">
 <h1>APIs<a class="headerlink" href="#apis" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Application Programming Interface</p></li>
@@ -461,7 +463,7 @@ document.write(`
 <li><p>Each API has its own hierachy and possibilites for querying.</p></li>
 <li><p>URLs used for querying using the GET method typically consist of:</p>
 <ul>
-<li><p>a server address: <em>http://api.openweathermap.org</em>,</p></li>
+<li><p>a server address: <em><a class="reference external" href="http://api.openweathermap.org">http://api.openweathermap.org</a></em>,</p></li>
 <li><p>a hierarchy with descriptive names: <em>/data/2.5/forecast</em>, and</p></li>
 <li><p>a question mark marking the beginning of user supplied named variables with<br />
 contents joined by ampersands: <em>?q=London&amp;appid=MY_API_KEY</em></p></li>
@@ -470,7 +472,7 @@ contents joined by ampersands: <em>?q=London&amp;appid=MY_API_KEY</em></p></li>
 <li><p>Variations in naming include <em>data / api</em>, <em>q / query</em>.</p></li>
 </ul>
 <ul class="simple">
-<li><p>A full query can look like this: <em>https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r?geo=DK&amp;geo=NO&amp;geo=SE&amp;geo=DE&amp;geo=UK&amp;coicop=CP00&amp;unit=RCH_MV12MAVR</em></p>
+<li><p>A full query can look like this: <em><a class="reference external" href="https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r?geo=DK&amp;amp;geo=NO&amp;amp;geo=SE&amp;amp;geo=DE&amp;amp;geo=UK&amp;amp;coicop=CP00&amp;amp;unit=RCH_MV12MAVR">https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_mv12r?geo=DK&amp;geo=NO&amp;geo=SE&amp;geo=DE&amp;geo=UK&amp;coicop=CP00&amp;unit=RCH_MV12MAVR</a></em></p>
 <ul>
 <li><p>Here there are filters at work to extract various countries and data.</p></li>
 </ul>

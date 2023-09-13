@@ -35,22 +35,32 @@ launch_buttons:
   colab_url: "https://colab.research.google.com"
   
 parse:
-  myst_enable_extensions:
-    # don't forget to list any other extensions you want enabled,
-    # including those that are enabled by default! See here: https://jupyterbook.org/en/stable/customize/config.html
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
     - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
   myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
-  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+#  myst_dmath_enable: true
+#  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
 sphinx:
   recursive_update: true
   config:
     nb_ipywidgets_js:
-        # Load IPywidgets bundle for embedding.
-        "https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@0.20.0/dist/embed-amd.js":
-            "data-jupyter-widgets-cdn": "https://cdn.jsdelivr.net/npm/"
-            "crossorigin": "anonymous"
+      # Load RequireJS, used by the IPywidgets for dependency management
+      "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js": 
+          "integrity": "sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA="
+          "crossorigin": "anonymous"
+      # Load IPywidgets bundle for embedding.
+      "https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js":
+          "data-jupyter-widgets-cdn": "https://cdn.jsdelivr.net/npm/"
+          "crossorigin": "anonymous"
     # Make sure Plotly can be used in Sphinx
     suppress_warnings: ["mystnb.unknown_mime_type"]
-    html_js_files:
-    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js

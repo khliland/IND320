@@ -52,7 +52,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -185,7 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../3_Data_quality/Data_quality.html">TBA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/Data_quality.html">Pre-processing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/Noise_reduction.html">Noise reduction</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -435,7 +437,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="streaming-data">
+  <section class="tex2jax_ignore mathjax_ignore" id="streaming-data">
 <h1>Streaming data<a class="headerlink" href="#streaming-data" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Data that can be loaded chunk-wise (single or a few at the time).</p></li>
@@ -467,7 +469,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -502,22 +504,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 9, 11, 9, 52, 9, 479261), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;aanndo&#39;, &#39;msg&#39;: &#39;Anything &gt; Starfield&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 9, 11, 9, 52, 10, 167607), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;meatlove69&#39;, &#39;msg&#39;: &#39;free PR for Xbox&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 9, 11, 9, 52, 10, 767135), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;trickerd7&#39;, &#39;msg&#39;: &#39;And its on PC lol&#39;}
-{&#39;dt&#39;: datetime.datetime(2023, 9, 11, 9, 52, 10, 949860), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;familywalters94&#39;, &#39;msg&#39;: &#39;YEP BOX&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 9, 11, 9, 52, 11, 529162), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;sirpantsarehot&#39;, &#39;msg&#39;: &#39;wait, theres a sex box?&#39;}
-Puh, that&#39;s enough!
-</pre></div>
-</div>
-</div>
 </div>
 <section id="comments">
 <h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h3>
@@ -536,7 +522,7 @@ Puh, that&#39;s enough!
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
 <p>Make a clock  using <a class="reference external" href="http://worldtimeapi.org/">World Time API</a></p>
 <ul class="simple">
-<li><p>Pull the current time from <em>http://worldtimeapi.org/api/timezone/Europe/Oslo</em> every second.</p></li>
+<li><p>Pull the current time from <em><a class="reference external" href="http://worldtimeapi.org/api/timezone/Europe/Oslo">http://worldtimeapi.org/api/timezone/Europe/Oslo</a></em> every second using <em>requests.get()</em>.</p></li>
 <li><p>Print only the <em>hours:minutes:seconds.decimals</em></p></li>
 <li><p>Print an error message if this fails.</p></li>
 <li><p>Stop after 10 seconds</p></li>

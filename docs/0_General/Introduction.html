@@ -52,7 +52,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -184,7 +183,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3_Data_quality/Data_quality.html">TBA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Data_quality/Data_quality.html">Pre-processing</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/Noise_reduction.html">Noise reduction</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -439,7 +441,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="ind320-data-to-decision">
+  <section class="tex2jax_ignore mathjax_ignore" id="ind320-data-to-decision">
 <h1>IND320 - Data to decision<a class="headerlink" href="#ind320-data-to-decision" title="Permalink to this headline">#</a></h1>
 <p>The contents of this <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a> is the basis for the course “Data to decision” codenamed <a class="reference external" href="https://gammel.nmbu.no/course/IND320">IND320</a> given at the Norwegian University of Life Sciences for the first time in the autumn of 2023.</p>
 <a class="reference internal image-reference" href="../_images/D2D_large.png"><img alt="../_images/D2D_large.png" src="../_images/D2D_large.png" style="width: 500px;" /></a>
@@ -509,7 +511,7 @@ document.write(`
 <p>Some free accounts that are useful when following this course/book:</p>
 <ul class="simple">
 <li><p>GitHub: for easy syncing of lecture material and storage of projects.</p></li>
-<li><p>OpenWeatherMap.org: for API access.</p></li>
+<li><p><a class="reference external" href="http://OpenWeatherMap.org">OpenWeatherMap.org</a>: for API access.</p></li>
 <li><p>Power BI: for projects in deployment.</p></li>
 <li><p>Google/Microsoft/OpenAI: for Google Bard/Bing chat/ChatGPT or other equivalent service.</p></li>
 </ul>

@@ -9,6 +9,7 @@ cassandra-driver # May need GitHub version
 pyspark
 mysql.connector
 flask
+pybaselines
 pyjstat
 scikit-learn
 plotly
