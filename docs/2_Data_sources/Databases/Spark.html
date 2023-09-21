@@ -420,6 +420,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-installation">Spark installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-cassandra">Spark and Cassandra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-views">Database views</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-dataframe">Spark DataFrame</a></li>
@@ -442,7 +443,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="spark">
 <h1>Spark<a class="headerlink" href="#spark" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>A fast and general compute engine (for <a class="reference external" href="https://hadoop.apache.org/">Hadoop</a> data).</p>
+<li><p>A fast and general compute engine (originally for <a class="reference external" href="https://hadoop.apache.org/">Hadoop</a> data).</p>
 <ul>
 <li><p>Often paired with Hadoop for its distributed filesystem (HDFS), cluster resource management and parallel processing.</p></li>
 </ul>
@@ -450,6 +451,33 @@ document.write(`
 <li><p>Spark provides a simple and expressive programming model that supports a wide range of applications, including ETL (extract, transform, load), Machine Learning, stream processing, and graph computation.</p></li>
 <li><p>Also communicates well with some databases and other resources.</p></li>
 </ul>
+<section id="spark-installation">
+<h2>Spark installation<a class="headerlink" href="#spark-installation" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Spark is dependent on a Java installation and on some systems its environment variable JAVA_HOME to be set.</p></li>
+<li><p>Environment variables are system dependent. If the installation of Java did not add the environment variable automatically, the variable can be set <strong>persistently</strong> in the system:</p>
+<ul>
+<li><p>Windows: search for <em>Environment Variables</em> via the start button and selecting the one for <em>User</em>.</p></li>
+<li><p>Linux and Mac OS: edit the ~/.bash_profile file, adding <em>export JAVA_HOME=/opt/openjdk11</em> (or similar, depending on your installation).</p></li>
+</ul>
+</li>
+<li><p>… or <strong>per session</strong> (see below)</p></li>
+<li><p>Spark may also need help finding which Python version to use. Environment variables <em>PYSPARK_PYTHON</em> and <em>PYSPARK_DRIVER_PYTHON</em> can be set in Spark’s <em><a class="reference external" href="http://spark-env.sh">spark-env.sh</a></em> file or like Java’s variables.</p></li>
+<li><p>VS Code points to a specific Python version when chosing “kernel”, thus making the PYSPARK_* variables redundant (but not harmful).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set environment variables for PySpark (system and version dependent!)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home&quot;</span>
+<span class="c1"># If you are using environments in Python, you can set the environment variables like this:</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYSPARK_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Users/kristian/miniforge3/envs/tf_M1/bin/python&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYSPARK_DRIVER_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Users/kristian/miniforge3/envs/tf_M1/bin/python&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="spark-and-cassandra">
 <h2>Spark and Cassandra<a class="headerlink" href="#spark-and-cassandra" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -492,7 +520,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ivy Default Cache set to: /Users/kristian/.ivy2/cache
 The jars for the packages stored in: /Users/kristian/.ivy2/jars
 com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-e6e47637-2ddd-43d2-af6a-5a457030b534;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-24df5ee0-d594-4bf3-bd76-1e29f5cc34b0;1.0
 	confs: [default]
 	found com.datastax.spark#spark-cassandra-connector_2.12;3.4.1 in central
 	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
@@ -507,15 +535,15 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found org.reactivestreams#reactive-streams;1.0.3 in central
 	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in central
 	found com.github.spotbugs#spotbugs-annotations;3.1.12 in central
+	found com.google.code.findbugs#jsr305;3.0.2 in central
+	found com.datastax.oss#java-driver-mapper-runtime;4.13.0 in central
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.google.code.findbugs#jsr305;3.0.2 in central
-	found com.datastax.oss#java-driver-mapper-runtime;4.13.0 in central
-	found com.datastax.oss#java-driver-query-builder;4.13.0 in central
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#java-driver-query-builder;4.13.0 in central
 	found org.apache.commons#commons-lang3;3.10 in central
 	found com.thoughtworks.paranamer#paranamer;2.8 in central
 	found org.scala-lang#scala-reflect;2.12.11 in central
-:: resolution report :: resolve 253ms :: artifacts dl 15ms
+:: resolution report :: resolve 239ms :: artifacts dl 12ms
 	:: modules in use:
 	com.datastax.oss#java-driver-core-shaded;4.13.0 from central in [default]
 	com.datastax.oss#java-driver-mapper-runtime;4.13.0 from central in [default]
@@ -542,10 +570,10 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   19  |   0   |   0   |   0   ||   19  |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-e6e47637-2ddd-43d2-af6a-5a457030b534
+:: retrieving :: org.apache.spark#spark-submit-parent-24df5ee0-d594-4bf3-bd76-1e29f5cc34b0
 	confs: [default]
-	0 artifacts copied, 19 already retrieved (0kB/14ms)
-23/09/13 21:38:15 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+	0 artifacts copied, 19 already retrieved (0kB/21ms)
+23/09/21 16:22:57 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting default log level to &quot;WARN&quot;.
@@ -565,10 +593,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+----------+-------+
 |ind|   company|  model|
 +---+----------+-------+
-|  1|     Tesla|Model S|
-|  2|     Tesla|Model 3|
 |  4|Volkswagen|   ID.4|
 |  3|  Polestar|      3|
+|  1|     Tesla|Model S|
+|  2|     Tesla|Model 3|
 +---+----------+-------+
 </pre></div>
 </div>
@@ -638,8 +666,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|1056c920-526d-11e...|  Tesla|Model S|21000.0|
-|10567b00-526d-11e...|  Tesla|Model S|20000.0|
+|5854d5f0-588a-11e...|  Tesla|Model S|20000.0|
+|58552410-588a-11e...|  Tesla|Model S|21000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -656,8 +684,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|10567b00-526d-11e...|  Tesla|Model S|20000.0|
-|1056c920-526d-11e...|  Tesla|Model S|21000.0|
+|58552410-588a-11e...|  Tesla|Model S|21000.0|
+|5854d5f0-588a-11e...|  Tesla|Model S|20000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -698,21 +726,21 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>10567b00-526d-11ee-9429-ad37399ff905</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>20000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1056f030-526d-11ee-9429-ad37399ff905</td>
+      <td>58554b20-588a-11ee-9584-e764fe77f234</td>
       <td>Oldsmobile</td>
       <td>Model 6C</td>
       <td>135000.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>5854d5f0-588a-11ee-9584-e764fe77f234</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>1056c920-526d-11ee-9429-ad37399ff905</td>
+      <td>58552410-588a-11ee-9584-e764fe77f234</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -757,17 +785,17 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>1056c920-526d-11ee-9429-ad37399ff905</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>21000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10567b00-526d-11ee-9429-ad37399ff905</td>
+      <td>5854d5f0-588a-11ee-9584-e764fe77f234</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>20000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>58552410-588a-11ee-9584-e764fe77f234</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>21000.0</td>
     </tr>
   </tbody>
 </table>
@@ -808,7 +836,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>1056c920-526d-11ee-9429-ad37399ff905</td>
+      <td>58552410-588a-11ee-9584-e764fe77f234</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -941,9 +969,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 23:&gt;                                                       (0 + 10) / 10]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+
+                                                                                
 </pre></div>
 </div>
 </div>
@@ -986,39 +1013,39 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>Tesla</td>
-      <td>Model 3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>Polestar</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>4</td>
       <td>Volkswagen</td>
       <td>ID.4</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>1</th>
+      <td>1</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>Tesla</td>
+      <td>Model 3</td>
+    </tr>
+    <tr>
+      <th>3</th>
       <td>460</td>
       <td>Ford</td>
       <td>Transit</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>459</td>
       <td>Ford</td>
       <td>Escort</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3</td>
+      <td>Polestar</td>
+      <td>3</td>
     </tr>
   </tbody>
 </table>
@@ -1119,6 +1146,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-installation">Spark installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-and-cassandra">Spark and Cassandra</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-views">Database views</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spark-dataframe">Spark DataFrame</a></li>
