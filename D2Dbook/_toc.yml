@@ -36,3 +36,6 @@ parts:
   - caption: Deployment
     chapters:
     - file: 5_Deployment/Deployment
+  - caption: Appendix
+    chapters:
+    - file: 6_Appendix/Installation
