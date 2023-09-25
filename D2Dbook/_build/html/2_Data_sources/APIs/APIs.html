@@ -429,6 +429,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-json-query-and-json-stat-return">Example with JSON query and JSON-stat return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
@@ -482,6 +483,12 @@ contents joined by ampersands: <em>?q=London&amp;appid=MY_API_KEY</em></p></li>
 </ul>
 </li>
 <li><p>For the POST method, the server address and hierarchy has the same format, but the query text is “POSTed” separately (see example below).</p></li>
+<li><p>Some APIs use time-limited access tokens, e.g., see <a class="reference external" href="https://developer.barentswatch.no/docs/tutorial">BarentsWatch tutorial</a> and <a class="reference external" href="https://github.com/barentswatch/barentswatch-api-examples/blob/master/credentials.py">GitHub example</a>:</p>
+<ul>
+<li><p>First POST to the API includes a client ID and client “secret”.</p></li>
+<li><p>A token (temporary password) is returned and can be used for subsequent requests (typically expiring after 3600 s).</p></li>
+</ul>
+</li>
 <li><p>APIs are not eternal.</p>
 <ul>
 <li><p>Formats are changed over time.</p></li>
@@ -735,6 +742,13 @@ see example below using POST.</p></li>
 </div></div></div>
 </div>
 </section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Visit Statistics Norway’s <a class="reference external" href="https://data.ssb.no/api/v0/?lang=en">Ready-made datasets</a>.</p></li>
+<li><p>Select a different dataset, download through the API and inspect the results.</p></li>
+</ul>
+</section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -821,6 +835,7 @@ see example below using POST.</p></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-with-json-query-and-json-stat-return">Example with JSON query and JSON-stat return</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
