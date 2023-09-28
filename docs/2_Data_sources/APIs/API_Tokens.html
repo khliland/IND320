@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Databases &#8212; Data to Decision - IND320</title>
+    <title>API Tokens &#8212; Data to Decision - IND320</title>
   
   
   
@@ -60,11 +60,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '2_Data_sources/Databases/Databases';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_Data_sources/APIs/API_Tokens';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="MySQL" href="MySQL.html" />
-    <link rel="prev" title="Streaming data" href="../Formats/Streaming_data.html" />
+    <link rel="next" title="Pre-processing" href="../../3_Data_quality/Data_quality.html" />
+    <link rel="prev" title="Demonstration of API using OpenWeatherMap.org" href="OpenWeatherMap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -170,16 +170,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../Formats/Streaming_data.html">Streaming data</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Databases</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="MySQL.html">MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Cassandra.html">Cassandra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Spark.html">Spark</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Databases/Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Databases/MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Databases/Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Databases/Spark.html">Spark</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../APIs/APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../APIs/REST.html">REST API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../APIs/OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../APIs/API_Tokens.html">API Tokens</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="APIs.html">APIs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="REST.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">API Tokens</a></li>
 </ul>
 </li>
 </ul>
@@ -255,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/2_Data_sources/Databases/Databases.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/2_Data_sources/APIs/API_Tokens.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -303,7 +303,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F2_Data_sources/Databases/Databases.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F2_Data_sources/APIs/API_Tokens.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -333,7 +333,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/2_Data_sources/Databases/Databases.ipynb" target="_blank"
+      <li><a href="../../_sources/2_Data_sources/APIs/API_Tokens.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -415,7 +415,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Databases</h1>
+    <h1>API Tokens</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -425,13 +425,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">Categories</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">Relational databases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql">NoSQL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-databases">Vector databases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barentswatch">BarentsWatch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-functions">Convenience functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-data">Requesting data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -443,84 +441,107 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="databases">
-<h1>Databases<a class="headerlink" href="#databases" title="Permalink to this headline">#</a></h1>
-<p>This chapter will give a brief introduction to databases on a level sufficient for usage in the course. As many databases use SQL (Structured Query Language / “sequel”) or a variation of this, we will also show SQL examples.</p>
-<section id="categories">
-<h2>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="api-tokens">
+<h1>API Tokens<a class="headerlink" href="#api-tokens" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
-<li><p>Relational databases/SQL, e.g., MySQL, Microsoft SQL, Oracle DB</p></li>
-<li><p>NoSQL, e.g., Cassandra, Spark</p>
+<li><p>Some services require the negotiation of an access token for each session when accessing an API.</p></li>
+<li><p>This process typically consists of</p>
 <ul>
-<li><p>Traditional tables, but no relations between tables</p></li>
-<li><p>Vector databases</p></li>
-<li><p>Graph databases</p></li>
+<li><p>a first call to the API with a user ID and passphrase/secret/password,</p></li>
+<li><p>retreiving a token,</p></li>
+<li><p>using the token in subsequent queries to the API.</p></li>
 </ul>
 </li>
 </ul>
-<p>This list is non-exhaustive both with regard to categories and examples.</p>
-<section id="relational-databases">
-<h3>Relational databases<a class="headerlink" href="#relational-databases" title="Permalink to this headline">#</a></h3>
+<section id="barentswatch">
+<h2>BarentsWatch<a class="headerlink" href="#barentswatch" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Tables with fixed attributes</p>
-<ul>
-<li><p>Each column has a name and a storage type.</p></li>
-<li><p>One (ore more) column(s) defined as a key, only accepting unique values.</p></li>
+<li><p>The following is an example based on BartensWatch’s API.</p></li>
+<li><p><em>client_id</em> is the combination of an email address and a client name (see <a class="reference external" href="https://developer.barentswatch.no/docs/tutorial/">BarentsWatch API tutorial</a>).</p></li>
+<li><p><em>client_secret</em> is a password connected to the client name.</p></li>
 </ul>
-</li>
-<li><p>Tables are connected (relations) in one of three ways:</p>
-<ul>
-<li><p><strong>One-to-many</strong>, one-to-one, and many-to-many</p></li>
-</ul>
-</li>
-</ul>
-<a class="reference internal image-reference" href="../../_images/Databases_SQL_relation.png"><img alt="../../_images/Databases_SQL_relation.png" src="../../_images/Databases_SQL_relation.png" style="width: 600px;" /></a>
-<p>We will be using MySQL as an example of this category</p>
-</section>
-<section id="nosql">
-<h3>NoSQL<a class="headerlink" href="#nosql" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Cacheable, parallelizable, scalable to exabytes of data.</p>
-<ul>
-<li><p>E.g., XML databases for querying XML documents based on attributes.</p></li>
-<li><p>May not use tables at all, only key-value pairs and corresponding unstructured data/objects.</p></li>
-</ul>
-</li>
-<li><p>Some use a subset of SQL commands (NoSQL = Non-relational SQL).</p>
-<ul>
-<li><p>Trades a bit more strict querying for speed and scale.</p></li>
-</ul>
-</li>
-</ul>
-<p>We will be using Cassandra as an example of this category.</p>
-</section>
-<section id="vector-databases">
-<h3>Vector databases<a class="headerlink" href="#vector-databases" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Like NoSQL, these are made to overcome limitations in relational databases.</p></li>
-<li><p>Data stored as high-dimensional vectors representing features or attributes.</p>
-<ul>
-<li><p>E.g., transformations or embeddings.</p></li>
-</ul>
-</li>
-<li><p>Applied in natural language processing (NLP), computer vision (CV), recommendation systems (RS), etc. when searching for similar objects.</p>
-<ul>
-<li><p>E.g., find the image most similar to my search image.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/SQL">Wikipedia: SQL</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/NoSQL">Wikipedia: NoSQL</a></p></li>
-<li><p><a class="reference external" href="https://learn.microsoft.com/en-us/semantic-kernel/memories/vector-db">Microsoft Learn: Vector databases</a></p></li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file contains both the client_id and client_secret for the BarentsWatch API.</span>
+<span class="n">BW</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/BarentsWatch&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">client_id</span> <span class="o">=</span> <span class="n">BW</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">client_secret</span> <span class="o">=</span> <span class="n">BW</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;client_id&#39;</span><span class="p">:</span> <span class="n">client_id</span><span class="p">,</span>
+    <span class="s1">&#39;client_secret&#39;</span><span class="p">:</span> <span class="n">client_secret</span><span class="p">,</span>
+    <span class="s1">&#39;token_url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://id.barentswatch.no/connect/token&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;api_base_url&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.barentswatch.no/bwapi&#39;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
+</div>
+</div>
+<section id="convenience-functions">
+<h3>Convenience functions<a class="headerlink" href="#convenience-functions" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>We create two functions for easily requesting a token and data from the API (see <em>API_Tokens.py</em>).</p></li>
+<li><p>These are based on the GitHub repository of <a class="reference external" href="https://github.com/barentswatch/barentswatch-api-examples">BarentsWatch</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">API_Tokens</span> <span class="k">as</span> <span class="nn">AT</span>
+<span class="n">token</span> <span class="o">=</span> <span class="n">AT</span><span class="o">.</span><span class="n">get_token</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Token request successful
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="requesting-data">
+<h3>Requesting data<a class="headerlink" href="#requesting-data" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Now that the token is in place, we can request data for 3600 seconds before needing a new one.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_2023_1</span> <span class="o">=</span> <span class="n">AT</span><span class="o">.</span><span class="n">get_request</span><span class="p">(</span><span class="s1">&#39;/v1/geodata/fishhealth/locality/2023/1&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<span class="n">data_2023_2</span> <span class="o">=</span> <span class="n">AT</span><span class="o">.</span><span class="n">get_request</span><span class="p">(</span><span class="s1">&#39;/v1/geodata/fishhealth/locality/2023/2&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Structure of the data</span>
+<span class="n">data_2023_1</span><span class="p">[</span><span class="s1">&#39;localities&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;hasSalmonoids&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract hasSalmonoids for all localities (at one timepoint)</span>
+<span class="n">hasSalmonoids</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_2023_1</span><span class="p">[</span><span class="s1">&#39;localities&#39;</span><span class="p">])):</span>
+    <span class="n">hasSalmonoids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_2023_1</span><span class="p">[</span><span class="s1">&#39;localities&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;hasSalmonoids&#39;</span><span class="p">])</span>
+
+<span class="c1"># Make a pie chart of the data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">([</span><span class="n">hasSalmonoids</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="n">hasSalmonoids</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="kc">True</span><span class="p">)],</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;No salmonoids&#39;</span><span class="p">,</span> <span class="s1">&#39;Salmonoids&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b6ba22084f7a2d0860b9ea0595093b1427842a93f54e34e1b0f52492c4731bc2.png" src="../../_images/b6ba22084f7a2d0860b9ea0595093b1427842a93f54e34e1b0f52492c4731bc2.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -536,7 +557,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./2_Data_sources/Databases"
+            path: "./2_Data_sources/APIs"
         },
         predefinedOutput: true
     }
@@ -555,20 +576,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Formats/Streaming_data.html"
+       href="OpenWeatherMap.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Streaming data</p>
+        <p class="prev-next-title">Demonstration of API using OpenWeatherMap.org</p>
       </div>
     </a>
     <a class="right-next"
-       href="MySQL.html"
+       href="../../3_Data_quality/Data_quality.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">MySQL</p>
+        <p class="prev-next-title">Pre-processing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -590,13 +611,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">Categories</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">Relational databases</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql">NoSQL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-databases">Vector databases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barentswatch">BarentsWatch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-functions">Convenience functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-data">Requesting data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 
