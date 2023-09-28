@@ -25,6 +25,7 @@ parts:
       sections:
       - file: 2_Data_sources/APIs/REST
       - file: 2_Data_sources/APIs/OpenWeatherMap
+      - file: 2_Data_sources/APIs/API_Tokens
   - caption: Data quality
     chapters:
     - file: 3_Data_quality/Data_quality
