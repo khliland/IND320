@@ -6,31 +6,36 @@ root: 0_General/Introduction
 parts:
   - caption: Data-Driven Decision Making
     chapters:
-    - file: 1_Decision_making/Data_pipeline
+    - file: 1_Decision_making/1_Data_pipeline
       sections:
-      - file: 1_Decision_making/Decision_making
-      - file: 1_Decision_making/Dashboards_reports
+      - file: 1_Decision_making/2_Decision_making
+      - file: 1_Decision_making/3_Dashboards_reports
   - caption: Data Sources
     chapters:
-    - file: 2_Data_sources/Formats/Formats
+    - file: 2_Data_sources/1_Formats/1_Formats
       sections:
-      - file: 2_Data_sources/Formats/Data_formats
-      - file: 2_Data_sources/Formats/Streaming_data
-    - file: 2_Data_sources/Databases/Databases
+      - file: 2_Data_sources/1_Formats/2_Data_formats
+      - file: 2_Data_sources/1_Formats/3_Streaming_data
+    - file: 2_Data_sources/2_Databases/1_Databases
       sections:
-      - file: 2_Data_sources/Databases/MySQL
-      - file: 2_Data_sources/Databases/Cassandra
-      - file: 2_Data_sources/Databases/Spark
-    - file: 2_Data_sources/APIs/APIs
+      - file: 2_Data_sources/2_Databases/2_MySQL
+      - file: 2_Data_sources/2_Databases/3_Cassandra
+      - file: 2_Data_sources/2_Databases/4_Spark
+    - file: 2_Data_sources/3_APIs/1_APIs
       sections:
-      - file: 2_Data_sources/APIs/REST
-      - file: 2_Data_sources/APIs/OpenWeatherMap
-      - file: 2_Data_sources/APIs/API_Tokens
+      - file: 2_Data_sources/3_APIs/2_REST
+      - file: 2_Data_sources/3_APIs/3_OpenWeatherMap
+      - file: 2_Data_sources/3_APIs/4_API_Tokens
   - caption: Data quality
     chapters:
-    - file: 3_Data_quality/Data_quality
+    - file: 3_Data_quality/1_Signal/1_Signal_and_noise
       sections:
-      - file: 3_Data_quality/Noise_reduction
+      - file: 3_Data_quality/1_Signal/2_Noise_reduction
+      - file: 3_Data_quality/1_Signal/3_Decomposition
+    - file: 3_Data_quality/2_Outliers/1_Outliers_and_anomalies
+      sections:
+      - file: 3_Data_quality/2_Outliers/2_Outlier_statistics
+      - file: 3_Data_quality/2_Outliers/3_Anomaly_detection
   - caption: Machine Learning
     chapters:
     - file: 4_Machine_Learning/Machine_Learning

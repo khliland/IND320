@@ -1,0 +1,46 @@
+{
+    "coord": {
+        "lon": 10.8358,
+        "lat": 59.7195
+    },
+    "weather": [
+        {
+            "id": 804,
+            "main": "Clouds",
+            "description": "overcast clouds",
+            "icon": "04n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 280.94,
+        "feels_like": 280.94,
+        "temp_min": 279.7,
+        "temp_max": 283.53,
+        "pressure": 1005,
+        "humidity": 89,
+        "sea_level": 1005,
+        "grnd_level": 988
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 0.91,
+        "deg": 185,
+        "gust": 1.12
+    },
+    "clouds": {
+        "all": 100
+    },
+    "dt": 1696448612,
+    "sys": {
+        "type": 2,
+        "id": 2006772,
+        "country": "NO",
+        "sunrise": 1696397266,
+        "sunset": 1696437784
+    },
+    "timezone": 7200,
+    "id": 3139081,
+    "name": "Ski",
+    "cod": 200
+}

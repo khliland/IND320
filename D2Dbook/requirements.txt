@@ -11,5 +11,7 @@ mysql.connector
 flask
 pybaselines
 pyjstat
+statsmodels
+hoggorm
 scikit-learn
 plotly
