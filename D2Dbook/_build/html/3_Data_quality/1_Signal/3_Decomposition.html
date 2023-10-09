@@ -499,8 +499,42 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[X_k = \sum_{n=0}^{N-1} x_n e^{i2 \pi kn/N} ~~~~ k = 0, ..., N-1\]</div>
 <ul class="simple">
-<li><p>Here, <em>k</em> is the index of a signal and <em>N</em> is its length.</p></li>
+<li><p>Here, <em>k</em> is the index of a signal, <strong>X</strong>, and <em>N</em> is its length. <span class="math notranslate nohighlight">\(x_n\)</span> is a coefficient to be fitted.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Real part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/44041f5ec85faf2449442e1765b15432377132fc832a7ce2f095d26de276117f.png" src="../../_images/44041f5ec85faf2449442e1765b15432377132fc832a7ce2f095d26de276117f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The full complex exponential basis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;square&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Real&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Imaginary&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;DFT Basis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8a303e54b1a5bd4261761ce3959376f0d3516c0d85653188c1721e02666ecece.png" src="../../_images/8a303e54b1a5bd4261761ce3959376f0d3516c0d85653188c1721e02666ecece.png" />
+</div>
+</div>
 </section>
 <section id="direct-cosine-transform-dct">
 <h3>Direct Cosine Transform (DCT)<a class="headerlink" href="#direct-cosine-transform-dct" title="Permalink to this headline">#</a></h3>
