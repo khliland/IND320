@@ -197,6 +197,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="3_Anomaly_detection.html">Anomaly detection</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Preprocessing/1_Preprocessing.html">Pre-processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/2_Imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/3_Time_formats.html">Time formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
@@ -924,6 +930,22 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 <span class="n">mcd</span> <span class="o">=</span> <span class="n">MinCovDet</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
 <span class="n">mcd_mean</span> <span class="o">=</span> <span class="n">mcd</span><span class="o">.</span><span class="n">location_</span>
 <span class="n">mcd_cov</span> <span class="o">=</span> <span class="n">mcd</span><span class="o">.</span><span class="n">covariance_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mcd_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd_cov</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.77587033e+01  1.15297350e-01  1.02581453e+03]
+[[ 31.79452702 -15.89510593  -0.58264256]
+ [-15.89510593  11.42576239   3.64555942]
+ [ -0.58264256   3.64555942   3.24443596]]
 </pre></div>
 </div>
 </div>
