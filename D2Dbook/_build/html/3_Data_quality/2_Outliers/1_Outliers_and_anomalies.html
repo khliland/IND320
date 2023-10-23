@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Outliers and anomalies &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -68,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Outlier statistics" href="2_Outlier_statistics.html" />
     <link rel="prev" title="Decompostion" href="../1_Signal/3_Decomposition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -401,10 +413,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -412,7 +424,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -458,7 +470,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="outliers-and-anomalies">
-<h1>Outliers and anomalies<a class="headerlink" href="#outliers-and-anomalies" title="Permalink to this headline">#</a></h1>
+<h1>Outliers and anomalies<a class="headerlink" href="#outliers-and-anomalies" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>The terms <em>outliers</em> and <em>anomalies</em> can sometimes be synonymous, but have different origins in data analysis.</p></li>
 <li><p>An <em>outlier</em> in statistics is typically defined with respect to some known (or assumed) distribution and its statistics.</p>
@@ -474,7 +486,7 @@ document.write(`
 </li>
 </ul>
 <section id="outliers-for-1d-data">
-<h2>Outliers for 1D data<a class="headerlink" href="#outliers-for-1d-data" title="Permalink to this headline">#</a></h2>
+<h2>Outliers for 1D data<a class="headerlink" href="#outliers-for-1d-data" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A simple representation of data is the box (and whiskers) plot.</p></li>
 <li><p>A common choice is to stop the whiskers at 1.5 IQR, where IQR = 75th percentile - 25th percentile.</p></li>
@@ -494,11 +506,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4bfa8dfe7f3e78fb2dab6e5a4e58d70175807fb0d9b830c1a60a904a74dcadd3.png" src="../../_images/4bfa8dfe7f3e78fb2dab6e5a4e58d70175807fb0d9b830c1a60a904a74dcadd3.png" />
+<img alt="../../_images/f78e0411e9ea54f7c037e390e5ba1e959154919b34ccc89889e7d0204953c2dc.png" src="../../_images/f78e0411e9ea54f7c037e390e5ba1e959154919b34ccc89889e7d0204953c2dc.png" />
 </div>
 </div>
 <section id="boxplot-properties">
-<h3>Boxplot properties<a class="headerlink" href="#boxplot-properties" title="Permalink to this headline">#</a></h3>
+<h3>Boxplot properties<a class="headerlink" href="#boxplot-properties" title="Permalink to this heading">#</a></h3>
 <p>… assuming normal distributed data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,7 +540,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a105d850f14366ebb210fd1ee3bdf101e4bd25f456ede1ce7f38303cb97fa5c8.png" src="../../_images/a105d850f14366ebb210fd1ee3bdf101e4bd25f456ede1ce7f38303cb97fa5c8.png" />
+<img alt="../../_images/0e4b0b70aef727245fd56e58b87dcad232186ab6c74ddce4cba49c940cbc1901.png" src="../../_images/0e4b0b70aef727245fd56e58b87dcad232186ab6c74ddce4cba49c940cbc1901.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Upper whisker: 2.698 standard deviations
 Probability of being outside whiskers: 1.993%
 </pre></div>
@@ -538,7 +550,7 @@ Probability of being outside whiskers: 1.993%
 </section>
 </section>
 <section id="outliers-in-models">
-<h2>Outliers in models<a class="headerlink" href="#outliers-in-models" title="Permalink to this headline">#</a></h2>
+<h2>Outliers in models<a class="headerlink" href="#outliers-in-models" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>An outlier in the input data, <strong>X</strong>, will influence some model more than a central point.</p>
 <ul>
@@ -557,7 +569,7 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
 </ul>
 </section>
 <section id="handling-outliers-anomalies">
-<h2>Handling outliers/anomalies<a class="headerlink" href="#handling-outliers-anomalies" title="Permalink to this headline">#</a></h2>
+<h2>Handling outliers/anomalies<a class="headerlink" href="#handling-outliers-anomalies" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>An outier can be the caused by errors in measurements, faulty registration or random variation.</p>
 <ul>
@@ -605,12 +617,12 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3e315d1f6cc0a4d829dedd9814658b6e39fb14ec056862bf3bfb705818ea201a.png" src="../../_images/3e315d1f6cc0a4d829dedd9814658b6e39fb14ec056862bf3bfb705818ea201a.png" />
+<img alt="../../_images/0bc18cd6d8b63b31a24823faf2a46ebe6e650016fa1e588d5570a6a6abb23ccc.png" src="../../_images/0bc18cd6d8b63b31a24823faf2a46ebe6e650016fa1e588d5570a6a6abb23ccc.png" />
 </div>
 </div>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Box_plot">Wikipedia: Box plot</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Interquartile_range">Wikipedia: Interquartile range</a></p></li>
@@ -645,11 +657,10 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../1_Signal/3_Decomposition.html"
@@ -669,10 +680,7 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -741,8 +749,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

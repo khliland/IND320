@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Spark &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="APIs" href="../3_APIs/1_APIs.html" />
     <link rel="prev" title="Cassandra" href="3_Cassandra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -199,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -399,10 +411,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -410,7 +422,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -458,7 +470,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="spark">
-<h1>Spark<a class="headerlink" href="#spark" title="Permalink to this headline">#</a></h1>
+<h1>Spark<a class="headerlink" href="#spark" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>A fast and general compute engine (originally for <a class="reference external" href="https://hadoop.apache.org/">Hadoop</a> data).</p>
 <ul>
@@ -487,7 +499,7 @@ document.write(`
 </div>
 </div>
 <section id="spark-and-cassandra">
-<h2>Spark and Cassandra<a class="headerlink" href="#spark-and-cassandra" title="Permalink to this headline">#</a></h2>
+<h2>Spark and Cassandra<a class="headerlink" href="#spark-and-cassandra" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Cassandra is one of the databases that work well with Spark.</p>
 <ul>
@@ -522,20 +534,22 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:: loading settings :: url = jar:file:/Users/kristian/miniforge3/envs/tf_M1/lib/python3.10/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ivy Default Cache set to: /Users/kristian/.ivy2/cache
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/10/23 11:42:51 WARN Utils: Your hostname, Kristians-MacBook-Pro.local resolves to a loopback address: 127.0.0.1; using 10.42.33.143 instead (on interface en0)
+23/10/23 11:42:51 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+Ivy Default Cache set to: /Users/kristian/.ivy2/cache
 The jars for the packages stored in: /Users/kristian/.ivy2/jars
 com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-1d69bf73-6b02-4fa9-8663-4c08e709a5ab;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-1302dcc7-5c99-4bdc-b2d4-708a45c2e248;1.0
 	confs: [default]
-	found com.datastax.spark#spark-cassandra-connector_2.12;3.4.1 in central
-	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
-	found org.scala-lang.modules#scala-collection-compat_2.12;2.11.0 in central
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#java-driver-core-shaded;4.13.0 in central
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:: loading settings :: url = jar:file:/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.spark#spark-cassandra-connector_2.12;3.4.1 in central
+	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
+	found org.scala-lang.modules#scala-collection-compat_2.12;2.11.0 in central
+	found com.datastax.oss#java-driver-core-shaded;4.13.0 in central
 	found com.datastax.oss#native-protocol;1.5.0 in central
 	found com.datastax.oss#java-driver-shaded-guava;25.1-jre-graal-sub-1 in central
 	found com.typesafe#config;1.4.1 in central
@@ -543,17 +557,17 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found io.dropwizard.metrics#metrics-core;4.1.18 in central
 	found org.hdrhistogram#HdrHistogram;2.1.12 in central
 	found org.reactivestreams#reactive-streams;1.0.3 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in central
+	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in central
 	found com.github.spotbugs#spotbugs-annotations;3.1.12 in central
 	found com.google.code.findbugs#jsr305;3.0.2 in central
 	found com.datastax.oss#java-driver-mapper-runtime;4.13.0 in central
-	found com.datastax.oss#java-driver-query-builder;4.13.0 in central
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#java-driver-query-builder;4.13.0 in central
 	found org.apache.commons#commons-lang3;3.10 in central
 	found com.thoughtworks.paranamer#paranamer;2.8 in central
 	found org.scala-lang#scala-reflect;2.12.11 in central
-:: resolution report :: resolve 516ms :: artifacts dl 17ms
+:: resolution report :: resolve 307ms :: artifacts dl 45ms
 	:: modules in use:
 	com.datastax.oss#java-driver-core-shaded;4.13.0 from central in [default]
 	com.datastax.oss#java-driver-mapper-runtime;4.13.0 from central in [default]
@@ -580,13 +594,13 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   19  |   0   |   0   |   0   ||   19  |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-1d69bf73-6b02-4fa9-8663-4c08e709a5ab
+:: retrieving :: org.apache.spark#spark-submit-parent-1302dcc7-5c99-4bdc-b2d4-708a45c2e248
 	confs: [default]
-	0 artifacts copied, 19 already retrieved (0kB/7ms)
+	0 artifacts copied, 19 already retrieved (0kB/13ms)
+23/10/23 11:42:52 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/10/19 21:44:06 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Setting default log level to &quot;WARN&quot;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting default log level to &quot;WARN&quot;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 </pre></div>
 </div>
@@ -594,7 +608,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </section>
 <section id="accessing-tables">
-<h2>Accessing tables<a class="headerlink" href="#accessing-tables" title="Permalink to this headline">#</a></h2>
+<h2>Accessing tables<a class="headerlink" href="#accessing-tables" title="Permalink to this heading">#</a></h2>
 <p><strong>Note: The following sets of commands assume that the <a class="reference internal" href="3_Cassandra.html"><span class="doc std std-doc">Cassandra notebook</span></a> has been run first to set up the relevant keyspace and tables.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,22 +621,17 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+----------+-------+
 |ind|   company|  model|
 +---+----------+-------+
+|  3|  Polestar|      3|
+|  4|Volkswagen|   ID.4|
 |  1|     Tesla|Model S|
 |  2|     Tesla|Model 3|
-|  4|Volkswagen|   ID.4|
-|  3|  Polestar|      3|
 +---+----------+-------+
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 0:&gt;                                                          (0 + 1) / 1]
-
-                                                                                
 </pre></div>
 </div>
 </div>
 </div>
 <section id="database-views">
-<h3>Database views<a class="headerlink" href="#database-views" title="Permalink to this headline">#</a></h3>
+<h3>Database views<a class="headerlink" href="#database-views" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Useful for “setting the scene” before a more simplified data extraction.</p></li>
 <li><p>The below example simply attaches to the correct keyspace and table.</p>
@@ -641,7 +650,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </section>
 <section id="spark-dataframe">
-<h3><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html">Spark DataFrame</a><a class="headerlink" href="#spark-dataframe" title="Permalink to this headline">#</a></h3>
+<h3><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html">Spark DataFrame</a><a class="headerlink" href="#spark-dataframe" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Related to a Pandas data frame, but can be distributed over compute nodes.</p></li>
 <li><p>Various functions like filters, statistical calculations, groupBy, Pandas functions (mapInPandas), joins, etc.</p></li>
@@ -685,8 +694,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|d9c65b70-6eb7-11e...|  Tesla|Model S|21000.0|
-|d9c60d50-6eb7-11e...|  Tesla|Model S|20000.0|
+|86e3efc0-7188-11e...|  Tesla|Model S|20000.0|
+|86e43de0-7188-11e...|  Tesla|Model S|21000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -703,8 +712,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|d9c60d50-6eb7-11e...|  Tesla|Model S|20000.0|
-|d9c65b70-6eb7-11e...|  Tesla|Model S|21000.0|
+|86e43de0-7188-11e...|  Tesla|Model S|21000.0|
+|86e3efc0-7188-11e...|  Tesla|Model S|20000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -745,21 +754,21 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>d9c60d50-6eb7-11ee-8b2f-4f23491759a5</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>20000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>d9c65b70-6eb7-11ee-8b2f-4f23491759a5</td>
+      <td>86e43de0-7188-11ee-8b2f-4f23491759a5</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>86e3efc0-7188-11ee-8b2f-4f23491759a5</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
+    </tr>
+    <tr>
       <th>2</th>
-      <td>d9c68280-6eb7-11ee-8b2f-4f23491759a5</td>
+      <td>86e464f0-7188-11ee-8b2f-4f23491759a5</td>
       <td>Oldsmobile</td>
       <td>Model 6C</td>
       <td>135000.0</td>
@@ -804,14 +813,14 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>d9c60d50-6eb7-11ee-8b2f-4f23491759a5</td>
+      <td>86e3efc0-7188-11ee-8b2f-4f23491759a5</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>20000.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>d9c65b70-6eb7-11ee-8b2f-4f23491759a5</td>
+      <td>86e43de0-7188-11ee-8b2f-4f23491759a5</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -855,7 +864,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>d9c65b70-6eb7-11ee-8b2f-4f23491759a5</td>
+      <td>86e43de0-7188-11ee-8b2f-4f23491759a5</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -866,7 +875,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </section>
 <section id="aggregation-grouping-and-filtering">
-<h3>Aggregation, grouping and filtering<a class="headerlink" href="#aggregation-grouping-and-filtering" title="Permalink to this headline">#</a></h3>
+<h3>Aggregation, grouping and filtering<a class="headerlink" href="#aggregation-grouping-and-filtering" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>These can be combined in many ways.</p></li>
 <li><p>Starting from the left.</p></li>
@@ -919,7 +928,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </section>
 <section id="write-data-to-cassandra">
-<h3>Write data to Cassandra<a class="headerlink" href="#write-data-to-cassandra" title="Permalink to this headline">#</a></h3>
+<h3>Write data to Cassandra<a class="headerlink" href="#write-data-to-cassandra" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>One can append or overwrite data in existing database tables.</p></li>
 <li><p>PySpark is picky regarding data formats.</p>
@@ -987,6 +996,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/pyspark/sql/pandas/conversion.py:485: FutureWarning: is_datetime64tz_dtype is deprecated and will be removed in a future version. Check `isinstance(dtype, pd.DatetimeTZDtype)` instead.
+  if should_localize and is_datetime64tz_dtype(s.dtype) and s.dt.tz is not None:
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 23:&gt;                                                       (0 + 10) / 10]
 
                                                                                 
@@ -1032,39 +1045,39 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
+      <td>3</td>
+      <td>Polestar</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>1</td>
       <td>Tesla</td>
       <td>Model S</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>2</th>
       <td>2</td>
       <td>Tesla</td>
       <td>Model 3</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>3</th>
       <td>4</td>
       <td>Volkswagen</td>
       <td>ID.4</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>4</th>
       <td>460</td>
       <td>Ford</td>
       <td>Transit</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>459</td>
       <td>Ford</td>
       <td>Escort</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>3</td>
-      <td>Polestar</td>
-      <td>3</td>
     </tr>
   </tbody>
 </table>
@@ -1084,7 +1097,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </section>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://sparkbyexamples.com/pyspark-tutorial/">PySpark Tutorial For Beginners (sparkbyexample.com)</a></p></li>
 <li><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/index.html">PySpark documentation</a></p>
@@ -1123,11 +1136,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="3_Cassandra.html"
@@ -1147,10 +1159,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1221,8 +1230,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

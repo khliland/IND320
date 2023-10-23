@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Streaming data &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Databases" href="../2_Databases/1_Databases.html" />
     <link rel="prev" title="Data formats" href="2_Data_formats.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -199,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -399,10 +411,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -410,7 +422,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -455,7 +467,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="streaming-data">
-<h1>Streaming data<a class="headerlink" href="#streaming-data" title="Permalink to this headline">#</a></h1>
+<h1>Streaming data<a class="headerlink" href="#streaming-data" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Data that can be loaded chunk-wise (single or a few at the time).</p></li>
 <li><p>Data flowing through a socket/pipe/streaming API/…</p></li>
@@ -469,7 +481,7 @@ document.write(`
 </li>
 </ul>
 <section id="live-reading-of-twitch-chat">
-<h2>Live reading of Twitch chat<a class="headerlink" href="#live-reading-of-twitch-chat" title="Permalink to this headline">#</a></h2>
+<h2>Live reading of Twitch chat<a class="headerlink" href="#live-reading-of-twitch-chat" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Requires a free account on <a class="reference external" href="https://twitch.tv">Twitch</a> and obtaining an <a class="reference external" href="https://twitchapps.com/tmi/">oauth autentication token</a>.</p></li>
 <li><p>We will use River’s <a class="reference external" href="https://riverml.xyz/0.18.0/api/stream/TwitchChatStream/">TwitchChatStream</a> to handle the live streamed data.</p></li>
@@ -486,7 +498,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -521,21 +533,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 10, 19, 21, 43, 53, 284572), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;ragnarok314159&#39;, &#39;msg&#39;: &#39;What do you mean?&#39;}
-{&#39;dt&#39;: datetime.datetime(2023, 10, 19, 21, 43, 53, 480755), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;chaoticblue22&#39;, &#39;msg&#39;: &#39;Get rid of it all.&#39;}
-{&#39;dt&#39;: datetime.datetime(2023, 10, 19, 21, 43, 53, 480755), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;motyogo777&#39;, &#39;msg&#39;: &#39;abd you can buy in shop everything again&#39;}
-{&#39;dt&#39;: datetime.datetime(2023, 10, 19, 21, 43, 53, 480755), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;misutokuki&#39;, &#39;msg&#39;: &#39;KEEP VULPERA/WORGEN/SETHRAK/PANDAREN + HARD REBOOT&#39;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 10, 19, 21, 43, 53, 671544), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;gundumtsukiyomi&#39;, &#39;msg&#39;: &#39;dicktone BADASS&#39;}
-Puh, that&#39;s enough!
-</pre></div>
-</div>
-</div>
 </div>
 <section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h3>
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Here, River has formated everything nicely for us as dictionaries.</p>
 <ul>
@@ -548,7 +548,7 @@ Puh, that&#39;s enough!
 </section>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>Make a clock  using <a class="reference external" href="http://worldtimeapi.org/">World Time API</a></p>
 <ul class="simple">
 <li><p>Pull the current time from <em><a class="reference external" href="http://worldtimeapi.org/api/timezone/Europe/Oslo">http://worldtimeapi.org/api/timezone/Europe/Oslo</a></em> every second using <em>requests.get()</em>.</p></li>
@@ -558,7 +558,7 @@ Puh, that&#39;s enough!
 </ul>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://riverml.xyz/">River</a></p>
 <ul>
@@ -600,11 +600,10 @@ Puh, that&#39;s enough!
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="2_Data_formats.html"
@@ -624,10 +623,7 @@ Puh, that&#39;s enough!
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -695,8 +691,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Decompostion &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -68,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Outliers and anomalies" href="../2_Outliers/1_Outliers_and_anomalies.html" />
     <link rel="prev" title="Noise reduction" href="2_Noise_reduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -401,10 +413,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -412,7 +424,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -468,7 +480,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="decompostion">
-<h1>Decompostion<a class="headerlink" href="#decompostion" title="Permalink to this headline">#</a></h1>
+<h1>Decompostion<a class="headerlink" href="#decompostion" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>There are various regimes for signal decomposition.</p></li>
 <li><p>Examples:</p>
@@ -487,9 +499,9 @@ document.write(`
 </li>
 </ul>
 <section id="fast-fourier-transform">
-<h2>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Permalink to this headline">#</a></h2>
+<h2>Fast Fourier Transform<a class="headerlink" href="#fast-fourier-transform" title="Permalink to this heading">#</a></h2>
 <section id="fft-history-and-application">
-<h3>FFT history and application<a class="headerlink" href="#fft-history-and-application" title="Permalink to this headline">#</a></h3>
+<h3>FFT history and application<a class="headerlink" href="#fft-history-and-application" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>An important workhorse in signal processing.</p></li>
 <li><p>Can be traced back to Carl Friedrich Gauss on Discrete Fourier Transforms from 1805.</p></li>
@@ -498,7 +510,7 @@ document.write(`
 </ul>
 </section>
 <section id="fft-function">
-<h3>FFT function<a class="headerlink" href="#fft-function" title="Permalink to this headline">#</a></h3>
+<h3>FFT function<a class="headerlink" href="#fft-function" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Wikipedia: A Fourier Transform is a transform that converts a function into a form that describes the frequencies present in the original function.</p></li>
 <li><p>scipy.fft: Fourier analysis is a method for expressing a function as a sum of peridoic components, and for recovering the signal from those components.</p></li>
@@ -522,7 +534,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/44041f5ec85faf2449442e1765b15432377132fc832a7ce2f095d26de276117f.png" src="../../_images/44041f5ec85faf2449442e1765b15432377132fc832a7ce2f095d26de276117f.png" />
+<img alt="../../_images/ac215afdfbada71229ebbe9a5d6100c7d806a840245e24a4980fb4216c5b8254.png" src="../../_images/ac215afdfbada71229ebbe9a5d6100c7d806a840245e24a4980fb4216c5b8254.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -539,12 +551,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8a303e54b1a5bd4261761ce3959376f0d3516c0d85653188c1721e02666ecece.png" src="../../_images/8a303e54b1a5bd4261761ce3959376f0d3516c0d85653188c1721e02666ecece.png" />
+<img alt="../../_images/e82082d33ff616a5d2dd10374d3fc39ee7f66d445f3e2a726111a0525dab228a.png" src="../../_images/e82082d33ff616a5d2dd10374d3fc39ee7f66d445f3e2a726111a0525dab228a.png" />
 </div>
 </div>
 </section>
 <section id="direct-cosine-transform-dct">
-<h3>Direct Cosine Transform (DCT)<a class="headerlink" href="#direct-cosine-transform-dct" title="Permalink to this headline">#</a></h3>
+<h3>Direct Cosine Transform (DCT)<a class="headerlink" href="#direct-cosine-transform-dct" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>FFT with real valued data.</p></li>
 <li><p>For real numbered signals, the definition above can be exchanged with a version based on the cosine or sine functions.</p></li>
@@ -569,7 +581,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/da00c213f4f7748d39eb5530c508cfcfd2ebdf1db88ddc2175e84ba7b84611c3.png" src="../../_images/da00c213f4f7748d39eb5530c508cfcfd2ebdf1db88ddc2175e84ba7b84611c3.png" />
+<img alt="../../_images/4c544d62a150bede9a77c0bb2c75f05772b15bd9972a3addbcaf7de3a5895c78.png" src="../../_images/4c544d62a150bede9a77c0bb2c75f05772b15bd9972a3addbcaf7de3a5895c78.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -605,7 +617,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/77fa1a2f40d78f3469c0f566709709ef701a656fae4fd7da0c0df9f9f80fb2e2.png" src="../../_images/77fa1a2f40d78f3469c0f566709709ef701a656fae4fd7da0c0df9f9f80fb2e2.png" />
+<img alt="../../_images/5b9e4eca91f6ea68c16f36f89ed52c2312afdae9604a11eef37d1a71a1cc88e0.png" src="../../_images/5b9e4eca91f6ea68c16f36f89ed52c2312afdae9604a11eef37d1a71a1cc88e0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sampling of the time axis: 200.0 Hz
 </pre></div>
 </div>
@@ -636,12 +648,12 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6d6889ddf06aaae2dd33d0b02cbc12a715b7706d547c154877fea8209f7a35c6.png" src="../../_images/6d6889ddf06aaae2dd33d0b02cbc12a715b7706d547c154877fea8209f7a35c6.png" />
+<img alt="../../_images/b6b0af8236f1a86227f3cf2fd7a55262dbe027d58e500e14278dcd0a41a409e5.png" src="../../_images/b6b0af8236f1a86227f3cf2fd7a55262dbe027d58e500e14278dcd0a41a409e5.png" />
 </div>
 </div>
 </section>
 <section id="fft-filtering">
-<h3>FFT filtering<a class="headerlink" href="#fft-filtering" title="Permalink to this headline">#</a></h3>
+<h3>FFT filtering<a class="headerlink" href="#fft-filtering" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>We can apply the FFT to analyse the frequencies present or to filter the signal.</p>
 <ul>
@@ -675,7 +687,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1d737450f51ec989c3765da20893296c215192f1706b117178bea154cbc84ddc.png" src="../../_images/1d737450f51ec989c3765da20893296c215192f1706b117178bea154cbc84ddc.png" />
+<img alt="../../_images/46270f750f14636d47faab49f1fa4748fa7796a2f0aaf4b77a04b11923011156.png" src="../../_images/46270f750f14636d47faab49f1fa4748fa7796a2f0aaf4b77a04b11923011156.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -695,7 +707,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1eac6609c01276173c0da015d8d50e5c707777fa1abcce6ba8a5523cd3f97a6b.png" src="../../_images/1eac6609c01276173c0da015d8d50e5c707777fa1abcce6ba8a5523cd3f97a6b.png" />
+<img alt="../../_images/ad0b14eb68e6b0428ee56b6a4b163c2103c381bb3c9ebe311a5605d7808afb37.png" src="../../_images/ad0b14eb68e6b0428ee56b6a4b163c2103c381bb3c9ebe311a5605d7808afb37.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -712,12 +724,12 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fcf6779fa99afb1607336f2ad2f3fc051fbde0ac4d92a92802ca7acca3c006c3.png" src="../../_images/fcf6779fa99afb1607336f2ad2f3fc051fbde0ac4d92a92802ca7acca3c006c3.png" />
+<img alt="../../_images/b67e5153adb86fc116813403df4ef3c10a1c9c00b8a5ef55df0bf48ef70cd60c.png" src="../../_images/b67e5153adb86fc116813403df4ef3c10a1c9c00b8a5ef55df0bf48ef70cd60c.png" />
 </div>
 </div>
 </section>
 <section id="overlay-cosines-on-signal">
-<h3>Overlay cosines on signal<a class="headerlink" href="#overlay-cosines-on-signal" title="Permalink to this headline">#</a></h3>
+<h3>Overlay cosines on signal<a class="headerlink" href="#overlay-cosines-on-signal" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove frequencies above 50, i.e., a low-pass filter.</span>
@@ -744,7 +756,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dc513cf6f30fa5b8efe9fc9e8699e7ddf295123d06b26d7491c3e9fe9e3c4585.png" src="../../_images/dc513cf6f30fa5b8efe9fc9e8699e7ddf295123d06b26d7491c3e9fe9e3c4585.png" />
+<img alt="../../_images/d372270a9f792766654dea8623bcb9fca52dc911663a3880ee4511ab87a76239.png" src="../../_images/d372270a9f792766654dea8623bcb9fca52dc911663a3880ee4511ab87a76239.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sum of original signal: 815.31
 0th DCT coefficient / 2: 815.31
 </pre></div>
@@ -756,7 +768,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </section>
 </section>
 <section id="linear-decomposition">
-<h2>Linear decomposition<a class="headerlink" href="#linear-decomposition" title="Permalink to this headline">#</a></h2>
+<h2>Linear decomposition<a class="headerlink" href="#linear-decomposition" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Various forms of linear models can be used for decomposition, each having different focus or optimality criteria, e.g.:</p>
 <ul>
@@ -766,7 +778,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </li>
 </ul>
 <section id="seasonal-trend-decomposition-using-loess-stl">
-<h3>Seasonal-Trend decomposition using LOESS (STL)<a class="headerlink" href="#seasonal-trend-decomposition-using-loess-stl" title="Permalink to this headline">#</a></h3>
+<h3>Seasonal-Trend decomposition using LOESS (STL)<a class="headerlink" href="#seasonal-trend-decomposition-using-loess-stl" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>STL takes a (time) series as input together with an estimate of period length.</p></li>
 <li><p>Output are:</p>
@@ -879,7 +891,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d4e1e0caccd4775e182534e1b23fefde851a6b73d78a9c0dee81da74228060c5.png" src="../../_images/d4e1e0caccd4775e182534e1b23fefde851a6b73d78a9c0dee81da74228060c5.png" />
+<img alt="../../_images/f6cca8f26f51ead7dadb98c16c8ee66c36733b5393a4afc08da313106f92d57c.png" src="../../_images/f6cca8f26f51ead7dadb98c16c8ee66c36733b5393a4afc08da313106f92d57c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -906,7 +918,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/61e9daab33afec410cde5ad7fecd05161d87f45ddaf1248502c518e3471b929b.png" src="../../_images/61e9daab33afec410cde5ad7fecd05161d87f45ddaf1248502c518e3471b929b.png" />
+<img alt="../../_images/ca189d805f242972266443bd3fe9179456f8e236c22fa2c61c67bf7c7fe7f6ad.png" src="../../_images/ca189d805f242972266443bd3fe9179456f8e236c22fa2c61c67bf7c7fe7f6ad.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -981,12 +993,12 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f6dec53d0ddec7b0dda013b0fc40a4dc69ae1a5a0f9ae0f0dac8d9cb6a7a1312.png" src="../../_images/f6dec53d0ddec7b0dda013b0fc40a4dc69ae1a5a0f9ae0f0dac8d9cb6a7a1312.png" />
+<img alt="../../_images/fb698a515a0ada50cf259bcdf8136d0112a8ea99f9af826e25d13e34d50cb4e1.png" src="../../_images/fb698a515a0ada50cf259bcdf8136d0112a8ea99f9af826e25d13e34d50cb4e1.png" />
 </div>
 </div>
 </section>
 <section id="excercise">
-<h3>Excercise<a class="headerlink" href="#excercise" title="Permalink to this headline">#</a></h3>
+<h3>Excercise<a class="headerlink" href="#excercise" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Force the period to change less.</p></li>
 <li><p>Extract the trend and plot it as a function of time.</p></li>
@@ -994,7 +1006,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </ul>
 </section>
 <section id="multiple-seasonalities">
-<h3>Multiple seasonalities<a class="headerlink" href="#multiple-seasonalities" title="Permalink to this headline">#</a></h3>
+<h3>Multiple seasonalities<a class="headerlink" href="#multiple-seasonalities" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>If a there is more than one phenomenon with a cyclic behaviour, multiple seasonalities can be found through Multiple Seasonal-Trend decomposition using LOESS (MSTL).</p></li>
 <li><p>The more complex model one applies, the higher the chances of overfitting!</p></li>
@@ -1002,7 +1014,7 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 </ul>
 </section>
 <section id="principal-component-analysis-pca">
-<h3>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this headline">#</a></h3>
+<h3>Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For (time) series with multiple variables, PCA can give a first indication of structure and connection between variables.</p></li>
 <li><p>Scores show paths of time points, loadings show how variables relate.</p></li>
@@ -1013,7 +1025,7 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 </ul>
 </section>
 <section id="beijing-pollution-data">
-<h3>Beijing pollution data<a class="headerlink" href="#beijing-pollution-data" title="Permalink to this headline">#</a></h3>
+<h3>Beijing pollution data<a class="headerlink" href="#beijing-pollution-data" title="Permalink to this heading">#</a></h3>
 <p>This dataset is originally from <a class="reference external" href="https://archive.ics.uci.edu/dataset/381/beijing+pm2+5+data">UCI Machine Learning Repository</a> and shows hourly measurements of weather at the US embassy in Bejing. Its columns are:</p>
 <ol class="arabic simple">
 <li><p>No: row number</p></li>
@@ -1175,7 +1187,7 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recode the cbwd column using one-hot encoding and add to the data frame</span>
-<span class="n">pollution</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pollution</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">pollution</span><span class="p">[</span><span class="s2">&quot;cbwd&quot;</span><span class="p">])],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pollution</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">pollution</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">pollution</span><span class="p">[</span><span class="s2">&quot;cbwd&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">pollution</span> <span class="o">=</span> <span class="n">pollution</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cbwd&quot;</span><span class="p">])</span>
 <span class="n">pollution</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1249,10 +1261,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>1.79</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1267,10 +1279,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>4.92</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1285,10 +1297,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>6.71</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1303,10 +1315,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>9.84</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1321,10 +1333,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>12.97</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -1406,10 +1418,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>1.79</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1424,10 +1436,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>4.92</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1442,10 +1454,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>6.71</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1460,10 +1472,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>9.84</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>5</th>
@@ -1478,10 +1490,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       <td>12.97</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
@@ -1508,7 +1520,7 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2ded66b01a66974313ede5040036cc2a95b9cbd1e59afe87a3debdbfb36e3fba.png" src="../../_images/2ded66b01a66974313ede5040036cc2a95b9cbd1e59afe87a3debdbfb36e3fba.png" />
+<img alt="../../_images/aaec790cb9b91b28e48bb282d750f409a32a80de6196ac55ff69db2203e90c0b.png" src="../../_images/aaec790cb9b91b28e48bb282d750f409a32a80de6196ac55ff69db2203e90c0b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1521,7 +1533,7 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/74188588c4ddbe13c6295067b6e31cc3f7a5aa285d76a5bd659b58aae5c66d1a.png" src="../../_images/74188588c4ddbe13c6295067b6e31cc3f7a5aa285d76a5bd659b58aae5c66d1a.png" />
+<img alt="../../_images/5a628bad7a840b2d11aca71abc53583bdc02075fc5d7ef1800b781eace1fac86.png" src="../../_images/5a628bad7a840b2d11aca71abc53583bdc02075fc5d7ef1800b781eace1fac86.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1543,7 +1555,7 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/161de224260096b6b230d56762bb402df4fb1ccebf5f552d43b1bff7bc36b532.png" src="../../_images/161de224260096b6b230d56762bb402df4fb1ccebf5f552d43b1bff7bc36b532.png" />
+<img alt="../../_images/ef2e2888d7c33d76a427008b6eaa642f57e44508de549d1ec2c6d2ea3202f90b.png" src="../../_images/ef2e2888d7c33d76a427008b6eaa642f57e44508de549d1ec2c6d2ea3202f90b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1555,13 +1567,13 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1a7b4b5d0674a6c2629a35bf110aacdff9334169bf58fc685371f870b9cce605.png" src="../../_images/1a7b4b5d0674a6c2629a35bf110aacdff9334169bf58fc685371f870b9cce605.png" />
+<img alt="../../_images/cde582acfb518465c50151bc41793cf6a4faca9c2038bf664f74832916323c2b.png" src="../../_images/cde582acfb518465c50151bc41793cf6a4faca9c2038bf664f74832916323c2b.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Fast_Fourier_transform">Wikipedia: Fast Fourier Transform</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_cosine_transform">Wikipedia: Discrete Cosine Transform</a></p></li>
@@ -1597,11 +1609,10 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="2_Noise_reduction.html"
@@ -1621,10 +1632,7 @@ $<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' 
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1703,8 +1711,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

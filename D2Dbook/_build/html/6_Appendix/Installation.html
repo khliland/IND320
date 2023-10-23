@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Installation &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="TBA" href="../5_Deployment/Deployment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -74,6 +76,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -198,6 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -398,10 +410,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -409,7 +421,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -465,23 +477,23 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h1>
 <section id="general-note-on-windows-installations">
-<h2>General note on Windows installations<a class="headerlink" href="#general-note-on-windows-installations" title="Permalink to this headline">#</a></h2>
+<h2>General note on Windows installations<a class="headerlink" href="#general-note-on-windows-installations" title="Permalink to this heading">#</a></h2>
 <p>When a system wide change like adding/changing environment variables or installing a program is performed, this does not appear in the current session of a Jupyter Notebook or other module that is started (directly or indirectly) from the command line. A restart of the whole Jupyter Notebook server may therefore be needed after the mentioned changes to see their effects.</p>
 <section id="company-managed-windows-computers">
-<h3>Company managed Windows computers<a class="headerlink" href="#company-managed-windows-computers" title="Permalink to this headline">#</a></h3>
+<h3>Company managed Windows computers<a class="headerlink" href="#company-managed-windows-computers" title="Permalink to this heading">#</a></h3>
 <p>Some companies and organisations, e.g., the Norwegian University of Life Sciences (NMBU), do not give administrative rights to their employees by default. Instead they have a Software Center with installable programs. For NMBU the Software Center includes Anaconda, VS Code, Docker (with automatic WSL installation), Java, and Power BI Desktop.</p>
 </section>
 </section>
 <section id="python">
-<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>An up to date installation of Python is recommended.</p></li>
 <li><p>This book has been built using the minial conda installer <a class="reference external" href="https://docs.conda.io/projects/miniconda/en/latest/">miniconda</a>.</p></li>
 </ul>
 <section id="conda-environments">
-<h3>Conda environments<a class="headerlink" href="#conda-environments" title="Permalink to this headline">#</a></h3>
+<h3>Conda environments<a class="headerlink" href="#conda-environments" title="Permalink to this heading">#</a></h3>
 <ul>
 <li><p>A <em>conda environment</em> is a self contained Python environment with its own Python version and installed packages.</p></li>
 <li><p>Conda environments can be created and activated in a terminal on POSIX systems (macOS, Unix, Linux) or from a <em>Conda prompt</em> on Windows.</p></li>
@@ -493,17 +505,18 @@ document.write(`
 </pre></div>
 </div>
 </li>
+<li><p>If you get an error regarding Rust, you may need to install Rust separately, e.g, from <a class="reference external" href="https://www.rust-lang.org/tools/install">their webpage</a> or using <a class="reference external" href="https://formulae.brew.sh/formula/rust">Homebrew</a>.</p></li>
 </ul>
 </section>
 </section>
 <section id="integrated-developer-environment-ide">
-<h2>Integrated Developer Environment - IDE<a class="headerlink" href="#integrated-developer-environment-ide" title="Permalink to this headline">#</a></h2>
+<h2>Integrated Developer Environment - IDE<a class="headerlink" href="#integrated-developer-environment-ide" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>There are many to choose between, e.g., the poular freeware applications <a class="reference external" href="https://www.jetbrains.com/pycharm/">PyCharm</a> and Visual Studio Code (<a class="reference external" href="https://code.visualstudio.com/">VS Code</a>).</p></li>
 <li><p>This book was developed using VS Code.</p></li>
 </ul>
 <section id="vs-code">
-<h3>VS Code<a class="headerlink" href="#vs-code" title="Permalink to this headline">#</a></h3>
+<h3>VS Code<a class="headerlink" href="#vs-code" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Download and install <a class="reference external" href="https://code.visualstudio.com/">VS Code</a>.</p></li>
 <li><p>Add extensions for Python and Jupyter, possibly also for JSON viewer, GitHub Copilot, etc.</p></li>
@@ -513,14 +526,14 @@ document.write(`
 </section>
 </section>
 <section id="git">
-<h2>Git<a class="headerlink" href="#git" title="Permalink to this headline">#</a></h2>
+<h2>Git<a class="headerlink" href="#git" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Python pip installation from GitHub requires a local git system.</p></li>
 <li><p>If your computer does not have git installed by default, this can be installed from <a class="reference external" href="https://git-scm.com/downloads">git-scm.com</a>.</p></li>
 </ul>
 </section>
 <section id="docker">
-<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">#</a></h2>
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>On POSIX systems, Docker desktop can be installed from <a class="reference external" href="https://www.docker.com/">docker.com</a>.</p></li>
 <li><p>On Windows computers, Docker requires installation/activation of the Windows Subsystem for Linux (WSL) for full functionality. This can be installed from a command prompt using the following command:</p>
@@ -532,7 +545,7 @@ document.write(`
 </ul>
 </section>
 <section id="cassandra">
-<h2>Cassandra<a class="headerlink" href="#cassandra" title="Permalink to this headline">#</a></h2>
+<h2>Cassandra<a class="headerlink" href="#cassandra" title="Permalink to this heading">#</a></h2>
 <p>Assumptions:</p>
 <ul class="simple">
 <li><p>Docker installed on system</p></li>
@@ -546,7 +559,7 @@ To install a newer version from the terminal you can write the following:</p>
 </div>
 </section>
 <section id="java">
-<h2>Java<a class="headerlink" href="#java" title="Permalink to this headline">#</a></h2>
+<h2>Java<a class="headerlink" href="#java" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>To use PySpark one needs a Java installation.</p></li>
 <li><p>Several vendors make their own Java versions.</p>
@@ -564,7 +577,7 @@ To install a newer version from the terminal you can write the following:</p>
 </ul>
 </section>
 <section id="spark">
-<h2>Spark<a class="headerlink" href="#spark" title="Permalink to this headline">#</a></h2>
+<h2>Spark<a class="headerlink" href="#spark" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Spark is originally made for POSIX systems with Hadoop. On Windows computers it is therefore dependent on specialised setup or a set of drivers called winutils.</p>
 <ul>
@@ -619,11 +632,10 @@ To install a newer version from the terminal you can write the following:</p>
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="../5_Deployment/Deployment.html"
@@ -634,10 +646,7 @@ To install a newer version from the terminal you can write the following:</p>
         <p class="prev-next-title">TBA</p>
       </div>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -716,8 +725,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Outlier statistics &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -68,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Anomaly detection" href="3_Anomaly_detection.html" />
     <link rel="prev" title="Outliers and anomalies" href="1_Outliers_and_anomalies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -201,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -401,10 +413,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -412,7 +424,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -467,7 +479,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="outlier-statistics">
-<h1>Outlier statistics<a class="headerlink" href="#outlier-statistics" title="Permalink to this headline">#</a></h1>
+<h1>Outlier statistics<a class="headerlink" href="#outlier-statistics" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Determining if a sample or timepoint is a statistical outlier often a two-step process:</p>
 <ol class="arabic simple">
@@ -478,7 +490,7 @@ document.write(`
 <li><p>(Multivariate) <a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_process_control">Statistical Process Control</a>, part of <a class="reference external" href="https://en.wikipedia.org/wiki/Six_Sigma"><span class="math notranslate nohighlight">\(6\sigma\)</span></a> process improvement, has a wide range of methods for this.</p></li>
 </ul>
 <section id="statistical-process-control-spc">
-<h2>Statistical Process Control - SPC<a class="headerlink" href="#statistical-process-control-spc" title="Permalink to this headline">#</a></h2>
+<h2>Statistical Process Control - SPC<a class="headerlink" href="#statistical-process-control-spc" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The simplest form handles a single variable.</p></li>
 <li><p>A normal distribution is assumed, but some deviation is tolerated.</p></li>
@@ -510,7 +522,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/caef5871fb94576db81d46f0f501c551414a04b14cd2f2604cfcc26bafe1ba83.png" src="../../_images/caef5871fb94576db81d46f0f501c551414a04b14cd2f2604cfcc26bafe1ba83.png" />
+<img alt="../../_images/124c58d2912288b33201bc2c7c75155375741ee6a15f42c02504604f6663547c.png" src="../../_images/124c58d2912288b33201bc2c7c75155375741ee6a15f42c02504604f6663547c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -533,7 +545,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <section id="control-charts">
-<h3>Control charts<a class="headerlink" href="#control-charts" title="Permalink to this headline">#</a></h3>
+<h3>Control charts<a class="headerlink" href="#control-charts" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A common way of assessing outliers is to plot the series together with lower and upper boundaries.</p></li>
 </ul>
@@ -560,12 +572,12 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/058d252f775a6a53dc89ffd7ee6308951c24da78f5153daa1a9bc5fc6d680815.png" src="../../_images/058d252f775a6a53dc89ffd7ee6308951c24da78f5153daa1a9bc5fc6d680815.png" />
+<img alt="../../_images/31b7a7a59190ef33f4e578ccec7090c2f3766e40d5f09242cb37d203607db08a.png" src="../../_images/31b7a7a59190ef33f4e578ccec7090c2f3766e40d5f09242cb37d203607db08a.png" />
 </div>
 </div>
 </section>
 <section id="histograms">
-<h3>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">#</a></h3>
+<h3>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Histograms show you a cummulative view over a set of observations.</p></li>
 <li><p>If the observed distribution is very different from a bell curve (normal distribution), the +/-3 SD will not have the expected coverage.</p>
@@ -589,7 +601,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d698a7a84d9dece71700fe6c290e115c2fc2adf18b490f3f0301b38de7a46aa2.png" src="../../_images/d698a7a84d9dece71700fe6c290e115c2fc2adf18b490f3f0301b38de7a46aa2.png" />
+<img alt="../../_images/9434a83d43714278452bc12d9db4ac6ad224e9b7461ef9186b95dd0cf5789eee.png" src="../../_images/9434a83d43714278452bc12d9db4ac6ad224e9b7461ef9186b95dd0cf5789eee.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -601,14 +613,14 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.53895218829654e-05
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.538952188296541e-05
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="quantile-plots">
-<h3>Quantile plots<a class="headerlink" href="#quantile-plots" title="Permalink to this headline">#</a></h3>
+<h3>Quantile plots<a class="headerlink" href="#quantile-plots" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A quantile plot plots expected quantiles of a distributon against observed quantiles from data.</p></li>
 <li><p>The basic distribution is the normal probability distribution.</p></li>
@@ -623,12 +635,12 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ba38b609c1141263d5a7af2f02cfebfe87ccff6d7f3b0ff7d55d48e5bdfa2f1d.png" src="../../_images/ba38b609c1141263d5a7af2f02cfebfe87ccff6d7f3b0ff7d55d48e5bdfa2f1d.png" />
+<img alt="../../_images/cc25779038748e0cec9df070d78f87739c26b94099f3f52799ba768bf26eb3dd.png" src="../../_images/cc25779038748e0cec9df070d78f87739c26b94099f3f52799ba768bf26eb3dd.png" />
 </div>
 </div>
 </section>
 <section id="robust-statistics">
-<h3>Robust statistics<a class="headerlink" href="#robust-statistics" title="Permalink to this headline">#</a></h3>
+<h3>Robust statistics<a class="headerlink" href="#robust-statistics" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Instead of mean and standard deviation, one can use more robust calculations.</p></li>
 <li><p><em>Trimmed mean</em> means first removing a proportion, e.g., 5% of the most extreme observations before calculating the mean.</p>
@@ -695,7 +707,7 @@ Median absolute deviation: 0.647
 </section>
 </section>
 <section id="heuristics">
-<h2>Heuristics<a class="headerlink" href="#heuristics" title="Permalink to this headline">#</a></h2>
+<h2>Heuristics<a class="headerlink" href="#heuristics" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>As seen above, to be flagged in the base case will happen by accident 1 in 370 cases.</p></li>
 <li><p>The probability quickly shrinks if additional requirements are added, e.g., 3 cases in a row outside +/- 3 std.</p>
@@ -768,12 +780,12 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/144241c085b259361084b96629e396dd9aedfb68c1b4d37c4af1c64de3e84e1e.png" src="../../_images/144241c085b259361084b96629e396dd9aedfb68c1b4d37c4af1c64de3e84e1e.png" />
+<img alt="../../_images/5c14035573ed387ce85641469f9c99684cfd0c2f7f30a10182a84858c729ebaf.png" src="../../_images/5c14035573ed387ce85641469f9c99684cfd0c2f7f30a10182a84858c729ebaf.png" />
 </div>
 </div>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Import the data called <em>bananas.csv</em>.</p></li>
 <li><p>Assume the first 500 samples are “in control” and calculate their <em>mean</em> and <em>standard deviation</em>.</p></li>
@@ -781,7 +793,7 @@ Proportion: 1 in 84927
 </ul>
 </section>
 <section id="multivariate-series">
-<h2>Multivariate series<a class="headerlink" href="#multivariate-series" title="Permalink to this headline">#</a></h2>
+<h2>Multivariate series<a class="headerlink" href="#multivariate-series" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Though each variable can be handled separately with SPC, it is often more interesting to assess the combined effect.</p></li>
 <li><p>Smaller deviations in single variables may be detected if these occur in relation to other variables and their variation.</p></li>
@@ -816,7 +828,7 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1c7b0ec39ca58e78dded1bb6f0ad47a496830d687325549208ec721b88851541.png" src="../../_images/1c7b0ec39ca58e78dded1bb6f0ad47a496830d687325549208ec721b88851541.png" />
+<img alt="../../_images/4619a870caddb3623163bb2bbb1521bcaacdcde5021f0b6f58efff6d16fe7b91.png" src="../../_images/4619a870caddb3623163bb2bbb1521bcaacdcde5021f0b6f58efff6d16fe7b91.png" />
 </div>
 </div>
 <p>We use the first three years as the “in control” region and estimate mean and covariance from it.</p>
@@ -881,7 +893,7 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9802e628e688643cdf46361414cdb9a817c424e744e198234f953898fbd6ffa0.png" src="../../_images/9802e628e688643cdf46361414cdb9a817c424e744e198234f953898fbd6ffa0.png" />
+<img alt="../../_images/c7e651a18f2ff60d7b86c0ac26ea181463fccf591db102a95aee2c8c0624e337.png" src="../../_images/c7e651a18f2ff60d7b86c0ac26ea181463fccf591db102a95aee2c8c0624e337.png" />
 </div>
 </div>
 <p>Finally, we observe which observations are marked as outlying in the original series.</p>
@@ -910,11 +922,11 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e59f851f68b2ca7b641fe0470d3ca8c144ddef1cd5e38ed387c3802630ada7bf.png" src="../../_images/e59f851f68b2ca7b641fe0470d3ca8c144ddef1cd5e38ed387c3802630ada7bf.png" />
+<img alt="../../_images/061f42e4acd362daee58b84b678e00b766e473a9e64d3aba7e69b66265e99c7c.png" src="../../_images/061f42e4acd362daee58b84b678e00b766e473a9e64d3aba7e69b66265e99c7c.png" />
 </div>
 </div>
 <section id="robust-multivariate-statistics">
-<h3>Robust multivariate statistics<a class="headerlink" href="#robust-multivariate-statistics" title="Permalink to this headline">#</a></h3>
+<h3>Robust multivariate statistics<a class="headerlink" href="#robust-multivariate-statistics" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Aslo multivariate data can need robust statistics because of non-normality or outliers.</p></li>
 <li><p>One method for robust estimation of mean and standard deviation is called Minimum Covariance Determinant (MCD).</p></li>
@@ -952,7 +964,7 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </div>
 </section>
 <section id="id1">
-<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Repeat the calculations of mean, covariance Hotelling’s <span class="math notranslate nohighlight">\(T^2\)</span>, etc. for the Beijing pollution data.</p></li>
 <li><p>Exchange ordinary statistics with the MCD alternative.</p></li>
@@ -960,7 +972,7 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </section>
 </section>
 <section id="time-resolution">
-<h2>Time resolution<a class="headerlink" href="#time-resolution" title="Permalink to this headline">#</a></h2>
+<h2>Time resolution<a class="headerlink" href="#time-resolution" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The (M)SPC examples have assumed a constant mean and standard deviation.</p></li>
 <li><p>It may also be interesting to look at det deviation from smoothed data to look for local outliers.</p>
@@ -985,7 +997,7 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0c040261016e658af65ac4509298f56aff60b7ec159628c1e82d04e4f4212e58.png" src="../../_images/0c040261016e658af65ac4509298f56aff60b7ec159628c1e82d04e4f4212e58.png" />
+<img alt="../../_images/548d59d3c433dad97cfafff062b2e83449234a021923df37c8ead39d13a7027c.png" src="../../_images/548d59d3c433dad97cfafff062b2e83449234a021923df37c8ead39d13a7027c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1011,12 +1023,12 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/61d1fa1da316ec55c22adddd7d7a9f03bc806be952ff3f58c7c8cd5d27b10cdb.png" src="../../_images/61d1fa1da316ec55c22adddd7d7a9f03bc806be952ff3f58c7c8cd5d27b10cdb.png" />
+<img alt="../../_images/6453a769dfdbde68d0938e9517e0125e2f470b5c68ab6fe98c690bc2cb922633.png" src="../../_images/6453a769dfdbde68d0938e9517e0125e2f470b5c68ab6fe98c690bc2cb922633.png" />
 </div>
 </div>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_process_control">Wikipedia: Statistical Process Control</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Six_Sigma">Wikipedia: <span class="math notranslate nohighlight">\(6\sigma\)</span></a></p></li>
@@ -1054,11 +1066,10 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="1_Outliers_and_anomalies.html"
@@ -1078,10 +1089,7 @@ where \)</span>n<span class="math notranslate nohighlight">\( is the number of s
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1159,8 +1167,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

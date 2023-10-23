@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>REST API &#8212; Data to Decision - IND320</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Demonstration of API using OpenWeatherMap.org" href="3_OpenWeatherMap.html" />
     <link rel="prev" title="APIs" href="1_APIs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -199,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
 </ul>
 </li>
 </ul>
@@ -399,10 +411,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -410,7 +422,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -458,7 +470,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rest-api">
-<h1>REST API<a class="headerlink" href="#rest-api" title="Permalink to this headline">#</a></h1>
+<h1>REST API<a class="headerlink" href="#rest-api" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>REST stands for Representational State Transfer.</p></li>
 <li><p>Architectural style for designing web services.</p></li>
@@ -466,7 +478,7 @@ document.write(`
 <li><p>For us they are mainly interfaces for information retrieval.</p></li>
 </ul>
 <section id="accessing-rest">
-<h2>Accessing REST<a class="headerlink" href="#accessing-rest" title="Permalink to this headline">#</a></h2>
+<h2>Accessing REST<a class="headerlink" href="#accessing-rest" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>REST services are based on the HTTP protocol, and they use a set of well-defined verbs to manipulate resources.</p></li>
 <li><p>Some are open and free, some need an API key (free or subscription)</p></li>
@@ -480,7 +492,7 @@ document.write(`
 </li>
 </ul>
 <section id="retrieving-data-get">
-<h3>Retrieving data (GET)<a class="headerlink" href="#retrieving-data-get" title="Permalink to this headline">#</a></h3>
+<h3>Retrieving data (GET)<a class="headerlink" href="#retrieving-data-get" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A simple example without an API key (<a class="reference external" href="https://www.hvakosterstrommen.no/strompris-api">Strømpris API</a>):</p></li>
 </ul>
@@ -512,7 +524,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-data-post">
-<h3>Creating data (POST)<a class="headerlink" href="#creating-data-post" title="Permalink to this headline">#</a></h3>
+<h3>Creating data (POST)<a class="headerlink" href="#creating-data-post" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For this example we assume there is an API server running locally.</p></li>
 <li><p>We rely on the <a class="reference external" href="https://palletsprojects.com/p/flask/">Flask</a> framework (see flask_API.py) in the current folder.</p>
@@ -560,7 +572,7 @@ document.write(`
 </div>
 </section>
 <section id="change-data-update">
-<h3>Change data (UPDATE)<a class="headerlink" href="#change-data-update" title="Permalink to this headline">#</a></h3>
+<h3>Change data (UPDATE)<a class="headerlink" href="#change-data-update" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>This command can mostly be exchanged with POST.</p></li>
 <li><p>The Flask framework does not have a separate UPDATE (see implementation in flask_API.py).</p></li>
@@ -583,7 +595,7 @@ document.write(`
 </div>
 </section>
 <section id="remove-data-delete">
-<h3>Remove data (DELETE)<a class="headerlink" href="#remove-data-delete" title="Permalink to this headline">#</a></h3>
+<h3>Remove data (DELETE)<a class="headerlink" href="#remove-data-delete" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Let’s remove some data and try to read it again.</p></li>
 </ul>
@@ -614,41 +626,44 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/requests/models.py:971,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/IND320/lib/python3.11/site-packages/requests/models.py:971,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
 <span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
 
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/simplejson/__init__.py:514,</span> in <span class="ni">loads</span><span class="nt">(s, encoding, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, use_decimal, allow_nan, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">use_decimal</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">allow_nan</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">514</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">File ~/miniforge3/envs/IND320/lib/python3.11/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/simplejson/decoder.py:386,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w, _PY3)</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">386</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+<span class="nn">File ~/miniforge3/envs/IND320/lib/python3.11/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/simplejson/decoder.py:416,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx, _w, _PY3)</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span>         <span class="n">idx</span> <span class="o">+=</span> <span class="mi">3</span>
-<span class="ne">--&gt; </span><span class="mi">416</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_once</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="nn">File ~/miniforge3/envs/IND320/lib/python3.11/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
 
 <span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
 
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">id</span> <span class="o">=</span> <span class="s1">&#39;test&#39;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/api/get/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
-<span class="nn">File ~/miniforge3/envs/tf_M1/lib/python3.10/site-packages/requests/models.py:975,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="nn">File ~/miniforge3/envs/IND320/lib/python3.11/site-packages/requests/models.py:975,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
@@ -663,7 +678,7 @@ document.write(`
 </section>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Look at flask_API.py.</p></li>
 <li><p>Add “try-except” to GET to return an empty JSON when an ‘id’ does not exist.</p></li>
@@ -671,7 +686,7 @@ document.write(`
 </ul>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h2>
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Representational_state_transfer">Wikipedia: REST</a></p></li>
 <li><p><a class="reference external" href="https://palletsprojects.com/p/flask/">Flask</a> local HTTP server in Python.</p></li>
@@ -707,11 +722,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="1_APIs.html"
@@ -731,10 +745,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -805,8 +816,8 @@ By Kristian Hovde Liland
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
