@@ -1,0 +1,1916 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Forecasting &#8212; Data to Decision - IND320</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4_Machine_Learning/3_Forecasting';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TBA" href="../5_Deployment/Deployment.html" />
+    <link rel="prev" title="Pivot tables" href="2_Pivoting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../0_General/Introduction.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../0_General/Introduction.html">
+                    IND320 - Data to decision
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data-Driven Decision Making</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_Decision_making/1_Data_pipeline.html">Data pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_Decision_making/2_Decision_making.html">DDDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Decision_making/3_Dashboards_reports.html">Dashboards vs Reports</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Sources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_Data_sources/1_Formats/1_Formats.html">Static and streaming data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/1_Formats/2_Data_formats.html">Data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_Data_sources/2_Databases/1_Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_Data_sources/3_APIs/1_APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/3_APIs/2_REST.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Data_sources/3_APIs/4_API_Tokens.html">API Tokens</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/1_Signal/3_Decomposition.html">Decompostion</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/1_Preprocessing.html">Pre-processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1_Machine_Learning.html">Machine Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2_Pivoting.html">Pivot tables</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Forecasting</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5_Deployment/Deployment.html">TBA</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6_Appendix/Installation.html">Installation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/4_Machine_Learning/3_Forecasting.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F4_Machine_Learning/3_Forecasting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/4_Machine_Learning/3_Forecasting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Forecasting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shipping-oil-interst-rates-and-exchange-rates">Shipping, oil, interst rates and exchange rates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-without-time">Modelling without time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">Backtesting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-the-response-variable-in-the-predictors">Including the response variable in the predictors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-lags">Five lags</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="forecasting">
+<h1>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Time series prediction, or forecasting, can be very similar to modeling and prediction with tabular data.</p>
+<ul>
+<li><p>A set of input variables, usually a single output variable.</p></li>
+<li><p>Ordinary machine learning methods can be applied.</p></li>
+</ul>
+</li>
+<li><p>The inclusion of time can be done by adding one or more delayed variables, possibly including the response.</p></li>
+<li><p>Specific forecasting methods also exist, e.g., the (S)AR(I)MA(X) family of methods<br />
+(Seasonal Auto-Regressive Integrated Moving Average with eXogenous factors).</p></li>
+<li><p>Neural network models for forecasting include Recurrent Neural Networks, Long-Short Term Memory, Transformers, Retentive Networks, Facebook’s <a class="reference external" href="https://pypi.org/project/fbprophet/">Prophet</a>, Amazon’s <a class="reference external" href="https://pypi.org/project/gluonts/">GluonTS/DeepAR</a>, etc.</p>
+<ul>
+<li><p>Large Language Models, e.g., used in Chat GPT, Bard, etc., rely heavily on forecasting the next word(s) in a sequence.</p></li>
+</ul>
+</li>
+</ul>
+<section id="validation">
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>As soon as <em>time</em> is part of a model, extra care needs to be taken in validation.</p></li>
+<li><p>Cross-validation*, training-validation-test splits are still relevant.</p></li>
+<li><p>However, training, validation and test sets needs to follow time chronologically and cannot overlap.</p></li>
+<li><p>Instead of traditional cross-validation, one can perform <em>backtesting</em> with a sliding or expanding window:</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Backtesting_sliding.png"><img alt="../_images/Backtesting_sliding.png" src="../_images/Backtesting_sliding.png" style="width: 350px;" /></a>
+<a class="reference internal image-reference" href="../_images/Backtesting_expanding.png"><img alt="../_images/Backtesting_expanding.png" src="../_images/Backtesting_expanding.png" style="width: 350px;" /></a>
+<p>Note that the first samples will never be in the test set.</p>
+<p>Figures from <a class="reference external" href="https://www.uber.com/en-NO/blog/omphalos/">Roy Yang’s bloggpost on uber.com</a></p>
+</section>
+<section id="shipping-oil-interst-rates-and-exchange-rates">
+<h2>Shipping, oil, interst rates and exchange rates<a class="headerlink" href="#shipping-oil-interst-rates-and-exchange-rates" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>These data are public data from the Norwegian Bank, SSB, Eurostat and U.S. Energy Information Administration for the period 2000-2014 (monthly).</p></li>
+<li><p>The data are available at <a class="reference external" href="https://www.researchgate.net/publication/275647285_Related_Dataset">ResearchGate</a> and were part of a <a class="reference external" href="https://nmbu.brage.unit.no/nmbu-xmlui/handle/11250/283547">Master thesis</a> by Raju Rimal.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the FinalData sheet of the OilExchange.xlsx file using Pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">OilExchange</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/OilExchange.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;FinalData&#39;</span><span class="p">)</span> <span class="c1"># You may get a warning here, because the file contains pasted grahics</span>
+<span class="n">OilExchange</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>PerEURO</th>
+      <th>PerUSD</th>
+      <th>KeyIntRate</th>
+      <th>LoanIntRate</th>
+      <th>EuroIntRate</th>
+      <th>CPI</th>
+      <th>OilSpotPrice</th>
+      <th>ImpOldShip</th>
+      <th>ImpNewShip</th>
+      <th>...</th>
+      <th>ExpExShipOilPlat</th>
+      <th>TrBal</th>
+      <th>TrBalExShipOilPlat</th>
+      <th>TrBalMland</th>
+      <th>ly.var</th>
+      <th>l2y.var</th>
+      <th>l.CPI</th>
+      <th>ExcChange</th>
+      <th>Testrain</th>
+      <th>season</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2000-01-01</td>
+      <td>8.1215</td>
+      <td>8.0129</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.04</td>
+      <td>104.1</td>
+      <td>25.855741</td>
+      <td>114</td>
+      <td>915</td>
+      <td>...</td>
+      <td>38619</td>
+      <td>18575</td>
+      <td>19238</td>
+      <td>-3257</td>
+      <td>8.0968</td>
+      <td>8.1907</td>
+      <td>103.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>winter</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2000-02-01</td>
+      <td>8.0991</td>
+      <td>8.2361</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.28</td>
+      <td>104.6</td>
+      <td>27.317905</td>
+      <td>527</td>
+      <td>359</td>
+      <td>...</td>
+      <td>38730</td>
+      <td>14217</td>
+      <td>17200</td>
+      <td>-4529</td>
+      <td>8.1215</td>
+      <td>8.0968</td>
+      <td>104.1</td>
+      <td>Decrease</td>
+      <td>True</td>
+      <td>winter</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2000-03-01</td>
+      <td>8.1110</td>
+      <td>8.4111</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.51</td>
+      <td>104.7</td>
+      <td>26.509183</td>
+      <td>1385</td>
+      <td>929</td>
+      <td>...</td>
+      <td>42642</td>
+      <td>13697</td>
+      <td>18380</td>
+      <td>-5562</td>
+      <td>8.0991</td>
+      <td>8.1215</td>
+      <td>104.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2000-04-01</td>
+      <td>8.1538</td>
+      <td>8.6081</td>
+      <td>5.632353</td>
+      <td>7.632353</td>
+      <td>3.69</td>
+      <td>105.1</td>
+      <td>21.558821</td>
+      <td>450</td>
+      <td>2194</td>
+      <td>...</td>
+      <td>36860</td>
+      <td>13142</td>
+      <td>15499</td>
+      <td>-5147</td>
+      <td>8.1110</td>
+      <td>8.0991</td>
+      <td>104.7</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2000-05-01</td>
+      <td>8.2015</td>
+      <td>9.0471</td>
+      <td>5.750000</td>
+      <td>7.750000</td>
+      <td>3.92</td>
+      <td>105.1</td>
+      <td>25.147242</td>
+      <td>239</td>
+      <td>608</td>
+      <td>...</td>
+      <td>42932</td>
+      <td>17733</td>
+      <td>18505</td>
+      <td>-5732</td>
+      <td>8.1538</td>
+      <td>8.1110</td>
+      <td>105.1</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OilExchange</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Date&#39;, &#39;PerEURO&#39;, &#39;PerUSD&#39;, &#39;KeyIntRate&#39;, &#39;LoanIntRate&#39;, &#39;EuroIntRate&#39;,
+       &#39;CPI&#39;, &#39;OilSpotPrice&#39;, &#39;ImpOldShip&#39;, &#39;ImpNewShip&#39;, &#39;ImpOilPlat&#39;,
+       &#39;ImpExShipOilPlat&#39;, &#39;ExpCrdOil&#39;, &#39;ExpNatGas&#39;, &#39;ExpCond&#39;, &#39;ExpOldShip&#39;,
+       &#39;ExpNewShip&#39;, &#39;ExpOilPlat&#39;, &#39;ExpExShipOilPlat&#39;, &#39;TrBal&#39;,
+       &#39;TrBalExShipOilPlat&#39;, &#39;TrBalMland&#39;, &#39;ly.var&#39;, &#39;l2y.var&#39;, &#39;l.CPI&#39;,
+       &#39;ExcChange&#39;, &#39;Testrain&#39;, &#39;season&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the FinalCodeBook sheet of the OilExchange.xlsx file using Pandas</span>
+<span class="n">Explanations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/OilExchange.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;FinalCodeBook&#39;</span><span class="p">)</span>
+<span class="n">Explanations</span><span class="p">[[</span><span class="s1">&#39;Variables&#39;</span><span class="p">,</span><span class="s1">&#39;Label&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variables</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Date</td>
+      <td>Date</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>PerEURO</td>
+      <td>Exchange Rate of NOK per Euro</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PerUSD</td>
+      <td>Exchange Rate of NOK per USD</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>KeyIntRate</td>
+      <td>Key policy rate (Percent)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LoanIntRate</td>
+      <td>Overnight Lending Rate (Nominal)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>EuroIntRate</td>
+      <td>Money market interest rates of Euro area (EA11...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CPI</td>
+      <td>Consumer Price Index (1998=100)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>OilSpotPrice</td>
+      <td>Europe Brent Spot Price FOB (NOK per Barrel)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>ImpOldShip</td>
+      <td>Imports of elderly ships (NOK million)</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>ImpNewShip</td>
+      <td>Imports of new ships (NOK million)</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>ImpOilPlat</td>
+      <td>Imports of oil platforms (NOK million)</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>ImpExShipOilPlat</td>
+      <td>Imports excl. ships and oil platforms (NOK mil...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>ExpCrdOil</td>
+      <td>Exports of crude oil (NOK million)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>ExpNatGas</td>
+      <td>Exports of natural gas (NOK million)</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>ExpCond</td>
+      <td>Exports of condensates (NOK million)</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>ExpOldShip</td>
+      <td>Exports of elderly ships (NOK million)</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>ExpNewShip</td>
+      <td>Exports of new ships (NOK million)</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>ExpOilPlat</td>
+      <td>Exports of oil platforms (NOK million)</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>ExpExShipOilPlat</td>
+      <td>Exports excl. ships and oil platforms (NOK mil...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>TrBal</td>
+      <td>Trade balance (Total exports - total imports) ...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>TrBalExShipOilPlat</td>
+      <td>Trade balance (Exports - imports, both excl. s...</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>TrBalMland</td>
+      <td>Trade balance (Mainland exports - imports excl...</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>ly.var</td>
+      <td>First Lag Exchange Rate of NOK per Euro</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>l2y.var</td>
+      <td>Second Lag Exchange Rate of NOK per Euro</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>l.CPI</td>
+      <td>First Lag of Consumer Price Index</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>ExcChange</td>
+      <td>Change status of Exchange Rate (Increase, Decr...</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Testrain</td>
+      <td>Test and Train seperation of data</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>season</td>
+      <td>Seasons</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="modelling-without-time">
+<h3>Modelling without time<a class="headerlink" href="#modelling-without-time" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>For starters, let us ignore time and build a simple prediction model for the exchange rate.</p></li>
+<li><p>We will use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">scikit-learn’s Pipeline</a> to combine standardisation (scaling) and linear regression and <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html">cross_val_predict</a> to perform random K-fold cross-validation.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Pipeline, StandardScaler, and LinearRegression from their respective modules in sklearn</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Create a pipeline that scales the data and performs linear regression</span>
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span> <span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">())])</span>
+
+<span class="c1"># Fit the pipeline with PerEURO as response and variables 3:-4 as predictors for the samples having True in the Testrain column</span>
+<span class="n">OilExchange_train</span> <span class="o">=</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">OilExchange</span><span class="o">.</span><span class="n">Testrain</span><span class="o">==</span><span class="kc">True</span><span class="p">,:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">OilExchange_test</span> <span class="o">=</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">OilExchange</span><span class="o">.</span><span class="n">Testrain</span><span class="o">==</span><span class="kc">False</span><span class="p">,:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]],</span> \
+         <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()), (&#x27;reg&#x27;, LinearRegression())])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()), (&#x27;reg&#x27;, LinearRegression())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Predict the corresponding data for Testrain = False</span>
+<span class="n">PerEURO_pred</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">OilExchange_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the predicted values against the actual values</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">OilExchange_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">PerEURO_pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Actual PerEURO&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Predicted PerEURO&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Test data predictions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ed0f8b595fdd3a6f2dacfa206977c577c9a536a7d0b827f3ebbb8497ea65744d.png" src="../_images/ed0f8b595fdd3a6f2dacfa206977c577c9a536a7d0b827f3ebbb8497ea65744d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Perform k-fold cross-validation with k=10</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span> <span class="c1"># NOTE: Not for time series!</span>
+<span class="n">PerEURO_cv</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]],</span> \
+                               <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Compute R^2 for PerEURO_cv</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+<span class="n">r2_cv</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">PerEURO_cv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross-validated R^2: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2_cv</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cross-validated R^2: 0.856
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="backtesting">
+<h3>Backtesting<a class="headerlink" href="#backtesting" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>scikit-learn has a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html">TimeSeriesSplit</a> which creates segments for backtesting.</p>
+<ul>
+<li><p>Expanding window is default.</p></li>
+<li><p>Sliding window can be applied by setting the right combination of parameters.</p></li>
+</ul>
+</li>
+<li><p>We will use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">scikit-learn’s cross_validate</a> to perform the cross-validation based on the backtesting segments (cross_val_predict assumes that all observations will be test data at some point).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting using scikit-learn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">TimeSeriesSplit</span>
+
+<span class="c1"># Some data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># Create time series cross-validation object with expanding window</span>
+<span class="n">tscv_expand</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tscv_expand</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tscv_expand</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test:  index=</span><span class="si">{</span><span class="n">test_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TimeSeriesSplit(gap=0, max_train_size=None, n_splits=5, test_size=None)
+Fold 0:
+  Train: index=[0]
+  Test:  index=[1]
+Fold 1:
+  Train: index=[0 1]
+  Test:  index=[2]
+Fold 2:
+  Train: index=[0 1 2]
+  Test:  index=[3]
+Fold 3:
+  Train: index=[0 1 2 3]
+  Test:  index=[4]
+Fold 4:
+  Train: index=[0 1 2 3 4]
+  Test:  index=[5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting with sliding window</span>
+<span class="n">tscv_slide</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">max_train_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tscv_slide</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tscv_slide</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test:  index=</span><span class="si">{</span><span class="n">test_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TimeSeriesSplit(gap=0, max_train_size=3, n_splits=3, test_size=None)
+Fold 0:
+  Train: index=[0 1 2]
+  Test:  index=[3]
+Fold 1:
+  Train: index=[1 2 3]
+  Test:  index=[4]
+Fold 2:
+  Train: index=[2 3 4]
+  Test:  index=[5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting with expanding window in the OilExchange data</span>
+<span class="n">tscv_expand</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># The segments</span>
+<span class="n">max_train</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tscv_expand</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">max_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">train_index</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test:  index=</span><span class="si">{</span><span class="n">test_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold 0:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15]
+  Test:  index=[16 17 18 19 20 21 22 23 24 25 26 27 28 29]
+Fold 1:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29]
+  Test:  index=[30 31 32 33 34 35 36 37 38 39 40 41 42 43]
+Fold 2:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43]
+  Test:  index=[44 45 46 47 48 49 50 51 52 53 54 55 56 57]
+Fold 3:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57]
+  Test:  index=[58 59 60 61 62 63 64 65 66 67 68 69 70 71]
+Fold 4:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71]
+  Test:  index=[72 73 74 75 76 77 78 79 80 81 82 83 84 85]
+Fold 5:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71
+ 72 73 74 75 76 77 78 79 80 81 82 83 84 85]
+  Test:  index=[86 87 88 89 90 91 92 93 94 95 96 97 98 99]
+Fold 6:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+ 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71
+ 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95
+ 96 97 98 99]
+  Test:  index=[100 101 102 103 104 105 106 107 108 109 110 111 112 113]
+Fold 7:
+  Train: index=[  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107
+ 108 109 110 111 112 113]
+  Test:  index=[114 115 116 117 118 119 120 121 122 123 124 125 126 127]
+Fold 8:
+  Train: index=[  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107
+ 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125
+ 126 127]
+  Test:  index=[128 129 130 131 132 133 134 135 136 137 138 139 140 141]
+Fold 9:
+  Train: index=[  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17
+  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35
+  36  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53
+  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89
+  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104 105 106 107
+ 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125
+ 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141]
+  Test:  index=[142 143 144 145 146 147 148 149 150 151 152 153 154 155]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting using expanding window with data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]],</span> \
+                                 <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="n">tscv_expand</span><span class="p">,</span> \
+                                    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00143194, 0.00120616, 0.00137496, 0.00140905, 0.00109005,
+        0.00107718, 0.00108409, 0.00107503, 0.00114608, 0.00106692]),
+ &#39;score_time&#39;: array([0.00065088, 0.00054312, 0.00058794, 0.00052595, 0.00049806,
+        0.00049496, 0.00048494, 0.00049925, 0.000489  , 0.00048995]),
+ &#39;test_score&#39;: array([-2.69048314e+03, -1.41149796e+00, -1.48578129e+00,  7.23344314e-01,
+        -6.50606924e-01, -3.58429116e+11,  7.24779062e-01,  6.71076212e-01,
+         3.28546992e-01,  3.81553550e-01]),
+ &#39;train_score&#39;: array([1.        , 0.99453091, 0.95716141, 0.93872775, 0.93292152,
+        0.90824008, 0.87955959, 0.90748863, 0.90501893, 0.90399728])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the backtesting results for train and test data, and under it ad the original data (PerEURO) as a subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;R^2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Backtesting results&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1b463e9550f36e00234c09021e542d1fd98706c38edca8bce354fad6f74ad506.png" src="../_images/1b463e9550f36e00234c09021e542d1fd98706c38edca8bce354fad6f74ad506.png" />
+</div>
+</div>
+<p><strong>Question:</strong> Does the behaviour make sense with regard to what is included in and predict from the model?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting with sliding window in the OilExchange data</span>
+<span class="n">tscv_slide</span> <span class="o">=</span> <span class="n">TimeSeriesSplit</span><span class="p">(</span><span class="n">max_train_size</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># The segments</span>
+<span class="n">max_train</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tscv_slide</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fold </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Train: index=</span><span class="si">{</span><span class="n">train_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">max_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">train_index</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test:  index=</span><span class="si">{</span><span class="n">test_index</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold 0:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15]
+  Test:  index=[16 17 18 19 20 21 22 23 24 25 26 27 28 29]
+Fold 1:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29]
+  Test:  index=[30 31 32 33 34 35 36 37 38 39 40 41 42 43]
+Fold 2:
+  Train: index=[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+ 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43]
+  Test:  index=[44 45 46 47 48 49 50 51 52 53 54 55 56 57]
+Fold 3:
+  Train: index=[13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36
+ 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57]
+  Test:  index=[58 59 60 61 62 63 64 65 66 67 68 69 70 71]
+Fold 4:
+  Train: index=[27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+ 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71]
+  Test:  index=[72 73 74 75 76 77 78 79 80 81 82 83 84 85]
+Fold 5:
+  Train: index=[41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64
+ 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85]
+  Test:  index=[86 87 88 89 90 91 92 93 94 95 96 97 98 99]
+Fold 6:
+  Train: index=[55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78
+ 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99]
+  Test:  index=[100 101 102 103 104 105 106 107 108 109 110 111 112 113]
+Fold 7:
+  Train: index=[ 69  70  71  72  73  74  75  76  77  78  79  80  81  82  83  84  85  86
+  87  88  89  90  91  92  93  94  95  96  97  98  99 100 101 102 103 104
+ 105 106 107 108 109 110 111 112 113]
+  Test:  index=[114 115 116 117 118 119 120 121 122 123 124 125 126 127]
+Fold 8:
+  Train: index=[ 83  84  85  86  87  88  89  90  91  92  93  94  95  96  97  98  99 100
+ 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118
+ 119 120 121 122 123 124 125 126 127]
+  Test:  index=[128 129 130 131 132 133 134 135 136 137 138 139 140 141]
+Fold 9:
+  Train: index=[ 97  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114
+ 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132
+ 133 134 135 136 137 138 139 140 141]
+  Test:  index=[142 143 144 145 146 147 148 149 150 151 152 153 154 155]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting using sliding window with data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]],</span> \
+                                 <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="n">tscv_slide</span><span class="p">,</span> \
+                                    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00154305, 0.00196886, 0.00131679, 0.00117612, 0.00113797,
+        0.00114202, 0.00113106, 0.00112176, 0.00111485, 0.00112224]),
+ &#39;score_time&#39;: array([0.0006268 , 0.00063586, 0.00055122, 0.00054193, 0.00052595,
+        0.00052977, 0.00053716, 0.0005312 , 0.00052619, 0.00052977]),
+ &#39;test_score&#39;: array([-2.69048314e+03, -1.41149796e+00, -1.48578129e+00,  2.15110054e-01,
+        -7.83627964e+00, -1.40606556e+12,  5.20015261e-01, -2.78711930e+00,
+        -7.94540495e+04,  3.87646039e-01]),
+ &#39;train_score&#39;: array([1.        , 0.99453091, 0.95716141, 0.94470747, 0.96005874,
+        0.90744159, 0.75351647, 0.96129276, 0.93446863, 0.94984339])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the backtesting results for train and test data, and under it ad the original data (PerEURO) as a subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;R^2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Backtesting results&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2655f7e8cc8e7e217337f26b3ea76372fc7d9323f01a245cdad63a193f93159f.png" src="../_images/2655f7e8cc8e7e217337f26b3ea76372fc7d9323f01a245cdad63a193f93159f.png" />
+</div>
+</div>
+<p><strong>Question:</strong> Again; does the behaviour make sense with regard to what is included in and predict from the model?</p>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Repeat the PerEuro predictions, but exchange LinearRegression with scikit-learns’s <em>PLSRegression</em>.</p></li>
+<li><p>Check if the number of components in the PLS model has an effect on the explained variance (<span class="math notranslate nohighlight">\(\text{R}^2\)</span>), either manually or using a <em>GridSearchCV</em>.</p></li>
+</ul>
+<section id="including-the-response-variable-in-the-predictors">
+<h3>Including the response variable in the predictors<a class="headerlink" href="#including-the-response-variable-in-the-predictors" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>As long as the training and test sets are not overlapping, we can include the response as a predictor.</p></li>
+<li><p>Adding the response lagged can be done as a single variable or several variables (i.e., several different lags).</p></li>
+<li><p>We will later look at ARIMA type models where time lag is the main mechanism for modelling.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add the Per Euro column to the OilExchange data but shifted 1 timepoint backwards (and backfill last value)</span>
+<span class="n">OilExchange_train</span><span class="p">[</span><span class="s1">&#39;PerEURO_lag1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">PerEURO</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+<span class="n">OilExchange_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>PerEURO</th>
+      <th>PerUSD</th>
+      <th>KeyIntRate</th>
+      <th>LoanIntRate</th>
+      <th>EuroIntRate</th>
+      <th>CPI</th>
+      <th>OilSpotPrice</th>
+      <th>ImpOldShip</th>
+      <th>ImpNewShip</th>
+      <th>...</th>
+      <th>TrBal</th>
+      <th>TrBalExShipOilPlat</th>
+      <th>TrBalMland</th>
+      <th>ly.var</th>
+      <th>l2y.var</th>
+      <th>l.CPI</th>
+      <th>ExcChange</th>
+      <th>Testrain</th>
+      <th>season</th>
+      <th>PerEURO_lag1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2000-01-01</td>
+      <td>8.1215</td>
+      <td>8.0129</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.04</td>
+      <td>104.1</td>
+      <td>25.855741</td>
+      <td>114</td>
+      <td>915</td>
+      <td>...</td>
+      <td>18575</td>
+      <td>19238</td>
+      <td>-3257</td>
+      <td>8.0968</td>
+      <td>8.1907</td>
+      <td>103.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>winter</td>
+      <td>8.1215</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2000-02-01</td>
+      <td>8.0991</td>
+      <td>8.2361</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.28</td>
+      <td>104.6</td>
+      <td>27.317905</td>
+      <td>527</td>
+      <td>359</td>
+      <td>...</td>
+      <td>14217</td>
+      <td>17200</td>
+      <td>-4529</td>
+      <td>8.1215</td>
+      <td>8.0968</td>
+      <td>104.1</td>
+      <td>Decrease</td>
+      <td>True</td>
+      <td>winter</td>
+      <td>8.1215</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2000-03-01</td>
+      <td>8.1110</td>
+      <td>8.4111</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.51</td>
+      <td>104.7</td>
+      <td>26.509183</td>
+      <td>1385</td>
+      <td>929</td>
+      <td>...</td>
+      <td>13697</td>
+      <td>18380</td>
+      <td>-5562</td>
+      <td>8.0991</td>
+      <td>8.1215</td>
+      <td>104.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+      <td>8.0991</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2000-04-01</td>
+      <td>8.1538</td>
+      <td>8.6081</td>
+      <td>5.632353</td>
+      <td>7.632353</td>
+      <td>3.69</td>
+      <td>105.1</td>
+      <td>21.558821</td>
+      <td>450</td>
+      <td>2194</td>
+      <td>...</td>
+      <td>13142</td>
+      <td>15499</td>
+      <td>-5147</td>
+      <td>8.1110</td>
+      <td>8.0991</td>
+      <td>104.7</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+      <td>8.1110</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2000-05-01</td>
+      <td>8.2015</td>
+      <td>9.0471</td>
+      <td>5.750000</td>
+      <td>7.750000</td>
+      <td>3.92</td>
+      <td>105.1</td>
+      <td>25.147242</td>
+      <td>239</td>
+      <td>608</td>
+      <td>...</td>
+      <td>17733</td>
+      <td>18505</td>
+      <td>-5732</td>
+      <td>8.1538</td>
+      <td>8.1110</td>
+      <td>105.1</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+      <td>8.1538</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting using sliding window with data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span> <span class="c1">#       Negative indexing is scary!      --&gt;</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]],</span> <span class="n">OilExchange_train</span><span class="p">[</span><span class="s2">&quot;PerEURO_lag1&quot;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
+                                 <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="n">tscv_slide</span><span class="p">,</span> \
+                                    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00176787, 0.00150514, 0.00139308, 0.00121284, 0.00152588,
+        0.00138998, 0.00124288, 0.00120497, 0.00123715, 0.00117922]),
+ &#39;score_time&#39;: array([0.00065207, 0.0006578 , 0.00056982, 0.00053406, 0.00062704,
+        0.00060701, 0.00055695, 0.00054288, 0.00056195, 0.00055289]),
+ &#39;test_score&#39;: array([-4.22359364e-01, -1.43018610e+00, -1.33067292e+00,  2.15110060e-01,
+        -7.83627964e+00, -1.40606556e+12,  5.20015261e-01, -2.78711930e+00,
+        -7.94540719e+04,  3.87646039e-01]),
+ &#39;train_score&#39;: array([1.        , 0.99518768, 0.95822447, 0.94470747, 0.96005874,
+        0.90744159, 0.75351647, 0.96129276, 0.93446863, 0.94984339])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the backtesting results for train and test data, and under it ad the original data (PerEURO) as a subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;R^2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Backtesting results&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1577be9718ab28e5fc7304840dd85271ca5e48a52764655aaa87b0bb992606b0.png" src="../_images/1577be9718ab28e5fc7304840dd85271ca5e48a52764655aaa87b0bb992606b0.png" />
+</div>
+</div>
+</section>
+<section id="five-lags">
+<h3>Five lags<a class="headerlink" href="#five-lags" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OilExchange_train</span><span class="p">[</span><span class="s1">&#39;PerEURO_lag2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">PerEURO</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+<span class="n">OilExchange_train</span><span class="p">[</span><span class="s1">&#39;PerEURO_lag3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">PerEURO</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+<span class="n">OilExchange_train</span><span class="p">[</span><span class="s1">&#39;PerEURO_lag4&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">PerEURO</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+<span class="n">OilExchange_train</span><span class="p">[</span><span class="s1">&#39;PerEURO_lag5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">PerEURO</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+<span class="n">OilExchange_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>PerEURO</th>
+      <th>PerUSD</th>
+      <th>KeyIntRate</th>
+      <th>LoanIntRate</th>
+      <th>EuroIntRate</th>
+      <th>CPI</th>
+      <th>OilSpotPrice</th>
+      <th>ImpOldShip</th>
+      <th>ImpNewShip</th>
+      <th>...</th>
+      <th>l2y.var</th>
+      <th>l.CPI</th>
+      <th>ExcChange</th>
+      <th>Testrain</th>
+      <th>season</th>
+      <th>PerEURO_lag1</th>
+      <th>PerEURO_lag2</th>
+      <th>PerEURO_lag3</th>
+      <th>PerEURO_lag4</th>
+      <th>PerEURO_lag5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2000-01-01</td>
+      <td>8.1215</td>
+      <td>8.0129</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.04</td>
+      <td>104.1</td>
+      <td>25.855741</td>
+      <td>114</td>
+      <td>915</td>
+      <td>...</td>
+      <td>8.1907</td>
+      <td>103.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>winter</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2000-02-01</td>
+      <td>8.0991</td>
+      <td>8.2361</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.28</td>
+      <td>104.6</td>
+      <td>27.317905</td>
+      <td>527</td>
+      <td>359</td>
+      <td>...</td>
+      <td>8.0968</td>
+      <td>104.1</td>
+      <td>Decrease</td>
+      <td>True</td>
+      <td>winter</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2000-03-01</td>
+      <td>8.1110</td>
+      <td>8.4111</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.51</td>
+      <td>104.7</td>
+      <td>26.509183</td>
+      <td>1385</td>
+      <td>929</td>
+      <td>...</td>
+      <td>8.1215</td>
+      <td>104.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+      <td>8.0991</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2000-04-01</td>
+      <td>8.1538</td>
+      <td>8.6081</td>
+      <td>5.632353</td>
+      <td>7.632353</td>
+      <td>3.69</td>
+      <td>105.1</td>
+      <td>21.558821</td>
+      <td>450</td>
+      <td>2194</td>
+      <td>...</td>
+      <td>8.0991</td>
+      <td>104.7</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+      <td>8.1110</td>
+      <td>8.0991</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2000-05-01</td>
+      <td>8.2015</td>
+      <td>9.0471</td>
+      <td>5.750000</td>
+      <td>7.750000</td>
+      <td>3.92</td>
+      <td>105.1</td>
+      <td>25.147242</td>
+      <td>239</td>
+      <td>608</td>
+      <td>...</td>
+      <td>8.1110</td>
+      <td>105.1</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+      <td>8.1538</td>
+      <td>8.1110</td>
+      <td>8.0991</td>
+      <td>8.1215</td>
+      <td>8.1215</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 33 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Backtesting using sliding window with data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span> <span class="c1">#       Negative indexing is scary!      --&gt;</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">9</span><span class="p">]],</span> 
+                                         <span class="n">OilExchange_train</span><span class="p">[[</span><span class="s2">&quot;PerEURO_lag1&quot;</span><span class="p">,</span><span class="s2">&quot;PerEURO_lag2&quot;</span><span class="p">,</span><span class="s2">&quot;PerEURO_lag3&quot;</span><span class="p">,</span><span class="s2">&quot;PerEURO_lag4&quot;</span><span class="p">,</span><span class="s2">&quot;PerEURO_lag5&quot;</span><span class="p">]]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                                         <span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="n">tscv_slide</span><span class="p">,</span>
+                                         <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="n">return_train_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00155497, 0.00193214, 0.00132298, 0.00118494, 0.00116611,
+        0.00116467, 0.00138187, 0.00135303, 0.00135303, 0.00109482]),
+ &#39;score_time&#39;: array([0.00062895, 0.00057483, 0.00055289, 0.00054502, 0.00054097,
+        0.00054026, 0.00057817, 0.00057602, 0.00052881, 0.00050902]),
+ &#39;test_score&#39;: array([ 2.43337886e-01, -8.07474354e-01, -4.26300184e+00, -1.10809063e+00,
+        -5.93617580e+00, -1.55149967e+12,  5.51939962e-01, -2.81878260e+00,
+        -2.51928750e+00,  7.09248896e-01]),
+ &#39;train_score&#39;: array([1.        , 0.99655651, 0.97213283, 0.95156849, 0.96162574,
+        0.92555208, 0.76327123, 0.97259431, 0.95439249, 0.96566249])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the backtesting results for train and test data, and under it ad the original data (PerEURO) as a subplot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;train_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;R^2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Backtesting results&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.6</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">OilExchange_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">max_train</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/909c53e90065faceb3bdb34b4322ad38caa7f1e368c045ef5584c21261f47a2c.png" src="../_images/909c53e90065faceb3bdb34b4322ad38caa7f1e368c045ef5584c21261f47a2c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.uber.com/en-NO/blog/omphalos/">Roy Yang’s bloggpost on uber.com</a></p></li>
+<li><p>Raju Rimal’s dataset on <a class="reference external" href="https://www.researchgate.net/publication/275647285_Related_Dataset">ResearchGate</a>,</p></li>
+<li><p>… and his <a class="reference external" href="https://nmbu.brage.unit.no/nmbu-xmlui/handle/11250/283547">Master thesis</a>.</p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html">scikit-learn’s TimeSeriesSplit</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">scikit-learn’s Pipeline</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_predict.html">scikit-learn’s cross_val_predict</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html">scikit-learn’s cross_validate</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./4_Machine_Learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_Pivoting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pivot tables</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../5_Deployment/Deployment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TBA</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shipping-oil-interst-rates-and-exchange-rates">Shipping, oil, interst rates and exchange rates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-without-time">Modelling without time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backtesting">Backtesting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#including-the-response-variable-in-the-predictors">Including the response variable in the predictors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-lags">Five lags</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kristian Hovde Liland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

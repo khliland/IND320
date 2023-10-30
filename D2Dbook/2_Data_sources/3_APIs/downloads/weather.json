@@ -5,41 +5,44 @@
     },
     "weather": [
         {
-            "id": 804,
-            "main": "Clouds",
-            "description": "overcast clouds",
-            "icon": "04d"
+            "id": 600,
+            "main": "Snow",
+            "description": "light snow",
+            "icon": "13d"
         }
     ],
     "base": "stations",
     "main": {
-        "temp": 278.43,
-        "feels_like": 277.24,
-        "temp_min": 278.03,
-        "temp_max": 279.31,
-        "pressure": 1012,
-        "humidity": 95,
-        "sea_level": 1012,
-        "grnd_level": 995
+        "temp": 272.58,
+        "feels_like": 267.35,
+        "temp_min": 270.62,
+        "temp_max": 273.2,
+        "pressure": 1001,
+        "humidity": 96,
+        "sea_level": 1001,
+        "grnd_level": 983
     },
-    "visibility": 10000,
+    "visibility": 238,
     "wind": {
-        "speed": 1.64,
-        "deg": 9,
-        "gust": 3.3
+        "speed": 5.29,
+        "deg": 19,
+        "gust": 12.63
+    },
+    "snow": {
+        "1h": 0.49
     },
     "clouds": {
         "all": 100
     },
-    "dt": 1698053742,
+    "dt": 1698655393,
     "sys": {
         "type": 2,
         "id": 2006772,
         "country": "NO",
-        "sunrise": 1698041621,
-        "sunset": 1698076086
+        "sunrise": 1698647477,
+        "sunset": 1698679753
     },
-    "timezone": 7200,
+    "timezone": 3600,
     "id": 3139081,
     "name": "Ski",
     "cod": 200

@@ -44,7 +44,10 @@ parts:
       - file: 3_Data_quality/3_Preprocessing/5_Spectrograms
   - caption: Machine Learning
     chapters:
-    - file: 4_Machine_Learning/Machine_Learning
+    - file: 4_Machine_Learning/1_Machine_Learning
+      sections:
+      - file: 4_Machine_Learning/2_Pivoting
+      - file: 4_Machine_Learning/3_Forecasting
   - caption: Deployment
     chapters:
     - file: 5_Deployment/Deployment
