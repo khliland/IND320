@@ -219,6 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="1_Machine_Learning.html">Machine Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Pivot tables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3_Forecasting.html">Forecasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_SARIMAX.html">SARIMAX</a></li>
 </ul>
 </li>
 </ul>
@@ -3319,7 +3320,7 @@ Name: Weight, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat, but limit to summers of 2000-2016</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat, but add margins</span>
 <span class="n">awsy</span> <span class="o">=</span> <span class="n">summer2000</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Sport&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span><span class="s1">&#39;Height&#39;</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Remove rows that only contain NaN values</span>
@@ -3471,6 +3472,128 @@ Name: Weight, dtype: float64
 <ul class="simple">
 <li><p>These operations switch between the groupby-format and the pivot_table-format.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Groupby with two columns</span>
+<span class="n">athlete_weight_by_sport_groupby</span> <span class="o">=</span> <span class="n">athletes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Sport&#39;</span><span class="p">)[[</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span><span class="s1">&#39;Height&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">athlete_weight_by_sport_groupby</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Weight</th>
+      <th>Height</th>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aeronautics</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Alpine Skiing</th>
+      <td>72.068110</td>
+      <td>173.489052</td>
+    </tr>
+    <tr>
+      <th>Alpinism</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Archery</th>
+      <td>70.011135</td>
+      <td>173.203085</td>
+    </tr>
+    <tr>
+      <th>Art Competitions</th>
+      <td>75.290909</td>
+      <td>174.644068</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Tug-Of-War</th>
+      <td>95.615385</td>
+      <td>182.480000</td>
+    </tr>
+    <tr>
+      <th>Volleyball</th>
+      <td>78.900214</td>
+      <td>186.994822</td>
+    </tr>
+    <tr>
+      <th>Water Polo</th>
+      <td>84.566446</td>
+      <td>184.834648</td>
+    </tr>
+    <tr>
+      <th>Weightlifting</th>
+      <td>78.726663</td>
+      <td>167.824801</td>
+    </tr>
+    <tr>
+      <th>Wrestling</th>
+      <td>75.495570</td>
+      <td>172.358586</td>
+    </tr>
+  </tbody>
+</table>
+<p>66 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unstack the result</span>
+<span class="n">athlete_weight_by_sport_groupby</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Sport           
+Weight  Aeronautics                NaN
+        Alpine Skiing        72.068110
+        Alpinism                   NaN
+        Archery              70.011135
+        Art Competitions     75.290909
+                               ...    
+Height  Tug-Of-War          182.480000
+        Volleyball          186.994822
+        Water Polo          184.834648
+        Weightlifting       167.824801
+        Wrestling           172.358586
+Length: 132, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exercise">
@@ -3479,7 +3602,7 @@ Name: Weight, dtype: float64
 <li><p>Extract winter olympics.</p></li>
 <li><p>Make yearly medal statistics for all countries using pivoting to count medals.</p>
 <ul>
-<li><p>Remove all countries that have no winer olympic medals.</p></li>
+<li><p>Remove all countries that have no winter olympic medals.</p></li>
 </ul>
 </li>
 <li><p>Extract the top 10 countries that have the most winter olympic medals in sum.</p></li>

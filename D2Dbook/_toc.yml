@@ -48,6 +48,7 @@ parts:
       sections:
       - file: 4_Machine_Learning/2_Pivoting
       - file: 4_Machine_Learning/3_Forecasting
+      - file: 4_Machine_Learning/4_SARIMAX
   - caption: Deployment
     chapters:
     - file: 5_Deployment/Deployment

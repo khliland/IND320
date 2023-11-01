@@ -8,39 +8,39 @@
             "id": 600,
             "main": "Snow",
             "description": "light snow",
-            "icon": "13d"
+            "icon": "13n"
         }
     ],
     "base": "stations",
     "main": {
-        "temp": 272.58,
-        "feels_like": 267.35,
-        "temp_min": 270.62,
-        "temp_max": 273.2,
-        "pressure": 1001,
-        "humidity": 96,
-        "sea_level": 1001,
-        "grnd_level": 983
+        "temp": 271.49,
+        "feels_like": 268.15,
+        "temp_min": 270.07,
+        "temp_max": 272.24,
+        "pressure": 1004,
+        "humidity": 86,
+        "sea_level": 1004,
+        "grnd_level": 986
     },
-    "visibility": 238,
+    "visibility": 185,
     "wind": {
-        "speed": 5.29,
-        "deg": 19,
-        "gust": 12.63
+        "speed": 2.51,
+        "deg": 48,
+        "gust": 7.4
     },
     "snow": {
-        "1h": 0.49
+        "1h": 0.13
     },
     "clouds": {
         "all": 100
     },
-    "dt": 1698655393,
+    "dt": 1698870644,
     "sys": {
         "type": 2,
         "id": 2006772,
         "country": "NO",
-        "sunrise": 1698647477,
-        "sunset": 1698679753
+        "sunrise": 1698820581,
+        "sunset": 1698852241
     },
     "timezone": 3600,
     "id": 3139081,
