@@ -215,10 +215,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../4_Machine_Learning/1_Machine_Learning.html">Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/2_Pivoting.html">Pivot tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/3_Forecasting.html">Forecasting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/4_SARIMAX.html">SARIMAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Machine_Learning/Machine_Learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Machine_Learning/1_Pivoting/1_Pivoting.html">Pivot tables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../4_Machine_Learning/2_Forecasting/1_Forecasting.html">Forecasting</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/2_Forecasting/2_ML_approach.html">Machine Learning approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/2_Forecasting/3_SARIMAX.html">SARIMAX</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../4_Machine_Learning/3_Streaming/1_Streaming.html">Streaming</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/3_Streaming/2_Streaming_models.html">Streaming models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../4_Machine_Learning/3_Streaming/3_Model_updates.html">Model updates</a></li>
 </ul>
 </li>
 </ul>
@@ -463,7 +469,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-tools">AI tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -478,11 +483,11 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="ind320-data-to-decision">
 <h1>IND320 - Data to decision<a class="headerlink" href="#ind320-data-to-decision" title="Permalink to this heading">#</a></h1>
 <p>The contents of this <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">Jupyter Book</a> is the basis for the course “Data to decision” codenamed <a class="reference external" href="https://gammel.nmbu.no/course/IND320">IND320</a> given at the Norwegian University of Life Sciences for the first time in the autumn of 2023.</p>
-<a class="reference internal image-reference" href="../_images/D2D_large.png"><img alt="../_images/D2D_large.png" src="../_images/D2D_large.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/D2D_large.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/D2D_large.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/D2D_large.png?raw=TRUE" style="width: 500px;" /></a>
 <section id="status">
 <h2>Status<a class="headerlink" href="#status" title="Permalink to this heading">#</a></h2>
 <p>This book is under construction and will be filled and updated during the autumn semester of 2023.<br />
-<a class="reference internal" href="../_images/Under_construction.png"><img alt="../_images/Under_construction.png" src="../_images/Under_construction.png" style="width: 100px;" /></a></p>
+<a class="reference internal" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Under_construction.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Under_construction.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Under_construction.png?raw=TRUE" style="width: 100px;" /></a></p>
 </section>
 <section id="audience">
 <h2>Audience<a class="headerlink" href="#audience" title="Permalink to this heading">#</a></h2>
@@ -490,7 +495,7 @@ document.write(`
 <li><p>The main audience will be those who follow IND320 as regular students.</p></li>
 <li><p>Others are free to use the book as is.</p></li>
 </ul>
-<p><a class="reference external" href="https://www.nmbu.no"><img alt="../_images/NMBU_logo.svg" src="../_images/NMBU_logo.svg" width="200px" /></a></p>
+<p><a class="reference external" href="https://www.nmbu.no"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/NMBU_logo.svg?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/NMBU_logo.svg?raw=TRUE" style="width: 200px;" /></a></p>
 </section>
 <section id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Permalink to this heading">#</a></h2>
@@ -572,16 +577,17 @@ document.write(`
 <li><p><a class="reference external" href="https://bing.com">Bing chat</a> (requires Microsoft account)</p></li>
 </ul>
 <p>Note! None of these are compulsory to use as they may breach GDPR and require sharing of personal information with a 3rd party. However, student emails typically have a Microsoft account attached, i.e., give you access to Bing chat with minimum effort.</p>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
-<p>Some basics that are assumed known in advance or just useful:</p>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources
+Some basics that are assumed known in advance or just useful:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/KMxo3T_MTvY">YouTube: VS Code in 100 seconds</a> (2m:34s)</p></li>
 <li><p><a class="reference external" href="https://youtu.be/ecK3EnyGD8o">YouTube: 13 Advanced (but useful) Git Techniques and Shortcuts</a> (8m:07s)</p></li>
 <li><p><a class="reference external" href="https://youtu.be/Gjnup-PuquQ">YouTube: Docker in 100 seconds</a> (2m:07s)</p></li>
 <li><p><a class="reference external" href="https://fireship.io/lessons/code-this-not-that-python-edition/">Python lessons - code this, not that</a></p></li>
 </ul>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -661,7 +667,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-tools">AI tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 
