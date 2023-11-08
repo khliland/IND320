@@ -465,7 +465,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -501,7 +500,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if user is logged in (&quot;==&quot; active chat)</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;zackrawrr&quot;</span> <span class="c1"># Change this to the user you want to check</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;epicdan22&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, etc.</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://decapi.me/twitch/uptime/&quot;</span><span class="o">+</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">is_online</span> <span class="o">=</span> <span class="n">response</span> <span class="o">!=</span> <span class="n">user</span><span class="o">+</span><span class="s2">&quot; is offline&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_online</span><span class="p">)</span>
@@ -535,12 +534,12 @@ document.write(`
 <span class="k">if</span> <span class="n">is_online</span><span class="p">:</span>
     <span class="n">messages</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">twitch_chat</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">messages</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">messages</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">messages</span> <span class="o">-=</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puh, that&#39;s enough!&quot;</span><span class="p">)</span>
             <span class="k">break</span>
-        <span class="n">messages</span> <span class="o">-=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -567,9 +566,9 @@ document.write(`
 <li><p>Print an error message if this fails.</p></li>
 <li><p>Stop after 10 seconds</p></li>
 </ul>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://riverml.xyz/">River</a></p>
 <ul>
@@ -583,6 +582,7 @@ document.write(`
 </li>
 <li><p><a class="reference external" href="http://worldtimeapi.org/">World Time API</a></p></li>
 </ul>
+</div>
 </section>
 </section>
 
@@ -654,7 +654,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 

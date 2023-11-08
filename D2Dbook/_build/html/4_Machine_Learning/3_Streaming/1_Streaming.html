@@ -469,7 +469,12 @@ document.write(`
 <li><p>A <em>static model</em> may be applied if we have enough training data and expect no changes to the underlying distributions.</p></li>
 <li><p>A <em>dynamic model</em> may be applied if we want to update based on what the model receives of new data.</p>
 <ul>
-<li><p>Update model with some small weight on the new observation, i.e., a small memory loss leading to plasticity and capacity for learning (e.g., gradient descent methods).</p></li>
+<li><p>Update model with some small weight on the new observation, either:</p>
+<ul>
+<li><p>gradually aggregating to a model equivalent to training a model on all data, or</p></li>
+<li><p>with a small memory loss on the existing model, leading to plasticity and capacity for learning (e.g., gradient descent methods).</p></li>
+</ul>
+</li>
 <li><p>Passive aggressive learning, where small deviations are disregarded while the model is updated when larger changes are detected.</p></li>
 <li><p>If the models start from scratch, higher learning rates for the initial samples is more efficient.</p></li>
 </ul>

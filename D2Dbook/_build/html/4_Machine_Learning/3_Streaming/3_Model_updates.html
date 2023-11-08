@@ -437,7 +437,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -453,6 +455,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-updating">Model updating</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment">Model deployment</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -464,7 +477,48 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="model-updates">
 <h1>Model updates<a class="headerlink" href="#model-updates" title="Permalink to this heading">#</a></h1>
-<p>TBA</p>
+<section id="model-updating">
+<h2>Model updating<a class="headerlink" href="#model-updating" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>As seen when using <em>river</em>, a sentralised modelling and prediction system can be updated realtime based on incomming data.</p></li>
+<li><p>In practice this comes with some caveats:</p>
+<ul>
+<li><p>Faulty or biased data can give an undesired shift in the model (e.g., <a class="reference external" href="https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist">Twitter taught Microsoft’s AI chatbot to be a racist asshole in less than a day (2016)</a>)</p></li>
+<li><p>Some control is lost with regard to verification and validation.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_integration">Contiuous Integration (CI)</a> typically involves pushing updates often to a version control system where testing and building is performed once a day (nightly build).</p></li>
+</ul>
+<section id="model-deployment">
+<h3>Model deployment<a class="headerlink" href="#model-deployment" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Traditional software (and model) development cycles have typically involved alpha and beta testing phases for internal or limited user groups before full deployment with long upgrade cycles.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_delivery">Continuous Delivery (CD)</a> is public release counterpart of CI, often performed in an integrated loop with short cycles.</p></li>
+</ul>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/CI_CD.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/CI_CD.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/CI_CD.png?raw=TRUE" style="width: 400px;" /></a>
+<ul class="simple">
+<li><p>For software/models with large user groups, canary deployment can be employed to reduce possible damage from faulty updates.</p>
+<ul>
+<li><p>A copy of the production system is made and the new features/properties are applied to the copy.</p></li>
+<li><p>Small user groups, either randomly chosen or selected through developer programs, are given access (unknowing or willingly).</p></li>
+<li><p>Feedback and adoption is used for approval for full deployment or adjustment before a new canary cycle.</p></li>
+</ul>
+</li>
+<li><p>Companies like Spotify perform testing on user groups, setting up statistical experiments where the effect of changes to user interfaces and music recommendation algorithms can be measured real-time.</p></li>
+</ul>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist">Racist chatbot article</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_integration">Wikipedia: Contiuous Integration (CI)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Continuous_delivery">Wikipedia: Continuous Delivery (CD)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=dRAJVUaV958">YouTube: What Is Canary Deployment?</a> (6m:29s)</p></li>
+<li><p><a class="reference external" href="https://engineering.atspotify.com/">Spotify R&amp;D Engineering</a></p></li>
+</ul>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -521,6 +575,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-updating">Model updating</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-deployment">Model deployment</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
