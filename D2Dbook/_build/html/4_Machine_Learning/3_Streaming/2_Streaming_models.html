@@ -233,7 +233,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../5_Deployment/Deployment.html">TBA</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Deployment/1_Dashboards/1_Deployment.html">Deployment</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/2_Graphics/1_Plotly.html">Plotly graphics</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -533,7 +536,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.953 (± 0.030)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.961 (± 0.027)
 </pre></div>
 </div>
 </div>
@@ -561,7 +564,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
 </pre></div>
 </div>
 </div>
@@ -608,7 +611,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
 </pre></div>
 </div>
 </div>
@@ -633,9 +636,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train the streaming_model with the training data</span>
-<span class="n">dataset_train</span> <span class="o">=</span> <span class="n">dataset</span>
-<span class="n">dataset_train</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">dataset_train</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#dataset_train = dataset</span>
+<span class="c1">#dataset_train.data = X_train.copy()</span>
+<span class="c1">#dataset_train.target = y_train.copy()</span>
 
 <span class="c1"># Online learning</span>
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stream</span><span class="o">.</span><span class="n">iter_array</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">feature_names</span><span class="p">):</span>
@@ -750,7 +753,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if user is logged in (&quot;==&quot; active chat)</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;cohhcarnage&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, cohhcarnage, etc.</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;mizkif&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, mizkif, cohhcarnage, etc.</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://decapi.me/twitch/uptime/&quot;</span><span class="o">+</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">is_online</span> <span class="o">=</span> <span class="n">response</span> <span class="o">!=</span> <span class="n">user</span><span class="o">+</span><span class="s2">&quot; is offline&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_online</span><span class="p">)</span>
@@ -758,7 +761,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -790,15 +793,6 @@ document.write(`
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puh, that&#39;s enough!&quot;</span><span class="p">)</span>
             <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 11, 8, 19, 49, 37, 563742), &#39;channel&#39;: &#39;cohhcarnage&#39;, &#39;username&#39;: &#39;nefron&#39;, &#39;msg&#39;: &quot;I always look up and behind doors after I pass through them, cause I&#39;m the explorer archetype&quot;}
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2023, 11, 8, 19, 49, 43, 131413), &#39;channel&#39;: &#39;cohhcarnage&#39;, &#39;username&#39;: &#39;jumpydrg&#39;, &#39;msg&#39;: &#39;nuuriell Spring rolls are so good cohhDrool&#39;}
-Puh, that&#39;s enough!
 </pre></div>
 </div>
 </div>
@@ -838,12 +832,6 @@ Puh, that&#39;s enough!
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Puh, that&#39;s enough!
-</pre></div>
-</div>
-<img alt="../../_images/2721f035e9f305102abd49e15028b8b9e6e6e8ea3c46a522905d7057c342d705.png" src="../../_images/2721f035e9f305102abd49e15028b8b9e6e6e8ea3c46a522905d7057c342d705.png" />
 </div>
 </div>
 </section>
@@ -962,7 +950,7 @@ classification_function  0
 <span class="kn">from</span> <span class="nn">river</span> <span class="kn">import</span> <span class="n">time_series</span>
 <span class="kn">from</span> <span class="nn">river</span> <span class="kn">import</span> <span class="n">metrics</span>
 
-<span class="n">period</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="c1">#period = 12</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">time_series</span><span class="o">.</span><span class="n">SNARIMAX</span><span class="p">(</span> <span class="n">p</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">3</span> <span class="p">)</span>
 
 <span class="n">y_test</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1063,24 +1051,24 @@ R2: -0.254237
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extract_features</span><span class="o">.</span><span class="n">transform_one</span><span class="p">({</span><span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extract_features</span><span class="o">.</span><span class="n">transform_one</span><span class="p">({</span><span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)})</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;January&#39;: 0.36787944117144233,
- &#39;February&#39;: 1.0,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;January&#39;: 0.00012340980408667956,
+ &#39;February&#39;: 0.01831563888873418,
  &#39;March&#39;: 0.36787944117144233,
- &#39;April&#39;: 0.01831563888873418,
- &#39;May&#39;: 0.00012340980408667956,
- &#39;June&#39;: 1.1253517471925912e-07,
- &#39;July&#39;: 1.3887943864964021e-11,
- &#39;August&#39;: 2.3195228302435696e-16,
- &#39;September&#39;: 5.242885663363464e-22,
- &#39;October&#39;: 1.603810890548638e-28,
- &#39;November&#39;: 6.639677199580735e-36,
- &#39;December&#39;: 3.720075976020836e-44,
- &#39;ordinal_date&#39;: 715541}
+ &#39;April&#39;: 1.0,
+ &#39;May&#39;: 0.36787944117144233,
+ &#39;June&#39;: 0.01831563888873418,
+ &#39;July&#39;: 0.00012340980408667956,
+ &#39;August&#39;: 1.1253517471925912e-07,
+ &#39;September&#39;: 1.3887943864964021e-11,
+ &#39;October&#39;: 2.3195228302435696e-16,
+ &#39;November&#39;: 5.242885663363464e-22,
+ &#39;December&#39;: 1.603810890548638e-28,
+ &#39;ordinal_date&#39;: 715601}
 </pre></div>
 </div>
 </div>
