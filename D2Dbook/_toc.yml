@@ -57,10 +57,12 @@ parts:
   - caption: Deployment
     chapters:
     - file: 5_Deployment/1_Dashboards/1_Deployment
+    - file: 5_Deployment/1_Dashboards/2_Dashboards
       sections:
-      - file: 5_Deployment/1_Dashboards/2_Dashboards
+      - file: 5_Deployment/1_Dashboards/3_Streamsync
+    - file: 5_Deployment/2_Graphics/1_Plotly
       sections:
-      - file: 5_Deployment/2_Graphics/1_Plotly
+      - file: 5_Deployment/2_Graphics/2_Plotly_interactive
   - caption: Appendix
     chapters:
     - file: 6_Appendix/Installation
