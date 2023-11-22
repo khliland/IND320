@@ -11,7 +11,7 @@ def _get_main_df():
 
 # Plot restaurants
 def _update_plotly_restaurants(state):
-    restaurants = state["restaurants"]
+    restaurants = state["restaurants_df"]
     selected_num = state["selected_num"]
     sizes = [10]*len(restaurants)
     if selected_num != -1:
@@ -34,26 +34,26 @@ def _update_plotly_restaurants(state):
     state["plotly_restaurants"] = fig_restaurants
 
 def handle_click(state, payload):
-    restaurants = state["restaurants"]
+    restaurants = state["restaurants_df"]
     state["selected"] = restaurants["name"].values[payload[0]["pointNumber"]]
     state["selected_num"] = payload[0]["pointNumber"]
     _update_plotly_restaurants(state)
 
+
+
 # Initialise the state
 
 # "_my_private_element" won't be serialised or sent to the frontend,
-# because it starts with an underscore
+# because it starts with an underscore (not used here)
 
 initial_state = ss.init_state({
     "my_app": {
         "title": "Restaurant selection"
     },
     "_my_private_element": 1337,
-    "message": None,
-    "counter": 26,
     "selected":"Click to select",
     "selected_num":-1,
-    "restaurants":_get_main_df(),
+    "restaurants_df":_get_main_df(),
 })
 
 _update_plotly_restaurants(initial_state)
