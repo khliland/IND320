@@ -15,16 +15,12 @@ def _update_message(state):
 
 def decrement(state):
     state["counter"] -= 1
-    if state["counter"]<30:
-        state["stop"] = False
     _update_message(state)
 
 def increment(state):
     state["counter"] += 1
     # Shows in the log when the event handler is run
     print(f"The counter has been incremented.")
-    if state["counter"]>=30:
-        state["stop"] = True
     _update_message(state)
     
 # Initialise the state
@@ -39,7 +35,6 @@ initial_state = ss.init_state({
     "_my_private_element": 1337,
     "message": None,
     "counter": 26,
-    "stop": False,
 })
 
 _update_message(initial_state)

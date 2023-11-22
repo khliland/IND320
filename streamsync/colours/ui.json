@@ -144,18 +144,6 @@
             "position": 1,
             "handlers": {},
             "visible": true
-        },
-        "kaz4tpuua8ktf0pg": {
-            "id": "kaz4tpuua8ktf0pg",
-            "type": "image",
-            "content": {
-                "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Vienna_Convention_road_sign_B2a.svg/240px-Vienna_Convention_road_sign_B2a.svg.png",
-                "caption": "Image Caption"
-            },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 2,
-            "handlers": {},
-            "visible": "stop"
         }
     }
 }

@@ -563,20 +563,20 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ivy Default Cache set to: /Users/kristian/.ivy2/cache
 The jars for the packages stored in: /Users/kristian/.ivy2/jars
 com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-0930482c-1a62-4e1c-beb9-5e70dcb5feb6;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-7fe030ce-f5ee-41ce-b608-b13de9d6c02d;1.0
 	confs: [default]
 	found com.datastax.spark#spark-cassandra-connector_2.12;3.4.1 in central
 	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
 	found org.scala-lang.modules#scala-collection-compat_2.12;2.11.0 in central
 	found com.datastax.oss#java-driver-core-shaded;4.13.0 in central
-	found com.datastax.oss#native-protocol;1.5.0 in central
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#native-protocol;1.5.0 in central
 	found com.datastax.oss#java-driver-shaded-guava;25.1-jre-graal-sub-1 in central
 	found com.typesafe#config;1.4.1 in central
 	found org.slf4j#slf4j-api;1.7.26 in central
 	found io.dropwizard.metrics#metrics-core;4.1.18 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found org.hdrhistogram#HdrHistogram;2.1.12 in central
+	found org.hdrhistogram#HdrHistogram;2.1.12 in central
 	found org.reactivestreams#reactive-streams;1.0.3 in central
 	found com.github.stephenc.jcip#jcip-annotations;1.0-1 in central
 	found com.github.spotbugs#spotbugs-annotations;3.1.12 in central
@@ -586,7 +586,9 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found org.apache.commons#commons-lang3;3.10 in central
 	found com.thoughtworks.paranamer#paranamer;2.8 in central
 	found org.scala-lang#scala-reflect;2.12.11 in central
-:: resolution report :: resolve 296ms :: artifacts dl 22ms
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:: resolution report :: resolve 425ms :: artifacts dl 13ms
 	:: modules in use:
 	com.datastax.oss#java-driver-core-shaded;4.13.0 from central in [default]
 	com.datastax.oss#java-driver-mapper-runtime;4.13.0 from central in [default]
@@ -613,13 +615,13 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   19  |   0   |   0   |   0   ||   19  |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-0930482c-1a62-4e1c-beb9-5e70dcb5feb6
+:: retrieving :: org.apache.spark#spark-submit-parent-7fe030ce-f5ee-41ce-b608-b13de9d6c02d
 	confs: [default]
-	0 artifacts copied, 19 already retrieved (0kB/15ms)
+	0 artifacts copied, 19 already retrieved (0kB/9ms)
+23/11/22 20:12:27 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/11/22 19:58:27 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Setting default log level to &quot;WARN&quot;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting default log level to &quot;WARN&quot;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 </pre></div>
 </div>
@@ -713,8 +715,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|1c629c20-8969-11e...|  Tesla|Model S|20000.0|
-|1c62ea40-8969-11e...|  Tesla|Model S|21000.0|
+|106a6c20-896b-11e...|  Tesla|Model S|21000.0|
+|106a1e00-896b-11e...|  Tesla|Model S|20000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -731,8 +733,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|1c629c20-8969-11e...|  Tesla|Model S|20000.0|
-|1c62ea40-8969-11e...|  Tesla|Model S|21000.0|
+|106a6c20-896b-11e...|  Tesla|Model S|21000.0|
+|106a1e00-896b-11e...|  Tesla|Model S|20000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -773,24 +775,24 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>1c631150-8969-11ee-9d44-1198bb0571f3</td>
-      <td>Oldsmobile</td>
-      <td>Model 6C</td>
-      <td>135000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1c62ea40-8969-11ee-9d44-1198bb0571f3</td>
+      <td>106a6c20-896b-11ee-9d44-1198bb0571f3</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>1c629c20-8969-11ee-9d44-1198bb0571f3</td>
+      <th>1</th>
+      <td>106a1e00-896b-11ee-9d44-1198bb0571f3</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>20000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>106a9330-896b-11ee-9d44-1198bb0571f3</td>
+      <td>Oldsmobile</td>
+      <td>Model 6C</td>
+      <td>135000.0</td>
     </tr>
   </tbody>
 </table>
@@ -832,17 +834,17 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>1c629c20-8969-11ee-9d44-1198bb0571f3</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>20000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1c62ea40-8969-11ee-9d44-1198bb0571f3</td>
+      <td>106a6c20-896b-11ee-9d44-1198bb0571f3</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>106a1e00-896b-11ee-9d44-1198bb0571f3</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
     </tr>
   </tbody>
 </table>
@@ -883,7 +885,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>1c62ea40-8969-11ee-9d44-1198bb0571f3</td>
+      <td>106a6c20-896b-11ee-9d44-1198bb0571f3</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -1017,7 +1019,10 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 23:&gt;                                                       (0 + 10) / 10]
 
-                                                                                
+[Stage 23:=====&gt;                                                   (1 + 9) / 10]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
 </pre></div>
 </div>
 </div>
