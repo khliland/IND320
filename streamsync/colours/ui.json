@@ -150,7 +150,7 @@
             "type": "image",
             "content": {
                 "src": "@{plot}",
-                "caption": "Image Caption"
+                "caption": "A matplotlib figure"
             },
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "position": 3,
