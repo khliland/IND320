@@ -60,6 +60,7 @@ parts:
     - file: 5_Deployment/1_Dashboards/2_Dashboards
       sections:
       - file: 5_Deployment/1_Dashboards/3_Streamsync
+      - file: 5_Deployment/1_Dashboards/4_Power_BI
     - file: 5_Deployment/2_Graphics/1_Plotly
       sections:
       - file: 5_Deployment/2_Graphics/2_Plotly_interactive
