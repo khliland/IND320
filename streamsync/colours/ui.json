@@ -43,7 +43,8 @@
             "content": {
                 "title": "",
                 "snapMode": "no",
-                "containerShadow": "0px 4px 11px -12px #000000"
+                "containerShadow": "0px 4px 11px -12px #000000",
+                "containerBackgroundColor": "#85ea2d"
             },
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "position": 1,
@@ -150,7 +151,9 @@
             "type": "image",
             "content": {
                 "src": "@{plot}",
-                "caption": "A matplotlib figure"
+                "caption": "A matplotlib figure",
+                "maxWidth": "400",
+                "maxHeight": "400"
             },
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "position": 3,
@@ -167,6 +170,42 @@
             "position": 2,
             "handlers": {},
             "visible": "too_high"
+        },
+        "e33a35g78yt5bt8j": {
+            "id": "e33a35g78yt5bt8j",
+            "type": "dataframe",
+            "content": {
+                "dataframe": "@{prices}"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 5,
+            "handlers": {},
+            "visible": true
+        },
+        "0ltsdqmprpgpi6gc": {
+            "id": "0ltsdqmprpgpi6gc",
+            "type": "text",
+            "content": {
+                "text": "Data from API download"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 4,
+            "handlers": {},
+            "visible": true
+        },
+        "ebbghlgb3l4utj0t": {
+            "id": "ebbghlgb3l4utj0t",
+            "type": "image",
+            "content": {
+                "src": "@{the_new_plot}",
+                "caption": "Image Caption",
+                "maxWidth": "400",
+                "maxHeight": "400"
+            },
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "position": 6,
+            "handlers": {},
+            "visible": true
         }
     }
 }

@@ -1,4 +1,5 @@
 import streamsync as ss
+import pandas as pd
 
 # This is a placeholder to get you started or refresh your memory.
 # Delete it or adapt it as necessary.
@@ -6,6 +7,12 @@ import streamsync as ss
 
 # Shows in the log when the app starts
 print("Hello world!")
+
+def import_a_JSON(state):
+    import requests
+    url = "https://www.hvakosterstrommen.no/api/v1/prices/2023/08-09_NO5.json"
+    response = requests.get(url).json()
+    state["prices"] = pd.DataFrame(response)
 
 # Its name starts with _, so this function won't be exposed
 def _update_message(state):
@@ -27,6 +34,15 @@ def increment(state):
     if state["counter"] >= 30:
         state["too_high"] = True
     _update_message(state)
+
+def plot_something_else(state):
+    import matplotlib.pyplot as plt
+    import numpy as np
+    fig = plt.figure()
+    df = state["prices"]
+    plt.plot(df["EUR_per_kWh"].values)
+    plt.close(fig)
+    state["the_new_plot"] = fig
 
 # Create a matlibplot figure with a line plot
 def plot(state):
@@ -59,3 +75,5 @@ initial_state = ss.init_state({
 
 _update_message(initial_state)
 plot(initial_state)
+import_a_JSON(initial_state)
+plot_something_else(initial_state)
