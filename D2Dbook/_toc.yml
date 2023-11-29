@@ -68,6 +68,9 @@ parts:
     - file: 5_Deployment/3_Dashboard_design/1_Dashboard_design
       sections:
       - file: 5_Deployment/3_Dashboard_design/2_Colours_symbols
+    - file: 5_Deployment/4_Reports/1_Reports
+      sections:
+      - file: 5_Deployment/4_Reports/2_Example_report
   - caption: Appendix
     chapters:
     - file: 6_Appendix/Installation

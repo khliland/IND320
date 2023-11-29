@@ -21,3 +21,4 @@ ipywidgets
 plotly
 pydub
 sounddevice
+kaleido
