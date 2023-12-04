@@ -194,7 +194,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
@@ -568,7 +568,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ivy Default Cache set to: /Users/kristian/.ivy2/cache
 The jars for the packages stored in: /Users/kristian/.ivy2/jars
 com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-ec9abda7-68cc-4d8b-a16a-4288c78eebbc;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-1bd8d1a0-3e22-494e-9ebb-4e7c29e5d940;1.0
 	confs: [default]
 </pre></div>
 </div>
@@ -576,12 +576,12 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.4.1 in central
 	found org.scala-lang.modules#scala-collection-compat_2.12;2.11.0 in central
 	found com.datastax.oss#java-driver-core-shaded;4.13.0 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#native-protocol;1.5.0 in central
+	found com.datastax.oss#native-protocol;1.5.0 in central
 	found com.datastax.oss#java-driver-shaded-guava;25.1-jre-graal-sub-1 in central
 	found com.typesafe#config;1.4.1 in central
-	found org.slf4j#slf4j-api;1.7.26 in central
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found org.slf4j#slf4j-api;1.7.26 in central
 	found io.dropwizard.metrics#metrics-core;4.1.18 in central
 	found org.hdrhistogram#HdrHistogram;2.1.12 in central
 	found org.reactivestreams#reactive-streams;1.0.3 in central
@@ -589,13 +589,13 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	found com.github.spotbugs#spotbugs-annotations;3.1.12 in central
 	found com.google.code.findbugs#jsr305;3.0.2 in central
 	found com.datastax.oss#java-driver-mapper-runtime;4.13.0 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#java-driver-query-builder;4.13.0 in central
+	found com.datastax.oss#java-driver-query-builder;4.13.0 in central
 	found org.apache.commons#commons-lang3;3.10 in central
 	found com.thoughtworks.paranamer#paranamer;2.8 in central
 	found org.scala-lang#scala-reflect;2.12.11 in central
-:: resolution report :: resolve 689ms :: artifacts dl 20ms
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>:: resolution report :: resolve 657ms :: artifacts dl 23ms
 	:: modules in use:
 	com.datastax.oss#java-driver-core-shaded;4.13.0 from central in [default]
 	com.datastax.oss#java-driver-mapper-runtime;4.13.0 from central in [default]
@@ -622,13 +622,13 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   19  |   0   |   0   |   0   ||   19  |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-ec9abda7-68cc-4d8b-a16a-4288c78eebbc
+:: retrieving :: org.apache.spark#spark-submit-parent-1bd8d1a0-3e22-494e-9ebb-4e7c29e5d940
 	confs: [default]
-	0 artifacts copied, 19 already retrieved (0kB/11ms)
+	0 artifacts copied, 19 already retrieved (0kB/12ms)
+23/12/04 09:49:14 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/11/29 22:44:49 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Setting default log level to &quot;WARN&quot;.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting default log level to &quot;WARN&quot;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
 </pre></div>
 </div>
@@ -646,6 +646,9 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>23/12/04 09:49:17 WARN ControlConnection: [s0] Error connecting to Node(endPoint=localhost/127.0.0.1:9042, hostId=null, hashCode=4eb1b929), trying next node (ConnectionInitException: [s0|control|id: 0xac8bab8b, L:/127.0.0.1:58257 - R:localhost/127.0.0.1:9042] Protocol initialization request, step 1 (OPTIONS): unexpected failure (java.lang.IllegalArgumentException: Unsupported request opcode: 0 in protocol 127))
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+---+----------+-------+
 |ind|   company|  model|
 +---+----------+-------+
@@ -722,8 +725,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|7f462720-8f00-11e...|  Tesla|Model S|20000.0|
-|7f46c360-8f00-11e...|  Tesla|Model S|21000.0|
+|fc19cd90-9281-11e...|  Tesla|Model S|20000.0|
+|fc1a42c0-9281-11e...|  Tesla|Model S|21000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -740,8 +743,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|7f46c360-8f00-11e...|  Tesla|Model S|21000.0|
-|7f462720-8f00-11e...|  Tesla|Model S|20000.0|
+|fc1a42c0-9281-11e...|  Tesla|Model S|21000.0|
+|fc19cd90-9281-11e...|  Tesla|Model S|20000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -782,24 +785,24 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>7f46ea70-8f00-11ee-91e7-c3fd37f3ebbc</td>
+      <td>fc19cd90-9281-11ee-91e7-c3fd37f3ebbc</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fc1a90e0-9281-11ee-91e7-c3fd37f3ebbc</td>
       <td>Oldsmobile</td>
       <td>Model 6C</td>
       <td>135000.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>7f46c360-8f00-11ee-91e7-c3fd37f3ebbc</td>
+      <th>2</th>
+      <td>fc1a42c0-9281-11ee-91e7-c3fd37f3ebbc</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7f462720-8f00-11ee-91e7-c3fd37f3ebbc</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>20000.0</td>
     </tr>
   </tbody>
 </table>
@@ -841,17 +844,17 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>7f46c360-8f00-11ee-91e7-c3fd37f3ebbc</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>21000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7f462720-8f00-11ee-91e7-c3fd37f3ebbc</td>
+      <td>fc19cd90-9281-11ee-91e7-c3fd37f3ebbc</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>20000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fc1a42c0-9281-11ee-91e7-c3fd37f3ebbc</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>21000.0</td>
     </tr>
   </tbody>
 </table>
@@ -892,7 +895,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>7f46c360-8f00-11ee-91e7-c3fd37f3ebbc</td>
+      <td>fc1a42c0-9281-11ee-91e7-c3fd37f3ebbc</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -1027,7 +1030,9 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 23:&gt;                                                       (0 + 10) / 10]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Stage 23:===========&gt;                                             (2 + 8) / 10]
+
+                                                                                
 </pre></div>
 </div>
 </div>
@@ -1070,39 +1075,39 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>3</td>
-      <td>Polestar</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>Volkswagen</td>
-      <td>ID.4</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2</td>
-      <td>Tesla</td>
-      <td>Model 3</td>
-    </tr>
-    <tr>
-      <th>4</th>
       <td>460</td>
       <td>Ford</td>
       <td>Transit</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>1</th>
       <td>459</td>
       <td>Ford</td>
       <td>Escort</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>Volkswagen</td>
+      <td>ID.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3</td>
+      <td>Polestar</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>Tesla</td>
+      <td>Model 3</td>
     </tr>
   </tbody>
 </table>

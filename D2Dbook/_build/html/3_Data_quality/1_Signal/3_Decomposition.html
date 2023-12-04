@@ -196,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="1_Signal_and_noise.html">Signal and noise</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="2_Noise_reduction.html">Noise reduction</a></li>
@@ -590,8 +590,11 @@ document.write(`
 <li><p>FFT with real valued data.</p></li>
 <li><p>For real numbered signals, the definition above can be exchanged with a version based on the cosine or sine functions.</p></li>
 <li><p>There are theoretically 8+8 “types”, 4+4 of which are implemented in SciPy, and various choices for normalisation.</p></li>
-<li><p>Type I DCT (Direct Cosine Transform) as implemented in SciPy:
-$<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \sum_{n=1}^{N-2} x_n cos (\frac{\pi k n}{N-1}))\)</span>$</p></li>
+<li><p>Type I DCT (Direct Cosine Transform) as implemented in SciPy:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[y_k = x_0 + (-1)^k x_{N-1} + 2 \sum_{n=1}^{N-2} x_n cos (\frac{\pi k n}{N-1}))\]</div>
+<ul class="simple">
 <li><p>Coefficient signs indicate flip of the base cosines, magnitudes indicate scaling.</p></li>
 <li><p><em>n</em> indicates the number of half cosine cycles, i.e., even <em>n</em> means full cycles (see plot below), maximum frequency of <em>n/2</em>.</p></li>
 <li><p>Quicker than FFT and guarantees real valued frequency domain.</p></li>
@@ -1047,11 +1050,14 @@ $<span class="math notranslate nohighlight">\(y_k = x_0 + (-1)^k x_{N-1} + 2 \su
 <ul class="simple">
 <li><p>For (time) series with multiple variables, PCA can give a first indication of structure and connection between variables.</p></li>
 <li><p>Scores show paths of time points, loadings show how variables relate.</p></li>
-<li><p>One PCA formulation for input data <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> with series as columns:
-$<span class="math notranslate nohighlight">\(\mathbf{U} \mathbf{S} \mathbf{V}' = svd(\mathbf{X}-\bar{\mathbf{X}})\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\mathbf{T} = \mathbf{U} \mathbf{S} \text{ - scores}\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(\mathbf{P} = \mathbf{V}' \text{ - loadings}\)</span>$</p></li>
+<li><p>One PCA formulation for input data <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> with series as columns:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\mathbf{U} \mathbf{S} \mathbf{V}' = svd(\mathbf{X}-\bar{\mathbf{X}})\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{T} = \mathbf{U} \mathbf{S} \text{ - scores}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{P} = \mathbf{V}' \text{ - loadings}\]</div>
 </section>
 <section id="beijing-pollution-data">
 <h3>Beijing pollution data<a class="headerlink" href="#beijing-pollution-data" title="Permalink to this heading">#</a></h3>

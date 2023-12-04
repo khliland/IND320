@@ -196,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data quality</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../1_Signal/1_Signal_and_noise.html">Signal and noise</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
@@ -679,10 +679,13 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Median_absolute_deviation"><em>Median absolute deviation</em></a> is the median of the absolute deviations from the median value.</p>
 <ul>
-<li><p>Robust against non-normality.
-$<span class="math notranslate nohighlight">\(MAD = median(|X_i - \tilde{X}|), ~~~ \tilde{X} = median(X)\)</span>$</p></li>
+<li><p>Robust against non-normality.</p></li>
 </ul>
 </li>
+</ul>
+<div class="math notranslate nohighlight">
+\[MAD = median(|X_i - \tilde{X}|), ~~~ \tilde{X} = median(X)\]</div>
+<ul class="simple">
 <li><p>Relation to standard deviation: <span class="math notranslate nohighlight">\(\hat{\sigma} = k \cdot MAD\)</span>.</p></li>
 <li><p>For normal data <span class="math notranslate nohighlight">\(k \approx 1.4826\)</span>, see Wikipedia.</p></li>
 </ul>
@@ -826,12 +829,16 @@ Proportion: 1 in 84927
 <ul class="simple">
 <li><p>Though each variable can be handled separately with SPC, it is often more interesting to assess the combined effect.</p></li>
 <li><p>Smaller deviations in single variables may be detected if these occur in relation to other variables and their variation.</p></li>
-<li><p>Instead of the normal distribution, we use <a class="reference external" href="https://en.wikipedia.org/wiki/Mahalanobis_distance">Mahalanobis distance</a> and the associated <a class="reference external" href="https://en.wikipedia.org/wiki/Hotelling%27s_T-squared_distribution">Hotelling’s <span class="math notranslate nohighlight">\(T^2\)</span></a>, a multivariate generalisation of the student t-distribution. <span class="math notranslate nohighlight">\(t^2\)</span> is defined as:<br />
-$<span class="math notranslate nohighlight">\(t^2 = (\bar{x}-\mu) \hat{\Sigma}_{\bar{x}}^{-1} (\bar{x}-\mu)^T\)</span>$</p></li>
-<li><p>In practice we estimate <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_{\bar{x}}\)</span> from “in control” data and look at single observations for <span class="math notranslate nohighlight">\(\mu\)</span>.
-$<span class="math notranslate nohighlight">\(\frac{n-p}{p(n-1)}t^2 \sim F_{p,n-p}\)</span><span class="math notranslate nohighlight">\(
-where \)</span>n<span class="math notranslate nohighlight">\( is the number of samples in the training data and \)</span>p$ is the number of variables.</p></li>
+<li><p>Instead of the normal distribution, we use <a class="reference external" href="https://en.wikipedia.org/wiki/Mahalanobis_distance">Mahalanobis distance</a> and the associated <a class="reference external" href="https://en.wikipedia.org/wiki/Hotelling%27s_T-squared_distribution">Hotelling’s <span class="math notranslate nohighlight">\(T^2\)</span></a>, a multivariate generalisation of the student t-distribution. <span class="math notranslate nohighlight">\(t^2\)</span> is defined as:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[t^2 = (\bar{x}-\mu) \hat{\Sigma}_{\bar{x}}^{-1} (\bar{x}-\mu)^T\]</div>
+<ul class="simple">
+<li><p>In practice we estimate <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_{\bar{x}}\)</span> from “in control” data and look at single observations for <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{n-p}{p(n-1)}t^2 \sim F_{p,n-p}\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the number of samples in the training data and <span class="math notranslate nohighlight">\(p\)</span> is the number of variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the Beijing pollution data</span>
