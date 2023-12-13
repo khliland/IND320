@@ -200,7 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/1_Signal/3_Decomposition.html">Decompostion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -551,7 +551,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.971 (± 0.022)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.961 (± 0.021)
 </pre></div>
 </div>
 </div>
@@ -579,7 +579,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 97.34%
 </pre></div>
 </div>
 </div>
@@ -620,13 +620,14 @@ document.write(`
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stream</span><span class="o">.</span><span class="n">iter_array</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">feature_names</span><span class="p">):</span>
     <span class="n">x_scaled</span> <span class="o">=</span> <span class="n">ss</span><span class="o">.</span><span class="n">transform_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">streaming_model</span><span class="o">.</span><span class="n">predict_one</span><span class="p">(</span><span class="n">x_scaled</span><span class="p">)</span>
-    <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="c1"># metric = metric.update(y_pred, y) # For river &lt; 0.21</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 97.34%
 </pre></div>
 </div>
 </div>
@@ -670,7 +671,7 @@ document.write(`
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">stream</span><span class="o">.</span><span class="n">iter_array</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">feature_names</span><span class="p">):</span>
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">streaming_model</span><span class="o">.</span><span class="n">predict_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">static_pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -701,7 +702,7 @@ document.write(`
     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">streaming_model</span><span class="o">.</span><span class="n">predict_one</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">streaming_model</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">dynamic_pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
-    <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -973,7 +974,8 @@ classification_function  0
     <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mi">143</span><span class="o">-</span><span class="mi">12</span><span class="p">:</span> <span class="c1"># Stop learning before the last 12 months</span>
         <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="c1"># model = model.learn_one(y)# For river &lt; 0.21</span>
 
 <span class="n">horizon</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># Predict 12 months into the future</span>
 <span class="n">future</span> <span class="o">=</span> <span class="p">[</span>
@@ -984,8 +986,8 @@ classification_function  0
 <span class="n">metric</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">R2</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_truth</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">future</span><span class="p">,</span> <span class="n">forecast</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y_pred</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y_truth</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_truth</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-
+    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_truth</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="c1"># metric = metric.update(y_truth, y_pred).get() # For river &lt; 0.21</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1121,7 +1123,8 @@ R2: -0.254237
     <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mi">143</span><span class="o">-</span><span class="mi">12</span><span class="p">:</span> <span class="c1"># Stop learning before the last 12 months</span>
         <span class="n">y_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># Note!: Dates are used as features</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">learn_one</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="c1"># Note!: Dates are used as features</span>
+        <span class="c1"># model = model.learn_one(y)# For river &lt; 0.21</span>
 
 <span class="n">horizon</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># Predict 12 months into the future</span>
 <span class="n">future</span> <span class="o">=</span> <span class="p">[</span>
@@ -1132,7 +1135,8 @@ R2: -0.254237
 <span class="n">metric</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">R2</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">y_truth</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">future</span><span class="p">,</span> <span class="n">forecast</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y_pred</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">y_truth</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_truth</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_truth</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="c1"># metric = metric.update(y_truth, y_pred).get() # For river &lt; 0.21</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
 </pre></div>

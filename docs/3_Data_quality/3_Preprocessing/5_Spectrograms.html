@@ -200,7 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../1_Signal/1_Signal_and_noise.html">Signal and noise</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_Signal/3_Decomposition.html">Decompostion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Signal/3_Decomposition.html">Decomposition</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -509,7 +509,7 @@ document.write(`
 <li><p>The highest frequency that can be resolved is called the Nyquist frequency <span class="math notranslate nohighlight">\(= f_s/2\)</span> Hz, i.e., 22050 Hz for a 44.1 kHz sampling (due to the Fourier transform).</p></li>
 <li><p>The lowest frequency that can be resolved is the Rayleigh frequency <span class="math notranslate nohighlight">\(= 1/T\)</span> Hz, i.e., for a window of length 1152 samples (MP3) and 44.1 kHz, this results in a minimum frequency of <span class="math notranslate nohighlight">\(\frac{1}{\frac{1152}{44100 Hz}} = \frac{1}{26.1 ms} = 38.3 Hz\)</span>.</p></li>
 <li><p>Too short windows will give a “smearing effect” on the extracted frequencies (see <a class="reference external" href="https://en.wikipedia.org/wiki/Short-time_Fourier_transform">Wikipedia article</a>) where precision is low on the extracted frequencies.</p></li>
-<li><p>For time series, this means we have an upper bound (often of less interest) and a lower bound of the frequencies that can be resolved. The lower bound being “waves in the signal” <span class="math notranslate nohighlight">\(\leq\)</span> “lenght of the window”.</p></li>
+<li><p>For time series, this means we have an upper bound (often of less interest) and a lower bound of the frequencies that can be resolved. The lower bound being “waves in the signal” <span class="math notranslate nohighlight">\(\leq\)</span> “length of the window”.</p></li>
 </ul>
 </li>
 </ul>
