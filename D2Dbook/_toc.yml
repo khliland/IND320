@@ -10,67 +10,69 @@ parts:
       sections:
       - file: 1_Decision_making/2_Decision_making
       - file: 1_Decision_making/3_Dashboards_reports
+  - caption: Deployment 1
+    chapters:
+    - file: 2_Deployment1/1_Dashboards/1_Deployment
+    - file: 2_Deployment1/1_Dashboards/2_Dashboards
+      sections:
+      - file: 2_Deployment1/1_Dashboards/3_Streamsync
+      - file: 2_Deployment1/1_Dashboards/4_Power_BI
   - caption: Data Sources
     chapters:
-    - file: 2_Data_sources/1_Formats/1_Formats
+    - file: 3_Data_sources/1_Formats/1_Formats
       sections:
-      - file: 2_Data_sources/1_Formats/2_Data_formats
-      - file: 2_Data_sources/1_Formats/3_Streaming_data
-    - file: 2_Data_sources/2_Databases/1_Databases
+      - file: 3_Data_sources/1_Formats/2_Data_formats
+      - file: 3_Data_sources/1_Formats/3_Streaming_data
+    - file: 3_Data_sources/2_Databases/1_Databases
       sections:
-      - file: 2_Data_sources/2_Databases/2_MySQL
-      - file: 2_Data_sources/2_Databases/3_Cassandra
-      - file: 2_Data_sources/2_Databases/4_Spark
-    - file: 2_Data_sources/3_APIs/1_APIs
+      - file: 3_Data_sources/2_Databases/2_MySQL
+      - file: 3_Data_sources/2_Databases/3_Cassandra
+      - file: 3_Data_sources/2_Databases/4_Spark
+    - file: 3_Data_sources/3_APIs/1_APIs
       sections:
-      - file: 2_Data_sources/3_APIs/2_REST
-      - file: 2_Data_sources/3_APIs/3_OpenWeatherMap
-      - file: 2_Data_sources/3_APIs/4_API_Tokens
+      - file: 3_Data_sources/3_APIs/2_REST
+      - file: 3_Data_sources/3_APIs/3_OpenWeatherMap
+      - file: 3_Data_sources/3_APIs/4_API_Tokens
   - caption: Data Quality
     chapters:
-    - file: 3_Data_quality/1_Signal/1_Signal_and_noise
+    - file: 4_Data_quality/1_Signal/1_Signal_and_noise
       sections:
-      - file: 3_Data_quality/1_Signal/2_Noise_reduction
-      - file: 3_Data_quality/1_Signal/3_Decomposition
-    - file: 3_Data_quality/2_Outliers/1_Outliers_and_anomalies
+      - file: 4_Data_quality/1_Signal/2_Noise_reduction
+      - file: 4_Data_quality/1_Signal/3_Decomposition
+    - file: 4_Data_quality/2_Outliers/1_Outliers_and_anomalies
       sections:
-      - file: 3_Data_quality/2_Outliers/2_Outlier_statistics
-      - file: 3_Data_quality/2_Outliers/3_Anomaly_detection
-    - file: 3_Data_quality/3_Preprocessing/1_Preprocessing
+      - file: 4_Data_quality/2_Outliers/2_Outlier_statistics
+      - file: 4_Data_quality/2_Outliers/3_Anomaly_detection
+    - file: 4_Data_quality/3_Preprocessing/1_Preprocessing
       sections:
-      - file: 3_Data_quality/3_Preprocessing/2_Imputation
-      - file: 3_Data_quality/3_Preprocessing/3_Time_formats
-      - file: 3_Data_quality/3_Preprocessing/4_Synchronisation
-      - file: 3_Data_quality/3_Preprocessing/5_Spectrograms
+      - file: 4_Data_quality/3_Preprocessing/2_Imputation
+      - file: 4_Data_quality/3_Preprocessing/3_Time_formats
+      - file: 4_Data_quality/3_Preprocessing/4_Synchronisation
+      - file: 4_Data_quality/3_Preprocessing/5_Spectrograms
   - caption: Machine Learning
     chapters:
-    - file: 4_Machine_Learning/Machine_Learning
-    - file: 4_Machine_Learning/1_Pivoting/1_Pivoting
-    - file: 4_Machine_Learning/2_Forecasting/1_Forecasting
+    - file: 5_Machine_Learning/Machine_Learning
+    - file: 5_Machine_Learning/1_Pivoting/1_Pivoting
+    - file: 5_Machine_Learning/2_Forecasting/1_Forecasting
       sections:
-      - file: 4_Machine_Learning/2_Forecasting/2_ML_approach
-      - file: 4_Machine_Learning/2_Forecasting/3_SARIMAX
-    - file: 4_Machine_Learning/3_Streaming/1_Streaming
+      - file: 5_Machine_Learning/2_Forecasting/2_ML_approach
+      - file: 5_Machine_Learning/2_Forecasting/3_SARIMAX
+    - file: 5_Machine_Learning/3_Streaming/1_Streaming
       sections:
-      - file: 4_Machine_Learning/3_Streaming/2_Streaming_models
-      - file: 4_Machine_Learning/3_Streaming/3_Model_updates
-  - caption: Deployment
+      - file: 5_Machine_Learning/3_Streaming/2_Streaming_models
+      - file: 5_Machine_Learning/3_Streaming/3_Model_updates
+  - caption: Deployment 2
     chapters:
-    - file: 5_Deployment/1_Dashboards/1_Deployment
-    - file: 5_Deployment/1_Dashboards/2_Dashboards
+    - file: 6_Deployment2/2_Graphics/1_Plotly
       sections:
-      - file: 5_Deployment/1_Dashboards/3_Streamsync
-      - file: 5_Deployment/1_Dashboards/4_Power_BI
-    - file: 5_Deployment/2_Graphics/1_Plotly
+      - file: 6_Deployment2/2_Graphics/2_Plotly_interactive
+      - file: 6_Deployment2/2_Graphics/3_Plotly_maps
+    - file: 6_Deployment2/3_Dashboard_design/1_Dashboard_design
       sections:
-      - file: 5_Deployment/2_Graphics/2_Plotly_interactive
-      - file: 5_Deployment/2_Graphics/3_Plotly_maps
-    - file: 5_Deployment/3_Dashboard_design/1_Dashboard_design
+      - file: 6_Deployment2/3_Dashboard_design/2_Colours_symbols
+    - file: 6_Deployment2/4_Reports/1_Reports
       sections:
-      - file: 5_Deployment/3_Dashboard_design/2_Colours_symbols
-    - file: 5_Deployment/4_Reports/1_Reports
-      sections:
-      - file: 5_Deployment/4_Reports/2_Example_report
+      - file: 6_Deployment2/4_Reports/2_Example_report
   - caption: Appendix
     chapters:
-    - file: 6_Appendix/Installation
+    - file: 7_Appendix/Installation

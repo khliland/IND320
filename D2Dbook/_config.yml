@@ -5,10 +5,10 @@ title: Data to Decision - IND320
 author: Kristian Hovde Liland
 logo: logo.png
 
-# Force re-execution of notebooks on each build.
+# Force re-execution of notebooks on each build = force.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: auto
 
 # Define the name of the latex output file for PDF builds
 latex:
