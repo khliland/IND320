@@ -1,0 +1,1398 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>SARIMAX &#8212; Data to Decision - IND320</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script src="../../_static/documentation_options.js?v=c73c0f3e"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4_Machine_Learning/2_Forecasting/3_SARIMAX';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Streaming" href="../3_Streaming/1_Streaming.html" />
+    <link rel="prev" title="Machine Learning approach" href="2_ML_approach.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../0_General/Introduction.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../0_General/Introduction.html">
+                    IND320 - Data to decision
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data-Driven Decision Making</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../1_Decision_making/1_Data_pipeline.html">Data pipeline</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../1_Decision_making/2_Decision_making.html">DDDM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../1_Decision_making/3_Dashboards_reports.html">Dashboards vs Reports</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Sources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Data_sources/1_Formats/1_Formats.html">Static and streaming data</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/1_Formats/2_Data_formats.html">Data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Data_sources/2_Databases/1_Databases.html">Databases</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Data_sources/3_APIs/1_APIs.html">APIs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/3_APIs/2_REST.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Data_sources/3_APIs/4_API_Tokens.html">API Tokens</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/1_Preprocessing.html">Pre-processing</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Machine_Learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Pivoting/1_Pivoting.html">Pivot tables</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1_Forecasting.html">Forecasting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2_ML_approach.html">Machine Learning approach</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">SARIMAX</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Streaming/1_Streaming.html">Streaming</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Streaming/2_Streaming_models.html">Streaming models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Streaming/3_Model_updates.html">Model updates</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../5_Deployment/1_Dashboards/1_Deployment.html">Deployment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Deployment/1_Dashboards/2_Dashboards.html">Dashboards</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/1_Dashboards/3_Streamsync.html">Streamsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/1_Dashboards/4_Power_BI.html">Power BI</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Deployment/2_Graphics/1_Plotly.html">Plotly graphics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/2_Graphics/2_Plotly_interactive.html">Plotly interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/2_Graphics/3_Plotly_maps.html">Plotly maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Deployment/3_Dashboard_design/1_Dashboard_design.html">Dashboard design</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/3_Dashboard_design/2_Colours_symbols.html">Colours and symbolics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Deployment/4_Reports/1_Reports.html">Reports</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Deployment/4_Reports/2_Example_report.html">Tips and trics with Jupyter Notebooks</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../6_Appendix/Installation.html">Installation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/4_Machine_Learning/2_Forecasting/3_SARIMAX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F4_Machine_Learning/2_Forecasting/3_SARIMAX.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/4_Machine_Learning/2_Forecasting/3_SARIMAX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SARIMAX</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wholesale-price-index-wpi-data">Wholesale price index (WPI) data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-models-in-python">Autoregressive models in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ar-autoregressive-models">AR - autoregressive models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ma-moving-average-models">MA - moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arma-autoregressive-moving-average-models">ARMA - autoregressive moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arima-autoregressive-integrated-moving-average-models">ARIMA - autoregressive integrated moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarima-seasonal-autoregressive-integrated-moving-average-models">SARIMA - seasonal autoregressive integrated moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous-variables">Exogenous variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarimax-prediction">SARIMAX prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questercise">Questercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sarimax">
+<h1>SARIMAX<a class="headerlink" href="#sarimax" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The (extended) ARIMA family of methods is too big to be properly explained in this course.</p>
+<ul>
+<li><p>At NMBU, the course DAT320 goes deeper and explains the data generating processes.</p></li>
+<li><p>An online book with videos: <a class="reference external" href="https://otexts.com/fpp3/">Forecasting: Principles and Practice</a>.</p></li>
+</ul>
+</li>
+<li><p>We therefore skip (almost) directly to the regression models (based on <a class="reference external" href="https://phosgene89.github.io/sarima.html">phosgene89’s GitHub page</a>) and their usage.</p></li>
+<li><p>But first we introduce a dataset and the concepts of stationarity and autocorrelation.</p></li>
+</ul>
+<p><strong>Stationarity:</strong></p>
+<ul class="simple">
+<li><p>The distribution of the time series is independent of which part of the time series you look at.</p>
+<ul>
+<li><p>Trends, seasonality (cycles of fixed width) and changes in variance lead to non-stationarity.</p></li>
+<li><p>Differencing (first or second order discrete derivatives) can help.</p>
+<ul>
+<li><p>Seasonal differencing means the difference is not between neighbours but higher lags.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>If the data is not stationary, pre-processing or modelling of the specific deviations from stationarity is needed.</p></li>
+</ul>
+<section id="wholesale-price-index-wpi-data">
+<h2>Wholesale price index (WPI) data<a class="headerlink" href="#wholesale-price-index-wpi-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We will illustrate some concepts and models using the WPI data.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+
+<span class="c1"># Load Wholesale price index (WPI) data</span>
+<span class="n">wpi1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://www.stata-press.com/data/r12/wpi1.dta&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">content</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_stata</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">wpi1</span><span class="p">))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">t</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;ln_wpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">])</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;D.ln_wpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;ln_wpi&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">()</span>
+<span class="c1"># Set the frequency to Quarterly Start, year ending October</span>
+<span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span><span class="o">=</span><span class="s2">&quot;QS-OCT&quot;</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>wpi</th>
+      <th>t</th>
+      <th>ln_wpi</th>
+      <th>D.ln_wpi</th>
+    </tr>
+    <tr>
+      <th>t</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1960-01-01</th>
+      <td>30.700001</td>
+      <td>1960-01-01</td>
+      <td>3.424263</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1960-04-01</th>
+      <td>30.799999</td>
+      <td>1960-04-01</td>
+      <td>3.427515</td>
+      <td>0.003252</td>
+    </tr>
+    <tr>
+      <th>1960-07-01</th>
+      <td>30.700001</td>
+      <td>1960-07-01</td>
+      <td>3.424263</td>
+      <td>-0.003252</td>
+    </tr>
+    <tr>
+      <th>1960-10-01</th>
+      <td>30.700001</td>
+      <td>1960-10-01</td>
+      <td>3.424263</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1961-01-01</th>
+      <td>30.799999</td>
+      <td>1961-01-01</td>
+      <td>3.427515</td>
+      <td>0.003252</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="autocorrelation">
+<h2>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Autocorrelation</a> is the correlation between a stationary timeseries and a lagged version of itself.</p>
+<ul>
+<li><p>This is a measure of the time dependence in the series, i.e., lack of independence.</p></li>
+<li><p>Can be used to indicate the appropriate lag in moving average (MA) models.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Partial_autocorrelation_function">Partial autocorrelation</a> is the autocorrelation when controlling for (regressed on) all intermediate time lags.</p>
+<ul>
+<li><p>Can be used to indicate the appropriate lag in autogregressive (AR) models.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Autocorrelation and partial autocorrelation plots (raw data)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">plot_acf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">plot_pacf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/394e8555179193ea2160586629a50b2e5ad9f73e7b077de6191f3aa04b6c2820.png" src="../../_images/394e8555179193ea2160586629a50b2e5ad9f73e7b077de6191f3aa04b6c2820.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Graph data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Levels</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_mpl_repr</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;US Wholesale Price Index&#39;</span><span class="p">)</span>
+
+<span class="c1"># Log difference (attempting to improve stationarity)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_mpl_repr</span><span class="p">(),</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;D.ln_wpi&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;US Wholesale Price Index - difference of logs&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/24598b575dfc56016674211fd00c2f003885a8a3cdf00ac128c07127626a10f8.png" src="../../_images/24598b575dfc56016674211fd00c2f003885a8a3cdf00ac128c07127626a10f8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Autocorrelation and partial autocorrelation plots </span>
+<span class="c1"># after applying the logarithm and differencing</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">plot_acf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="s1">&#39;D.ln_wpi&#39;</span><span class="p">],</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">plot_pacf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:][</span><span class="s1">&#39;D.ln_wpi&#39;</span><span class="p">],</span> <span class="n">lags</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/769f526b9a3ca9d1fa9548b6be626effb88227a47a6e9dfd3743065795ba3090.png" src="../../_images/769f526b9a3ca9d1fa9548b6be626effb88227a47a6e9dfd3743065795ba3090.png" />
+</div>
+</div>
+</section>
+<section id="autoregressive-models-in-python">
+<h2>Autoregressive models in Python<a class="headerlink" href="#autoregressive-models-in-python" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Using the <a class="reference external" href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html"><em>statsmodels</em></a> package, the most complex model is the starting point.</p></li>
+<li><p>Setting the various parameters of <span class="math notranslate nohighlight">\(SARIMAX(p, d, q)(P, D, Q, s)\)</span>, we can obtain any of the below mentioned models.</p>
+<ul>
+<li><p>SARIMAX(endog, exog=None, order=(1, 0, 0), seasonal_order=(0, 0, 0, 0), trend=None, …)</p></li>
+</ul>
+</li>
+<li><p>For integer values of <span class="math notranslate nohighlight">\(p/d/q/P/D/Q\)</span>, all lags up to the integer are included. For more fine-grained control, lists can be applied, e.g., [1,0,1] includes lags 1 and 3, but not 2.</p></li>
+<li><p>There are also various other parameters, e.g., a trend (none, constant, linear, quadratic, polynomial).</p></li>
+</ul>
+</section>
+<section id="ar-autoregressive-models">
+<h2>AR - autoregressive models<a class="headerlink" href="#ar-autoregressive-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>For a (single variable) timeseries given by <span class="math notranslate nohighlight">\(\{ y_{t} \}\)</span>, we can specify the <span class="math notranslate nohighlight">\(AR(p)\)</span> model as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ y_{t} = \beta + \sum\limits_{i=1}^p \theta_{i} y_{t-i} + \epsilon_{t}.\]</div>
+<ul class="simple">
+<li><p>Here, <span class="math notranslate nohighlight">\(\beta\)</span> is a constant, <span class="math notranslate nohighlight">\(\theta_{i}\)</span> is the coefficient for the <span class="math notranslate nohighlight">\(p\)</span>-th time lag and <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is the error.</p></li>
+<li><p>Introducing a lag operator, <span class="math notranslate nohighlight">\(L^{n} y_{t} = y_{t-n}\)</span>, we can redefine the above equation in the form of a polynomial function, <span class="math notranslate nohighlight">\(\Theta(L)^{p}\)</span> as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ y_{t} = \Theta(L)^{p} y_{t} + \epsilon_{t},\]</div>
+<ul class="simple">
+<li><p>i.e., the current time is a function of <span class="math notranslate nohighlight">\(p\)</span> previous time points and a constant. This can be thought of as stacking subsets of a time series using a moving window and performing ordinary least squares on the resulting matrix/dataframe.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit an AR(1) model (badly specified due to non-stationarity)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="c1"># trend=&#39;c&#39; adds a constant</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                    wpi   No. Observations:                  124
+Model:               SARIMAX(1, 0, 0)   Log Likelihood                -201.927
+Date:                Wed, 31 Jan 2024   AIC                            409.855
+Time:                        09:49:48   BIC                            418.316
+Sample:                    01-01-1960   HQIC                           413.292
+                         - 10-01-1990                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.0293      0.343      0.086      0.932      -0.643       0.701
+ar.L1          0.9996      0.005    213.302      0.000       0.990       1.009
+sigma2         1.4355      0.143     10.008      0.000       1.154       1.717
+===================================================================================
+Ljung-Box (L1) (Q):                  48.05   Jarque-Bera (JB):                20.69
+Prob(Q):                              0.00   Prob(JB):                         0.00
+Heteroskedasticity (H):              19.26   Skew:                             0.90
+Prob(H) (two-sided):                  0.00   Kurtosis:                         3.86
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:966: UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting autoregressive parameters&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ma-moving-average-models">
+<h2>MA - moving average models<a class="headerlink" href="#ma-moving-average-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>MA models are functions of previous errors, rather than previous measurements.</p></li>
+<li><p>We can define an <span class="math notranslate nohighlight">\(MA(q)\)</span> model as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ y_{t} = \Phi(L)^{q} \epsilon_{t} + \epsilon_{t}.\]</div>
+<ul class="simple">
+<li><p>Here, <span class="math notranslate nohighlight">\(q\)</span> is the number of time lags and <span class="math notranslate nohighlight">\(\Phi(L)^{q}\)</span> is defined as <span class="math notranslate nohighlight">\(\Theta\)</span> above, but using the error terms and <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is with respect to the current model.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit an MA(1) model (disregarding the obvious autocorrelation)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                    wpi   No. Observations:                  124
+Model:               SARIMAX(0, 0, 1)   Log Likelihood                -516.522
+Date:                Wed, 31 Jan 2024   AIC                           1039.044
+Time:                        09:49:48   BIC                           1047.505
+Sample:                    01-01-1960   HQIC                          1042.481
+                         - 10-01-1990                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept     62.8671      3.033     20.727      0.000      56.922      68.812
+ma.L1          0.9994      0.578      1.729      0.084      -0.133       2.132
+sigma2       233.8562    132.585      1.764      0.078     -26.005     493.718
+===================================================================================
+Ljung-Box (L1) (Q):                 114.21   Jarque-Bera (JB):                14.05
+Prob(Q):                              0.00   Prob(JB):                         0.00
+Heteroskedasticity (H):               1.55   Skew:                             0.31
+Prob(H) (two-sided):                  0.17   Kurtosis:                         1.47
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:978: UserWarning: Non-invertible starting MA parameters found. Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting MA parameters found.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arma-autoregressive-moving-average-models">
+<h2>ARMA - autoregressive moving average models<a class="headerlink" href="#arma-autoregressive-moving-average-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>When we take the sum of <span class="math notranslate nohighlight">\(AR(p)\)</span> and <span class="math notranslate nohighlight">\(MA(q)\)</span> models of the same time series, we get <span class="math notranslate nohighlight">\(ARMA(p,q)\)</span> models:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ y_{t} = \Theta(L)^{p} y_{t} + \Phi(L)^{q} \epsilon_{t} + \epsilon_{t}\]</div>
+<ul class="simple">
+<li><p>Again, <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is with respect to the current model, but shares name with the previous models.</p></li>
+<li><p>This model is learning both from seeing previous samples and from how well these were predicted at previous time steps, thus it can tackle changes in the average.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit an ARMA(1,1) model (badly specified due to non-stationarity)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:966: UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting autoregressive parameters&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                    wpi   No. Observations:                  124
+Model:               SARIMAX(1, 0, 1)   Log Likelihood                -172.610
+Date:                Wed, 31 Jan 2024   AIC                            353.221
+Time:                        09:49:48   BIC                            364.502
+Sample:                    01-01-1960   HQIC                           357.804
+                         - 10-01-1990                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.0438      0.427      0.103      0.918      -0.794       0.882
+ar.L1          0.9994      0.006    172.091      0.000       0.988       1.011
+ma.L1          0.5628      0.072      7.848      0.000       0.422       0.703
+sigma2         0.8883      0.079     11.303      0.000       0.734       1.042
+===================================================================================
+Ljung-Box (L1) (Q):                   0.80   Jarque-Bera (JB):                60.64
+Prob(Q):                              0.37   Prob(JB):                         0.00
+Heteroskedasticity (H):              15.38   Skew:                             1.17
+Prob(H) (two-sided):                  0.00   Kurtosis:                         5.51
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="arima-autoregressive-integrated-moving-average-models">
+<h2>ARIMA - autoregressive integrated moving average models<a class="headerlink" href="#arima-autoregressive-integrated-moving-average-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>To help compensate for lack of stationarity, we add an integration operator, <span class="math notranslate nohighlight">\(\Delta^{d}\)</span>, defined as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[y_{t}^{[d]} =\Delta^{d} y_{t} = y_{t}^{[d-1]} - y_{t-1}^{[d-1]}.\]</div>
+<ul class="simple">
+<li><p>Here, <span class="math notranslate nohighlight">\(y_{t}^{[0]} = y_{t}\)</span> and the degree of differensing is <span class="math notranslate nohighlight">\(d\)</span>.</p></li>
+<li><p>An <span class="math notranslate nohighlight">\(ARMA(p, q)\)</span> model where <span class="math notranslate nohighlight">\(y_{t}\)</span> is exchanged with <span class="math notranslate nohighlight">\(y_{t}^{[d]}\)</span> would look like this:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ y_{t}^{[d]} = \Theta(L)^{p} y_{t}^{[d]} + \Phi(L)^{q} \epsilon_{t}^{[d]} + \epsilon_{t}^{[d]}\]</div>
+<ul class="simple">
+<li><p>Reformulating this using the integration operator, we get an <span class="math notranslate nohighlight">\(ARIMA(p,d,q)\)</span> model:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Delta^{d} y_{t} = \Theta(L)^{p} \Delta^{d} y_{t} + \Phi(L)^{q} \Delta^{d} \epsilon_{t} + \Delta^{d} \epsilon_{t}\]</div>
+<ul class="simple">
+<li><p>Finally, it can be shown that this is euqivalent to:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \Delta^{d} \epsilon_{t}\]</div>
+<ul class="simple">
+<li><p>This model has the properties of the ARMA model, but in addition does the differensing for us, meaning that predicitons will be on the original scale instead of predicting difference values.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit an ARIMA(1,1,1) model</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                    wpi   No. Observations:                  124
+Model:               SARIMAX(1, 1, 1)   Log Likelihood                -135.351
+Date:                Wed, 31 Jan 2024   AIC                            278.703
+Time:                        09:49:48   BIC                            289.951
+Sample:                    01-01-1960   HQIC                           283.272
+                         - 10-01-1990                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.0943      0.068      1.389      0.165      -0.039       0.227
+ar.L1          0.8742      0.055     16.028      0.000       0.767       0.981
+ma.L1         -0.4120      0.100     -4.119      0.000      -0.608      -0.216
+sigma2         0.5257      0.053      9.849      0.000       0.421       0.630
+===================================================================================
+Ljung-Box (L1) (Q):                   0.09   Jarque-Bera (JB):                 9.78
+Prob(Q):                              0.77   Prob(JB):                         0.01
+Heteroskedasticity (H):              15.93   Skew:                             0.28
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.26
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since the data are quarterly, we can add a seasonal component by including a fourth time lag to moving average</span>
+<span class="c1"># Fit an ARIMA(1,1,[1,0,0,1]) model</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
+<span class="c1"># What about a linear trend? (trend=&#39;t&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                 SARIMAX Results                                 
+=================================================================================
+Dep. Variable:                       wpi   No. Observations:                  124
+Model:             SARIMAX(1, 1, [1, 4])   Log Likelihood                -135.066
+Date:                   Wed, 31 Jan 2024   AIC                            280.132
+Time:                           09:49:48   BIC                            294.193
+Sample:                       01-01-1960   HQIC                           285.843
+                            - 10-01-1990                                         
+Covariance Type:                     opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.1260      0.092      1.370      0.171      -0.054       0.306
+ar.L1          0.8325      0.081     10.231      0.000       0.673       0.992
+ma.L1         -0.3710      0.108     -3.447      0.001      -0.582      -0.160
+ma.L4          0.1087      0.094      1.157      0.247      -0.075       0.293
+sigma2         0.5230      0.053      9.915      0.000       0.420       0.626
+===================================================================================
+Ljung-Box (L1) (Q):                   0.08   Jarque-Bera (JB):                12.03
+Prob(Q):                              0.77   Prob(JB):                         0.00
+Heteroskedasticity (H):              15.75   Skew:                             0.27
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.43
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sarima-seasonal-autoregressive-integrated-moving-average-models">
+<h2>SARIMA - seasonal autoregressive integrated moving average models<a class="headerlink" href="#sarima-seasonal-autoregressive-integrated-moving-average-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>SARIMA shares some resemblance with the STL decomposition introduced previously.</p></li>
+<li><p>For seasons of length <span class="math notranslate nohighlight">\(s\)</span>, the seasonal part is obtained by applying an ARIMA model with lags, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, and integration time, <span class="math notranslate nohighlight">\(D\)</span>, that are multiples of <span class="math notranslate nohighlight">\(s\)</span>, i.e., if <span class="math notranslate nohighlight">\(P=2\)</span>, the included time points would be <span class="math notranslate nohighlight">\(t-1s\)</span> and <span class="math notranslate nohighlight">\(t-2s\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Delta_{s}^{D} y_{t} = \theta(L^{s})^{P} \Delta_{s}^{D} y_{t} + \phi(L^{s})^{Q} \Delta_{s}^{D} \epsilon_{t} + \Delta_{s}^{D} \epsilon_{t} \]</div>
+<ul class="simple">
+<li><p>Like the ARIMA model, this can be shown to be equivalent to:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \theta(L^{s})^{P} \Delta_{s}^{D} y_{t} =  \phi(L^{s})^{Q} \Delta_{s}^{D} \epsilon_{t} \]</div>
+<ul class="simple">
+<li><p>After the seasonal part has been removed, another <span class="math notranslate nohighlight">\(ARIMA(p, d, q)\)</span> applied to <span class="math notranslate nohighlight">\(\Delta_{s}^{D} y_{t}\)</span> is equivalent to multiplying the two models together.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(SARIMA(p, d, q)(P, D, Q, s)\)</span> model then becomes:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Theta(L)^{p} \theta(L^{s})^{P} \Delta^{d} \Delta_{s}^{D} y_{t} = \Phi(L)^{q} \phi(L^{s})^{Q} \Delta^{d} \Delta_{s}^{D} \epsilon_{t}\]</div>
+<ul class="simple">
+<li><p>This model has the ability to combine experience from previous timepoints with seasonal trends.</p>
+<ul>
+<li><p>Or if one sets the ARIMA parameters <span class="math notranslate nohighlight">\(p=0\)</span>, <span class="math notranslate nohighlight">\(d=0\)</span>, <span class="math notranslate nohighlight">\(q=0\)</span>, one can have a pure seasonal model.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using SARIMA for seasonality instead of the fourth time lag to moving average.</span>
+<span class="c1"># Fit a SARIMA(1,1,1)(1,1,1,4) model</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison (no improvement here)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     SARIMAX Results                                     
+=========================================================================================
+Dep. Variable:                               wpi   No. Observations:                  124
+Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 4)   Log Likelihood                -134.632
+Date:                           Wed, 31 Jan 2024   AIC                            281.264
+Time:                                   09:49:49   BIC                            297.939
+Sample:                               01-01-1960   HQIC                           288.035
+                                    - 10-01-1990                                         
+Covariance Type:                             opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.0071      0.004      1.678      0.093      -0.001       0.015
+ar.L1          0.8336      0.073     11.419      0.000       0.690       0.977
+ma.L1         -0.3492      0.112     -3.106      0.002      -0.569      -0.129
+ar.S.L4        0.0694      0.125      0.555      0.579      -0.176       0.314
+ma.S.L4       -0.9988      4.029     -0.248      0.804      -8.896       6.898
+sigma2         0.5063      2.020      0.251      0.802      -3.453       4.465
+===================================================================================
+Ljung-Box (L1) (Q):                   0.11   Jarque-Bera (JB):                21.98
+Prob(Q):                              0.73   Prob(JB):                         0.00
+Heteroskedasticity (H):              30.46   Skew:                            -0.26
+Prob(H) (two-sided):                  0.00   Kurtosis:                         5.04
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/base/model.py:607: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
+  warnings.warn(&quot;Maximum Likelihood optimization failed to &quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exogenous-variables">
+<h2>Exogenous variables<a class="headerlink" href="#exogenous-variables" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>As we showed in the previous chapter, it is possible to make a model purely on other variables measured at the same time, <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
+<li><p>Including these variables into ARIMA and SARIMA, we get the ARIMAX and SARIMAX models.</p></li>
+<li><p>In practice, we paste on an extra coefficient vector, <span class="math notranslate nohighlight">\(\beta\)</span>, and variables, <span class="math notranslate nohighlight">\(X_{t}\)</span>, to he models, here noted as sums of products <span class="math notranslate nohighlight">\(\beta_{i} x^{i}_{t}\)</span>:</p></li>
+<li><p><span class="math notranslate nohighlight">\(ARIMAX(p, d, q)\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \Delta^{d} \epsilon_{t} + \sum_{i=1}^{n} \beta_{i} x^{i}_{t}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(SARIMAX(p, d, q)(P, D, Q, s)\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Theta(L)^{p} \theta(L^{s})^{P} \Delta^{d} \Delta_{s}^{D} y_{t} = \Phi(L)^{q} \phi(L^{s})^{Q} \Delta^{d} \Delta_{s}^{D} \epsilon_{t} + \sum_{i=1}^{n} \beta_{i} x^{i}_{t}\]</div>
+<ul class="simple">
+<li><p>The final model, thus includes autogression and moving averages, can perform differences, deals with seasonality and can leverage external variables from the same timepoint as the predictions.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the FinalData sheet of the OilExchange.xlsx file using Pandas again</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">OilExchange</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../../data/OilExchange.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;FinalData&#39;</span><span class="p">)</span>
+<span class="n">OilExchange</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">Date</span>
+<span class="n">OilExchange</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;MS&quot;</span> <span class="c1"># Set the frequency to Month Start</span>
+<span class="n">OilExchange</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Fit a SARIMAX(1,1,1)(1,1,1,12) model with exogenous variables (closing our eyes, as we know little about the data)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">OilExchange</span><span class="p">[</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="c1">#OilExchange.loc[:, OilExchange.columns[3:-4]], \</span>
+                                <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="c1">#mod = sm.tsa.statespace.SARIMAX(OilExchange[&#39;PerEURO&#39;], OilExchange.loc[:, OilExchange.columns[3:-4]], \</span>
+<span class="c1">#                                trend=&#39;c&#39;, order=(1,1,1), seasonal_order=(1,1,1,12))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison (no improvement here)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/openpyxl/worksheet/_reader.py:329: UserWarning: Unknown extension is not supported and will be removed
+  warn(msg)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                      SARIMAX Results                                       
+============================================================================================
+Dep. Variable:                              PerEURO   No. Observations:                  179
+Model:             SARIMAX(4, 1, 4)x(1, 1, [1], 12)   Log Likelihood                 107.677
+Date:                              Wed, 31 Jan 2024   AIC                           -191.355
+Time:                                      09:49:51   BIC                           -154.011
+Sample:                                  01-01-2000   HQIC                          -176.196
+                                       - 11-01-2014                                         
+Covariance Type:                                opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+intercept      0.0051      0.009      0.562      0.574      -0.013       0.023
+ar.L1         -0.4400      0.345     -1.277      0.202      -1.115       0.235
+ar.L2         -0.4105      0.244     -1.681      0.093      -0.889       0.068
+ar.L3         -0.6547      0.314     -2.083      0.037      -1.271      -0.039
+ar.L4         -0.5106      0.158     -3.226      0.001      -0.821      -0.200
+ma.L1          0.7860      0.351      2.239      0.025       0.098       1.474
+ma.L2          0.5115      0.200      2.559      0.010       0.120       0.903
+ma.L3          0.8034      0.242      3.320      0.001       0.329       1.278
+ma.L4          0.5837      0.243      2.399      0.016       0.107       1.061
+ar.S.L12      -0.1407      0.096     -1.467      0.142      -0.329       0.047
+ma.S.L12      -0.9636      0.496     -1.944      0.052      -1.935       0.008
+sigma2         0.0134      0.006      2.206      0.027       0.001       0.025
+===================================================================================
+Ljung-Box (L1) (Q):                   0.21   Jarque-Bera (JB):                33.16
+Prob(Q):                              0.65   Prob(JB):                         0.00
+Heteroskedasticity (H):               0.60   Skew:                             0.27
+Prob(H) (two-sided):                  0.06   Kurtosis:                         5.12
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/base/model.py:607: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
+  warnings.warn(&quot;Maximum Likelihood optimization failed to &quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Play with the OilExchange data.</p></li>
+<li><p>See if you can improve the fit of the model by adjusting lags and removing the least significant terms in the model.</p></li>
+</ul>
+</section>
+<section id="sarimax-prediction">
+<h2>SARIMAX prediction<a class="headerlink" href="#sarimax-prediction" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>One-step-ahead prediction uses the estimated parameters and samples within the lags of the model to predict the next time point.</p>
+<ul>
+<li><p>This means that the predictions will stay relatively close to the true values, never predicting more than one step away from the truth.</p></li>
+</ul>
+</li>
+<li><p>Dynamic prediction predicts one step as above, then uses predicted values as input instead of true values.</p>
+<ul>
+<li><p>This means the predictions can deviate from the truth over time.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Refit the model on the training set (up to 2013-01-01)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">OilExchange</span><span class="p">[</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">],</span> \
+                                <span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">],</span> \
+    <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:966: UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.
+  warn(&#39;Non-stationary starting autoregressive parameters&#39;
+/Users/kristian/miniforge3/envs/IND320/lib/python3.11/site-packages/statsmodels/tsa/statespace/sarimax.py:978: UserWarning: Non-invertible starting MA parameters found. Using zeros as starting parameters.
+  warn(&#39;Non-invertible starting MA parameters found.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get predictions for the whole dataset</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">OilExchange</span><span class="p">[</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]],</span> \
+    <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span> <span class="c1"># One-stpe-ahead predictions</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In-sample one-step-ahead prediction wrapper function</span>
+<span class="n">predict</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">()</span>
+<span class="n">predict_ci</span> <span class="o">=</span> <span class="n">predict</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dynamic predictions starting from 2013-01-01</span>
+<span class="n">predict_dy</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">get_prediction</span><span class="p">(</span><span class="n">dynamic</span><span class="o">=</span><span class="s1">&#39;2013-01-01&#39;</span><span class="p">)</span>
+<span class="n">predict_dy_ci</span> <span class="o">=</span> <span class="n">predict_dy</span><span class="o">.</span><span class="n">conf_int</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare the one-step-ahead predictions to the dynamic predictions</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">npre</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Exchange rate&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Per EURO&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot data points</span>
+<span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">:,</span> <span class="s1">&#39;PerEURO&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot predictions</span>
+<span class="n">predict</span><span class="o">.</span><span class="n">predicted_mean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;One-step-ahead forecast&#39;</span><span class="p">)</span>
+<span class="n">ci</span> <span class="o">=</span> <span class="n">predict_ci</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">:]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">predict_dy</span><span class="o">.</span><span class="n">predicted_mean</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dynamic forecast (2013)&#39;</span><span class="p">)</span>
+<span class="n">ci</span> <span class="o">=</span> <span class="n">predict_dy_ci</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2012-01-01&#39;</span><span class="p">:]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">ci</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">legend</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/748736e31df63b7c505b75b780dc7b2ed7c5911f68c1621006042216664813f5.png" src="../../_images/748736e31df63b7c505b75b780dc7b2ed7c5911f68c1621006042216664813f5.png" />
+</div>
+</div>
+</section>
+<section id="questercise">
+<h2>Questercise<a class="headerlink" href="#questercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Does the model made in the previous exercise improve the predictions as visualized above?</p></li>
+</ul>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://otexts.com/fpp3/">Book and video lectures on Forecasting: Principles and Practice</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Wikipedia: Autocorrelation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Partial_autocorrelation_function">Wikipedia: Partial autocorrelation</a></p></li>
+<li><p><a class="reference external" href="https://phosgene89.github.io/sarima.html">phosgene89’s GitHub page on SARIMAX</a></p></li>
+<li><p><a class="reference external" href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html">statsmodels’ SARIMAX documentation</a></p></li>
+<li><p><a class="reference external" href="https://www.statsmodels.org/stable/examples/notebooks/generated/statespace_sarimax_stata.html">statsmodels’ SARIMAX example</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./4_Machine_Learning/2_Forecasting"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_ML_approach.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Machine Learning approach</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../3_Streaming/1_Streaming.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Streaming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wholesale-price-index-wpi-data">Wholesale price index (WPI) data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-models-in-python">Autoregressive models in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ar-autoregressive-models">AR - autoregressive models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ma-moving-average-models">MA - moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arma-autoregressive-moving-average-models">ARMA - autoregressive moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arima-autoregressive-integrated-moving-average-models">ARIMA - autoregressive integrated moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarima-seasonal-autoregressive-integrated-moving-average-models">SARIMA - seasonal autoregressive integrated moving average models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous-variables">Exogenous variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarimax-prediction">SARIMAX prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questercise">Questercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kristian Hovde Liland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

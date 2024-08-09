@@ -1,0 +1,24 @@
+jupyter-book
+jupyterlab_myst
+matplotlib
+numpy
+pandas
+openpyxl
+datetime
+requests
+river
+cassandra-driver @ git+https://github.com/datastax/python-driver@master
+pyspark
+mysql.connector
+flask
+pybaselines
+pyjstat
+statsmodels
+hoggorm
+hoggormplot
+scikit-learn
+ipywidgets
+plotly
+pydub
+sounddevice
+kaleido
