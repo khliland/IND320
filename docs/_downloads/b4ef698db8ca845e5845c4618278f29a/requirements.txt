@@ -7,7 +7,7 @@ openpyxl
 datetime
 requests
 river
-cassandra-driver @ git+https://github.com/datastax/python-driver@master
+cassandra-driver
 pyspark
 mysql.connector
 flask
