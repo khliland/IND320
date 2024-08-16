@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "streamsync_version": "0.2.8"
+        "writer_version": "0.6.1"
     },
     "components": {
         "root": {
@@ -9,7 +9,7 @@
             "content": {
                 "appName": "My App"
             },
-            "parentId": null,
+            "isCodeManaged": false,
             "position": 0,
             "handlers": {},
             "visible": true
@@ -21,8 +21,9 @@
                 "pageMode": "compact",
                 "emptinessColor": "#e9eef1"
             },
-            "parentId": "root",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "root",
             "handlers": {},
             "visible": true
         },
@@ -32,8 +33,9 @@
             "content": {
                 "text": "@{my_app.title}"
             },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": true
         },
@@ -42,11 +44,12 @@
             "type": "section",
             "content": {
                 "title": "",
-                "snapMode": "no",
-                "containerShadow": "0px 4px 11px -12px #000000"
+                "containerShadow": "0px 4px 11px -12px #000000",
+                "containerBackgroundColor": "#85ea2d"
             },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": true
         },
@@ -57,8 +60,9 @@
                 "text": " Increment",
                 "icon": "arrow-up"
             },
-            "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
             "handlers": {
                 "click": "increment"
             },
@@ -71,8 +75,9 @@
                 "text": "Decrement",
                 "icon": "arrow-down"
             },
-            "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
             "handlers": {
                 "click": "decrement"
             },
@@ -82,10 +87,11 @@
             "id": "0d05bc9f-1655-4d0b-bc9b-c2f4c71a5117",
             "type": "horizontalstack",
             "content": {
-                "alignment": "left"
+                "contentHAlign": "start"
             },
-            "parentId": "f3777e75-3659-4d44-8ef7-aeec0d06855b",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "f3777e75-3659-4d44-8ef7-aeec0d06855b",
             "handlers": {},
             "visible": true
         },
@@ -97,8 +103,9 @@
                 "note": "@{message}",
                 "name": "Counter"
             },
-            "parentId": "c2519671-9ce7-44e7-ba4e-b0efda9cb20e",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "c2519671-9ce7-44e7-ba4e-b0efda9cb20e",
             "handlers": {},
             "visible": true
         },
@@ -106,8 +113,9 @@
             "id": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
             "type": "columns",
             "content": {},
-            "parentId": "28d3885b-0fb8-4d41-97c6-978540015431",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "28d3885b-0fb8-4d41-97c6-978540015431",
             "handlers": {},
             "visible": true
         },
@@ -117,11 +125,12 @@
             "content": {
                 "title": "",
                 "width": "1",
-                "verticalAlignment": "center",
-                "horizontalAlignment": "center"
+                "contentHAlign": "center",
+                "contentVAlign": "center"
             },
-            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
+            "isCodeManaged": false,
             "position": 2,
+            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
             "handlers": {},
             "visible": true
         },
@@ -131,8 +140,9 @@
             "content": {
                 "width": "1"
             },
-            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
             "handlers": {},
             "visible": true
         },
@@ -140,35 +150,76 @@
             "id": "d4a71819-7444-4083-a1c7-7995452a7abf",
             "type": "separator",
             "content": {},
-            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "d4a5e62c-c6fe-49c4-80d4-33862af8727d",
             "handlers": {},
             "visible": true
         },
-        "4i7r1k7ue4x6sy9y": {
-            "id": "4i7r1k7ue4x6sy9y",
+        "nlssh3nikn80r1j9": {
+            "id": "nlssh3nikn80r1j9",
+            "type": "image",
+            "content": {
+                "src": "@{plot}",
+                "caption": "A matplotlib figure",
+                "maxWidth": "400",
+                "maxHeight": "400"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "visible": true
+        },
+        "xgqeoh5fwx9vig18": {
+            "id": "xgqeoh5fwx9vig18",
+            "type": "image",
+            "content": {
+                "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Vienna_Convention_road_sign_B2a.svg/240px-Vienna_Convention_road_sign_B2a.svg.png",
+                "caption": "This sign says stop"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
+            "visible": "too_high"
+        },
+        "e33a35g78yt5bt8j": {
+            "id": "e33a35g78yt5bt8j",
             "type": "dataframe",
             "content": {
-                "dataframe": "@{company}",
-                "showIndex": "yes",
-                "enableSearch": "yes"
+                "dataframe": "@{prices}"
             },
+            "isCodeManaged": false,
+            "position": 5,
             "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
-            "position": 2,
-            "handlers": {
-                "click": "increment"
-            },
+            "handlers": {},
             "visible": true
         },
-        "63toiua0gs38g0iv": {
-            "id": "63toiua0gs38g0iv",
-            "type": "plotlygraph",
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+        "0ltsdqmprpgpi6gc": {
+            "id": "0ltsdqmprpgpi6gc",
+            "type": "text",
             "content": {
-                "spec": "import plotly.express as px\ndf = px.data.tips()\nfig = px.box(df, y=\"total_bill\")\nfig.show()"
+                "text": "Data from API download"
             },
+            "isCodeManaged": false,
+            "position": 4,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
-            "position": 3,
+            "visible": true
+        },
+        "ebbghlgb3l4utj0t": {
+            "id": "ebbghlgb3l4utj0t",
+            "type": "image",
+            "content": {
+                "src": "@{the_new_plot}",
+                "caption": "Image Caption",
+                "maxWidth": "400",
+                "maxHeight": "400"
+            },
+            "isCodeManaged": false,
+            "position": 6,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "handlers": {},
             "visible": true
         }
     }

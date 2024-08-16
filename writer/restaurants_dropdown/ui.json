@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "streamsync_version": "0.2.8"
+        "writer_version": "0.6.1"
     },
     "components": {
         "root": {
@@ -9,7 +9,7 @@
             "content": {
                 "appName": "My App"
             },
-            "parentId": null,
+            "isCodeManaged": false,
             "position": 0,
             "handlers": {},
             "visible": true
@@ -21,8 +21,9 @@
                 "pageMode": "compact",
                 "emptinessColor": "#e9eef1"
             },
-            "parentId": "root",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "root",
             "handlers": {},
             "visible": true
         },
@@ -33,8 +34,9 @@
                 "text": "@{my_app.title}",
                 "emptinessColor": "#050505"
             },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": true
         },
@@ -44,8 +46,9 @@
             "content": {
                 "spec": "@{plotly_restaurants}"
             },
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "isCodeManaged": false,
             "position": 2,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {
                 "plotly-click": "handle_click"
             },
@@ -57,8 +60,9 @@
             "content": {
                 "message": "@{selected}"
             },
-            "parentId": "u2pp4b0r258s8k0m",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "u2pp4b0r258s8k0m",
             "handlers": {},
             "visible": true
         },
@@ -69,23 +73,25 @@
                 "label": "Selected restaurant",
                 "options": "@{restaurant_JSON}"
             },
-            "parentId": "vx0q3xvl8kwuj1uq",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "vx0q3xvl8kwuj1uq",
             "handlers": {
-                "ss-option-change": "handle_choice"
+                "wf-option-change": "handle_choice"
             },
+            "visible": true,
             "binding": {
-                "eventType": "ss-option-change",
+                "eventType": "wf-option-change",
                 "stateRef": "selected_num"
-            },
-            "visible": true
+            }
         },
         "stdtgmi8nybqkuzv": {
             "id": "stdtgmi8nybqkuzv",
             "type": "columns",
             "content": {},
-            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "c0f99a9e-5004-4e75-a6c6-36f17490b134",
             "handlers": {},
             "visible": true
         },
@@ -95,8 +101,9 @@
             "content": {
                 "width": "1"
             },
-            "parentId": "stdtgmi8nybqkuzv",
+            "isCodeManaged": false,
             "position": 1,
+            "parentId": "stdtgmi8nybqkuzv",
             "handlers": {},
             "visible": true
         },
@@ -106,8 +113,9 @@
             "content": {
                 "width": "1"
             },
-            "parentId": "stdtgmi8nybqkuzv",
+            "isCodeManaged": false,
             "position": 0,
+            "parentId": "stdtgmi8nybqkuzv",
             "handlers": {},
             "visible": true
         }

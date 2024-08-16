@@ -1,9 +1,9 @@
-import streamsync as ss
+import writer
 import pandas as pd
 
 # This is a placeholder to get you started or refresh your memory.
 # Delete it or adapt it as necessary.
-# Documentation is available at https://streamsync.cloud
+# Documentation is available at https://dev.writer.com/framework/introduction
 
 # Shows in the log when the app starts
 print("Hello world!")
@@ -63,7 +63,7 @@ def plot(state):
 # "_my_private_element" won't be serialised or sent to the frontend,
 # because it starts with an underscore
 
-initial_state = ss.init_state({
+initial_state = writer.init_state({
     "my_app": {
         "title": "My App"
     },

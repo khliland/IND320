@@ -1,4 +1,4 @@
-import streamsync as ss
+import writer
 import pandas as pd
 import plotly.express as px
 
@@ -39,19 +39,6 @@ def handle_click(state, payload):
     state["selected_num"] = payload[0]["pointNumber"]
     _update_plotly_restaurants(state)
 
-def handle_choice(state, payload):
-    restaurants = state["restaurants_df"]
-    state["selected"] = restaurants["name"].values[int(payload)]
-    state["selected_num"] = int(payload)
-    _update_plotly_restaurants(state)
-
-def _get_JSON(state):
-    restaurants = state["restaurants_df"]
-    # Create JSON with keys list(range(9)), and restaurant names as values
-    my_json = dict(zip(list(range(len(restaurants))), restaurants["name"].values))
-    # Convert keys to strings
-    my_json = {str(key): value for key, value in my_json.items()}
-    state["restaurant_JSON"] = my_json
 
 
 # Initialise the state
@@ -59,7 +46,7 @@ def _get_JSON(state):
 # "_my_private_element" won't be serialised or sent to the frontend,
 # because it starts with an underscore (not used here)
 
-initial_state = ss.init_state({
+initial_state = writer.init_state({
     "my_app": {
         "title": "Restaurant selection"
     },
@@ -70,4 +57,3 @@ initial_state = ss.init_state({
 })
 
 _update_plotly_restaurants(initial_state)
-_get_JSON(initial_state)

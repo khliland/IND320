@@ -1,8 +1,8 @@
-import streamsync as ss
+import writer
 
 # This is a placeholder to get you started or refresh your memory.
 # Delete it or adapt it as necessary.
-# Documentation is available at https://streamsync.cloud
+# Documentation is available at https://dev.writer.com/framework/introduction
 
 # Set environment variables for PySpark (system and version dependent!) if not already set persistently
 import os
@@ -53,7 +53,7 @@ def increment(state):
 # "_my_private_element" won't be serialised or sent to the frontend,
 # because it starts with an underscore
 
-initial_state = ss.init_state({
+initial_state = writer.init_state({
     "my_app": {
         "title": "My App"
     },
