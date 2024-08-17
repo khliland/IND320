@@ -28,6 +28,7 @@ parts:
       - file: 3_Data_sources/2_Databases/2_MySQL
       - file: 3_Data_sources/2_Databases/3_Cassandra
       - file: 3_Data_sources/2_Databases/4_Spark
+      - file: 3_Data_sources/2_Databases/5_MongoDB
     - file: 3_Data_sources/3_APIs/1_APIs
       sections:
       - file: 3_Data_sources/3_APIs/2_REST

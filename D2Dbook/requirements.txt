@@ -22,3 +22,5 @@ plotly
 pydub
 sounddevice
 kaleido
+lipsum
+pymongo
