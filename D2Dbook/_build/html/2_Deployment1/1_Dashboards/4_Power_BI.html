@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Static and streaming data" href="../../3_Data_sources/1_Formats/1_Formats.html" />
-    <link rel="prev" title="Streamsync" href="3_Streamsync.html" />
+    <link rel="prev" title="Writer" href="3_Writer_Framework.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,7 +191,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="2_Dashboards.html">Dashboards</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="3_Streamsync.html">Streamsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Writer_Framework.html">Writer</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Power BI</a></li>
 </ul>
 </details></li>
@@ -207,6 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -660,36 +661,36 @@ document.write(`
       <th>0</th>
       <td>2019-01-01</td>
       <td>A</td>
-      <td>66</td>
-      <td>FLQOMM8W2O</td>
+      <td>68</td>
+      <td>XYVUDI3JN1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2019-01-02</td>
       <td>A</td>
-      <td>97</td>
-      <td>VNRHDPSP6P</td>
+      <td>26</td>
+      <td>UDJP4IOLRU</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2019-01-03</td>
-      <td>D</td>
-      <td>9</td>
-      <td>9MOQRP2MWR</td>
+      <td>C</td>
+      <td>92</td>
+      <td>RNWRKZK4SK</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2019-01-04</td>
-      <td>A</td>
-      <td>99</td>
-      <td>1G9PGNX346</td>
+      <td>C</td>
+      <td>56</td>
+      <td>D8YRHU2ZBH</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2019-01-05</td>
-      <td>C</td>
-      <td>65</td>
-      <td>QGG01WM8SS</td>
+      <td>A</td>
+      <td>89</td>
+      <td>K9PL0XPPXY</td>
     </tr>
     <tr>
       <th>...</th>
@@ -701,37 +702,37 @@ document.write(`
     <tr>
       <th>360</th>
       <td>2019-12-27</td>
-      <td>D</td>
-      <td>94</td>
-      <td>ODQEY49YOY</td>
+      <td>C</td>
+      <td>62</td>
+      <td>FORFQGSG9E</td>
     </tr>
     <tr>
       <th>361</th>
       <td>2019-12-28</td>
-      <td>C</td>
-      <td>44</td>
-      <td>VQ5B12BCT3</td>
+      <td>A</td>
+      <td>31</td>
+      <td>07F1NDCXPC</td>
     </tr>
     <tr>
       <th>362</th>
       <td>2019-12-29</td>
-      <td>A</td>
-      <td>29</td>
-      <td>K70IDDIW2Y</td>
+      <td>D</td>
+      <td>85</td>
+      <td>SJJUTGN1AP</td>
     </tr>
     <tr>
       <th>363</th>
       <td>2019-12-30</td>
-      <td>A</td>
-      <td>41</td>
-      <td>N08S7MXUZN</td>
+      <td>B</td>
+      <td>35</td>
+      <td>QXLMILJB7P</td>
     </tr>
     <tr>
       <th>364</th>
       <td>2019-12-31</td>
       <td>B</td>
-      <td>16</td>
-      <td>SIH8T3UK4P</td>
+      <td>98</td>
+      <td>PSOOJBY58F</td>
     </tr>
   </tbody>
 </table>
@@ -789,12 +790,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="3_Streamsync.html"
+       href="3_Writer_Framework.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Streamsync</p>
+        <p class="prev-next-title">Writer</p>
       </div>
     </a>
     <a class="right-next"

@@ -2,7 +2,7 @@
 A simple Flask API server for testing POST and GET. Start from terminal with:
 
 conda activate tf_M1
-python /Users/kristian/Documents/GitHub/IND320/D2D/Data_sources/APIs/flask_API.py
+python /Users/kristian/Documents/GitHub/IND320/D2D/D2Dbook/3_Data_sources/3_APIs/flask_API.py
 
 Change path to your local install.
 """
