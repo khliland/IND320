@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -191,7 +191,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Streamsync.html">Streamsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Writer_Framework.html">Writer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Power_BI.html">Power BI</a></li>
 </ul>
 </details></li>
@@ -207,6 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Databases/4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="1_APIs.html">APIs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -581,7 +582,7 @@ document.write(`
 <li><p>Running a Flask instance from the terminal can be done similar to this:</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">tf_M1</span>
-<span class="n">python</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">kristian</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="n">IND320</span><span class="o">/</span><span class="n">D2Dbook</span><span class="o">/</span><span class="mi">2</span><span class="n">_Data_sources</span><span class="o">/</span><span class="n">APIs</span><span class="o">/</span><span class="n">flask_API</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">kristian</span><span class="o">/</span><span class="n">Documents</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="n">IND320</span><span class="o">/</span><span class="n">D2Dbook</span><span class="o">/</span><span class="mi">3</span><span class="n">_Data_sources</span><span class="o">/</span><span class="mi">3</span><span class="n">_APIs</span><span class="o">/</span><span class="n">flask_API</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -672,21 +673,21 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/requests/models.py:974,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/requests/models.py:974,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">973</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">974</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">975</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">976</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
 <span class="g g-Whitespace">    </span><span class="mi">977</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
 
-<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
 <span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
 <span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
 <span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
 <span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
 <span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
@@ -694,7 +695,7 @@ document.write(`
 <span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
 <span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 
-<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
 <span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 <span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
@@ -709,7 +710,7 @@ document.write(`
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/api/get/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
-<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/requests/models.py:978,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/requests/models.py:978,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">975</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">976</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>

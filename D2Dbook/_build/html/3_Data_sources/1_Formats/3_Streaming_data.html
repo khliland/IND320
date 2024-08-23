@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -191,7 +191,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Streamsync.html">Streamsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Writer_Framework.html">Writer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Power_BI.html">Power BI</a></li>
 </ul>
 </details></li>
@@ -207,6 +207,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Databases/4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -536,7 +537,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if user is logged in (&quot;==&quot; active chat)</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;cohhcarnage&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, mizkif, cohhcarnage, etc.</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;tarik&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, </span>
+<span class="c1"># mizkif, cohhcarnage, etc.</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://decapi.me/twitch/uptime/&quot;</span><span class="o">+</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">is_online</span> <span class="o">=</span> <span class="n">response</span> <span class="o">!=</span> <span class="n">user</span><span class="o">+</span><span class="s2">&quot; is offline&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_online</span><span class="p">)</span>
@@ -544,7 +546,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -556,7 +558,7 @@ document.write(`
 
 <span class="n">oauth</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/twitch_oauth&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">twitch_chat</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">TwitchChatStream</span><span class="p">(</span>
-    <span class="n">nickname</span><span class="o">=</span><span class="s2">&quot;khliland&quot;</span><span class="p">,</span> <span class="c1"># Exchange with your Twitch username</span>
+    <span class="n">nickname</span><span class="o">=</span><span class="s2">&quot;hallvardnmbu&quot;</span><span class="p">,</span> <span class="c1"># Exchange with your Twitch username</span>
     <span class="n">token</span><span class="o">=</span><span class="n">oauth</span><span class="p">,</span>
     <span class="n">channels</span><span class="o">=</span><span class="p">[</span><span class="n">user</span><span class="p">]</span>
 <span class="p">)</span>
@@ -566,7 +568,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If the user is online, print the first 5 messages</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If the user is online, print the first 2 messages</span>
 <span class="k">if</span> <span class="n">is_online</span><span class="p">:</span>
     <span class="n">messages</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">twitch_chat</span><span class="p">:</span>
@@ -576,6 +578,15 @@ document.write(`
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puh, that&#39;s enough!&quot;</span><span class="p">)</span>
             <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2024, 8, 17, 13, 12, 36, 33083), &#39;channel&#39;: &#39;tarik&#39;, &#39;username&#39;: &#39;fossabot&#39;, &#39;msg&#39;: &#39;Hey, are you following tarik on Instagram? http://www.instagram.com/officialtarik&#39;}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2024, 8, 17, 13, 12, 36, 962709), &#39;channel&#39;: &#39;tarik&#39;, &#39;username&#39;: &#39;vaibhavpatel19&#39;, &#39;msg&#39;: &#39;what does this all mean for C9?&#39;}
+Puh, that&#39;s enough!
 </pre></div>
 </div>
 </div>

@@ -1,44 +1,100 @@
 Traceback (most recent call last):
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/nbclient/client.py", line 782, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 198, in ensure_async
-    result = await obj
-             ^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/jupyter_client/channels.py", line 313, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/nbclient/client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/nbclient/client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/nbclient/client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-["# Make a connection object 'connection' for the MySQL database 'u492297623_student1' on port 3306 at server 145.14.151.151 with username 'u492297623_stud1'", '# and password given by instructor.', 'import mysql.connector', "PWD = open('../../../No_sync/password_khliland','r').read()", '']
-...
-["    database='u492297623_student1'", ')', '', '# Creating a cursor object to execute SQL queries', 'cursor = connection.cursor()']
--------------------
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/Mac/anaconda3/envs/ind320/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Make a connection object 'connection' for the MySQL database 'u492297623_student1' on port 3306 at server 145.14.151.151 with username 'u492297623_stud1'
+# and password given by instructor.
+import mysql.connector
+PWD = open('../../../No_sync/password_khliland','r').read()
+
+# Establishing a connection to the MySQL database
+connection = mysql.connector.connect(
+    host='145.14.151.151',
+    port=3306,
+    user='u492297623_stud1',
+    password=PWD,
+    database='u492297623_student1',
+    connection_timeout=10
+)
+
+# Creating a cursor object to execute SQL queries
+cursor = connection.cursor()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mProgrammingError[0m                          Traceback (most recent call last)
+Cell [0;32mIn[1], line 7[0m
+[1;32m      4[0m PWD [38;5;241m=[39m [38;5;28mopen[39m([38;5;124m'[39m[38;5;124m../../../No_sync/password_khliland[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mr[39m[38;5;124m'[39m)[38;5;241m.[39mread()
+[1;32m      6[0m [38;5;66;03m# Establishing a connection to the MySQL database[39;00m
+[0;32m----> 7[0m connection [38;5;241m=[39m mysql[38;5;241m.[39mconnector[38;5;241m.[39mconnect(
+[1;32m      8[0m     host[38;5;241m=[39m[38;5;124m'[39m[38;5;124m145.14.151.151[39m[38;5;124m'[39m,
+[1;32m      9[0m     port[38;5;241m=[39m[38;5;241m3306[39m,
+[1;32m     10[0m     user[38;5;241m=[39m[38;5;124m'[39m[38;5;124mu492297623_stud1[39m[38;5;124m'[39m,
+[1;32m     11[0m     password[38;5;241m=[39mPWD,
+[1;32m     12[0m     database[38;5;241m=[39m[38;5;124m'[39m[38;5;124mu492297623_student1[39m[38;5;124m'[39m,
+[1;32m     13[0m     connection_timeout[38;5;241m=[39m[38;5;241m10[39m
+[1;32m     14[0m )
+[1;32m     16[0m [38;5;66;03m# Creating a cursor object to execute SQL queries[39;00m
+[1;32m     17[0m cursor [38;5;241m=[39m connection[38;5;241m.[39mcursor()
+
+File [0;32m~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/__init__.py:179[0m, in [0;36mconnect[0;34m(*args, **kwargs)[0m
+[1;32m    177[0m     [38;5;28;01mreturn[39;00m CMySQLConnection([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m    178[0m [38;5;28;01melse[39;00m:
+[0;32m--> 179[0m     [38;5;28;01mreturn[39;00m MySQLConnection([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [0;32m~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:95[0m, in [0;36mMySQLConnection.__init__[0;34m(self, *args, **kwargs)[0m
+[1;32m     92[0m [38;5;28mself[39m[38;5;241m.[39m_pool_config_version [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m     94[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(kwargs) [38;5;241m>[39m [38;5;241m0[39m:
+[0;32m---> 95[0m     [38;5;28mself[39m[38;5;241m.[39mconnect([38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+File [0;32m~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/abstracts.py:716[0m, in [0;36mMySQLConnectionAbstract.connect[0;34m(self, **kwargs)[0m
+[1;32m    713[0m     [38;5;28mself[39m[38;5;241m.[39mconfig([38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m    715[0m [38;5;28mself[39m[38;5;241m.[39mdisconnect()
+[0;32m--> 716[0m [38;5;28mself[39m[38;5;241m.[39m_open_connection()
+[1;32m    717[0m [38;5;28mself[39m[38;5;241m.[39m_post_connection()
+
+File [0;32m~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:208[0m, in [0;36mMySQLConnection._open_connection[0;34m(self)[0m
+[1;32m    206[0m [38;5;28mself[39m[38;5;241m.[39m_socket[38;5;241m.[39mopen_connection()
+[1;32m    207[0m [38;5;28mself[39m[38;5;241m.[39m_do_handshake()
+[0;32m--> 208[0m [38;5;28mself[39m[38;5;241m.[39m_do_auth([38;5;28mself[39m[38;5;241m.[39m_user, [38;5;28mself[39m[38;5;241m.[39m_password,
+[1;32m    209[0m               [38;5;28mself[39m[38;5;241m.[39m_database, [38;5;28mself[39m[38;5;241m.[39m_client_flags, [38;5;28mself[39m[38;5;241m.[39m_charset_id,
+[1;32m    210[0m               [38;5;28mself[39m[38;5;241m.[39m_ssl)
+[1;32m    211[0m [38;5;28mself[39m[38;5;241m.[39mset_converter_class([38;5;28mself[39m[38;5;241m.[39m_converter_class)
+[1;32m    212[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_client_flags [38;5;241m&[39m ClientFlag[38;5;241m.[39mCOMPRESS:
+
+File [0;32m~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:144[0m, in [0;36mMySQLConnection._do_auth[0;34m(self, username, password, database, client_flags, charset, ssl_options)[0m
+[1;32m    137[0m packet [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_protocol[38;5;241m.[39mmake_auth(
+[1;32m    138[0m     handshake[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_handshake,
+[1;32m    139[0m     username[38;5;241m=[39musername, password[38;5;241m=[39mpassword, database[38;5;241m=[39mdatabase,
+[1;32m    140[0m     charset[38;5;241m=[39mcharset, client_flags[38;5;241m=[39mclient_flags,
+[1;32m    141[0m     ssl_enabled[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_ssl_active,
+[1;32m    142[0m     auth_plugin[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_auth_plugin)
+[1;32m    143[0m [38;5;28mself[39m[38;5;241m.[39m_socket[38;5;241m.[39msend(packet)
+[0;32m--> 144[0m [38;5;28mself[39m[38;5;241m.[39m_auth_switch_request(username, password)
+[1;32m    146[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m (client_flags [38;5;241m&[39m ClientFlag[38;5;241m.[39mCONNECT_WITH_DB) [38;5;129;01mand[39;00m database:
+[1;32m    147[0m     [38;5;28mself[39m[38;5;241m.[39mcmd_init_db(database)
+
+File [0;32m~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:177[0m, in [0;36mMySQLConnection._auth_switch_request[0;34m(self, username, password)[0m
+[1;32m    175[0m         auth_data [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_protocol[38;5;241m.[39mparse_auth_more_data(packet)
+[1;32m    176[0m [38;5;28;01melif[39;00m packet[[38;5;241m4[39m] [38;5;241m==[39m [38;5;241m255[39m:
+[0;32m--> 177[0m     [38;5;28;01mraise[39;00m errors[38;5;241m.[39mget_exception(packet)
+
+[0;31mProgrammingError[0m: 1045 (28000): Access denied for user 'u492297623_stud1'@'128.39.239.47' (using password: YES)
 

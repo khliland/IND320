@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -191,7 +191,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Streamsync.html">Streamsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Writer_Framework.html">Writer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Power_BI.html">Power BI</a></li>
 </ul>
 </details></li>
@@ -207,6 +207,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -555,6 +556,69 @@ document.write(`
 
 <span class="c1"># Creating a cursor object to execute SQL queries</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ProgrammingError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Establishing a connection to the MySQL database</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">host</span><span class="o">=</span><span class="s1">&#39;145.14.151.151&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">port</span><span class="o">=</span><span class="mi">3306</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">user</span><span class="o">=</span><span class="s1">&#39;u492297623_stud1&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">password</span><span class="o">=</span><span class="n">PWD</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">database</span><span class="o">=</span><span class="s1">&#39;u492297623_student1&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">connection_timeout</span><span class="o">=</span><span class="mi">10</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># Creating a cursor object to execute SQL queries</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/__init__.py:179,</span> in <span class="ni">connect</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>     <span class="k">return</span> <span class="n">CMySQLConnection</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">179</span>     <span class="k">return</span> <span class="n">MySQLConnection</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:95,</span> in <span class="ni">MySQLConnection.__init__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool_config_version</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">95</span>     <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/abstracts.py:716,</span> in <span class="ni">MySQLConnectionAbstract.connect</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="bp">self</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">716</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_connection</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_connection</span><span class="p">()</span>
+
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:208,</span> in <span class="ni">MySQLConnection._open_connection</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span> <span class="bp">self</span><span class="o">.</span><span class="n">_socket</span><span class="o">.</span><span class="n">open_connection</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span> <span class="bp">self</span><span class="o">.</span><span class="n">_do_handshake</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">208</span> <span class="bp">self</span><span class="o">.</span><span class="n">_do_auth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_user</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_password</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>               <span class="bp">self</span><span class="o">.</span><span class="n">_database</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_flags</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_charset_id</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>               <span class="bp">self</span><span class="o">.</span><span class="n">_ssl</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_converter_class</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_converter_class</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_flags</span> <span class="o">&amp;</span> <span class="n">ClientFlag</span><span class="o">.</span><span class="n">COMPRESS</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:144,</span> in <span class="ni">MySQLConnection._do_auth</span><span class="nt">(self, username, password, database, client_flags, charset, ssl_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span> <span class="n">packet</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="o">.</span><span class="n">make_auth</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="n">handshake</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handshake</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">password</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span>     <span class="n">charset</span><span class="o">=</span><span class="n">charset</span><span class="p">,</span> <span class="n">client_flags</span><span class="o">=</span><span class="n">client_flags</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span>     <span class="n">ssl_enabled</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ssl_active</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="n">auth_plugin</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_auth_plugin</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span> <span class="bp">self</span><span class="o">.</span><span class="n">_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">144</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auth_switch_request</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">client_flags</span> <span class="o">&amp;</span> <span class="n">ClientFlag</span><span class="o">.</span><span class="n">CONNECT_WITH_DB</span><span class="p">)</span> <span class="ow">and</span> <span class="n">database</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="bp">self</span><span class="o">.</span><span class="n">cmd_init_db</span><span class="p">(</span><span class="n">database</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/ind320/lib/python3.12/site-packages/mysql/connector/connection.py:177,</span> in <span class="ni">MySQLConnection._auth_switch_request</span><span class="nt">(self, username, password)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>         <span class="n">auth_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="o">.</span><span class="n">parse_auth_more_data</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="k">elif</span> <span class="n">packet</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="mi">255</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">177</span>     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">get_exception</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+
+<span class="ne">ProgrammingError</span>: 1045 (28000): Access denied for user &#39;u492297623_stud1&#39;@&#39;128.39.239.47&#39; (using password: YES)
 </pre></div>
 </div>
 </div>

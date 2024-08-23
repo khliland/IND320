@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -193,7 +193,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Streamsync.html">Streamsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Writer_Framework.html">Writer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Power_BI.html">Power BI</a></li>
 </ul>
 </details></li>
@@ -209,6 +209,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -552,7 +553,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0af6456244b00b18e45465cec75b40cfe2b21ba75f858498086f10f6c5811059.png" src="../../_images/0af6456244b00b18e45465cec75b40cfe2b21ba75f858498086f10f6c5811059.png" />
+<img alt="../../_images/3eb8b74a0de970e5fbc684f032ade2d8fbf36a2525f3587e425118596ba36b71.png" src="../../_images/3eb8b74a0de970e5fbc684f032ade2d8fbf36a2525f3587e425118596ba36b71.png" />
 </div>
 </div>
 <div class="cell tag_skip-execution docutils container">
@@ -592,7 +593,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3eb3fcd86a2e6700c16093ebdfe355488c42380e35bebed265a3b6f0ad6502cb.png" src="../../_images/3eb3fcd86a2e6700c16093ebdfe355488c42380e35bebed265a3b6f0ad6502cb.png" />
+<img alt="../../_images/4bf9eb300c01c4c1ffe5130ef5bfbb32ab164fea8634827a3b2054b9ec6b04ba.png" src="../../_images/4bf9eb300c01c4c1ffe5130ef5bfbb32ab164fea8634827a3b2054b9ec6b04ba.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -608,13 +609,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/306ab4a08dcd8f70cc9f488e972d338540c2db7eb4efe16c605044dcc9355a33.png" src="../../_images/306ab4a08dcd8f70cc9f488e972d338540c2db7eb4efe16c605044dcc9355a33.png" />
+<img alt="../../_images/b09a9b5359d30d9f9de9c41cbe07febd3365365358bdd8807e19972d7820041f.png" src="../../_images/b09a9b5359d30d9f9de9c41cbe07febd3365365358bdd8807e19972d7820041f.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Music: https://www.chosic.com/free-music/all/ </span>
 <span class="c1"># Load MP3 file Bird.mp3 and plot the spectrogram</span>
+<span class="c1"># NOTE: Needs `ffprobe` or `avprobe` installed on the computer.</span>
 <span class="kn">from</span> <span class="nn">pydub</span> <span class="kn">import</span> <span class="n">AudioSegment</span>
 <span class="n">song</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_mp3</span><span class="p">(</span><span class="s2">&quot;../../data/Bird.mp3&quot;</span><span class="p">)</span>
 
@@ -652,7 +654,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/48a00643c148f9b02c8df4a841767d9c7cd409a3e97bc43da4268c2af2fe7022.png" src="../../_images/48a00643c148f9b02c8df4a841767d9c7cd409a3e97bc43da4268c2af2fe7022.png" />
+<img alt="../../_images/2fe33f5689169e0f240ff5fc7d4bebed29d70c8f8852c3753f03b5ec64c1cdf7.png" src="../../_images/2fe33f5689169e0f240ff5fc7d4bebed29d70c8f8852c3753f03b5ec64c1cdf7.png" />
 </div>
 </div>
 </section>
@@ -691,7 +693,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/39771f1935b6e74afad28e63548a91213ffeaf605b9dbf02851cb71e964f0fb4.png" src="../../_images/39771f1935b6e74afad28e63548a91213ffeaf605b9dbf02851cb71e964f0fb4.png" />
+<img alt="../../_images/0468e4eba5cbcba19540925f894e2fba61f39cf43258fa0378e770121c044b11.png" src="../../_images/0468e4eba5cbcba19540925f894e2fba61f39cf43258fa0378e770121c044b11.png" />
 </div>
 </div>
 </section>
