@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -191,8 +191,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Writer_Framework.html">Writer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Power_BI.html">Power BI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Power_BI.html">Power BI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Writer_Framework.html">Writer</a></li>
 </ul>
 </details></li>
 </ul>
@@ -502,12 +502,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-access-for-connection">Open access for connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-connection-type">Choose connection type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable">MongoDB’s suggested code for checking if database is reachable</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">CONNECTING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">INSERTING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">READING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">UPDATING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">AGGREGATING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">DELETING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">Connecting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">Inserting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
 </ul>
             </nav>
         </div>
@@ -577,7 +577,7 @@ document.write(`
 </div>
 </section>
 <section id="connecting">
-<h2>CONNECTING<a class="headerlink" href="#connecting" title="Link to this heading">#</a></h2>
+<h2>Connecting<a class="headerlink" href="#connecting" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymongo.mongo_client</span> <span class="kn">import</span> <span class="n">MongoClient</span>
@@ -600,10 +600,12 @@ document.write(`
 </div>
 </section>
 <section id="inserting">
-<h2>INSERTING<a class="headerlink" href="#inserting" title="Link to this heading">#</a></h2>
-<p>The MongoDB structure is such that each database contains collections.</p>
-<p>These collections contain documents, which are similar to dictionaries.</p>
-<p>Thus, when inserting data, we use dictionaries.</p>
+<h2>Inserting<a class="headerlink" href="#inserting" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The MongoDB structure is such that each database contains collections.</p></li>
+<li><p>These collections contain documents, which are similar to dictionaries.</p></li>
+<li><p>Thus, when inserting data, we use dictionaries.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inserting a single document (dictionary).</span>
@@ -620,7 +622,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;66c84cf8623d326af55f93dd&#39;), ObjectId(&#39;66c84cf8623d326af55f93de&#39;)], acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;66d8a6a0525b6bcb3a592b2f&#39;), ObjectId(&#39;66d8a6a0525b6bcb3a592b30&#39;)], acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -630,7 +632,7 @@ document.write(`
 <a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.009.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.009.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.009.png?raw=TRUE" style="width: 1000px;" /></a>
 </section>
 <section id="reading">
-<h2>READING<a class="headerlink" href="#reading" title="Link to this heading">#</a></h2>
+<h2>Reading<a class="headerlink" href="#reading" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading ALL documents from a collection.</span>
@@ -659,20 +661,22 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;66c84cf8623d326af55f93dc&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
-{&#39;_id&#39;: ObjectId(&#39;66c84cf8623d326af55f93dd&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
-{&#39;_id&#39;: ObjectId(&#39;66c84cf8623d326af55f93de&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
-{&#39;_id&#39;: ObjectId(&#39;66c84cf8623d326af55f93dc&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;66d8a6a0525b6bcb3a592b2e&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+{&#39;_id&#39;: ObjectId(&#39;66d8a6a0525b6bcb3a592b2f&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
+{&#39;_id&#39;: ObjectId(&#39;66d8a6a0525b6bcb3a592b30&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
+{&#39;_id&#39;: ObjectId(&#39;66d8a6a0525b6bcb3a592b2e&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="updating">
-<h2>UPDATING<a class="headerlink" href="#updating" title="Link to this heading">#</a></h2>
-<p>Updating documents is done using the update_one and update_many methods.</p>
-<p>The first argument is a query that selects the documents to update.</p>
-<p>The second argument is a dictionary that specifies the changes.</p>
+<h2>Updating<a class="headerlink" href="#updating" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Updating documents is done using the update_one and update_many methods.</p></li>
+<li><p>The first argument is a query that selects the documents to update.</p></li>
+<li><p>The second argument is a dictionary that specifies the changes.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Updating a single document.</span>
@@ -692,15 +696,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007a&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1724402936, 30), &#39;t&#39;: 122}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1724402936, 30), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\x90\xed\xa8\xd5I\x80\xc7,\x00\xde\xb3B\xa8\xac\xf4\x89\xcf\x19^&lt;&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1724402936, 30), &#39;updatedExisting&#39;: True}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1725474465, 14), &#39;t&#39;: 123}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1725474465, 14), &#39;signature&#39;: {&#39;hash&#39;: b&#39;@\x9c\x8c\x19C\xc8\x18A\xb5\xff\xc3\x03\xedd\x0b\x90=}B/&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1725474465, 14), &#39;updatedExisting&#39;: True}, acknowledged=True)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="aggregating">
-<h2>AGGREGATING<a class="headerlink" href="#aggregating" title="Link to this heading">#</a></h2>
-<p>Combine multiple operations into a single query.</p>
+<h2>Aggregating<a class="headerlink" href="#aggregating" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Combine multiple operations into a single query.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="p">[</span>
@@ -721,8 +727,10 @@ document.write(`
 </div>
 </section>
 <section id="deleting">
-<h2>DELETING<a class="headerlink" href="#deleting" title="Link to this heading">#</a></h2>
-<p>Deleting documents is done using the delete_one and delete_many methods.</p>
+<h2>Deleting<a class="headerlink" href="#deleting" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Deleting documents is done using the delete_one and delete_many methods.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deleting a single document.</span>
@@ -740,7 +748,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007a&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1724402937, 3), &#39;t&#39;: 122}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1724402937, 3), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\x8e\x9bKO\xb6\x08\x90F\x86\x8e\x9c\xfe!\x9c\xa0\xf0\xca\xab\x19!&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1724402937, 3)}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1725474465, 22), &#39;t&#39;: 123}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1725474465, 22), &#39;signature&#39;: {&#39;hash&#39;: b&#39;@\x9c\x8c\x19C\xc8\x18A\xb5\xff\xc3\x03\xedd\x0b\x90=}B/&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1725474465, 22)}, acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -817,12 +825,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-access-for-connection">Open access for connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-connection-type">Choose connection type</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable">MongoDB’s suggested code for checking if database is reachable</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">CONNECTING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">INSERTING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">READING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">UPDATING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">AGGREGATING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">DELETING</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">Connecting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">Inserting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
 </ul>
   </nav></div>
 
