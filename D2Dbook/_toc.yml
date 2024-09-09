@@ -9,7 +9,6 @@ parts:
     - file: 1_Decision_making/1_Data_pipeline
       sections:
       - file: 1_Decision_making/2_Decision_making
-      - file: 1_Decision_making/3_Dashboards_reports
   - caption: Deployment 1
     chapters:
     - file: 2_Deployment1/1_Dashboards/1_Deployment

@@ -24,3 +24,4 @@ sounddevice
 kaleido
 lipsum
 pymongo
+writer
