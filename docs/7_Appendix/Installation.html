@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -547,12 +547,13 @@ document.write(`
 <li><p>A new conda environment can be created and prepared, e.g., as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">D2D_env</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">D2D_env</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="n">pip</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.11.9</span> <span class="n">pip</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path_to_D2Dbook</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </li>
 <li><p>If you get an error regarding Rust, you may need to install Rust separately, e.g, from <a class="reference external" href="https://www.rust-lang.org/tools/install">their webpage</a> or using <a class="reference external" href="https://formulae.brew.sh/formula/rust">Homebrew</a>.</p></li>
+<li><p>As of September 2024 the Python version has been specified above due to trouble with the Cassandra driver from DataStax in Python 3.12.</p></li>
 </ul>
 </section>
 </section>
@@ -575,7 +576,7 @@ document.write(`
 <section id="git">
 <h2>Git<a class="headerlink" href="#git" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Python pip installation from GitHub requires a local git system.</p></li>
+<li><p>Python pip installation from GitHub requires a local git system (as of September 2024 this is not required when using this book).</p></li>
 <li><p>If your computer does not have git installed by default, this can be installed from <a class="reference external" href="https://git-scm.com/downloads">git-scm.com</a>.</p></li>
 </ul>
 </section>
@@ -589,6 +590,7 @@ document.write(`
 </div>
 </li>
 <li><p>After WSL is installed, the Docker desktop can be installed as for POSIX systems.</p></li>
+<li><p>Both WSL and Docker are found in the Software Catalog of NMBU computers.</p></li>
 </ul>
 </section>
 <section id="cassandra">
@@ -597,14 +599,9 @@ document.write(`
 <ul class="simple">
 <li><p>Docker installed on system</p></li>
 <li><p>“cassandra:latest” image installed in docker</p></li>
-<li><p>Python/Conda environment with python 3.8 (or newer*)</p></li>
+<li><p>Python/Conda environment with Python &gt;=3.8 and &lt;=3.11.9 *</p></li>
+<li><p>*As of September 2024 there is a lack of compatibility between Python 3.12 and Cassandra drivers unless one installs additional software.</p></li>
 </ul>
-<p>*As of 23 September 2023, the officially built cassandra-driver package was at version 3.25 and did not work well with Python 3.10 on Mac or Windows 10.<br />
-To install a newer version from the terminal you can write the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">datastax</span><span class="o">/</span><span class="n">python</span><span class="o">-</span><span class="n">driver</span><span class="o">.</span><span class="n">git</span>
-</pre></div>
-</div>
-<p>*As of 8 August 2024 the official driver is the preferred version.</p>
 </section>
 <section id="java">
 <h2>Java<a class="headerlink" href="#java" title="Link to this heading">#</a></h2>

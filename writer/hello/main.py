@@ -94,7 +94,7 @@ def _update_metrics(state):
         "diversity": round(diversity_index, 2),
     }
     metrics.update({
-        "average_weight_note": "+Acceptable",
+        "average_weight_note": "+Acceptable-ish",
         "average_length_note": "+Acceptable",
         "average_bmi_note": "-Overweight" if metrics["average_bmi"] >= 5.2 else "+Acceptable",
         "diversity_note": "-Not diverse" if metrics["diversity"] < 0.8 else "+Acceptable",
