@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -649,6 +649,11 @@ document.write(`
 </li>
 <li><p>If this version of Python is not accepted, one can point it to a version installed in a conda environment.</p></li>
 <li><p>Spark itself can be installed using: <em>pip install pyspark</em> (or similar).</p></li>
+<li><p>Troubleshooting:</p>
+<ul class="simple">
+<li><p>Firewalls, e.g., Norton, may block the connection between Spark and Cassandra. Adding and exception in the firewall or temporarily disabling may help.</p></li>
+</ul>
+</li>
 </ul>
 </section>
 </section>
