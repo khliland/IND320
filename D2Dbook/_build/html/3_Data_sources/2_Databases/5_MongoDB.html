@@ -496,17 +496,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-free-user">Create a free user</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-username-and-password-to-be-used-through-python">Select a username and password to be used through Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-access-for-connection">Open access for connection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-connection-type">Choose connection type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable">MongoDB’s suggested code for checking if database is reachable</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">Connecting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">Inserting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-free-user">Create a free user</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-username-and-password-to-be-used-through-python">Select a username and password to be used through Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-access-for-connection">Open access for connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-connection-type">Choose connection type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable">MongoDB’s suggested code for checking if database is reachable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">Connecting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">Inserting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -525,19 +529,18 @@ document.write(`
 <section id="create-a-free-user">
 <h2>Create a free user<a class="headerlink" href="#create-a-free-user" title="Link to this heading">#</a></h2>
 <a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.002.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.002.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.002.png?raw=TRUE" style="width: 1000px;" /></a>
-</section>
 <section id="select-a-username-and-password-to-be-used-through-python">
-<h2>Select a username and password to be used through Python<a class="headerlink" href="#select-a-username-and-password-to-be-used-through-python" title="Link to this heading">#</a></h2>
+<h3>Select a username and password to be used through Python<a class="headerlink" href="#select-a-username-and-password-to-be-used-through-python" title="Link to this heading">#</a></h3>
 <p>(Quickstart menu on the left)
 <a class="reference internal" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.003.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.003.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.003.png?raw=TRUE" style="width: 1000px;" /></a></p>
 </section>
 <section id="open-access-for-connection">
-<h2>Open access for connection<a class="headerlink" href="#open-access-for-connection" title="Link to this heading">#</a></h2>
+<h3>Open access for connection<a class="headerlink" href="#open-access-for-connection" title="Link to this heading">#</a></h3>
 <p>Add IP address 0.0.0.0/0 to avoid connection issues, then “Finish and close” at the bottom.
 <a class="reference internal" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.004.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.004.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.004.png?raw=TRUE" style="width: 1000px;" /></a></p>
 </section>
 <section id="choose-connection-type">
-<h2>Choose connection type<a class="headerlink" href="#choose-connection-type" title="Link to this heading">#</a></h2>
+<h3>Choose connection type<a class="headerlink" href="#choose-connection-type" title="Link to this heading">#</a></h3>
 <p>From the Overview menu, select Python as Application Development and click “Get connection string”
 <a class="reference internal" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.005.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.005.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.005.png?raw=TRUE" style="width: 1000px;" /></a></p>
 <p>Follow the instructions (make sure to install from/in the correct Python environment).<br />
@@ -545,7 +548,7 @@ document.write(`
 <a class="reference internal" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.006.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.006.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.006.png?raw=TRUE" style="width: 1000px;" /></a></p>
 </section>
 <section id="mongodbs-suggested-code-for-checking-if-database-is-reachable">
-<h2>MongoDB’s suggested code for checking if database is reachable<a class="headerlink" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable" title="Link to this heading">#</a></h2>
+<h3>MongoDB’s suggested code for checking if database is reachable<a class="headerlink" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable" title="Link to this heading">#</a></h3>
 <p>NMBU’s VPN service seems to block a port related to MongoDB, thus needing to be disabled before running.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,6 +578,7 @@ document.write(`
 </div>
 </div>
 </section>
+</section>
 <section id="connecting">
 <h2>Connecting<a class="headerlink" href="#connecting" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -597,9 +601,8 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
 <section id="inserting">
-<h2>Inserting<a class="headerlink" href="#inserting" title="Link to this heading">#</a></h2>
+<h3>Inserting<a class="headerlink" href="#inserting" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The MongoDB structure is such that each database contains collections.</p></li>
 <li><p>These collections contain documents, which are similar to dictionaries.</p></li>
@@ -621,7 +624,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;66ed45f2ac0a52bb81540485&#39;), ObjectId(&#39;66ed45f2ac0a52bb81540486&#39;)], acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;66f46ea4cbd24c1e24523b1c&#39;), ObjectId(&#39;66f46ea4cbd24c1e24523b1d&#39;)], acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -631,7 +634,7 @@ document.write(`
 <a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.009.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.009.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/mongodb/setup.009.png?raw=TRUE" style="width: 1000px;" /></a>
 </section>
 <section id="reading">
-<h2>Reading<a class="headerlink" href="#reading" title="Link to this heading">#</a></h2>
+<h3>Reading<a class="headerlink" href="#reading" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading ALL documents from a collection.</span>
@@ -660,17 +663,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;66ed45f2ac0a52bb81540484&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
-{&#39;_id&#39;: ObjectId(&#39;66ed45f2ac0a52bb81540485&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
-{&#39;_id&#39;: ObjectId(&#39;66ed45f2ac0a52bb81540486&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
-{&#39;_id&#39;: ObjectId(&#39;66ed45f2ac0a52bb81540484&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1b&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1c&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
+{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1d&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
+{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1b&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="updating">
-<h2>Updating<a class="headerlink" href="#updating" title="Link to this heading">#</a></h2>
+<h3>Updating<a class="headerlink" href="#updating" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Updating documents is done using the update_one and update_many methods.</p></li>
 <li><p>The first argument is a query that selects the documents to update.</p></li>
@@ -695,14 +698,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1726825970, 21), &#39;t&#39;: 123}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1726825970, 21), &#39;signature&#39;: {&#39;hash&#39;: b&#39;&gt;\x9a\xc3\xe1\xba8l\x9a\xdd\x9f\xe2\xe4j}9w\xf8\xeaF&amp;&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1726825970, 21), &#39;updatedExisting&#39;: True}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1727295140, 22), &#39;t&#39;: 123}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1727295140, 22), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xcc\x8c\xe0\xf0&lt;p\xe7\xed\x8f8\xa0\xb4\x83\xa5\x08VP\x91!\x97&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1727295140, 22), &#39;updatedExisting&#39;: True}, acknowledged=True)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="aggregating">
-<h2>Aggregating<a class="headerlink" href="#aggregating" title="Link to this heading">#</a></h2>
+<h3>Aggregating<a class="headerlink" href="#aggregating" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Combine multiple operations into a single query.</p></li>
 </ul>
@@ -726,7 +729,7 @@ document.write(`
 </div>
 </section>
 <section id="deleting">
-<h2>Deleting<a class="headerlink" href="#deleting" title="Link to this heading">#</a></h2>
+<h3>Deleting<a class="headerlink" href="#deleting" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Deleting documents is done using the delete_one and delete_many methods.</p></li>
 </ul>
@@ -747,11 +750,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1726825970, 24), &#39;t&#39;: 123}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1726825970, 24), &#39;signature&#39;: {&#39;hash&#39;: b&#39;&gt;\x9a\xc3\xe1\xba8l\x9a\xdd\x9f\xe2\xe4j}9w\xf8\xeaF&amp;&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1726825970, 24)}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1727295141, 3), &#39;t&#39;: 123}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1727295141, 3), &#39;signature&#39;: {&#39;hash&#39;: b&#39;h\xe4T\xd8\xe5\x9a\x8b\xe3\x88\xf0*t\xcaii\x895\rZ\xdb&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1727295141, 3)}, acknowledged=True)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://mongodb.com">Mongo DB website</a></p></li>
+<li><p><a class="reference external" href="https://www.mongodb.com/docs/guides/">Mongo DB guides for setup and usage</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/-bt_y4Loofg?si=D3uyPt2csyIF8XpS">YouTube: Mongo DB in 100 seconds</a> (2m:26s)</p></li>
+</ul>
+</div>
+</section>
 </section>
 </section>
 
@@ -819,17 +832,21 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-free-user">Create a free user</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-username-and-password-to-be-used-through-python">Select a username and password to be used through Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-access-for-connection">Open access for connection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-connection-type">Choose connection type</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable">MongoDB’s suggested code for checking if database is reachable</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">Connecting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">Inserting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-free-user">Create a free user</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-a-username-and-password-to-be-used-through-python">Select a username and password to be used through Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-access-for-connection">Open access for connection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#choose-connection-type">Choose connection type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodbs-suggested-code-for-checking-if-database-is-reachable">MongoDB’s suggested code for checking if database is reachable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting">Connecting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting">Inserting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
