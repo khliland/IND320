@@ -220,11 +220,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -569,7 +566,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.966 (± 0.029)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.963 (± 0.021)
 </pre></div>
 </div>
 </div>
@@ -1001,7 +998,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 98.94%
 </pre></div>
 </div>
 </div>
@@ -1049,7 +1046,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 98.94%
 </pre></div>
 </div>
 </div>
@@ -1199,7 +1196,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -1231,13 +1228,6 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Puh, that&#39;s enough!&quot;</span><span class="p">)</span>
             <span class="k">break</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2024, 9, 25, 22, 13, 26, 31610), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;dark484&#39;, &#39;msg&#39;: &#39;ICANT&#39;}
-{&#39;dt&#39;: datetime.datetime(2024, 9, 25, 22, 13, 26, 228198), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;stickilla&#39;, &#39;msg&#39;: &#39;dude will not high road no matter what&#39;}
-Puh, that&#39;s enough!
 </pre></div>
 </div>
 </div>
@@ -1277,21 +1267,6 @@ Puh, that&#39;s enough!
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">message_length</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;msg&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">message_length</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="c1"># river stats</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">mean_length</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">messages</span><span class="p">)),</span> <span class="n">message_length</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Message length&#39;</span><span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;NoneType&#39; object has no attribute &#39;get&#39;
-</pre></div>
-</div>
-<img alt="../../_images/f70553a814ee7e46171cfe0ab64ebf52bfb461d9fbfe2cae6801add435af3c8e.png" src="../../_images/f70553a814ee7e46171cfe0ab64ebf52bfb461d9fbfe2cae6801add435af3c8e.png" />
 </div>
 </div>
 </section>

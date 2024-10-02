@@ -218,11 +218,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -627,6 +624,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;John&#39;, &#39;Industrial Economics&#39;)
 (2, &#39;Sandra&#39;, &#39;Building Physics&#39;)
+(3, &#39;Bob&#39;, &#39;Builder&#39;)
 </pre></div>
 </div>
 </div>
@@ -673,6 +671,40 @@ document.write(`
 <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO students VALUES (3, &#39;Pete&#39;, &#39;Data Science&#39;);&quot;</span>
 <span class="c1"># This can result in an error if the primary key already exists</span>
 <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">IntegrityError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;INSERT INTO students VALUES (3, &#39;Pete&#39;, &#39;Data Science&#39;);&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># This can result in an error if the primary key already exists</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/mysql/connector/cursor.py:551,</span> in <span class="ni">MySQLCursor.execute</span><span class="nt">(self, operation, params, multi)</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">551</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_handle_result</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">cmd_query</span><span class="p">(</span><span class="n">stmt</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">552</span>     <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">InterfaceError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span><span class="o">.</span><span class="n">_have_next_result</span><span class="p">:</span>  <span class="c1"># pylint: disable=W0212</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/mysql/connector/connection.py:490,</span> in <span class="ni">MySQLConnection.cmd_query</span><span class="nt">(self, query, raw, buffered, raw_as_string)</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span>     <span class="n">query</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">490</span> <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_result</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_send_cmd</span><span class="p">(</span><span class="n">ServerCmd</span><span class="o">.</span><span class="n">QUERY</span><span class="p">,</span> <span class="n">query</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_have_next_result</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">InterfaceError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="s1">&#39;Use cmd_query_iter for statements with multiple queries.&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/mysql/connector/connection.py:395,</span> in <span class="ni">MySQLConnection._handle_result</span><span class="nt">(self, packet)</span>
+<span class="g g-Whitespace">    </span><span class="mi">393</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_eof</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">394</span> <span class="k">elif</span> <span class="n">packet</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="mi">255</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">395</span>     <span class="k">raise</span> <span class="n">errors</span><span class="o">.</span><span class="n">get_exception</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="c1"># We have a text result set</span>
+<span class="g g-Whitespace">    </span><span class="mi">398</span> <span class="n">column_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="o">.</span><span class="n">parse_column_count</span><span class="p">(</span><span class="n">packet</span><span class="p">)</span>
+
+<span class="ne">IntegrityError</span>: 1062 (23000): Duplicate entry &#39;3&#39; for key &#39;PRIMARY&#39;
 </pre></div>
 </div>
 </div>

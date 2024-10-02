@@ -218,11 +218,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -624,7 +621,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;66f46ea4cbd24c1e24523b1c&#39;), ObjectId(&#39;66f46ea4cbd24c1e24523b1d&#39;)], acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;66fd2d622c0562979faa799e&#39;), ObjectId(&#39;66fd2d622c0562979faa799f&#39;)], acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -663,10 +660,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1b&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
-{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1c&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
-{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1d&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
-{&#39;_id&#39;: ObjectId(&#39;66f46ea4cbd24c1e24523b1b&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;66fd2d622c0562979faa799d&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+{&#39;_id&#39;: ObjectId(&#39;66fd2d622c0562979faa799e&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
+{&#39;_id&#39;: ObjectId(&#39;66fd2d622c0562979faa799f&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
+{&#39;_id&#39;: ObjectId(&#39;66fd2d622c0562979faa799d&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
 </pre></div>
 </div>
 </div>
@@ -698,7 +695,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1727295140, 22), &#39;t&#39;: 123}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1727295140, 22), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xcc\x8c\xe0\xf0&lt;p\xe7\xed\x8f8\xa0\xb4\x83\xa5\x08VP\x91!\x97&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1727295140, 22), &#39;updatedExisting&#39;: True}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1727868258, 28), &#39;t&#39;: 123}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1727868258, 28), &#39;signature&#39;: {&#39;hash&#39;: b&#39;;J\x8b\xb5\x0f\x93\xf5\xe2\xeb?\xe1\xb2\xa0|^\xe9\x9e\x0ea4&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1727868258, 28), &#39;updatedExisting&#39;: True}, acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -750,7 +747,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1727295141, 3), &#39;t&#39;: 123}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1727295141, 3), &#39;signature&#39;: {&#39;hash&#39;: b&#39;h\xe4T\xd8\xe5\x9a\x8b\xe3\x88\xf0*t\xcaii\x895\rZ\xdb&#39;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1727295141, 3)}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff000000000000007b&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1727868259, 125), &#39;t&#39;: 123}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1727868259, 145), &#39;signature&#39;: {&#39;hash&#39;: b&quot;\xd3\x1c\xf2&#39;\x7f\t\xd0\xf4\xb5u\x02\xf7\xa3\x91&gt;iX\n\x14\xbc&quot;, &#39;keyId&#39;: 7359211773460742158}}, &#39;operationTime&#39;: Timestamp(1727868259, 125)}, acknowledged=True)
 </pre></div>
 </div>
 </div>

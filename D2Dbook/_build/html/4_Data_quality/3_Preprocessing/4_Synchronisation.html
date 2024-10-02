@@ -218,11 +218,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../1_Signal/3_Decomposition.html">Decomposition</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
 <li class="toctree-l1 has-children"><a class="reference internal" href="../2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -530,13 +527,7 @@ document.write(`
 
 <span class="n">rng2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">electricity</span> <span class="o">=</span> <span class="n">rng2</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">72</span><span class="o">*</span><span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span><span class="o">+</span><span class="mi">30</span>
-<span class="n">hours</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">72</span><span class="o">*</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l5/5871wvg94_ldd9hz_34kp0vc0000gn/T/ipykernel_8477/2225745970.py:11: FutureWarning: &#39;H&#39; is deprecated and will be removed in a future version, please use &#39;h&#39; instead.
-  hours = pd.date_range(&#39;2021-01-01&#39;, periods=72*24, freq=&#39;H&#39;)
+<span class="n">hours</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">72</span><span class="o">*</span><span class="mi">24</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -554,7 +545,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b8f662c8730985b3522df1a253d4d784bda985e014569a9759e6895da99ae989.png" src="../../_images/b8f662c8730985b3522df1a253d4d784bda985e014569a9759e6895da99ae989.png" />
+<img alt="../../_images/579840f1f2f0a8cc4d29fe11876907a34924eb102aa0453f3d30dc0690afb789.png" src="../../_images/579840f1f2f0a8cc4d29fe11876907a34924eb102aa0453f3d30dc0690afb789.png" />
 </div>
 </div>
 <section id="accumulation">
@@ -785,7 +776,7 @@ Name: electricity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b494591c1eaeaff5dd12359ee8ba2f353e09dd80a13b77b92557e609ccd09ddc.png" src="../../_images/b494591c1eaeaff5dd12359ee8ba2f353e09dd80a13b77b92557e609ccd09ddc.png" />
+<img alt="../../_images/f3edcede0741166634b6c813f0efd72269232701f75e99137ba0e69505892247.png" src="../../_images/f3edcede0741166634b6c813f0efd72269232701f75e99137ba0e69505892247.png" />
 </div>
 </div>
 </section>
@@ -926,7 +917,7 @@ Name: electricity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9f60b9cf5dcd25ac1511fff826fbb1d9fa7d7d5334139eee785313ad193ab565.png" src="../../_images/9f60b9cf5dcd25ac1511fff826fbb1d9fa7d7d5334139eee785313ad193ab565.png" />
+<img alt="../../_images/d0c39d2569466188476e1eb1240547e50a64c3dffbbfd0f441d8b0e1ec96e96a.png" src="../../_images/d0c39d2569466188476e1eb1240547e50a64c3dffbbfd0f441d8b0e1ec96e96a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -996,7 +987,7 @@ Name: electricity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b57b84006c0aced561a903ec988dbe301acf79a1d737f32be03016c7afcd070f.png" src="../../_images/b57b84006c0aced561a903ec988dbe301acf79a1d737f32be03016c7afcd070f.png" />
+<img alt="../../_images/648336a5a184ad197b759582061a4bfd547694d306708b6b0786c75478250f4e.png" src="../../_images/648336a5a184ad197b759582061a4bfd547694d306708b6b0786c75478250f4e.png" />
 </div>
 </div>
 </section>
@@ -1015,7 +1006,7 @@ Name: electricity, dtype: float64
 </ul>
 </li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/Industrial_process.png"><img alt="../../_images/Industrial_process.png" src="../../_images/Industrial_process.png" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE" style="width: 700px;" /></a>
 </section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>

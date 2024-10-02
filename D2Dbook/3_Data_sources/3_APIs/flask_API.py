@@ -1,7 +1,7 @@
 """
 A simple Flask API server for testing POST and GET. Start from terminal with:
 
-conda activate tf_M1
+conda activate IND320_2024
 python /Users/kristian/Documents/GitHub/IND320/D2D/D2Dbook/3_Data_sources/3_APIs/flask_API.py
 
 Change path to your local install.
@@ -24,7 +24,13 @@ def create_entry(id):
 # GET endpoint
 @app.get('/api/get/<id>')
 def get_record(id):
-    return LocalData.records[id]
+    # Try to return the record with the given id,
+    # if it does not exist, return an empty dictionary
+    try:
+        return LocalData.records[id]
+    except KeyError:
+        return {}
+#    return LocalData.records[id]
 
 # UPDATE endpoint
 @app.post('/api/update/<id>')
