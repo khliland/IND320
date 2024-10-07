@@ -24,13 +24,7 @@ def create_entry(id):
 # GET endpoint
 @app.get('/api/get/<id>')
 def get_record(id):
-    # Try to return the record with the given id,
-    # if it does not exist, return an empty dictionary
-    try:
-        return LocalData.records[id]
-    except KeyError:
-        return {}
-#    return LocalData.records[id]
+    return LocalData.records[id]
 
 # UPDATE endpoint
 @app.post('/api/update/<id>')

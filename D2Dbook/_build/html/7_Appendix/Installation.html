@@ -612,9 +612,12 @@ document.write(`
 </li>
 <li><p>Access to Java can be enabled system wide using the environment JAVA_HOME or on a script-wise level using the Python <em>os</em> package.</p>
 <ul>
-<li><p>Environment variables are system dependent. If the installation of Java did not add the environment variable automatically, the variable can be set <strong>persistently</strong> in the system:</p></li>
+<li><p>Environment variables are system dependent. If the installation of Java did not add the environment variable automatically, the variable can be set <strong>persistently</strong> in the system (in the <a class="reference internal" href="../3_Data_sources/2_Databases/3_Cassandra.html"><span class="std std-doc">Cassandra notebook</span></a> we set these variables in the script instead):</p>
+<ul>
 <li><p>Windows: search for <em>Environment Variables</em> via the start button and selecting the one for <em>User</em>.</p></li>
 <li><p>Linux and Mac OS: edit the ~/.bash_profile file, adding <em>export JAVA_HOME=/opt/openjdk11</em> (or similar, depending on your installation).</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -625,7 +628,7 @@ document.write(`
 <li><p>Spark is originally made for POSIX systems with Hadoop. On Windows computers it is therefore dependent on specialised setup or a set of drivers called winutils.</p>
 <ul>
 <li><p>More than one GitHub repository maintains these drivers. We have tested the hadoop-3.3.1 version from <a class="reference external" href="https://github.com/kontext-tech/winutils">Kontext.TECH</a> with success.</p></li>
-<li><p>At runtime, an environment variable can be set to point to the downloaded hadoop-x.y.z folder, e.g., in <em>C:\Hadoop</em> (not need on Mac/Linux):</p>
+<li><p>At runtime, an environment variable can be set to point to the downloaded hadoop-x.y.z folder, e.g., in <em>C:\Hadoop</em> (not need on Mac/Linux, see example in <a class="reference internal" href="../3_Data_sources/2_Databases/4_Spark.html"><span class="std std-doc">Spark notebook</span></a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HADOOP_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;C:/Hadoop/hadoop-3.3.1&quot;</span>
 </pre></div>
@@ -638,7 +641,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li><p>Spark is not very picky with regard to Python version, but may need help choosing/finding it. Setting environment variables for this (and the Hadoop related above) can be done persistently, similar to JAVA_HOME or at runtime, e.g., using:</p>
+<li><p>Spark is not very picky with regard to Python version, but may need help choosing/finding it. Setting environment variables for this (and the Hadoop related above) can be done persistently, similar to JAVA_HOME or at runtime (see example in <a class="reference internal" href="../3_Data_sources/2_Databases/4_Spark.html"><span class="std std-doc">Spark notebook</span></a>), e.g., using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYSPARK_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYSPARK_DRIVER_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span>
 </pre></div>

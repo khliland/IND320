@@ -537,7 +537,7 @@ document.write(`
 <li><p>Motviation:</p>
 <ul>
 <li><p>Trend discovery</p></li>
-<li><p>Low-pass filter</p></li>
+<li><p>Low-pass/high-pass filter</p></li>
 <li><p>Exploratory data analysis</p></li>
 </ul>
 </li>
@@ -610,6 +610,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[y_k = x_0 + (-1)^k x_{N-1} + 2 \sum_{n=1}^{N-2} x_n cos (\frac{\pi k n}{N-1}))\]</div>
 <ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_k\)</span> is the <span class="math notranslate nohighlight">\(k\)</span>-th part of the signal, <span class="math notranslate nohighlight">\(N\)</span> is the length, <span class="math notranslate nohighlight">\(x_n\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>-th coefficient.</p></li>
 <li><p>Coefficient signs indicate flip of the base cosines, magnitudes indicate scaling.</p></li>
 <li><p><em>n</em> indicates the number of half cosine cycles, i.e., even <em>n</em> means full cycles (see plot below), maximum frequency of <em>n/2</em>.</p></li>
 <li><p>Quicker than FFT and guarantees real valued frequency domain.</p></li>
@@ -716,6 +717,17 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b88ef2c1a481508304a46365c839207386e6c4c6ec47809a18aee615116c5030.png" src="../../_images/b88ef2c1a481508304a46365c839207386e6c4c6ec47809a18aee615116c5030.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove frequencies below 4, i.e., a high-pass filter</span>
 <span class="n">filtered_fourier_signal</span> <span class="o">=</span> <span class="n">fourier_signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">filtered_fourier_signal</span><span class="p">[(</span><span class="n">W</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># &lt;- Come playe with me!</span>
@@ -761,8 +773,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the Fourier transform</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="c1">#plt.plot(np.abs(dct(y))) # Not caring about the signs</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># Caring about the signs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span> <span class="c1"># Not caring about the signs</span>
+<span class="c1">#plt.plot(dct(y, type=1)) # Caring about the signs</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;coefficient&#39;</span><span class="p">)</span>  <span class="c1"># Think 1/width of time series</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;amplitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
@@ -771,7 +783,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/84a01846ed96fd3b6943a224b0e3fb969b7cdf4f648277a71febc0ede17443a9.png" src="../../_images/84a01846ed96fd3b6943a224b0e3fb969b7cdf4f648277a71febc0ede17443a9.png" />
+<img alt="../../_images/a008af31d3c1c7e6101aba6680f5253fa41cd884e9d3afa0731016e7e5bff79a.png" src="../../_images/a008af31d3c1c7e6101aba6680f5253fa41cd884e9d3afa0731016e7e5bff79a.png" />
 </div>
 </div>
 </section>
@@ -783,12 +795,13 @@ document.write(`
 <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="c1"># Frequency axis</span>
 <span class="n">filtered_fourier_signal</span> <span class="o">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">filtered_fourier_signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">filtered_fourier_signal</span><span class="p">[(</span><span class="n">W</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">filtered_fourier_signal</span><span class="p">[(</span><span class="n">W</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">cut_signal</span> <span class="o">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">filtered_fourier_signal</span><span class="p">)</span>
 <span class="n">add_cosines</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># &lt;- Change me! Non-negative number adds cosines to the filtered signal</span>
 
 <span class="c1"># Plot the filtered signal</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cut_signal</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;arbitrary units&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;amplitude&#39;</span><span class="p">)</span>
@@ -803,7 +816,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f3224e731bb27993c850428d60da709e3750773bd4e41f917940243b2e6fc32a.png" src="../../_images/f3224e731bb27993c850428d60da709e3750773bd4e41f917940243b2e6fc32a.png" />
+<img alt="../../_images/09fc1520e8b616c11901a8ff599fc5ddfbdd1a3bb04efadbc4ab5c3793b4f8ab.png" src="../../_images/09fc1520e8b616c11901a8ff599fc5ddfbdd1a3bb04efadbc4ab5c3793b4f8ab.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sum of original signal: 815.31
 0th DCT coefficient / 2: 815.31
 </pre></div>
@@ -819,7 +832,7 @@ document.write(`
 <ul class="simple">
 <li><p>Various forms of linear models can be used for decomposition, each having different focus or optimality criteria, e.g.:</p>
 <ul>
-<li><p>Season-Trend decomposition using LOESS in the <a class="reference external" href="https://www.statsmodels.org/stable/examples/notebooks/generated/stl_decomposition.html">statmodels package</a></p></li>
+<li><p>Seasonal-Trend decomposition using LOESS in the <a class="reference external" href="https://www.statsmodels.org/stable/examples/notebooks/generated/stl_decomposition.html">statmodels package</a></p></li>
 <li><p>Multivariate explorative data analysis with <a class="reference external" href="https://hoggorm.readthedocs.io/en/latest/pca.html">Principal Component Analysis</a>.</p></li>
 </ul>
 </li>
@@ -852,7 +865,7 @@ document.write(`
 <span class="math notranslate nohighlight">\(T = f_{smooth,T}(X)\)</span>.</p></li>
 <li><p>Subtract the trend from the series,<br />
 <span class="math notranslate nohighlight">\(X_{S+R} = X - T\)</span>.</p></li>
-<li><p>Average across seasons with sliding window to estimate the season,<br />
+<li><p>Average across seasons with sliding window (LOESS) to estimate the season,<br />
 <span class="math notranslate nohighlight">\(S = f_{smooth,S}(X_{S+R})\)</span>.</p></li>
 <li><p>Subtract the trend and season from the signal to estimate the residual,<br />
 <span class="math notranslate nohighlight">\(R = X - T - S\)</span></p></li>
@@ -958,7 +971,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.tsa.seasonal</span> <span class="kn">import</span> <span class="n">STL</span>
-<span class="n">stl</span> <span class="o">=</span> <span class="n">STL</span><span class="p">(</span><span class="n">sunspots</span><span class="p">[</span><span class="s2">&quot;Sunspots&quot;</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">134</span><span class="p">)</span><span class="c1">#, robust=True, seasonal=1001, trend=1001)</span>
+<span class="n">stl</span> <span class="o">=</span> <span class="n">STL</span><span class="p">(</span><span class="n">sunspots</span><span class="p">[</span><span class="s2">&quot;Sunspots&quot;</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">134</span><span class="p">)</span><span class="c1">#, robust=True, seasonal=141, trend=141)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">stl</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span> <span class="c1"># Contains the components and a plot function</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
