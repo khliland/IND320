@@ -525,7 +525,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="outlier-statistics">
 <h1>Outlier statistics<a class="headerlink" href="#outlier-statistics" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Determining if a sample or timepoint is a statistical outlier often a two-step process:</p>
+<li><p>Determining if a sample or timepoint is a statistical outlier is often a two-step process:</p>
 <ol class="arabic simple">
 <li><p>Estimate a distribution assumed to be normal operating conditions.</p></li>
 <li><p>Check if new samples are significant outliers from this distribution.</p></li>
@@ -575,14 +575,14 @@ document.write(`
 <span class="c1"># Format the result as a percentage rounded to two decimal places.</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probability of being outside outside +/- 3 SD in a normal distribution: </span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probability of being outside +/- 3 SD in a normal distribution: </span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
 <span class="c1"># Rewrite this as the proportion of values, i.e., 1 in n, that are outside +/- 3 SD in a normal distribution.</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in </span><span class="si">{:.0f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">prob</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Probability of being outside outside +/- 3 SD in a normal distribution: 0.27%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Probability of being outside +/- 3 SD in a normal distribution: 0.27%
 Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 370
 </pre></div>
 </div>
@@ -762,12 +762,16 @@ Median absolute deviation: 0.647
 <li><p>With multiple consecutive outliers, one can also use fewer standard deviations.</p></li>
 </ul>
 </li>
-<li><p>If data are assumed to be iid (independent and identically distributed), another heuristic can be to check concecutive samples are too similar (and possibly non-centred).</p>
+<li><p>If data are assumed to be iid (independent and identically distributed), another heuristic can be to check if concecutive samples are too similar (and possibly non-centred).</p>
 <ul>
 <li><p>This can indicate a bias in the series, e.g., caused by a manufacturing step caught in an error condition.</p></li>
 </ul>
 </li>
-<li><p>A shift in mean value can also be indicative of errors or unwanted changes; checkable using rolling means or similar with an appropriate window size.</p></li>
+<li><p>A shift in mean value can also be indicative of errors or unwanted changes; checkable using rolling means or similar with an appropriate window size.</p>
+<ul>
+<li><p>A whole field of SPC uses Exponentially Weighted Moving Averages to detect outliers and shifts in distributions.</p></li>
+</ul>
+</li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
