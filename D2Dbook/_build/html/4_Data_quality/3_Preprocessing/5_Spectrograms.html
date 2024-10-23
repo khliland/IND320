@@ -497,6 +497,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-computation">Spectrogram computation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-on-time-series">Spectrogram on time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
@@ -570,8 +571,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Produce a spectrogram using scipy.signal.stft (short-time Fourier transform)</span>
-<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">stft</span>
-<span class="n">f_stft</span><span class="p">,</span> <span class="n">t_stft</span><span class="p">,</span> <span class="n">Zxx</span> <span class="o">=</span> <span class="n">stft</span><span class="p">(</span><span class="n">y_approx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">nperseg</span><span class="o">=</span><span class="mi">576</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">stft</span> <span class="c1"># Legacy function stft. Anyone want to update this to ShortTimeFFT?</span>
+<span class="n">f_stft</span><span class="p">,</span> <span class="n">t_stft</span><span class="p">,</span> <span class="n">Zxx</span> <span class="o">=</span> <span class="n">stft</span><span class="p">(</span><span class="n">y_approx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">nperseg</span><span class="o">=</span><span class="mi">1152</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -589,14 +590,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3eb3fcd86a2e6700c16093ebdfe355488c42380e35bebed265a3b6f0ad6502cb.png" src="../../_images/3eb3fcd86a2e6700c16093ebdfe355488c42380e35bebed265a3b6f0ad6502cb.png" />
+<img alt="../../_images/de1c4e02f7a80852808c9bde01487b67b889a2e5d0115c15566d32cee8ed6e5c.png" src="../../_images/de1c4e02f7a80852808c9bde01487b67b889a2e5d0115c15566d32cee8ed6e5c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the spectrogram without pre-computed frequency and time axes</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">specgram</span><span class="p">(</span><span class="n">y_approx</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">NFFT</span><span class="o">=</span><span class="mi">576</span><span class="p">,</span> <span class="n">noverlap</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">specgram</span><span class="p">(</span><span class="n">y_approx</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">NFFT</span><span class="o">=</span><span class="mi">1152</span><span class="p">,</span> <span class="n">noverlap</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
@@ -605,7 +606,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/306ab4a08dcd8f70cc9f488e972d338540c2db7eb4efe16c605044dcc9355a33.png" src="../../_images/306ab4a08dcd8f70cc9f488e972d338540c2db7eb4efe16c605044dcc9355a33.png" />
+<img alt="../../_images/0881d0bb5fdde3208a147659ee6bb7b683910a59c89e419d9744314c3381736d.png" src="../../_images/0881d0bb5fdde3208a147659ee6bb7b683910a59c89e419d9744314c3381736d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -633,7 +634,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Produce a spectrogram using scipy.signal.stft (short-time Fourier transform)</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Zxx</span> <span class="o">=</span> <span class="n">stft</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">song</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">,</span> <span class="n">nperseg</span><span class="o">=</span><span class="mi">576</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Zxx</span> <span class="o">=</span> <span class="n">stft</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">song</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">,</span> <span class="n">nperseg</span><span class="o">=</span><span class="mi">1152</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -650,7 +651,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/48a00643c148f9b02c8df4a841767d9c7cd409a3e97bc43da4268c2af2fe7022.png" src="../../_images/48a00643c148f9b02c8df4a841767d9c7cd409a3e97bc43da4268c2af2fe7022.png" />
+<img alt="../../_images/5e41ca1b11724e2726a3b6b12fa2256d75cef0b1602dce3388a85140fcf3ffb7.png" src="../../_images/5e41ca1b11724e2726a3b6b12fa2256d75cef0b1602dce3388a85140fcf3ffb7.png" />
 </div>
 </div>
 </section>
@@ -692,6 +693,15 @@ document.write(`
 <img alt="../../_images/39771f1935b6e74afad28e63548a91213ffeaf605b9dbf02851cb71e964f0fb4.png" src="../../_images/39771f1935b6e74afad28e63548a91213ffeaf605b9dbf02851cb71e964f0fb4.png" />
 </div>
 </div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Revisit the sunspot data from the STL decomposition.</p></li>
+<li><p>Create a spectrogram.</p></li>
+<li><p>See how changing parameters alters the output.</p></li>
+<li><p>Try to get an intuition for the role of the sampling rate (test values).</p></li>
+</ul>
 </section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
@@ -770,6 +780,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-computation">Spectrogram computation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-on-time-series">Spectrogram on time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>

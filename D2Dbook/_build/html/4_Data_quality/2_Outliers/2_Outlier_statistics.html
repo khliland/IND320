@@ -993,10 +993,13 @@ Proportion: 1 in 84927
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Minimum Covariance Determinant estimator from scikit-learn</span>
 <span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">MinCovDet</span>
 <span class="c1"># Apply the Minimum Covariance Determinant estimator to data.values[:365*3,:] and plot</span>
-<span class="n">some_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">some_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">mcd</span> <span class="o">=</span> <span class="n">MinCovDet</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
 <span class="n">mcd_mean</span> <span class="o">=</span> <span class="n">mcd</span><span class="o">.</span><span class="n">location_</span>
 <span class="n">mcd_cov</span> <span class="o">=</span> <span class="n">mcd</span><span class="o">.</span><span class="n">covariance_</span>
+<span class="n">mcd2</span> <span class="o">=</span> <span class="n">MinCovDet</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">pdata</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">mcd2_mean</span> <span class="o">=</span> <span class="n">mcd2</span><span class="o">.</span><span class="n">location_</span>
+<span class="n">mcd2_cov</span> <span class="o">=</span> <span class="n">mcd2</span><span class="o">.</span><span class="n">covariance_</span>
 </pre></div>
 </div>
 </div>
@@ -1005,14 +1008,26 @@ Proportion: 1 in 84927
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mcd_mean</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mcd_cov</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd2_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mcd2_cov</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cov</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.77587033e+01  1.15297350e-01  1.02581453e+03]
-[[ 31.79452702 -15.89510593  -0.58264256]
- [-15.89510593  11.42576239   3.64555942]
- [ -0.58264256   3.64555942   3.24443596]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ -14.55375772   -4.724472   1025.94736149]
+[[ 39.64596546  20.13217441  -9.68173235]
+ [ 20.13217441  41.3917114  -29.70739281]
+ [ -9.68173235 -29.70739281  23.35856108]]
+[ -13.55580996   -2.4304522  1026.00515169]
+[[ 47.08832772  15.78879846 -30.79851042]
+ [ 15.78879846  30.62753288 -23.03040981]
+ [-30.79851042 -23.03040981  45.80134724]]
+[ -16.62009132   -5.42648402 1028.2803653 ]
+[[ 33.50636014   8.27369045 -16.68247894]
+ [  8.27369045  27.0510347  -12.9269373 ]
+ [-16.68247894 -12.9269373   32.5255282 ]]
 </pre></div>
 </div>
 </div>
@@ -1021,7 +1036,7 @@ Proportion: 1 in 84927
 <section id="id1">
 <h3>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Repeat the calculations of mean, covariance Hotelling’s <span class="math notranslate nohighlight">\(T^2\)</span>, etc. for the Beijing pollution data.</p></li>
+<li><p>Repeat the calculations of mean, covariance, Hotelling’s <span class="math notranslate nohighlight">\(T^2\)</span>, etc. for the Beijing pollution data.</p></li>
 <li><p>Exchange ordinary statistics with the MCD alternative.</p></li>
 </ul>
 </section>
@@ -1035,7 +1050,7 @@ Proportion: 1 in 84927
 <li><p>This corresponds to a high-pass filter for FFT.</p></li>
 </ul>
 </li>
-<li><p>In the rich field of (M)SPC there are also other methods tailored for find shifts in trends.</p></li>
+<li><p>In the rich field of (M)SPC there are also other methods tailored for finding shifts in trends.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
