@@ -230,6 +230,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -781,7 +782,7 @@ Name: TotalPrice, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Pandas pivot_table() to group by Channel and Manager and sum the TotalPrice</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Salesperson&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Manager&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
 <span class="n">df2</span>
 </pre></div>
 </div>
@@ -804,32 +805,12 @@ Name: TotalPrice, dtype: float64
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>Salesperson</th>
-      <th>Carla Ferreira</th>
-      <th>Estevan Souza</th>
-      <th>Felipe Goncalves</th>
-      <th>Gustavo Barros</th>
-      <th>Gustavo Gomes</th>
-      <th>Isabella Sousa</th>
-      <th>Julia Silva</th>
-      <th>Julieta Gomes</th>
-      <th>Julio Lima</th>
-      <th>Kaua Araujo</th>
-      <th>Leonardo Cardoso</th>
-      <th>Mateus Costa</th>
+      <th>Manager</th>
+      <th>Gabriel Azevedo</th>
+      <th>Victor Castro</th>
     </tr>
     <tr>
       <th>Channel</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -837,48 +818,18 @@ Name: TotalPrice, dtype: float64
   <tbody>
     <tr>
       <th>Distributor</th>
-      <td>NaN</td>
-      <td>349897.22</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2447136.24</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3301482.32</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>6098515.78</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>Online</th>
+      <td>3113650.20</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>1676337.1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>652072.53</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>785240.57</td>
     </tr>
     <tr>
       <th>Retail</th>
-      <td>4707402.55</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>664172.3</td>
-      <td>NaN</td>
-      <td>870301.84</td>
-      <td>NaN</td>
-      <td>26053.51</td>
-      <td>NaN</td>
-      <td>821424.61</td>
-      <td>1607711.7</td>
-      <td>NaN</td>
+      <td>8697066.51</td>
     </tr>
   </tbody>
 </table>
@@ -887,7 +838,7 @@ Name: TotalPrice, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exchange aggfunc=&#39;sum&#39; for aggfunc=&#39;count&#39; to confirm that the dataset is not very suitable for this type of analysis</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Salesperson&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Manager&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
 <span class="n">df2</span>
 </pre></div>
 </div>
@@ -910,32 +861,12 @@ Name: TotalPrice, dtype: float64
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>Salesperson</th>
-      <th>Carla Ferreira</th>
-      <th>Estevan Souza</th>
-      <th>Felipe Goncalves</th>
-      <th>Gustavo Barros</th>
-      <th>Gustavo Gomes</th>
-      <th>Isabella Sousa</th>
-      <th>Julia Silva</th>
-      <th>Julieta Gomes</th>
-      <th>Julio Lima</th>
-      <th>Kaua Araujo</th>
-      <th>Leonardo Cardoso</th>
-      <th>Mateus Costa</th>
+      <th>Manager</th>
+      <th>Gabriel Azevedo</th>
+      <th>Victor Castro</th>
     </tr>
     <tr>
       <th>Channel</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -943,48 +874,18 @@ Name: TotalPrice, dtype: float64
   <tbody>
     <tr>
       <th>Distributor</th>
-      <td>NaN</td>
-      <td>6555.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>33265.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>51765.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>91585.0</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>Online</th>
+      <td>59442.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>31508.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>15012.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>12922.0</td>
     </tr>
     <tr>
       <th>Retail</th>
-      <td>60642.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>12098.0</td>
-      <td>NaN</td>
-      <td>7033.0</td>
-      <td>NaN</td>
-      <td>215.0</td>
-      <td>NaN</td>
-      <td>6510.0</td>
-      <td>22571.0</td>
-      <td>NaN</td>
+      <td>109069.0</td>
     </tr>
   </tbody>
 </table>
@@ -1001,11 +902,15 @@ Name: TotalPrice, dtype: float64
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the athlete_events.csv file</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">athletes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../data/athlete_events.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">athletes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">athletes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(271116, 15)
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {

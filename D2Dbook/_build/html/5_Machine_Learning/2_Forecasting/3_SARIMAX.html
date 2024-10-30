@@ -232,6 +232,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+
 </ul>
 </details></li>
 </ul>
@@ -498,6 +499,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wholesale-price-index-wpi-data">Wholesale price index (WPI) data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-models-in-python">Autoregressive models in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-operator">Lag operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ar-autoregressive-models">AR - autoregressive models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ma-moving-average-models">MA - moving average models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arma-autoregressive-moving-average-models">ARMA - autoregressive moving average models</a></li>
@@ -527,7 +529,7 @@ document.write(`
 <li><p>An online book with videos: <a class="reference external" href="https://otexts.com/fpp3/">Forecasting: Principles and Practice</a>.</p></li>
 </ul>
 </li>
-<li><p>We therefore skip (almost) directly to the regression models (based on <a class="reference external" href="https://phosgene89.github.io/sarima.html">phosgene89’s GitHub page</a>) and their usage.</p></li>
+<li><p>We therefore skip (almost) directly to the regression models (inspired by <a class="reference external" href="https://phosgene89.github.io/sarima.html">phosgene89’s GitHub page</a>, except for their errors) and their usage.</p></li>
 <li><p>But first we introduce a dataset and the concepts of stationarity and autocorrelation.</p></li>
 </ul>
 <p><strong>Stationarity:</strong></p>
@@ -721,22 +723,35 @@ document.write(`
 <li><p>There are also various other parameters, e.g., a trend (none, constant, linear, quadratic, polynomial).</p></li>
 </ul>
 </section>
+<section id="lag-operator">
+<h2>Lag operator<a class="headerlink" href="#lag-operator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Back-shift <span class="math notranslate nohighlight">\(n\)</span> time points, i.e., extracts the measurement <span class="math notranslate nohighlight">\(n\)</span> time points before <span class="math notranslate nohighlight">\(t\)</span>.
+$<span class="math notranslate nohighlight">\(L^{n} y_{t} = y_{t-n}\)</span>$</p></li>
+<li><p>Combined with a vector of parameters <span class="math notranslate nohighlight">\(\Psi\)</span>, we define a polynomial function
+$<span class="math notranslate nohighlight">\(\Psi(L)^n y_t = y_t + \psi_1 y_{t-1} + \psi_2 y_{t-2} + ... + \psi_n y_{t-n}\)</span>$</p></li>
+<li><p>This will enable compact notation of the SARIMAX models, exchanging sums with the polynomial function.</p></li>
+</ul>
+</section>
 <section id="ar-autoregressive-models">
 <h2>AR - autoregressive models<a class="headerlink" href="#ar-autoregressive-models" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>For a (single variable) timeseries given by <span class="math notranslate nohighlight">\(\{ y_{t} \}\)</span>, we can specify the <span class="math notranslate nohighlight">\(AR(p)\)</span> model as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ y_{t} = \beta + \sum\limits_{i=1}^p \theta_{i} y_{t-i} + \epsilon_{t}.\]</div>
+\[ y_{t} = \theta_0 + \sum\limits_{i=1}^p \theta_{i} y_{t-i} + \epsilon_{t}\]</div>
 <ul class="simple">
-<li><p>Here, <span class="math notranslate nohighlight">\(\beta\)</span> is a constant, <span class="math notranslate nohighlight">\(\theta_{i}\)</span> is the coefficient for the <span class="math notranslate nohighlight">\(p\)</span>-th time lag and <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is the error.</p></li>
-<li><p>Introducing a lag operator, <span class="math notranslate nohighlight">\(L^{n} y_{t} = y_{t-n}\)</span>, we can redefine the above equation in the form of a polynomial function, <span class="math notranslate nohighlight">\(\Theta(L)^{p}\)</span> as:</p></li>
+<li><p>i.e., the current time is a function of <span class="math notranslate nohighlight">\(p\)</span> previous time points and a constant.</p></li>
+<li><p>Here, <span class="math notranslate nohighlight">\(\theta_0\)</span> is a constant, <span class="math notranslate nohighlight">\(\theta_{i}\)</span> is the coefficient for the <span class="math notranslate nohighlight">\(p\)</span>-th time lag and <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is the error.</p></li>
+<li><p>This can be thought of as stacking subsets of a time series using a moving window and performing ordinary least squares on the resulting matrix/dataframe.</p>
+<ul>
+<li><p>In practice, the fitting is performed using maximum likelihood, so performing ordinary regression will not give exactly the same results.</p></li>
+</ul>
+</li>
+<li><p>Using the lag operator, <span class="math notranslate nohighlight">\(L^{n} y_{t} = y_{t-n}\)</span>, we can redefine the above equation in the form of a polynomial function, <span class="math notranslate nohighlight">\(\Theta(L)^{p}\)</span> (signs of coefficients will change) as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ y_{t} = \Theta(L)^{p} y_{t} + \epsilon_{t},\]</div>
-<ul class="simple">
-<li><p>i.e., the current time is a function of <span class="math notranslate nohighlight">\(p\)</span> previous time points and a constant. This can be thought of as stacking subsets of a time series using a moving window and performing ordinary least squares on the resulting matrix/dataframe.</p></li>
-</ul>
+\[ \Theta(L)^{p} y_{t} = \theta_0 + \epsilon_{t}.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit an AR(1) model (badly specified due to non-stationarity)</span>
@@ -751,8 +766,8 @@ document.write(`
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 0)   Log Likelihood                -201.927
-Date:                Wed, 23 Oct 2024   AIC                            409.855
-Time:                        20:30:53   BIC                            418.316
+Date:                Wed, 30 Oct 2024   AIC                            409.855
+Time:                        20:58:35   BIC                            418.316
 Sample:                    01-01-1960   HQIC                           413.292
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -787,7 +802,9 @@ Warnings:
 <li><p>We can define an <span class="math notranslate nohighlight">\(MA(q)\)</span> model as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ y_{t} = \Phi(L)^{q} \epsilon_{t} + \epsilon_{t}.\]</div>
+\[ y_{t} = \phi_0 + \sum\limits_{i=1}^q \phi_{i} \epsilon_{t-i} + \epsilon_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[ = \phi_0 + \Phi(L)^{q} \epsilon_{t}.\]</div>
 <ul class="simple">
 <li><p>Here, <span class="math notranslate nohighlight">\(q\)</span> is the number of time lags and <span class="math notranslate nohighlight">\(\Phi(L)^{q}\)</span> is defined as <span class="math notranslate nohighlight">\(\Theta\)</span> above, but using the error terms and <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is with respect to the current model.</p></li>
 </ul>
@@ -805,8 +822,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(0, 0, 1)   Log Likelihood                -516.522
-Date:                Wed, 23 Oct 2024   AIC                           1039.044
-Time:                        20:30:53   BIC                           1047.505
+Date:                Wed, 30 Oct 2024   AIC                           1039.044
+Time:                        20:58:35   BIC                           1047.505
 Sample:                    01-01-1960   HQIC                          1042.481
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -840,7 +857,12 @@ Warnings:
 <li><p>When we take the sum of <span class="math notranslate nohighlight">\(AR(p)\)</span> and <span class="math notranslate nohighlight">\(MA(q)\)</span> models of the same time series, we get <span class="math notranslate nohighlight">\(ARMA(p,q)\)</span> models:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ y_{t} = \Theta(L)^{p} y_{t} + \Phi(L)^{q} \epsilon_{t} + \epsilon_{t}\]</div>
+\[ y_{t} = \theta_0 + \sum\limits_{i=1}^p \theta_{i} y_{t-i} + \sum\limits_{i=1}^q \phi_{i} \epsilon_{t-i} + \epsilon_{t}\]</div>
+<ul class="simple">
+<li><p>which can be reformulated to:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ \Theta(L)^{p} y_{t} = \theta_0 + \Phi(L)^{q} \epsilon_{t}\]</div>
 <ul class="simple">
 <li><p>Again, <span class="math notranslate nohighlight">\(\epsilon_{t}\)</span> is with respect to the current model, but shares name with the previous models.</p></li>
 <li><p>This model is learning both from seeing previous samples and from how well these were predicted at previous time steps, thus it can tackle changes in the average.</p></li>
@@ -859,8 +881,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 1)   Log Likelihood                -172.610
-Date:                Wed, 23 Oct 2024   AIC                            353.221
-Time:                        20:30:53   BIC                            364.502
+Date:                Wed, 30 Oct 2024   AIC                            353.221
+Time:                        20:58:35   BIC                            364.502
 Sample:                    01-01-1960   HQIC                           357.804
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -895,25 +917,29 @@ Warnings:
 <li><p>To help compensate for lack of stationarity, we add an integration operator, <span class="math notranslate nohighlight">\(\Delta^{d}\)</span>, defined as:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[y_{t}^{[d]} =\Delta^{d} y_{t} = y_{t}^{[d-1]} - y_{t-1}^{[d-1]}.\]</div>
+\[y_{t}^{[d]} = \Delta^{d} y_{t} = y_{t}^{[d-1]} - y_{t-1}^{[d-1]}.\]</div>
 <ul class="simple">
 <li><p>Here, <span class="math notranslate nohighlight">\(y_{t}^{[0]} = y_{t}\)</span> and the degree of differensing is <span class="math notranslate nohighlight">\(d\)</span>.</p></li>
+<li><p>For instance with <span class="math notranslate nohighlight">\(d=2\)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[y_{t}^{[2]} = \Delta^{2} y_{t} = y_{t}^{[1]} - y_{t-1}^{[1]} \]</div>
+<div class="math notranslate nohighlight">
+\[= y_{t}^{[0]} - y_{t-1}^{[0]} - y_{t-1}^{[0]} + y_{t-2}^{[0]} = y_{t} - 2 y_{t-1} + y_{t-2}\]</div>
+<ul class="simple">
 <li><p>An <span class="math notranslate nohighlight">\(ARMA(p, q)\)</span> model where <span class="math notranslate nohighlight">\(y_{t}\)</span> is exchanged with <span class="math notranslate nohighlight">\(y_{t}^{[d]}\)</span> would look like this:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ y_{t}^{[d]} = \Theta(L)^{p} y_{t}^{[d]} + \Phi(L)^{q} \epsilon_{t}^{[d]} + \epsilon_{t}^{[d]}\]</div>
+\[ \Theta(L)^{p} y_{t}^{[d]} = \Phi(L)^{q} \epsilon_{t}\]</div>
 <ul class="simple">
+<li><p>The constant is often omitted and assumed absorbed by the integration. Only the time series is integrated, not the errors.</p></li>
 <li><p>Reformulating this using the integration operator, we get an <span class="math notranslate nohighlight">\(ARIMA(p,d,q)\)</span> model:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ \Delta^{d} y_{t} = \Theta(L)^{p} \Delta^{d} y_{t} + \Phi(L)^{q} \Delta^{d} \epsilon_{t} + \Delta^{d} \epsilon_{t}\]</div>
+\[ \Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \epsilon_{t}\]</div>
 <ul class="simple">
-<li><p>Finally, it can be shown that this is euqivalent to:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ \Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \Delta^{d} \epsilon_{t}\]</div>
-<ul class="simple">
-<li><p>This model has the properties of the ARMA model, but in addition does the differensing for us, meaning that predicitons will be on the original scale instead of predicting difference values.</p></li>
+<li><p>This model has the properties of the ARMA model, but in addition does the differensing for us for stationarity.</p></li>
+<li><p>The terms can be reorganised to get predictions on the original scale instead of predicting difference values.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -929,8 +955,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 1, 1)   Log Likelihood                -135.351
-Date:                Wed, 23 Oct 2024   AIC                            278.703
-Time:                        20:30:53   BIC                            289.951
+Date:                Wed, 30 Oct 2024   AIC                            278.703
+Time:                        20:58:35   BIC                            289.951
 Sample:                    01-01-1960   HQIC                           283.272
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -970,8 +996,8 @@ Warnings:
 =================================================================================
 Dep. Variable:                       wpi   No. Observations:                  124
 Model:             SARIMAX(1, 1, [1, 4])   Log Likelihood                -135.066
-Date:                   Wed, 23 Oct 2024   AIC                            280.132
-Time:                           20:30:53   BIC                            294.193
+Date:                   Wed, 30 Oct 2024   AIC                            280.132
+Time:                           20:58:35   BIC                            294.193
 Sample:                       01-01-1960   HQIC                           285.843
                             - 10-01-1990                                         
 Covariance Type:                     opg                                         
@@ -1004,18 +1030,13 @@ Warnings:
 <li><p>For seasons of length <span class="math notranslate nohighlight">\(s\)</span>, the seasonal part is obtained by applying an ARIMA model with lags, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, and integration time, <span class="math notranslate nohighlight">\(D\)</span>, that are multiples of <span class="math notranslate nohighlight">\(s\)</span>, i.e., if <span class="math notranslate nohighlight">\(P=2\)</span>, the included time points would be <span class="math notranslate nohighlight">\(t-1s\)</span> and <span class="math notranslate nohighlight">\(t-2s\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ \Delta_{s}^{D} y_{t} = \theta(L^{s})^{P} \Delta_{s}^{D} y_{t} + \phi(L^{s})^{Q} \Delta_{s}^{D} \epsilon_{t} + \Delta_{s}^{D} \epsilon_{t} \]</div>
+\[ \theta(L^{s})^{P} \Delta_{s}^{D} y_{t} = \phi(L^{s})^{Q} \epsilon_{t} \]</div>
 <ul class="simple">
-<li><p>Like the ARIMA model, this can be shown to be equivalent to:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ \theta(L^{s})^{P} \Delta_{s}^{D} y_{t} =  \phi(L^{s})^{Q} \Delta_{s}^{D} \epsilon_{t} \]</div>
-<ul class="simple">
-<li><p>After the seasonal part has been removed, another <span class="math notranslate nohighlight">\(ARIMA(p, d, q)\)</span> applied to <span class="math notranslate nohighlight">\(\Delta_{s}^{D} y_{t}\)</span> is equivalent to multiplying the two models together.</p></li>
+<li><p>After the seasonal part has been removed, another <span class="math notranslate nohighlight">\(ARIMA(p, d, q)\)</span> applied to <span class="math notranslate nohighlight">\(\Delta_{s}^{D} y_{t}\)</span> which is equivalent to multiplying the two models together.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(SARIMA(p, d, q)(P, D, Q, s)\)</span> model then becomes:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[ \Theta(L)^{p} \theta(L^{s})^{P} \Delta^{d} \Delta_{s}^{D} y_{t} = \Phi(L)^{q} \phi(L^{s})^{Q} \Delta^{d} \Delta_{s}^{D} \epsilon_{t}\]</div>
+\[ \Theta(L)^{p} \theta(L^{s})^{P} \Delta^{d} \Delta_{s}^{D} y_{t} = \Phi(L)^{q} \phi(L^{s})^{Q} \epsilon_{t}\]</div>
 <ul class="simple">
 <li><p>This model has the ability to combine experience from previous timepoints with seasonal trends.</p>
 <ul>
@@ -1038,8 +1059,8 @@ Warnings:
 =========================================================================================
 Dep. Variable:                               wpi   No. Observations:                  124
 Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 4)   Log Likelihood                -134.632
-Date:                           Wed, 23 Oct 2024   AIC                            281.264
-Time:                                   20:30:54   BIC                            297.939
+Date:                           Wed, 30 Oct 2024   AIC                            281.264
+Time:                                   20:58:35   BIC                            297.939
 Sample:                               01-01-1960   HQIC                           288.035
                                     - 10-01-1990                                         
 Covariance Type:                             opg                                         
@@ -1079,12 +1100,12 @@ Warnings:
 <li><p><span class="math notranslate nohighlight">\(ARIMAX(p, d, q)\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \Delta^{d} \epsilon_{t} + \sum_{i=1}^{n} \beta_{i} x^{i}_{t}\]</div>
+\[\Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \epsilon_{t} + \sum_{i=1}^{n} \beta_{i} x^{i}_{t}\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(SARIMAX(p, d, q)(P, D, Q, s)\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
-\[\Theta(L)^{p} \theta(L^{s})^{P} \Delta^{d} \Delta_{s}^{D} y_{t} = \Phi(L)^{q} \phi(L^{s})^{Q} \Delta^{d} \Delta_{s}^{D} \epsilon_{t} + \sum_{i=1}^{n} \beta_{i} x^{i}_{t}\]</div>
+\[\Theta(L)^{p} \theta(L^{s})^{P} \Delta^{d} \Delta_{s}^{D} y_{t} = \Phi(L)^{q} \phi(L^{s})^{Q} \epsilon_{t} + \sum_{i=1}^{n} \beta_{i} x^{i}_{t}\]</div>
 <ul class="simple">
 <li><p>The final model, thus includes autogression and moving averages, can perform differences, deals with seasonality and can leverage external variables from the same timepoint as the predictions.</p></li>
 </ul>
@@ -1116,8 +1137,8 @@ Warnings:
 ============================================================================================
 Dep. Variable:                              PerEURO   No. Observations:                  179
 Model:             SARIMAX(4, 1, 4)x(1, 1, [1], 12)   Log Likelihood                 107.744
-Date:                              Wed, 23 Oct 2024   AIC                           -191.488
-Time:                                      20:30:55   BIC                           -154.145
+Date:                              Wed, 30 Oct 2024   AIC                           -191.488
+Time:                                      20:58:36   BIC                           -154.145
 Sample:                                  01-01-2000   HQIC                          -176.330
                                        - 11-01-2014                                         
 Covariance Type:                                opg                                         
@@ -1265,7 +1286,6 @@ Warnings:
 <li><p><a class="reference external" href="https://otexts.com/fpp3/">Book and video lectures on Forecasting: Principles and Practice</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Wikipedia: Autocorrelation</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Partial_autocorrelation_function">Wikipedia: Partial autocorrelation</a></p></li>
-<li><p><a class="reference external" href="https://phosgene89.github.io/sarima.html">phosgene89’s GitHub page on SARIMAX</a></p></li>
 <li><p><a class="reference external" href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html">statsmodels’ SARIMAX documentation</a></p></li>
 <li><p><a class="reference external" href="https://www.statsmodels.org/stable/examples/notebooks/generated/statespace_sarimax_stata.html">statsmodels’ SARIMAX example</a></p></li>
 </ul>
@@ -1340,6 +1360,7 @@ Warnings:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wholesale-price-index-wpi-data">Wholesale price index (WPI) data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-models-in-python">Autoregressive models in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lag-operator">Lag operator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ar-autoregressive-models">AR - autoregressive models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ma-moving-average-models">MA - moving average models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arma-autoregressive-moving-average-models">ARMA - autoregressive moving average models</a></li>
