@@ -529,7 +529,7 @@ document.write(`
 <ul class="simple">
 <li><p>A pretrained model can be applied to a stream of data.</p></li>
 <li><p>We will train a model using <em>scikit-learn</em> and predict in a loop.</p></li>
-<li><p>The try to convert it to a <em>river</em> streaming model before applying it to a stream of data.</p></li>
+<li><p>Then try to convert it to a <em>river</em> streaming model before applying it to a stream of data.</p></li>
 <li><p>Finally, create a streaming model directly in <em>river</em>.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -567,7 +567,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.963 (± 0.029)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.955 (± 0.037)
 </pre></div>
 </div>
 </div>
@@ -999,7 +999,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 97.34%
 </pre></div>
 </div>
 </div>
@@ -1047,7 +1047,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 97.34%
 </pre></div>
 </div>
 </div>
@@ -1189,7 +1189,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if user is logged in (&quot;==&quot; active chat)</span>
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;zackrawrr&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, mizkif, cohhcarnage, etc.</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;summit1g&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, mizkif, cohhcarnage, etc.</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://decapi.me/twitch/uptime/&quot;</span><span class="o">+</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">is_online</span> <span class="o">=</span> <span class="n">response</span> <span class="o">!=</span> <span class="n">user</span><span class="o">+</span><span class="s2">&quot; is offline&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_online</span><span class="p">)</span>
@@ -1233,8 +1233,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2024, 10, 30, 20, 58, 44, 223200), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;ylech&#39;, &#39;msg&#39;: &#39;That sounded like Predator&#39;}
-{&#39;dt&#39;: datetime.datetime(2024, 10, 30, 20, 58, 44, 403128), &#39;channel&#39;: &#39;zackrawrr&#39;, &#39;username&#39;: &#39;nxcrb&#39;, &#39;msg&#39;: &#39;LUL&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2024, 11, 13, 10, 49, 13, 820730), &#39;channel&#39;: &#39;summit1g&#39;, &#39;username&#39;: &#39;ravager72&#39;, &#39;msg&#39;: &#39;EliGe and Xantares need to be saved LUL&#39;}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;dt&#39;: datetime.datetime(2024, 11, 13, 10, 49, 24, 375645), &#39;channel&#39;: &#39;summit1g&#39;, &#39;username&#39;: &#39;bongos121&#39;, &#39;msg&#39;: &#39;just dont make mistakes SHRUGGERS&#39;}
 Puh, that&#39;s enough!
 </pre></div>
 </div>
@@ -1278,10 +1280,31 @@ Puh, that&#39;s enough!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Puh, that&#39;s enough!
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">figure</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">twitch_chat</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">messages</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">message_length</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;msg&#39;</span><span class="p">])</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/river/stream/twitch_chat_stream.py:161,</span> in <span class="ni">TwitchChatStream.__iter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span> <span class="k">as</span> <span class="n">sock</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_setup_connection</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">161</span>     <span class="k">yield from</span> <span class="nb">map</span><span class="p">(</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gen_items</span><span class="p">(</span><span class="n">sock</span><span class="p">))</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/river/stream/twitch_chat_stream.py:143,</span> in <span class="ni">TwitchChatStream._gen_items</span><span class="nt">(self, sock)</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">143</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="k">continue</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="../../_images/25720b298e306528be67160f54c7c3d001fab09f4a896ad08425dfbcf5a35e7c.png" src="../../_images/25720b298e306528be67160f54c7c3d001fab09f4a896ad08425dfbcf5a35e7c.png" />
+<img alt="../../_images/2a28ea0babd3cfec168d116fae7085c4ad122e0259068cfa01fd188ae05bdd73.png" src="../../_images/2a28ea0babd3cfec168d116fae7085c4ad122e0259068cfa01fd188ae05bdd73.png" />
 </div>
 </div>
 </section>

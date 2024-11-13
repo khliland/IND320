@@ -766,8 +766,8 @@ $<span class="math notranslate nohighlight">\(\Psi(L)^n y_t = y_t + \psi_1 y_{t-
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 0)   Log Likelihood                -201.927
-Date:                Wed, 30 Oct 2024   AIC                            409.855
-Time:                        20:58:35   BIC                            418.316
+Date:                Wed, 13 Nov 2024   AIC                            409.855
+Time:                        10:48:54   BIC                            418.316
 Sample:                    01-01-1960   HQIC                           413.292
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -822,8 +822,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(0, 0, 1)   Log Likelihood                -516.522
-Date:                Wed, 30 Oct 2024   AIC                           1039.044
-Time:                        20:58:35   BIC                           1047.505
+Date:                Wed, 13 Nov 2024   AIC                           1039.044
+Time:                        10:48:54   BIC                           1047.505
 Sample:                    01-01-1960   HQIC                          1042.481
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -881,8 +881,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 1)   Log Likelihood                -172.610
-Date:                Wed, 30 Oct 2024   AIC                            353.221
-Time:                        20:58:35   BIC                            364.502
+Date:                Wed, 13 Nov 2024   AIC                            353.221
+Time:                        10:48:54   BIC                            364.502
 Sample:                    01-01-1960   HQIC                           357.804
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -944,7 +944,7 @@ Warnings:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit an ARIMA(1,1,1) model</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
 </pre></div>
@@ -954,24 +954,23 @@ Warnings:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
-Model:               SARIMAX(1, 1, 1)   Log Likelihood                -135.351
-Date:                Wed, 30 Oct 2024   AIC                            278.703
-Time:                        20:58:35   BIC                            289.951
-Sample:                    01-01-1960   HQIC                           283.272
+Model:               SARIMAX(1, 1, 1)   Log Likelihood                -137.247
+Date:                Wed, 13 Nov 2024   AIC                            280.494
+Time:                        10:48:54   BIC                            288.930
+Sample:                    01-01-1960   HQIC                           283.920
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-intercept      0.0943      0.068      1.389      0.165      -0.039       0.227
-ar.L1          0.8742      0.055     16.028      0.000       0.767       0.981
-ma.L1         -0.4120      0.100     -4.119      0.000      -0.608      -0.216
-sigma2         0.5257      0.053      9.849      0.000       0.421       0.630
+ar.L1          0.9412      0.030     31.695      0.000       0.883       0.999
+ma.L1         -0.4656      0.088     -5.314      0.000      -0.637      -0.294
+sigma2         0.5398      0.054     10.071      0.000       0.435       0.645
 ===================================================================================
-Ljung-Box (L1) (Q):                   0.09   Jarque-Bera (JB):                 9.78
-Prob(Q):                              0.77   Prob(JB):                         0.01
-Heteroskedasticity (H):              15.93   Skew:                             0.28
-Prob(H) (two-sided):                  0.00   Kurtosis:                         4.26
+Ljung-Box (L1) (Q):                   0.05   Jarque-Bera (JB):                 9.12
+Prob(Q):                              0.82   Prob(JB):                         0.01
+Heteroskedasticity (H):              28.75   Skew:                             0.07
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.33
 ===================================================================================
 
 Warnings:
@@ -984,7 +983,7 @@ Warnings:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Since the data are quarterly, we can add a seasonal component by including a fourth time lag to moving average</span>
 <span class="c1"># Fit an ARIMA(1,1,[1,0,0,1]) model</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
 <span class="c1"># What about a linear trend? (trend=&#39;t&#39;)</span>
@@ -995,25 +994,24 @@ Warnings:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                 SARIMAX Results                                 
 =================================================================================
 Dep. Variable:                       wpi   No. Observations:                  124
-Model:             SARIMAX(1, 1, [1, 4])   Log Likelihood                -135.066
-Date:                   Wed, 30 Oct 2024   AIC                            280.132
-Time:                           20:58:35   BIC                            294.193
-Sample:                       01-01-1960   HQIC                           285.843
+Model:             SARIMAX(1, 1, [1, 4])   Log Likelihood                -137.202
+Date:                   Wed, 13 Nov 2024   AIC                            282.404
+Time:                           10:48:54   BIC                            293.653
+Sample:                       01-01-1960   HQIC                           286.973
                             - 10-01-1990                                         
 Covariance Type:                     opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-intercept      0.1260      0.092      1.370      0.171      -0.054       0.306
-ar.L1          0.8325      0.081     10.231      0.000       0.673       0.992
-ma.L1         -0.3710      0.108     -3.447      0.001      -0.582      -0.160
-ma.L4          0.1087      0.094      1.157      0.247      -0.075       0.293
-sigma2         0.5230      0.053      9.915      0.000       0.420       0.626
+ar.L1          0.9313      0.041     22.884      0.000       0.852       1.011
+ma.L1         -0.4540      0.093     -4.884      0.000      -0.636      -0.272
+ma.L4          0.0433      0.082      0.526      0.599      -0.118       0.205
+sigma2         0.5394      0.054      9.953      0.000       0.433       0.646
 ===================================================================================
-Ljung-Box (L1) (Q):                   0.08   Jarque-Bera (JB):                12.03
-Prob(Q):                              0.77   Prob(JB):                         0.00
-Heteroskedasticity (H):              15.75   Skew:                             0.27
-Prob(H) (two-sided):                  0.00   Kurtosis:                         4.43
+Ljung-Box (L1) (Q):                   0.04   Jarque-Bera (JB):                10.31
+Prob(Q):                              0.84   Prob(JB):                         0.01
+Heteroskedasticity (H):              29.04   Skew:                             0.06
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.41
 ===================================================================================
 
 Warnings:
@@ -1048,7 +1046,7 @@ Warnings:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using SARIMA for seasonality instead of the fourth time lag to moving average.</span>
 <span class="c1"># Fit a SARIMA(1,1,1)(1,1,1,4) model</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison (no improvement here)</span>
 </pre></div>
@@ -1058,34 +1056,29 @@ Warnings:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     SARIMAX Results                                     
 =========================================================================================
 Dep. Variable:                               wpi   No. Observations:                  124
-Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 4)   Log Likelihood                -134.632
-Date:                           Wed, 30 Oct 2024   AIC                            281.264
-Time:                                   20:58:35   BIC                            297.939
-Sample:                               01-01-1960   HQIC                           288.035
+Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 4)   Log Likelihood                -135.889
+Date:                           Wed, 13 Nov 2024   AIC                            281.778
+Time:                                   10:48:54   BIC                            295.674
+Sample:                               01-01-1960   HQIC                           287.421
                                     - 10-01-1990                                         
 Covariance Type:                             opg                                         
 ==============================================================================
                  coef    std err          z      P&gt;|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
-intercept      0.0071      0.004      1.680      0.093      -0.001       0.015
-ar.L1          0.8330      0.073     11.377      0.000       0.690       0.977
-ma.L1         -0.3487      0.113     -3.099      0.002      -0.569      -0.128
-ar.S.L4        0.0702      0.125      0.561      0.575      -0.175       0.316
-ma.S.L4       -0.9991      4.994     -0.200      0.841     -10.787       8.788
-sigma2         0.5064      2.509      0.202      0.840      -4.411       5.424
+ar.L1          0.8766      0.060     14.581      0.000       0.759       0.994
+ma.L1         -0.3819      0.111     -3.452      0.001      -0.599      -0.165
+ar.S.L4        0.0594      0.112      0.529      0.597      -0.161       0.280
+ma.S.L4       -0.9980      2.395     -0.417      0.677      -5.693       3.697
+sigma2         0.5185      1.217      0.426      0.670      -1.867       2.904
 ===================================================================================
-Ljung-Box (L1) (Q):                   0.12   Jarque-Bera (JB):                22.02
-Prob(Q):                              0.73   Prob(JB):                         0.00
-Heteroskedasticity (H):              30.47   Skew:                            -0.26
-Prob(H) (two-sided):                  0.00   Kurtosis:                         5.04
+Ljung-Box (L1) (Q):                   0.07   Jarque-Bera (JB):                20.17
+Prob(Q):                              0.79   Prob(JB):                         0.00
+Heteroskedasticity (H):              29.33   Skew:                            -0.17
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.99
 ===================================================================================
 
 Warnings:
 [1] Covariance matrix calculated using the outer product of gradients (complex-step).
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/kristian/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/statsmodels/base/model.py:607: ConvergenceWarning: Maximum Likelihood optimization failed to converge. Check mle_retvals
-  warnings.warn(&quot;Maximum Likelihood optimization failed to &quot;
 </pre></div>
 </div>
 </div>
@@ -1096,7 +1089,7 @@ Warnings:
 <ul class="simple">
 <li><p>As we showed in the previous chapter, it is possible to make a model purely on other variables measured at the same time, <span class="math notranslate nohighlight">\(t\)</span>.</p></li>
 <li><p>Including these variables into ARIMA and SARIMA, we get the ARIMAX and SARIMAX models.</p></li>
-<li><p>In practice, we paste on an extra coefficient vector, <span class="math notranslate nohighlight">\(\beta\)</span>, and variables, <span class="math notranslate nohighlight">\(X_{t}\)</span>, to he models, here noted as sums of products <span class="math notranslate nohighlight">\(\beta_{i} x^{i}_{t}\)</span>:</p></li>
+<li><p>In practice, we paste on an extra coefficient vector, <span class="math notranslate nohighlight">\(\beta\)</span>, and variables, <span class="math notranslate nohighlight">\(X_{t}\)</span>, to the models, here noted as sums of products <span class="math notranslate nohighlight">\(\beta_{i} x^{i}_{t}\)</span>:</p></li>
 <li><p><span class="math notranslate nohighlight">\(ARIMAX(p, d, q)\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -1117,14 +1110,6 @@ Warnings:
 <span class="n">OilExchange</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">Date</span>
 <span class="n">OilExchange</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="s2">&quot;MS&quot;</span> <span class="c1"># Set the frequency to Month Start</span>
 <span class="n">OilExchange</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="c1"># Fit a SARIMAX(1,1,1)(1,1,1,12) model with exogenous variables (closing our eyes, as we know little about the data)</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">OilExchange</span><span class="p">[</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="c1">#OilExchange.loc[:, OilExchange.columns[3:-4]], \</span>
-                                <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="c1">#mod = sm.tsa.statespace.SARIMAX(OilExchange[&#39;PerEURO&#39;], OilExchange.loc[:, OilExchange.columns[3:-4]], \</span>
-<span class="c1">#                                trend=&#39;c&#39;, order=(1,1,1), seasonal_order=(1,1,1,12))</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison (no improvement here)</span>
 </pre></div>
 </div>
 </div>
@@ -1133,35 +1118,250 @@ Warnings:
   warn(msg)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                      SARIMAX Results                                       
-============================================================================================
-Dep. Variable:                              PerEURO   No. Observations:                  179
-Model:             SARIMAX(4, 1, 4)x(1, 1, [1], 12)   Log Likelihood                 107.744
-Date:                              Wed, 30 Oct 2024   AIC                           -191.488
-Time:                                      20:58:36   BIC                           -154.145
-Sample:                                  01-01-2000   HQIC                          -176.330
-                                       - 11-01-2014                                         
-Covariance Type:                                opg                                         
-==============================================================================
-                 coef    std err          z      P&gt;|z|      [0.025      0.975]
-------------------------------------------------------------------------------
-intercept      0.0041      0.009      0.461      0.645      -0.013       0.021
-ar.L1         -0.4266      0.385     -1.107      0.268      -1.182       0.328
-ar.L2         -0.3872      0.266     -1.457      0.145      -0.908       0.134
-ar.L3         -0.6585      0.338     -1.950      0.051      -1.321       0.004
-ar.L4         -0.5163      0.176     -2.933      0.003      -0.861      -0.171
-ma.L1          0.7518      0.394      1.909      0.056      -0.020       1.523
-ma.L2          0.4635      0.203      2.283      0.022       0.066       0.861
-ma.L3          0.7739      0.262      2.958      0.003       0.261       1.287
-ma.L4          0.5734      0.265      2.165      0.030       0.054       1.093
-ar.S.L12      -0.1306      0.094     -1.392      0.164      -0.314       0.053
-ma.S.L12      -0.9646      0.522     -1.847      0.065      -1.988       0.059
-sigma2         0.0134      0.006      2.094      0.036       0.001       0.026
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>PerEURO</th>
+      <th>PerUSD</th>
+      <th>KeyIntRate</th>
+      <th>LoanIntRate</th>
+      <th>EuroIntRate</th>
+      <th>CPI</th>
+      <th>OilSpotPrice</th>
+      <th>ImpOldShip</th>
+      <th>ImpNewShip</th>
+      <th>...</th>
+      <th>ExpExShipOilPlat</th>
+      <th>TrBal</th>
+      <th>TrBalExShipOilPlat</th>
+      <th>TrBalMland</th>
+      <th>ly.var</th>
+      <th>l2y.var</th>
+      <th>l.CPI</th>
+      <th>ExcChange</th>
+      <th>Testrain</th>
+      <th>season</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2000-01-01</th>
+      <td>2000-01-01</td>
+      <td>8.1215</td>
+      <td>8.0129</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.04</td>
+      <td>104.1</td>
+      <td>25.855741</td>
+      <td>114</td>
+      <td>915</td>
+      <td>...</td>
+      <td>38619</td>
+      <td>18575</td>
+      <td>19238</td>
+      <td>-3257</td>
+      <td>8.0968</td>
+      <td>8.1907</td>
+      <td>103.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>winter</td>
+    </tr>
+    <tr>
+      <th>2000-02-01</th>
+      <td>2000-02-01</td>
+      <td>8.0991</td>
+      <td>8.2361</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.28</td>
+      <td>104.6</td>
+      <td>27.317905</td>
+      <td>527</td>
+      <td>359</td>
+      <td>...</td>
+      <td>38730</td>
+      <td>14217</td>
+      <td>17200</td>
+      <td>-4529</td>
+      <td>8.1215</td>
+      <td>8.0968</td>
+      <td>104.1</td>
+      <td>Decrease</td>
+      <td>True</td>
+      <td>winter</td>
+    </tr>
+    <tr>
+      <th>2000-03-01</th>
+      <td>2000-03-01</td>
+      <td>8.1110</td>
+      <td>8.4111</td>
+      <td>5.500000</td>
+      <td>7.500000</td>
+      <td>3.51</td>
+      <td>104.7</td>
+      <td>26.509183</td>
+      <td>1385</td>
+      <td>929</td>
+      <td>...</td>
+      <td>42642</td>
+      <td>13697</td>
+      <td>18380</td>
+      <td>-5562</td>
+      <td>8.0991</td>
+      <td>8.1215</td>
+      <td>104.6</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>2000-04-01</th>
+      <td>2000-04-01</td>
+      <td>8.1538</td>
+      <td>8.6081</td>
+      <td>5.632353</td>
+      <td>7.632353</td>
+      <td>3.69</td>
+      <td>105.1</td>
+      <td>21.558821</td>
+      <td>450</td>
+      <td>2194</td>
+      <td>...</td>
+      <td>36860</td>
+      <td>13142</td>
+      <td>15499</td>
+      <td>-5147</td>
+      <td>8.1110</td>
+      <td>8.0991</td>
+      <td>104.7</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+    </tr>
+    <tr>
+      <th>2000-05-01</th>
+      <td>2000-05-01</td>
+      <td>8.2015</td>
+      <td>9.0471</td>
+      <td>5.750000</td>
+      <td>7.750000</td>
+      <td>3.92</td>
+      <td>105.1</td>
+      <td>25.147242</td>
+      <td>239</td>
+      <td>608</td>
+      <td>...</td>
+      <td>42932</td>
+      <td>17733</td>
+      <td>18505</td>
+      <td>-5732</td>
+      <td>8.1538</td>
+      <td>8.1110</td>
+      <td>105.1</td>
+      <td>Increase</td>
+      <td>True</td>
+      <td>Spring</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit a SARIMAX(1,1,1)(1,1,1,12) model with exogenous variables (closing our eyes, as we know little about the data)</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">OilExchange</span><span class="p">[</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">exog</span><span class="o">=</span><span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">6</span><span class="p">]],</span> \
+                                <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison (no improvement here)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                     SARIMAX Results                                      
+==========================================================================================
+Dep. Variable:                            PerEURO   No. Observations:                  179
+Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 12)   Log Likelihood                 103.848
+Date:                            Wed, 13 Nov 2024   AIC                           -157.695
+Time:                                    10:48:56   BIC                            -79.896
+Sample:                                01-01-2000   HQIC                          -126.116
+                                     - 11-01-2014                                         
+Covariance Type:                              opg                                         
+======================================================================================
+                         coef    std err          z      P&gt;|z|      [0.025      0.975]
+--------------------------------------------------------------------------------------
+intercept              0.0011      0.018      0.061      0.951      -0.034       0.037
+KeyIntRate            -0.2262      0.279     -0.810      0.418      -0.773       0.321
+LoanIntRate           -0.0130      0.254     -0.051      0.959      -0.511       0.485
+EuroIntRate            0.2143      0.107      2.009      0.045       0.005       0.423
+CPI                   -0.0051      0.028     -0.180      0.857      -0.061       0.050
+OilSpotPrice          -0.0043      0.001     -3.124      0.002      -0.007      -0.002
+ImpOldShip            -0.0144      0.021     -0.684      0.494      -0.056       0.027
+ImpNewShip            -0.0144      0.021     -0.685      0.493      -0.056       0.027
+ImpOilPlat            -0.0144      0.021     -0.686      0.493      -0.056       0.027
+ImpExShipOilPlat      -0.0005      0.023     -0.021      0.983      -0.045       0.044
+ExpCrdOil             -0.0026      0.015     -0.172      0.863      -0.032       0.027
+ExpNatGas             -0.0026      0.015     -0.171      0.864      -0.032       0.027
+ExpCond               -0.0026      0.015     -0.172      0.864      -0.032       0.027
+ExpOldShip             0.0144      0.021      0.684      0.494      -0.027       0.056
+ExpNewShip             0.0144      0.021      0.685      0.493      -0.027       0.056
+ExpOilPlat             0.0144      0.021      0.686      0.492      -0.027       0.056
+ExpExShipOilPlat       0.0005      0.023      0.021      0.983      -0.044       0.045
+TrBal                 -0.0144      0.021     -0.685      0.493      -0.056       0.027
+TrBalExShipOilPlat     0.0165      0.019      0.852      0.394      -0.022       0.055
+TrBalMland            -0.0026      0.015     -0.172      0.863      -0.032       0.027
+ar.L1                 -0.7115      0.275     -2.587      0.010      -1.251      -0.172
+ma.L1                  0.8770      0.186      4.716      0.000       0.513       1.241
+ar.S.L12              -0.2670      0.218     -1.223      0.221      -0.695       0.161
+ma.S.L12              -0.4389      0.228     -1.926      0.054      -0.885       0.008
+sigma2                 0.0225      0.004      5.584      0.000       0.015       0.030
 ===================================================================================
-Ljung-Box (L1) (Q):                   0.04   Jarque-Bera (JB):                36.65
-Prob(Q):                              0.85   Prob(JB):                         0.00
-Heteroskedasticity (H):               0.60   Skew:                             0.33
-Prob(H) (two-sided):                  0.06   Kurtosis:                         5.21
+Ljung-Box (L1) (Q):                   0.59   Jarque-Bera (JB):                 1.54
+Prob(Q):                              0.44   Prob(JB):                         0.46
+Heteroskedasticity (H):               0.91   Skew:                             0.11
+Prob(H) (two-sided):                  0.72   Kurtosis:                         3.41
 ===================================================================================
 
 Warnings:
@@ -1224,7 +1424,8 @@ Warnings:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get predictions for the whole dataset</span>
 <span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">OilExchange</span><span class="p">[</span><span class="s1">&#39;PerEURO&#39;</span><span class="p">],</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">OilExchange</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]],</span> \
     <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">seasonal_order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span> <span class="c1"># One-stpe-ahead predictions</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">params</span><span class="p">)</span> <span class="c1"># One-step-ahead predictions</span>
 </pre></div>
 </div>
 </div>
