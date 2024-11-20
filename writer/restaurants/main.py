@@ -31,6 +31,7 @@ def _update_plotly_restaurants(state):
     overlay['marker']['size'] = sizes
     fig_restaurants.update_layout(mapbox_style="open-street-map")
     fig_restaurants.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+   
     state["plotly_restaurants"] = fig_restaurants
 
 def handle_click(state, payload):

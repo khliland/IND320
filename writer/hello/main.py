@@ -27,6 +27,8 @@ def update(state, session):
     _update_metrics(state)
     _update_role_chart(state)
     _update_scatter_chart(state)
+    _update_bar_chart_fancy(state)
+
 
 
 def handle_story_download(state):
@@ -113,12 +115,25 @@ def _update_role_chart(state):
     )
     state["role_chart"] = fig
 
+def _update_bar_chart_fancy(state):
+    # Create a barplot with maximum life expectancy in Europe for each year.
+    # Overlay the life expectancy in Bulgaria over the plot with narrower bars using barmode='overlay'.
+    df = px.data.gapminder()
+    dfE = df[df['continent'] == 'Europe'][['year', 'lifeExp']].groupby('year')
+    dfEmax = dfE.max().reset_index()
+    dfEmax['Bulgaria'] = df[df['country'] == 'Bulgaria']['lifeExp'].reset_index()['lifeExp']
+    dfEmax.columns = ['year', 'Europe max', 'Bulgaria']
+    fig = px.bar(dfEmax, x='year', y=['Europe max', 'Bulgaria'], title='Life Expectancy in Europe', barmode='overlay', width=700, height=400)
+    fig.update_xaxes(title='Year')
+    fig.update_yaxes(title='Life Expectancy (years)')
+    fig.update_layout(legend_title_text='Country')
+    state["country_chart"] = fig
 
 def _update_scatter_chart(state):
     main_df = state["main_df"]
     average_role_data = main_df.groupby("role").agg(
         {"length_cm": "mean", "weight_g": "mean"}).reset_index()
-    fig = px.scatter(average_role_data, x="length_cm", y="weight_g", height=400,
+    fig = px.scatter(average_role_data, x="length_cm", y="weight_g", height=200,
         size_max=10, size="weight_g")
     fig.update_layout(
         margin={"l": 20, "r": 20, "t": 20, "b": 50},

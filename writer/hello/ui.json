@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "writer_version": "0.6.2rc3"
+        "writer_version": "0.7.4"
     },
     "components": {
         "root": {
@@ -219,7 +219,7 @@
                 "text": "This app is meant to serve as a lighthearted introduction to the framework. It's not a comprehensive demonstration of its capabilities."
             },
             "isCodeManaged": false,
-            "position": 0,
+            "position": 1,
             "parentId": "70d82458-a08f-4005-8f96-dc8d3ba92fad"
         },
         "7b710d37-1c68-4d06-a65a-e6596ccc826a": {
@@ -230,7 +230,7 @@
                 "alignment": ""
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "9c30af6d-4ee5-4782-9169-0f361d67fa76"
         },
         "b9cb10e5-1ead-448b-afcc-909e23afb72a": {
@@ -999,7 +999,7 @@
                 "icon": "library_books"
             },
             "isCodeManaged": false,
-            "position": 5,
+            "position": 6,
             "parentId": "9c30af6d-4ee5-4782-9169-0f361d67fa76",
             "handlers": {
                 "click": "$goToPage_story"
@@ -1165,7 +1165,7 @@
                 "seed": ""
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 3,
             "parentId": "9c30af6d-4ee5-4782-9169-0f361d67fa76",
             "visible": {
                 "expression": true,
@@ -1178,8 +1178,29 @@
             "type": "separator",
             "content": {},
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "9c30af6d-4ee5-4782-9169-0f361d67fa76"
+        },
+        "yafuimillykwozry": {
+            "id": "yafuimillykwozry",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{country_chart}"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "9c30af6d-4ee5-4782-9169-0f361d67fa76",
+            "handlers": {}
+        },
+        "6i1ty8br4ah240no": {
+            "id": "6i1ty8br4ah240no",
+            "type": "checkboxinput",
+            "parentId": "70d82458-a08f-4005-8f96-dc8d3ba92fad",
+            "content": {
+                "label": "Input Label"
+            },
+            "handlers": {},
+            "position": 0
         }
     }
 }
