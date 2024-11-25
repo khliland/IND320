@@ -126,7 +126,7 @@
             "type": "separator",
             "content": {},
             "isCodeManaged": false,
-            "position": 3,
+            "position": 4,
             "parentId": "c6392876-7cfd-4680-8725-b04f43ff294f"
         },
         "f1d6bc8e-a780-4ae5-8b7c-082fe8a6867d": {
@@ -139,7 +139,7 @@
                 "enableDownload": "yes"
             },
             "isCodeManaged": false,
-            "position": 4,
+            "position": 5,
             "parentId": "c6392876-7cfd-4680-8725-b04f43ff294f"
         },
         "fbad9feb-5c88-4425-bb17-0d138286a875": {
@@ -1195,12 +1195,25 @@
         "6i1ty8br4ah240no": {
             "id": "6i1ty8br4ah240no",
             "type": "checkboxinput",
-            "parentId": "70d82458-a08f-4005-8f96-dc8d3ba92fad",
             "content": {
                 "label": "Input Label"
             },
-            "handlers": {},
-            "position": 0
+            "isCodeManaged": false,
+            "position": 0,
+            "parentId": "70d82458-a08f-4005-8f96-dc8d3ba92fad",
+            "handlers": {}
+        },
+        "ap2a7y6xmne7gnau": {
+            "id": "ap2a7y6xmne7gnau",
+            "type": "text",
+            "content": {
+                "text": "This is some formatted text\nbroken over two lines\n| one | two |\n| iii | iii |",
+                "cssClasses": "my_monospace"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "c6392876-7cfd-4680-8725-b04f43ff294f",
+            "handlers": {}
         }
     }
 }

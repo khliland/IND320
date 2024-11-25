@@ -5,9 +5,15 @@ import plotly.express as px
 # Its name starts with _, so this function won't be exposed
 
 # Import data
-def _get_main_df():
+# Update 25.11.2024: Converted to a function that takes state as
+# input to enable checking of previous imports.
+def _get_main_df(state):
+    # Check if main_df is already in the state, if not read
+    if "main_df" in state:
+        return state["main_df"]
     main_df = pd.read_csv('../../D2Dbook/data/restaurants.csv') 
-    return main_df
+    print(main_df) # Diagnostic print while developing
+    state["restaurants_df"] = main_df
 
 # Plot restaurants
 def _update_plotly_restaurants(state):
@@ -54,7 +60,7 @@ initial_state = writer.init_state({
     "_my_private_element": 1337,
     "selected":"Click to select",
     "selected_num":-1,
-    "restaurants_df":_get_main_df(),
+    "restaurants_df":None,
 })
-
+_get_main_df(initial_state)
 _update_plotly_restaurants(initial_state)

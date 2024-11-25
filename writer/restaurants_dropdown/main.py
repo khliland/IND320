@@ -52,7 +52,7 @@ def _get_JSON(state):
     # Convert keys to strings
     my_json = {str(key): value for key, value in my_json.items()}
     state["restaurant_JSON"] = my_json
-
+    handle_choice(state, 0)
 
 # Initialise the state
 

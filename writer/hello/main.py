@@ -162,5 +162,6 @@ initial_state = wf.init_state({
     },
     "metrics": {}
 })
+initial_state.import_stylesheet("theme", "/static/custom.css")
 
 update(initial_state, None)
