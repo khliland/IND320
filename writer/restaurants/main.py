@@ -47,7 +47,6 @@ def handle_click(state, payload):
     _update_plotly_restaurants(state)
 
 
-
 # Initialise the state
 
 # "_my_private_element" won't be serialised or sent to the frontend,

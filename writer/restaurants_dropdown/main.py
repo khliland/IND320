@@ -51,6 +51,7 @@ def _get_JSON(state):
     my_json = dict(zip(list(range(len(restaurants))), restaurants["name"].values))
     # Convert keys to strings
     my_json = {str(key): value for key, value in my_json.items()}
+    print(my_json)
     state["restaurant_JSON"] = my_json
     handle_choice(state, 0)
 
