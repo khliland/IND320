@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -502,7 +502,6 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-in-models">Outliers in models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-outliers-anomalies">Handling outliers/anomalies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -539,19 +538,19 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Random data</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 
 <span class="c1"># A boxplot of the data</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f9ea3622e5d981d6ef58f2c6e4ac038522c86bacfd80c70d5e6bd69aa0359d6a.png" src="../../_images/f9ea3622e5d981d6ef58f2c6e4ac038522c86bacfd80c70d5e6bd69aa0359d6a.png" />
+<img alt="../../_images/c798da96345a1c1c5863a8a21ca5cf7ae1333e496336d8c36ea6a41e597014ce.png" src="../../_images/c798da96345a1c1c5863a8a21ca5cf7ae1333e496336d8c36ea6a41e597014ce.png" />
 </div>
 </div>
 <section id="boxplot-properties">
@@ -560,9 +559,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the normal probability curve from -4 to 4 with mean 0 and standard deviation 1</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -585,7 +584,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/84bd1da528a1906056bbe9f290256ef1e7e02f0f82e9a92d6d25a48a69a3dcf3.png" src="../../_images/84bd1da528a1906056bbe9f290256ef1e7e02f0f82e9a92d6d25a48a69a3dcf3.png" />
+<img alt="../../_images/8b10dff1ca939e4a6f652e09738334eb2ba0640676fb163d21e61663c266401e.png" src="../../_images/8b10dff1ca939e4a6f652e09738334eb2ba0640676fb163d21e61663c266401e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Upper whisker: 2.698 standard deviations
 Probability of being outside whiskers: 1.993%
 </pre></div>
@@ -643,7 +642,7 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
 <span class="n">y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 
 <span class="c1"># Remove frequencies above 40, i.e., a low-pass filter.</span>
-<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">dct</span><span class="p">,</span> <span class="n">idct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.fft</span><span class="w"> </span><span class="kn">import</span> <span class="n">dct</span><span class="p">,</span> <span class="n">idct</span>
 <span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="c1"># Frequency axis</span>
 <span class="n">filtered_fourier_signal</span> <span class="o">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">filtered_fourier_signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -662,16 +661,17 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b88532c9552ec7ad3f3cd4fca3a8236b6c0b5d69d2cbd7ebe496ba77922c6342.png" src="../../_images/b88532c9552ec7ad3f3cd4fca3a8236b6c0b5d69d2cbd7ebe496ba77922c6342.png" />
+<img alt="../../_images/d7179376f130f19adf3abf7cba40de08757470623c34067d96dbc9009e156b8f.png" src="../../_images/d7179376f130f19adf3abf7cba40de08757470623c34067d96dbc9009e156b8f.png" />
 </div>
 </div>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<h2 class="rubric" id="resources">Resources</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Box_plot">Wikipedia: Box plot</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Interquartile_range">Wikipedia: Interquartile range</a></p></li>
 </ul>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -747,7 +747,6 @@ Leverage <span class="math notranslate nohighlight">\(h_{ii}\)</span> from the d
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-in-models">Outliers in models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-outliers-anomalies">Handling outliers/anomalies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 

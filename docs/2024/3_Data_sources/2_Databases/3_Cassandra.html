@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cassandra &#8212; Data to Decision - IND320</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3_Data_sources/2_Databases/3_Cassandra';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Spark" href="4_Spark.html" />
+    <link rel="prev" title="MySQL" href="2_MySQL.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../0_General/Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Data to Decision - IND320 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Data to Decision - IND320 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../0_General/Introduction.html">
+                    IND320 - Data to decision
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data-Driven Decision Making</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../1_Decision_making/1_Data_pipeline.html">Data pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../1_Decision_making/2_Decision_making.html">DDDM</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Power_BI.html">Power BI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Writer_Framework.html">Writer</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Sources</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../1_Formats/1_Formats.html">Static and streaming data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../1_Formats/2_Data_formats.html">Data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Formats/3_Streaming_data.html">Streaming data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="1_Databases.html">Databases</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_MongoDB.html">MongoDB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_APIs/2_REST.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_APIs/4_API_Tokens.html">API Tokens</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/1_Preprocessing.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../5_Machine_Learning/Machine_Learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_Machine_Learning/1_Pivoting/1_Pivoting.html">Pivot tables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Machine_Learning/2_Forecasting/1_Forecasting.html">Forecasting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/2_Forecasting/2_ML_approach.html">Machine Learning approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/2_Forecasting/3_SARIMAX.html">SARIMAX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Machine_Learning/3_Streaming/1_Streaming.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/3_Streaming/2_Streaming_models.html">Streaming models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/3_Streaming/3_Model_updates.html">Model updates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/2_Graphics/1_Plotly.html">Plotly graphics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/2_Graphics/2_Plotly_interactive.html">Plotly interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/2_Graphics/3_Plotly_maps.html">Plotly maps</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/3_Dashboard_design/1_Dashboard_design.html">Dashboard design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/3_Dashboard_design/2_Colours_symbols.html">Colours and symbolics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/4_Reports/1_Reports.html">Reports</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/4_Reports/2_Example_report.html">Tips and trics with Jupyter Notebooks</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../7_Appendix/Installation.html">Installation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/3_Data_sources/2_Databases/3_Cassandra.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F3_Data_sources/2_Databases/3_Cassandra.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/3_Data_sources/2_Databases/3_Cassandra.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cassandra</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spinning-up-a-local-cassandra-instance">Spinning up a local Cassandra instance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-the-cassandra-cluster-from-python">Connect to the Cassandra cluster from Python.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyspace">Keyspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-table">Create a table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting-and-reading-data">Inserting and reading data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-sensitivity">Case sensitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asyncronous-writing">Asyncronous writing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cassandra-filtering">Cassandra filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partitions">Partitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-ids">Unique IDs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-in-cassandra">JSON in Cassandra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-previously-saved-json-file-forecast-json-to-memory">Read previously saved JSON file forecast.json to memory</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-json">Raw JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert-the-forecast-data-into-the-table-as-text-blob">Insert the forecast data into the table as text blob</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cassandra">
+<h1>Cassandra<a class="headerlink" href="#cassandra" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>A production grade NoSQL database.</p></li>
+<li><p>Can be distributed across servers, nodes, etc.</p></li>
+<li><p>Replication of database is supported for high degree of redundancy and speed.</p></li>
+<li><p>Uses CQL, a subset of SQL for querying.</p></li>
+<li><p>Works seamlesly together with Spark and its corresponding distributed structure.</p></li>
+<li><p>Installation of Cassandra is explained in the <a class="reference internal" href="../../7_Appendix/Installation.html"><span class="std std-doc">Installation chapter</span></a>.</p></li>
+</ul>
+<section id="spinning-up-a-local-cassandra-instance">
+<h2>Spinning up a local Cassandra instance<a class="headerlink" href="#spinning-up-a-local-cassandra-instance" title="Link to this heading">#</a></h2>
+<p>In a terminal, first time:<br />
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--name</span> <span class="pre">my_cassandra</span> <span class="pre">-p</span> <span class="pre">9042:9042</span> <span class="pre">cassandra:latest</span></code><br />
+… and later:<br />
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">start</span> <span class="pre">my_cassandra</span></code></p>
+<p>… or in Docker Desktop:</p>
+<ul class="simple">
+<li><p>Run the cassandra docker image with optional settings, opening 9042 port and setting a name.</p></li>
+<li><p>Later, simply run the container with the name you chose.</p></li>
+</ul>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Docker_images.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Docker_images.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Docker_images.png?raw=TRUE" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Docker_containers.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Docker_containers.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Docker_containers.png?raw=TRUE" style="width: 800px;" /></a>
+<section id="connect-to-the-cassandra-cluster-from-python">
+<h3>Connect to the Cassandra cluster from Python.<a class="headerlink" href="#connect-to-the-cassandra-cluster-from-python" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connecting to Cassandra</span>
+<span class="kn">from</span> <span class="nn">cassandra.cluster</span> <span class="kn">import</span> <span class="n">Cluster</span>
+<span class="n">cluster</span> <span class="o">=</span> <span class="n">Cluster</span><span class="p">([</span><span class="s1">&#39;localhost&#39;</span><span class="p">],</span> <span class="n">port</span><span class="o">=</span><span class="mi">9042</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="keyspace">
+<h3>Keyspace<a class="headerlink" href="#keyspace" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In Cassandra database tables are stored in keyspaces (basically a distributed database).</p></li>
+<li><p>These have parameters controlling their distribution on nodes/servers and redundancy.</p></li>
+<li><p>We will use the simplest form locally.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up new keyspace (first time only)</span>
+<span class="c1">#                                              name of keyspace                        replication strategy           replication factor</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE KEYSPACE IF NOT EXISTS my_first_keyspace WITH REPLICATION = { &#39;class&#39; : &#39;SimpleStrategy&#39;, &#39;replication_factor&#39; : 1 };&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x105d841a0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-a-table">
+<h3>Create a table<a class="headerlink" href="#create-a-table" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>IF NOT EXISTS makes sure we do not overwrite existing tables</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new table (first time only)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">set_keyspace</span><span class="p">(</span><span class="s1">&#39;my_first_keyspace&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP TABLE IF EXISTS my_first_keyspace.my_first_table;&quot;</span><span class="p">)</span> <span class="c1"># Starting from scratch every time</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS my_first_table (ind int PRIMARY KEY, company text, model text);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x105da13d0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="inserting-and-reading-data">
+<h3>Inserting and reading data<a class="headerlink" href="#inserting-and-reading-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert some data (ind is the primary key, must be unique)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO my_first_table (ind, company, model) VALUES (1, &#39;Tesla&#39;, &#39;Model S&#39;);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO my_first_table (ind, company, model) VALUES (2, &#39;Tesla&#39;, &#39;Model 3&#39;);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO my_first_table (ind, company, model) VALUES (3, &#39;Polestar&#39;, &#39;3&#39;);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x1104516a0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query the data</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM my_first_table;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(ind=1, company=&#39;Tesla&#39;, model=&#39;Model S&#39;)
+Row(ind=2, company=&#39;Tesla&#39;, model=&#39;Model 3&#39;)
+Row(ind=3, company=&#39;Polestar&#39;, model=&#39;3&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-sensitivity">
+<h3>Case sensitivity<a class="headerlink" href="#case-sensitivity" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cassandra is by default case insensitive in column names.</p></li>
+<li><p>To use column names with capital letters, use double quotation marks both when creating tables and when inserting data.</p></li>
+<li><p>The effect of insensitivity may be surprising.</p>
+<ul>
+<li><p>Look carefully at the use of quotation marks and error message below.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">set_keyspace</span><span class="p">(</span><span class="s1">&#39;my_first_keyspace&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP TABLE IF EXISTS my_first_keyspace.case_insensitive;&quot;</span><span class="p">)</span> <span class="c1"># Starting from scratch every time</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS case_insensitive (Capital int PRIMARY KEY, Letters text, Everywhere text);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP TABLE IF EXISTS my_first_keyspace.case_sensitive;&quot;</span><span class="p">)</span> <span class="c1"># Starting from scratch every time</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS case_sensitive (</span><span class="se">\&quot;</span><span class="s2">Capital</span><span class="se">\&quot;</span><span class="s2"> int PRIMARY KEY, </span><span class="se">\&quot;</span><span class="s2">Letters</span><span class="se">\&quot;</span><span class="s2"> text, </span><span class="se">\&quot;</span><span class="s2">Everywhere</span><span class="se">\&quot;</span><span class="s2"> text);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x11053b710&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO case_insensitive (Capital, Letters, Everywhere) VALUES (1, &#39;Tesla&#39;, &#39;Model S&#39;);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x105d6dd00&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO case_sensitive (Capital, Letters, Everywhere) VALUES (1, &#39;Tesla&#39;, &#39;Model S&#39;);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">InvalidRequest</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO case_sensitive (Capital, Letters, Everywhere) VALUES (1, &#39;Tesla&#39;, &#39;Model S&#39;);&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/cassandra/cluster.py:2677,</span> in <span class="ni">cassandra.cluster.Session.execute</span><span class="nt">()</span>
+
+<span class="nn">File ~/miniforge3/envs/IND320_2024/lib/python3.12/site-packages/cassandra/cluster.py:4956,</span> in <span class="ni">cassandra.cluster.ResponseFuture.result</span><span class="nt">()</span>
+
+<span class="ne">InvalidRequest</span>: Error from server: code=2200 [Invalid query] message=&quot;Undefined column name capital in table my_first_keyspace.case_sensitive&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO case_sensitive (</span><span class="se">\&quot;</span><span class="s2">Capital</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Letters</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">Everywhere</span><span class="se">\&quot;</span><span class="s2">) VALUES (1, &#39;Tesla&#39;, &#39;Model S&#39;);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x1107ce3c0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query the data</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM case_insensitive;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM case_sensitive;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(capital=1, everywhere=&#39;Model S&#39;, letters=&#39;Tesla&#39;)
+Row(Capital=1, Everywhere=&#39;Model S&#39;, Letters=&#39;Tesla&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="asyncronous-writing">
+<h3>Asyncronous writing<a class="headerlink" href="#asyncronous-writing" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>If your application is very data intensive, waiting for a response is not productive.</p></li>
+<li><p>Writing asyncronously sends the data but does not pause for reply.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">execute_async</span><span class="p">(</span><span class="s2">&quot;INSERT INTO my_first_table (ind, company, model) VALUES (4, &#39;Volkswagen&#39;, &#39;ID.4&#39;);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ResponseFuture: query=&#39;&lt;SimpleStatement query=&quot;INSERT INTO my_first_table (ind, company, model) VALUES (4, &#39;Volkswagen&#39;, &#39;ID.4&#39;);&quot;, consistency=Not Set&gt;&#39; request_id=63 result=(no result yet) exception=None coordinator_host=None&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query the data</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM my_first_table;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(ind=1, company=&#39;Tesla&#39;, model=&#39;Model S&#39;)
+Row(ind=2, company=&#39;Tesla&#39;, model=&#39;Model 3&#39;)
+Row(ind=4, company=&#39;Volkswagen&#39;, model=&#39;ID.4&#39;)
+Row(ind=3, company=&#39;Polestar&#39;, model=&#39;3&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># More specific query</span>
+<span class="n">prepared_statement</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM my_first_table WHERE company=? ALLOW FILTERING;&quot;</span><span class="p">)</span>
+<span class="n">teslas</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">prepared_statement</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Tesla&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">teslas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(ind=1, company=&#39;Tesla&#39;, model=&#39;Model S&#39;)
+Row(ind=2, company=&#39;Tesla&#39;, model=&#39;Model 3&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cassandra-filtering">
+<h2>Cassandra filtering<a class="headerlink" href="#cassandra-filtering" title="Link to this heading">#</a></h2>
+<p>Cassandra is inherently a distributed production database. Selecting as above may require downloading all data from a node, then filtering based on the WHERE part (only PRIMARY KEYs are centrally known). Solutions:</p>
+<ul class="simple">
+<li><p>If the table is small or most of the data will satisfy the query, add <code class="docutils literal notranslate"><span class="pre">ALLOW</span> <span class="pre">FILTERING</span></code> at the end of the query (not recommended if not known).</p></li>
+<li><p>Or make sure the WHERE clause points to one of the keys (see below).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new table (observe keys)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP TABLE IF EXISTS my_first_keyspace.car_table;&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS car_table (company text, model text, PRIMARY KEY(company, model));&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x1107cf4a0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Insert some data (combination of company and model must be unique)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO car_table (company, model) VALUES (&#39;Tesla&#39;, &#39;Model S&#39;);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO car_table (company, model) VALUES (&#39;Tesla&#39;, &#39;Model 3&#39;);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO car_table (company, model) VALUES (&#39;Polestar&#39;, &#39;3&#39;);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO car_table (company, model) VALUES (&#39;Volkswagen&#39;, &#39;ID.4&#39;);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x1107d6360&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># More specific query now works</span>
+<span class="n">prepared_statement</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM car_table WHERE company=?;&quot;</span><span class="p">)</span>
+<span class="n">teslas</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">prepared_statement</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Tesla&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">teslas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(company=&#39;Tesla&#39;, model=&#39;Model 3&#39;)
+Row(company=&#39;Tesla&#39;, model=&#39;Model S&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="partitions">
+<h3>Partitions<a class="headerlink" href="#partitions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cassandra databases are usually replicated over different nodes.</p></li>
+<li><p>Data is stored in partitions (subsets) which have local copys.</p></li>
+<li><p>The primary key, e.g., PRIMARY KEY(company, model), is used in partitioning.</p>
+<ul>
+<li><p>The first part, e.g., company, is most important.</p></li>
+<li><p>All cars from a company will be located together, aiming for quicker queries.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="unique-ids">
+<h3>Unique IDs<a class="headerlink" href="#unique-ids" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In MySQL one could use the attribute AUTO_INCREMENT on integer IDs to automatically make a new unique index when inserting data.</p></li>
+<li><p>This would cause unreasonable overhead in a distributed database.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>s are used instead.</p>
+<ul>
+<li><p>Universally Unique Identifiers are typically 128-bit random bit sequences with extremely low probability of duplication.</p></li>
+<li><p>Cassandra uses a <a class="reference external" href="https://docs.datastax.com/en/cql-oss/3.3/cql/cql_reference/timeuuid_functions_r.html">timeuuid</a> type to combine a timestamp and uuid in one.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new table (first time only)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">set_keyspace</span><span class="p">(</span><span class="s1">&#39;my_first_keyspace&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP TABLE IF EXISTS my_first_keyspace.table_with_uuid;&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS table_with_uuid (id timeuuid PRIMARY KEY, company text, model text, price float);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x110840350&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO table_with_uuid (id, company, model, price) VALUES (now(), &#39;Tesla&#39;, &#39;Model S&#39;, 20000.0);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO table_with_uuid (id, company, model, price) VALUES (now(), &#39;Tesla&#39;, &#39;Model S&#39;, 21000.0);&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO table_with_uuid (id, company, model, price) VALUES (now(), &#39;Oldsmobile&#39;, &#39;Model 6C&#39;, 135000.0);&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x1107d7380&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cassandra.util</span> <span class="kn">import</span> <span class="n">datetime_from_uuid1</span>
+
+<span class="c1"># Query the data</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM table_with_uuid;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="c1"># Extract the timestamp from Cassandra&#39;s timeuuid</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datetime:&quot;</span><span class="p">,</span> <span class="n">datetime_from_uuid1</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(id=UUID(&#39;5496cd80-b27d-11ef-bd96-8f81262f2f14&#39;), company=&#39;Tesla&#39;, model=&#39;Model S&#39;, price=21000.0)
+Datetime: 2024-12-04 20:21:23.160000
+Row(id=UUID(&#39;549742b0-b27d-11ef-bd96-8f81262f2f14&#39;), company=&#39;Oldsmobile&#39;, model=&#39;Model 6C&#39;, price=135000.0)
+Datetime: 2024-12-04 20:21:23.163000
+Row(id=UUID(&#39;54956df0-b27d-11ef-bd96-8f81262f2f14&#39;), company=&#39;Tesla&#39;, model=&#39;Model S&#39;, price=20000.0)
+Datetime: 2024-12-04 20:21:23.151000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="json-in-cassandra">
+<h2>JSON in Cassandra<a class="headerlink" href="#json-in-cassandra" title="Link to this heading">#</a></h2>
+<section id="read-previously-saved-json-file-forecast-json-to-memory">
+<h3>Read previously saved JSON file forecast.json to memory<a class="headerlink" href="#read-previously-saved-json-file-forecast-json-to-memory" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../3_APIs/downloads/forecast.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">forecast</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect JSON file</span>
+<span class="n">forecast</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;{&#39;cod&#39;: &#39;200&#39;, &#39;message&#39;: 0, &#39;cnt&#39;: 40, &#39;list&#39;: [{&#39;dt&#39;: 1733324400, &#39;main&#39;: {&#39;temp&#39;: 265.69, &#39;feels_like&#39;: 265.69, &#39;temp_min&#39;: 264.86, &#39;temp_max&#39;: 265.69, &#39;pressure&#39;: 1025, &#39;sea_level&#39;: 1025, &#39;grnd_level&#39;: 969, &#39;humidity&#39;: 87, &#39;temp_kf&#39;: 0.83}, &#39;weather&#39;: [{&#39;id&#39;: 802, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;scattered clouds&#39;, &#39;icon&#39;: &#39;03n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 33}, &#39;wind&#39;: {&#39;speed&#39;: 1.3, &#39;deg&#39;: 84, &#39;gust&#39;: 0.97}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-04 15:00:00&#39;}, {&#39;dt&#39;: 1733335200, &#39;main&#39;: {&#39;temp&#39;: 264.62, &#39;feels_like&#39;: 264.62, &#39;temp_min&#39;: 263.88, &#39;temp_max&#39;: 264.62, &#39;pressure&#39;: 1023, &#39;sea_level&#39;: 1023, &#39;grnd_level&#39;: 967, &#39;humidity&#39;: 83, &#39;temp_kf&#39;: 0.74}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 67}, &#39;wind&#39;: {&#39;speed&#39;: 1, &#39;deg&#39;: 86, &#39;gust&#39;: 0.93}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-04 18:00:00&#39;}, {&#39;dt&#39;: 1733346000, &#39;main&#39;: {&#39;temp&#39;: 263.22, &#39;feels_like&#39;: 263.22, &#39;temp_min&#39;: 263.22, &#39;temp_max&#39;: 263.22, &#39;pressure&#39;: 1022, &#39;sea_level&#39;: 1022, &#39;grnd_level&#39;: 967, &#39;humidity&#39;: 82, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.63, &#39;deg&#39;: 85, &#39;gust&#39;: 0.6}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-04 21:00:00&#39;}, {&#39;dt&#39;: 1733356800, &#39;main&#39;: {&#39;temp&#39;: 263.21, &#39;feels_like&#39;: 263.21, &#39;temp_min&#39;: 263.21, &#39;temp_max&#39;: 263.21, &#39;pressure&#39;: 1022, &#39;sea_level&#39;: 1022, &#39;grnd_level&#39;: 967, &#39;humidity&#39;: 84, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 1.2, &#39;deg&#39;: 71, &#39;gust&#39;: 0.8}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 00:00:00&#39;}, {&#39;dt&#39;: 1733367600, &#39;main&#39;: {&#39;temp&#39;: 262.18, &#39;feels_like&#39;: 257.6, &#39;temp_min&#39;: 262.18, &#39;temp_max&#39;: 262.18, &#39;pressure&#39;: 1020, &#39;sea_level&#39;: 1020, &#39;grnd_level&#39;: 965, &#39;humidity&#39;: 82, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.19, &#39;deg&#39;: 69, &#39;gust&#39;: 1.5}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 03:00:00&#39;}, {&#39;dt&#39;: 1733378400, &#39;main&#39;: {&#39;temp&#39;: 263.48, &#39;feels_like&#39;: 259.02, &#39;temp_min&#39;: 263.48, &#39;temp_max&#39;: 263.48, &#39;pressure&#39;: 1018, &#39;sea_level&#39;: 1018, &#39;grnd_level&#39;: 963, &#39;humidity&#39;: 82, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.26, &#39;deg&#39;: 66, &#39;gust&#39;: 1.5}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 06:00:00&#39;}, {&#39;dt&#39;: 1733389200, &#39;main&#39;: {&#39;temp&#39;: 264.57, &#39;feels_like&#39;: 259.63, &#39;temp_min&#39;: 264.57, &#39;temp_max&#39;: 264.57, &#39;pressure&#39;: 1015, &#39;sea_level&#39;: 1015, &#39;grnd_level&#39;: 961, &#39;humidity&#39;: 81, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.76, &#39;deg&#39;: 76, &#39;gust&#39;: 2.05}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 09:00:00&#39;}, {&#39;dt&#39;: 1733400000, &#39;main&#39;: {&#39;temp&#39;: 263.81, &#39;feels_like&#39;: 257.74, &#39;temp_min&#39;: 263.81, &#39;temp_max&#39;: 263.81, &#39;pressure&#39;: 1014, &#39;sea_level&#39;: 1014, &#39;grnd_level&#39;: 959, &#39;humidity&#39;: 85, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.64, &#39;deg&#39;: 76, &#39;gust&#39;: 3.21}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 12:00:00&#39;}, {&#39;dt&#39;: 1733410800, &#39;main&#39;: {&#39;temp&#39;: 264.03, &#39;feels_like&#39;: 257.91, &#39;temp_min&#39;: 264.03, &#39;temp_max&#39;: 264.03, &#39;pressure&#39;: 1012, &#39;sea_level&#39;: 1012, &#39;grnd_level&#39;: 957, &#39;humidity&#39;: 86, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.74, &#39;deg&#39;: 83, &#39;gust&#39;: 3.89}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 15:00:00&#39;}, {&#39;dt&#39;: 1733421600, &#39;main&#39;: {&#39;temp&#39;: 263.69, &#39;feels_like&#39;: 257.83, &#39;temp_min&#39;: 263.69, &#39;temp_max&#39;: 263.69, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 956, &#39;humidity&#39;: 87, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.41, &#39;deg&#39;: 80, &#39;gust&#39;: 2.63}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 18:00:00&#39;}, {&#39;dt&#39;: 1733432400, &#39;main&#39;: {&#39;temp&#39;: 264.38, &#39;feels_like&#39;: 258.14, &#39;temp_min&#39;: 264.38, &#39;temp_max&#39;: 264.38, &#39;pressure&#39;: 1009, &#39;sea_level&#39;: 1009, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 86, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.95, &#39;deg&#39;: 85, &#39;gust&#39;: 3.71}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 21:00:00&#39;}, {&#39;dt&#39;: 1733443200, &#39;main&#39;: {&#39;temp&#39;: 264.78, &#39;feels_like&#39;: 259, &#39;temp_min&#39;: 264.78, &#39;temp_max&#39;: 264.78, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 86, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.56, &#39;deg&#39;: 84, &#39;gust&#39;: 3.2}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 00:00:00&#39;}, {&#39;dt&#39;: 1733454000, &#39;main&#39;: {&#39;temp&#39;: 266.56, &#39;feels_like&#39;: 261.68, &#39;temp_min&#39;: 266.56, &#39;temp_max&#39;: 266.56, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 952, &#39;humidity&#39;: 87, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.05, &#39;deg&#39;: 74, &#39;gust&#39;: 2.63}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 03:00:00&#39;}, {&#39;dt&#39;: 1733464800, &#39;main&#39;: {&#39;temp&#39;: 268.02, &#39;feels_like&#39;: 264.55, &#39;temp_min&#39;: 268.02, &#39;temp_max&#39;: 268.02, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 952, &#39;humidity&#39;: 88, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.12, &#39;deg&#39;: 75, &#39;gust&#39;: 1.49}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 06:00:00&#39;}, {&#39;dt&#39;: 1733475600, &#39;main&#39;: {&#39;temp&#39;: 269.72, &#39;feels_like&#39;: 267.67, &#39;temp_min&#39;: 269.72, &#39;temp_max&#39;: 269.72, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 952, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.4, &#39;deg&#39;: 59, &#39;gust&#39;: 1.14}, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.49}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 09:00:00&#39;}, {&#39;dt&#39;: 1733486400, &#39;main&#39;: {&#39;temp&#39;: 270.46, &#39;feels_like&#39;: 270.46, &#39;temp_min&#39;: 270.46, &#39;temp_max&#39;: 270.46, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.09, &#39;deg&#39;: 76, &#39;gust&#39;: 0.5}, &#39;visibility&#39;: 581, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.64}, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 12:00:00&#39;}, {&#39;dt&#39;: 1733497200, &#39;main&#39;: {&#39;temp&#39;: 268.53, &#39;feels_like&#39;: 265.1, &#39;temp_min&#39;: 268.53, &#39;temp_max&#39;: 268.53, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 90, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 2.15, &#39;deg&#39;: 93, &#39;gust&#39;: 1.87}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0.2, &#39;snow&#39;: {&#39;3h&#39;: 0.1}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 15:00:00&#39;}, {&#39;dt&#39;: 1733508000, &#39;main&#39;: {&#39;temp&#39;: 267.48, &#39;feels_like&#39;: 264.73, &#39;temp_min&#39;: 267.48, &#39;temp_max&#39;: 267.48, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 89, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.61, &#39;deg&#39;: 72, &#39;gust&#39;: 1.05}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 18:00:00&#39;}, {&#39;dt&#39;: 1733518800, &#39;main&#39;: {&#39;temp&#39;: 269.9, &#39;feels_like&#39;: 267.67, &#39;temp_min&#39;: 269.9, &#39;temp_max&#39;: 269.9, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 90, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.51, &#39;deg&#39;: 67, &#39;gust&#39;: 0.77}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 21:00:00&#39;}, {&#39;dt&#39;: 1733529600, &#39;main&#39;: {&#39;temp&#39;: 270.93, &#39;feels_like&#39;: 270.93, &#39;temp_min&#39;: 270.93, &#39;temp_max&#39;: 270.93, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 97, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.52, &#39;deg&#39;: 70, &#39;gust&#39;: 0.09}, &#39;visibility&#39;: 143, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 1}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 00:00:00&#39;}, {&#39;dt&#39;: 1733540400, &#39;main&#39;: {&#39;temp&#39;: 269, &#39;feels_like&#39;: 269, &#39;temp_min&#39;: 269, &#39;temp_max&#39;: 269, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 1.12, &#39;deg&#39;: 77, &#39;gust&#39;: 1.15}, &#39;visibility&#39;: 633, &#39;pop&#39;: 0.25, &#39;snow&#39;: {&#39;3h&#39;: 0.26}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 03:00:00&#39;}, {&#39;dt&#39;: 1733551200, &#39;main&#39;: {&#39;temp&#39;: 269.3, &#39;feels_like&#39;: 269.3, &#39;temp_min&#39;: 269.3, &#39;temp_max&#39;: 269.3, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 95, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 1.06, &#39;deg&#39;: 74, &#39;gust&#39;: 0.63}, &#39;pop&#39;: 0.21, &#39;snow&#39;: {&#39;3h&#39;: 0.19}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 06:00:00&#39;}, {&#39;dt&#39;: 1733562000, &#39;main&#39;: {&#39;temp&#39;: 267.3, &#39;feels_like&#39;: 264.57, &#39;temp_min&#39;: 267.3, &#39;temp_max&#39;: 267.3, &#39;pressure&#39;: 1009, &#39;sea_level&#39;: 1009, &#39;grnd_level&#39;: 955, &#39;humidity&#39;: 93, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.58, &#39;deg&#39;: 83, &#39;gust&#39;: 1.32}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0.2, &#39;snow&#39;: {&#39;3h&#39;: 0.14}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 09:00:00&#39;}, {&#39;dt&#39;: 1733572800, &#39;main&#39;: {&#39;temp&#39;: 266.62, &#39;feels_like&#39;: 263.42, &#39;temp_min&#39;: 266.62, &#39;temp_max&#39;: 266.62, &#39;pressure&#39;: 1009, &#39;sea_level&#39;: 1009, &#39;grnd_level&#39;: 955, &#39;humidity&#39;: 94, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.79, &#39;deg&#39;: 70, &#39;gust&#39;: 1.4}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 12:00:00&#39;}, {&#39;dt&#39;: 1733583600, &#39;main&#39;: {&#39;temp&#39;: 267.39, &#39;feels_like&#39;: 267.39, &#39;temp_min&#39;: 267.39, &#39;temp_max&#39;: 267.39, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 956, &#39;humidity&#39;: 94, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.32, &#39;deg&#39;: 68, &#39;gust&#39;: 0.99}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 15:00:00&#39;}, {&#39;dt&#39;: 1733594400, &#39;main&#39;: {&#39;temp&#39;: 268.49, &#39;feels_like&#39;: 266.35, &#39;temp_min&#39;: 268.49, &#39;temp_max&#39;: 268.49, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 956, &#39;humidity&#39;: 93, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.36, &#39;deg&#39;: 66, &#39;gust&#39;: 1.1}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 18:00:00&#39;}, {&#39;dt&#39;: 1733605200, &#39;main&#39;: {&#39;temp&#39;: 269.62, &#39;feels_like&#39;: 269.62, &#39;temp_min&#39;: 269.62, &#39;temp_max&#39;: 269.62, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 957, &#39;humidity&#39;: 91, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.27, &#39;deg&#39;: 70, &#39;gust&#39;: 0.95}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 21:00:00&#39;}, {&#39;dt&#39;: 1733616000, &#39;main&#39;: {&#39;temp&#39;: 269.98, &#39;feels_like&#39;: 269.98, &#39;temp_min&#39;: 269.98, &#39;temp_max&#39;: 269.98, &#39;pressure&#39;: 1012, &#39;sea_level&#39;: 1012, &#39;grnd_level&#39;: 958, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.9, &#39;deg&#39;: 89, &#39;gust&#39;: 0.83}, &#39;visibility&#39;: 6669, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 00:00:00&#39;}, {&#39;dt&#39;: 1733626800, &#39;main&#39;: {&#39;temp&#39;: 267.62, &#39;feels_like&#39;: 267.62, &#39;temp_min&#39;: 267.62, &#39;temp_max&#39;: 267.62, &#39;pressure&#39;: 1013, &#39;sea_level&#39;: 1013, &#39;grnd_level&#39;: 959, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.7, &#39;deg&#39;: 83, &#39;gust&#39;: 0.91}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 03:00:00&#39;}, {&#39;dt&#39;: 1733637600, &#39;main&#39;: {&#39;temp&#39;: 265.26, &#39;feels_like&#39;: 265.26, &#39;temp_min&#39;: 265.26, &#39;temp_max&#39;: 265.26, &#39;pressure&#39;: 1015, &#39;sea_level&#39;: 1015, &#39;grnd_level&#39;: 961, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 89}, &#39;wind&#39;: {&#39;speed&#39;: 0.93, &#39;deg&#39;: 89, &#39;gust&#39;: 1.25}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 06:00:00&#39;}, {&#39;dt&#39;: 1733648400, &#39;main&#39;: {&#39;temp&#39;: 264.4, &#39;feels_like&#39;: 264.4, &#39;temp_min&#39;: 264.4, &#39;temp_max&#39;: 264.4, &#39;pressure&#39;: 1019, &#39;sea_level&#39;: 1019, &#39;grnd_level&#39;: 964, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 61}, &#39;wind&#39;: {&#39;speed&#39;: 1.12, &#39;deg&#39;: 91, &#39;gust&#39;: 1.3}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 09:00:00&#39;}, {&#39;dt&#39;: 1733659200, &#39;main&#39;: {&#39;temp&#39;: 266.18, &#39;feels_like&#39;: 262.78, &#39;temp_min&#39;: 266.18, &#39;temp_max&#39;: 266.18, &#39;pressure&#39;: 1020, &#39;sea_level&#39;: 1020, &#39;grnd_level&#39;: 965, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 80}, &#39;wind&#39;: {&#39;speed&#39;: 1.87, &#39;deg&#39;: 64, &#39;gust&#39;: 1.79}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 12:00:00&#39;}, {&#39;dt&#39;: 1733670000, &#39;main&#39;: {&#39;temp&#39;: 264.32, &#39;feels_like&#39;: 264.32, &#39;temp_min&#39;: 264.32, &#39;temp_max&#39;: 264.32, &#39;pressure&#39;: 1023, &#39;sea_level&#39;: 1023, &#39;grnd_level&#39;: 968, &#39;humidity&#39;: 90, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 88}, &#39;wind&#39;: {&#39;speed&#39;: 1.33, &#39;deg&#39;: 82, &#39;gust&#39;: 1.69}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 15:00:00&#39;}, {&#39;dt&#39;: 1733680800, &#39;main&#39;: {&#39;temp&#39;: 264.23, &#39;feels_like&#39;: 264.23, &#39;temp_min&#39;: 264.23, &#39;temp_max&#39;: 264.23, &#39;pressure&#39;: 1026, &#39;sea_level&#39;: 1026, &#39;grnd_level&#39;: 971, &#39;humidity&#39;: 89, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 74}, &#39;wind&#39;: {&#39;speed&#39;: 0.92, &#39;deg&#39;: 91, &#39;gust&#39;: 1.53}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 18:00:00&#39;}, {&#39;dt&#39;: 1733691600, &#39;main&#39;: {&#39;temp&#39;: 263.47, &#39;feels_like&#39;: 263.47, &#39;temp_min&#39;: 263.47, &#39;temp_max&#39;: 263.47, &#39;pressure&#39;: 1029, &#39;sea_level&#39;: 1029, &#39;grnd_level&#39;: 974, &#39;humidity&#39;: 89, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 802, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;scattered clouds&#39;, &#39;icon&#39;: &#39;03n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 35}, &#39;wind&#39;: {&#39;speed&#39;: 0.63, &#39;deg&#39;: 90, &#39;gust&#39;: 1.12}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 21:00:00&#39;}, {&#39;dt&#39;: 1733702400, &#39;main&#39;: {&#39;temp&#39;: 263.78, &#39;feels_like&#39;: 263.78, &#39;temp_min&#39;: 263.78, &#39;temp_max&#39;: 263.78, &#39;pressure&#39;: 1032, &#39;sea_level&#39;: 1032, &#39;grnd_level&#39;: 976, &#39;humidity&#39;: 94, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 802, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;scattered clouds&#39;, &#39;icon&#39;: &#39;03n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 33}, &#39;wind&#39;: {&#39;speed&#39;: 0.58, &#39;deg&#39;: 124, &#39;gust&#39;: 0.83}, &#39;visibility&#39;: 9520, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 00:00:00&#39;}, {&#39;dt&#39;: 1733713200, &#39;main&#39;: {&#39;temp&#39;: 268.57, &#39;feels_like&#39;: 268.57, &#39;temp_min&#39;: 268.57, &#39;temp_max&#39;: 268.57, &#39;pressure&#39;: 1032, &#39;sea_level&#39;: 1032, &#39;grnd_level&#39;: 977, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 84}, &#39;wind&#39;: {&#39;speed&#39;: 0.66, &#39;deg&#39;: 11, &#39;gust&#39;: 0.51}, &#39;visibility&#39;: 405, &#39;pop&#39;: 0.78, &#39;snow&#39;: {&#39;3h&#39;: 0.37}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 03:00:00&#39;}, {&#39;dt&#39;: 1733724000, &#39;main&#39;: {&#39;temp&#39;: 270.31, &#39;feels_like&#39;: 270.31, &#39;temp_min&#39;: 270.31, &#39;temp_max&#39;: 270.31, &#39;pressure&#39;: 1033, &#39;sea_level&#39;: 1033, &#39;grnd_level&#39;: 978, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 92}, &#39;wind&#39;: {&#39;speed&#39;: 0.41, &#39;deg&#39;: 196, &#39;gust&#39;: 0.47}, &#39;visibility&#39;: 649, &#39;pop&#39;: 0.96, &#39;snow&#39;: {&#39;3h&#39;: 0.74}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 06:00:00&#39;}, {&#39;dt&#39;: 1733734800, &#39;main&#39;: {&#39;temp&#39;: 272.34, &#39;feels_like&#39;: 272.34, &#39;temp_min&#39;: 272.34, &#39;temp_max&#39;: 272.34, &#39;pressure&#39;: 1033, &#39;sea_level&#39;: 1033, &#39;grnd_level&#39;: 979, &#39;humidity&#39;: 98, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.26, &#39;deg&#39;: 255, &#39;gust&#39;: 1.66}, &#39;visibility&#39;: 511, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.93}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 09:00:00&#39;}, {&#39;dt&#39;: 1733745600, &#39;main&#39;: {&#39;temp&#39;: 275.08, &#39;feels_like&#39;: 272.76, &#39;temp_min&#39;: 275.08, &#39;temp_max&#39;: 275.08, &#39;pressure&#39;: 1032, &#39;sea_level&#39;: 1032, &#39;grnd_level&#39;: 978, &#39;humidity&#39;: 98, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.16, &#39;deg&#39;: 241, &#39;gust&#39;: 3.19}, &#39;visibility&#39;: 94, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.66}, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 12:00:00&#39;}], &#39;city&#39;: {&#39;id&#39;: 3145614, &#39;name&#39;: &#39;Mo i Rana&#39;, &#39;coord&#39;: {&#39;lat&#39;: 66.3128, &#39;lon&#39;: 14.1428}, &#39;country&#39;: &#39;NO&#39;, &#39;population&#39;: 17853, &#39;timezone&#39;: 3600, &#39;sunrise&#39;: 1733303288, &#39;sunset&#39;: 1733315984}}&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="raw-json">
+<h2>Raw JSON<a class="headerlink" href="#raw-json" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A simple, but not very efficient way of storing JSON data is to treat it as a text and save it directly to the database.</p></li>
+<li><p>More efficient, with regard to transfer, is to compress the JSON data to a blob first.</p>
+<ul>
+<li><p>Compression is automatic.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new table which treats the whole JSON as a blob, using the city id and the first dt as keys</span>
+<span class="n">session</span><span class="o">.</span><span class="n">set_keyspace</span><span class="p">(</span><span class="s1">&#39;my_first_keyspace&#39;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;DROP TABLE IF EXISTS my_first_keyspace.forecast_table;&quot;</span><span class="p">)</span>
+<span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;CREATE TABLE IF NOT EXISTS forecast_table (city_id int, dt int, forecast blob, PRIMARY KEY(city_id, dt));&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x1074b49b0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="insert-the-forecast-data-into-the-table-as-text-blob">
+<h3>Insert the forecast data into the table as text blob<a class="headerlink" href="#insert-the-forecast-data-into-the-table-as-text-blob" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO forecast_table (city_id, dt, forecast) VALUES (</span><span class="si">%s</span><span class="s2">, </span><span class="si">%s</span><span class="s2">, textAsBlob(</span><span class="si">%s</span><span class="s2">));&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">forecast</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">forecast</span><span class="p">[</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;dt&#39;</span><span class="p">],</span> <span class="n">forecast</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cassandra.cluster.ResultSet at 0x105d5e3f0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query the data</span>
+<span class="n">forecast_rows</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM forecast_table;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">forecast_rows</span><span class="o">.</span><span class="n">one</span><span class="p">())</span> <span class="c1"># &lt;- only one row</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Row(city_id=3145614, dt=1733324400, forecast=b&quot;{&#39;cod&#39;: &#39;200&#39;, &#39;message&#39;: 0, &#39;cnt&#39;: 40, &#39;list&#39;: [{&#39;dt&#39;: 1733324400, &#39;main&#39;: {&#39;temp&#39;: 265.69, &#39;feels_like&#39;: 265.69, &#39;temp_min&#39;: 264.86, &#39;temp_max&#39;: 265.69, &#39;pressure&#39;: 1025, &#39;sea_level&#39;: 1025, &#39;grnd_level&#39;: 969, &#39;humidity&#39;: 87, &#39;temp_kf&#39;: 0.83}, &#39;weather&#39;: [{&#39;id&#39;: 802, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;scattered clouds&#39;, &#39;icon&#39;: &#39;03n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 33}, &#39;wind&#39;: {&#39;speed&#39;: 1.3, &#39;deg&#39;: 84, &#39;gust&#39;: 0.97}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-04 15:00:00&#39;}, {&#39;dt&#39;: 1733335200, &#39;main&#39;: {&#39;temp&#39;: 264.62, &#39;feels_like&#39;: 264.62, &#39;temp_min&#39;: 263.88, &#39;temp_max&#39;: 264.62, &#39;pressure&#39;: 1023, &#39;sea_level&#39;: 1023, &#39;grnd_level&#39;: 967, &#39;humidity&#39;: 83, &#39;temp_kf&#39;: 0.74}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 67}, &#39;wind&#39;: {&#39;speed&#39;: 1, &#39;deg&#39;: 86, &#39;gust&#39;: 0.93}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-04 18:00:00&#39;}, {&#39;dt&#39;: 1733346000, &#39;main&#39;: {&#39;temp&#39;: 263.22, &#39;feels_like&#39;: 263.22, &#39;temp_min&#39;: 263.22, &#39;temp_max&#39;: 263.22, &#39;pressure&#39;: 1022, &#39;sea_level&#39;: 1022, &#39;grnd_level&#39;: 967, &#39;humidity&#39;: 82, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.63, &#39;deg&#39;: 85, &#39;gust&#39;: 0.6}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-04 21:00:00&#39;}, {&#39;dt&#39;: 1733356800, &#39;main&#39;: {&#39;temp&#39;: 263.21, &#39;feels_like&#39;: 263.21, &#39;temp_min&#39;: 263.21, &#39;temp_max&#39;: 263.21, &#39;pressure&#39;: 1022, &#39;sea_level&#39;: 1022, &#39;grnd_level&#39;: 967, &#39;humidity&#39;: 84, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 1.2, &#39;deg&#39;: 71, &#39;gust&#39;: 0.8}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 00:00:00&#39;}, {&#39;dt&#39;: 1733367600, &#39;main&#39;: {&#39;temp&#39;: 262.18, &#39;feels_like&#39;: 257.6, &#39;temp_min&#39;: 262.18, &#39;temp_max&#39;: 262.18, &#39;pressure&#39;: 1020, &#39;sea_level&#39;: 1020, &#39;grnd_level&#39;: 965, &#39;humidity&#39;: 82, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.19, &#39;deg&#39;: 69, &#39;gust&#39;: 1.5}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 03:00:00&#39;}, {&#39;dt&#39;: 1733378400, &#39;main&#39;: {&#39;temp&#39;: 263.48, &#39;feels_like&#39;: 259.02, &#39;temp_min&#39;: 263.48, &#39;temp_max&#39;: 263.48, &#39;pressure&#39;: 1018, &#39;sea_level&#39;: 1018, &#39;grnd_level&#39;: 963, &#39;humidity&#39;: 82, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.26, &#39;deg&#39;: 66, &#39;gust&#39;: 1.5}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 06:00:00&#39;}, {&#39;dt&#39;: 1733389200, &#39;main&#39;: {&#39;temp&#39;: 264.57, &#39;feels_like&#39;: 259.63, &#39;temp_min&#39;: 264.57, &#39;temp_max&#39;: 264.57, &#39;pressure&#39;: 1015, &#39;sea_level&#39;: 1015, &#39;grnd_level&#39;: 961, &#39;humidity&#39;: 81, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.76, &#39;deg&#39;: 76, &#39;gust&#39;: 2.05}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 09:00:00&#39;}, {&#39;dt&#39;: 1733400000, &#39;main&#39;: {&#39;temp&#39;: 263.81, &#39;feels_like&#39;: 257.74, &#39;temp_min&#39;: 263.81, &#39;temp_max&#39;: 263.81, &#39;pressure&#39;: 1014, &#39;sea_level&#39;: 1014, &#39;grnd_level&#39;: 959, &#39;humidity&#39;: 85, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.64, &#39;deg&#39;: 76, &#39;gust&#39;: 3.21}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 12:00:00&#39;}, {&#39;dt&#39;: 1733410800, &#39;main&#39;: {&#39;temp&#39;: 264.03, &#39;feels_like&#39;: 257.91, &#39;temp_min&#39;: 264.03, &#39;temp_max&#39;: 264.03, &#39;pressure&#39;: 1012, &#39;sea_level&#39;: 1012, &#39;grnd_level&#39;: 957, &#39;humidity&#39;: 86, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.74, &#39;deg&#39;: 83, &#39;gust&#39;: 3.89}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 15:00:00&#39;}, {&#39;dt&#39;: 1733421600, &#39;main&#39;: {&#39;temp&#39;: 263.69, &#39;feels_like&#39;: 257.83, &#39;temp_min&#39;: 263.69, &#39;temp_max&#39;: 263.69, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 956, &#39;humidity&#39;: 87, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.41, &#39;deg&#39;: 80, &#39;gust&#39;: 2.63}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 18:00:00&#39;}, {&#39;dt&#39;: 1733432400, &#39;main&#39;: {&#39;temp&#39;: 264.38, &#39;feels_like&#39;: 258.14, &#39;temp_min&#39;: 264.38, &#39;temp_max&#39;: 264.38, &#39;pressure&#39;: 1009, &#39;sea_level&#39;: 1009, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 86, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.95, &#39;deg&#39;: 85, &#39;gust&#39;: 3.71}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-05 21:00:00&#39;}, {&#39;dt&#39;: 1733443200, &#39;main&#39;: {&#39;temp&#39;: 264.78, &#39;feels_like&#39;: 259, &#39;temp_min&#39;: 264.78, &#39;temp_max&#39;: 264.78, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 86, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.56, &#39;deg&#39;: 84, &#39;gust&#39;: 3.2}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 00:00:00&#39;}, {&#39;dt&#39;: 1733454000, &#39;main&#39;: {&#39;temp&#39;: 266.56, &#39;feels_like&#39;: 261.68, &#39;temp_min&#39;: 266.56, &#39;temp_max&#39;: 266.56, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 952, &#39;humidity&#39;: 87, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 3.05, &#39;deg&#39;: 74, &#39;gust&#39;: 2.63}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 03:00:00&#39;}, {&#39;dt&#39;: 1733464800, &#39;main&#39;: {&#39;temp&#39;: 268.02, &#39;feels_like&#39;: 264.55, &#39;temp_min&#39;: 268.02, &#39;temp_max&#39;: 268.02, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 952, &#39;humidity&#39;: 88, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.12, &#39;deg&#39;: 75, &#39;gust&#39;: 1.49}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 06:00:00&#39;}, {&#39;dt&#39;: 1733475600, &#39;main&#39;: {&#39;temp&#39;: 269.72, &#39;feels_like&#39;: 267.67, &#39;temp_min&#39;: 269.72, &#39;temp_max&#39;: 269.72, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 952, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.4, &#39;deg&#39;: 59, &#39;gust&#39;: 1.14}, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.49}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 09:00:00&#39;}, {&#39;dt&#39;: 1733486400, &#39;main&#39;: {&#39;temp&#39;: 270.46, &#39;feels_like&#39;: 270.46, &#39;temp_min&#39;: 270.46, &#39;temp_max&#39;: 270.46, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.09, &#39;deg&#39;: 76, &#39;gust&#39;: 0.5}, &#39;visibility&#39;: 581, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.64}, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 12:00:00&#39;}, {&#39;dt&#39;: 1733497200, &#39;main&#39;: {&#39;temp&#39;: 268.53, &#39;feels_like&#39;: 265.1, &#39;temp_min&#39;: 268.53, &#39;temp_max&#39;: 268.53, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 90, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 2.15, &#39;deg&#39;: 93, &#39;gust&#39;: 1.87}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0.2, &#39;snow&#39;: {&#39;3h&#39;: 0.1}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 15:00:00&#39;}, {&#39;dt&#39;: 1733508000, &#39;main&#39;: {&#39;temp&#39;: 267.48, &#39;feels_like&#39;: 264.73, &#39;temp_min&#39;: 267.48, &#39;temp_max&#39;: 267.48, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 89, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.61, &#39;deg&#39;: 72, &#39;gust&#39;: 1.05}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 18:00:00&#39;}, {&#39;dt&#39;: 1733518800, &#39;main&#39;: {&#39;temp&#39;: 269.9, &#39;feels_like&#39;: 267.67, &#39;temp_min&#39;: 269.9, &#39;temp_max&#39;: 269.9, &#39;pressure&#39;: 1006, &#39;sea_level&#39;: 1006, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 90, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.51, &#39;deg&#39;: 67, &#39;gust&#39;: 0.77}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-06 21:00:00&#39;}, {&#39;dt&#39;: 1733529600, &#39;main&#39;: {&#39;temp&#39;: 270.93, &#39;feels_like&#39;: 270.93, &#39;temp_min&#39;: 270.93, &#39;temp_max&#39;: 270.93, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 97, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.52, &#39;deg&#39;: 70, &#39;gust&#39;: 0.09}, &#39;visibility&#39;: 143, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 1}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 00:00:00&#39;}, {&#39;dt&#39;: 1733540400, &#39;main&#39;: {&#39;temp&#39;: 269, &#39;feels_like&#39;: 269, &#39;temp_min&#39;: 269, &#39;temp_max&#39;: 269, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 953, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 1.12, &#39;deg&#39;: 77, &#39;gust&#39;: 1.15}, &#39;visibility&#39;: 633, &#39;pop&#39;: 0.25, &#39;snow&#39;: {&#39;3h&#39;: 0.26}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 03:00:00&#39;}, {&#39;dt&#39;: 1733551200, &#39;main&#39;: {&#39;temp&#39;: 269.3, &#39;feels_like&#39;: 269.3, &#39;temp_min&#39;: 269.3, &#39;temp_max&#39;: 269.3, &#39;pressure&#39;: 1007, &#39;sea_level&#39;: 1007, &#39;grnd_level&#39;: 954, &#39;humidity&#39;: 95, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 99}, &#39;wind&#39;: {&#39;speed&#39;: 1.06, &#39;deg&#39;: 74, &#39;gust&#39;: 0.63}, &#39;pop&#39;: 0.21, &#39;snow&#39;: {&#39;3h&#39;: 0.19}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 06:00:00&#39;}, {&#39;dt&#39;: 1733562000, &#39;main&#39;: {&#39;temp&#39;: 267.3, &#39;feels_like&#39;: 264.57, &#39;temp_min&#39;: 267.3, &#39;temp_max&#39;: 267.3, &#39;pressure&#39;: 1009, &#39;sea_level&#39;: 1009, &#39;grnd_level&#39;: 955, &#39;humidity&#39;: 93, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.58, &#39;deg&#39;: 83, &#39;gust&#39;: 1.32}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0.2, &#39;snow&#39;: {&#39;3h&#39;: 0.14}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 09:00:00&#39;}, {&#39;dt&#39;: 1733572800, &#39;main&#39;: {&#39;temp&#39;: 266.62, &#39;feels_like&#39;: 263.42, &#39;temp_min&#39;: 266.62, &#39;temp_max&#39;: 266.62, &#39;pressure&#39;: 1009, &#39;sea_level&#39;: 1009, &#39;grnd_level&#39;: 955, &#39;humidity&#39;: 94, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.79, &#39;deg&#39;: 70, &#39;gust&#39;: 1.4}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 12:00:00&#39;}, {&#39;dt&#39;: 1733583600, &#39;main&#39;: {&#39;temp&#39;: 267.39, &#39;feels_like&#39;: 267.39, &#39;temp_min&#39;: 267.39, &#39;temp_max&#39;: 267.39, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 956, &#39;humidity&#39;: 94, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.32, &#39;deg&#39;: 68, &#39;gust&#39;: 0.99}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 15:00:00&#39;}, {&#39;dt&#39;: 1733594400, &#39;main&#39;: {&#39;temp&#39;: 268.49, &#39;feels_like&#39;: 266.35, &#39;temp_min&#39;: 268.49, &#39;temp_max&#39;: 268.49, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 956, &#39;humidity&#39;: 93, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.36, &#39;deg&#39;: 66, &#39;gust&#39;: 1.1}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 18:00:00&#39;}, {&#39;dt&#39;: 1733605200, &#39;main&#39;: {&#39;temp&#39;: 269.62, &#39;feels_like&#39;: 269.62, &#39;temp_min&#39;: 269.62, &#39;temp_max&#39;: 269.62, &#39;pressure&#39;: 1010, &#39;sea_level&#39;: 1010, &#39;grnd_level&#39;: 957, &#39;humidity&#39;: 91, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.27, &#39;deg&#39;: 70, &#39;gust&#39;: 0.95}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-07 21:00:00&#39;}, {&#39;dt&#39;: 1733616000, &#39;main&#39;: {&#39;temp&#39;: 269.98, &#39;feels_like&#39;: 269.98, &#39;temp_min&#39;: 269.98, &#39;temp_max&#39;: 269.98, &#39;pressure&#39;: 1012, &#39;sea_level&#39;: 1012, &#39;grnd_level&#39;: 958, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.9, &#39;deg&#39;: 89, &#39;gust&#39;: 0.83}, &#39;visibility&#39;: 6669, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 00:00:00&#39;}, {&#39;dt&#39;: 1733626800, &#39;main&#39;: {&#39;temp&#39;: 267.62, &#39;feels_like&#39;: 267.62, &#39;temp_min&#39;: 267.62, &#39;temp_max&#39;: 267.62, &#39;pressure&#39;: 1013, &#39;sea_level&#39;: 1013, &#39;grnd_level&#39;: 959, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 0.7, &#39;deg&#39;: 83, &#39;gust&#39;: 0.91}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 03:00:00&#39;}, {&#39;dt&#39;: 1733637600, &#39;main&#39;: {&#39;temp&#39;: 265.26, &#39;feels_like&#39;: 265.26, &#39;temp_min&#39;: 265.26, &#39;temp_max&#39;: 265.26, &#39;pressure&#39;: 1015, &#39;sea_level&#39;: 1015, &#39;grnd_level&#39;: 961, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 89}, &#39;wind&#39;: {&#39;speed&#39;: 0.93, &#39;deg&#39;: 89, &#39;gust&#39;: 1.25}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 06:00:00&#39;}, {&#39;dt&#39;: 1733648400, &#39;main&#39;: {&#39;temp&#39;: 264.4, &#39;feels_like&#39;: 264.4, &#39;temp_min&#39;: 264.4, &#39;temp_max&#39;: 264.4, &#39;pressure&#39;: 1019, &#39;sea_level&#39;: 1019, &#39;grnd_level&#39;: 964, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 61}, &#39;wind&#39;: {&#39;speed&#39;: 1.12, &#39;deg&#39;: 91, &#39;gust&#39;: 1.3}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 09:00:00&#39;}, {&#39;dt&#39;: 1733659200, &#39;main&#39;: {&#39;temp&#39;: 266.18, &#39;feels_like&#39;: 262.78, &#39;temp_min&#39;: 266.18, &#39;temp_max&#39;: 266.18, &#39;pressure&#39;: 1020, &#39;sea_level&#39;: 1020, &#39;grnd_level&#39;: 965, &#39;humidity&#39;: 92, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 80}, &#39;wind&#39;: {&#39;speed&#39;: 1.87, &#39;deg&#39;: 64, &#39;gust&#39;: 1.79}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 12:00:00&#39;}, {&#39;dt&#39;: 1733670000, &#39;main&#39;: {&#39;temp&#39;: 264.32, &#39;feels_like&#39;: 264.32, &#39;temp_min&#39;: 264.32, &#39;temp_max&#39;: 264.32, &#39;pressure&#39;: 1023, &#39;sea_level&#39;: 1023, &#39;grnd_level&#39;: 968, &#39;humidity&#39;: 90, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 804, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;overcast clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 88}, &#39;wind&#39;: {&#39;speed&#39;: 1.33, &#39;deg&#39;: 82, &#39;gust&#39;: 1.69}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 15:00:00&#39;}, {&#39;dt&#39;: 1733680800, &#39;main&#39;: {&#39;temp&#39;: 264.23, &#39;feels_like&#39;: 264.23, &#39;temp_min&#39;: 264.23, &#39;temp_max&#39;: 264.23, &#39;pressure&#39;: 1026, &#39;sea_level&#39;: 1026, &#39;grnd_level&#39;: 971, &#39;humidity&#39;: 89, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 803, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;broken clouds&#39;, &#39;icon&#39;: &#39;04n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 74}, &#39;wind&#39;: {&#39;speed&#39;: 0.92, &#39;deg&#39;: 91, &#39;gust&#39;: 1.53}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 18:00:00&#39;}, {&#39;dt&#39;: 1733691600, &#39;main&#39;: {&#39;temp&#39;: 263.47, &#39;feels_like&#39;: 263.47, &#39;temp_min&#39;: 263.47, &#39;temp_max&#39;: 263.47, &#39;pressure&#39;: 1029, &#39;sea_level&#39;: 1029, &#39;grnd_level&#39;: 974, &#39;humidity&#39;: 89, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 802, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;scattered clouds&#39;, &#39;icon&#39;: &#39;03n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 35}, &#39;wind&#39;: {&#39;speed&#39;: 0.63, &#39;deg&#39;: 90, &#39;gust&#39;: 1.12}, &#39;visibility&#39;: 10000, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-08 21:00:00&#39;}, {&#39;dt&#39;: 1733702400, &#39;main&#39;: {&#39;temp&#39;: 263.78, &#39;feels_like&#39;: 263.78, &#39;temp_min&#39;: 263.78, &#39;temp_max&#39;: 263.78, &#39;pressure&#39;: 1032, &#39;sea_level&#39;: 1032, &#39;grnd_level&#39;: 976, &#39;humidity&#39;: 94, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 802, &#39;main&#39;: &#39;Clouds&#39;, &#39;description&#39;: &#39;scattered clouds&#39;, &#39;icon&#39;: &#39;03n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 33}, &#39;wind&#39;: {&#39;speed&#39;: 0.58, &#39;deg&#39;: 124, &#39;gust&#39;: 0.83}, &#39;visibility&#39;: 9520, &#39;pop&#39;: 0, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 00:00:00&#39;}, {&#39;dt&#39;: 1733713200, &#39;main&#39;: {&#39;temp&#39;: 268.57, &#39;feels_like&#39;: 268.57, &#39;temp_min&#39;: 268.57, &#39;temp_max&#39;: 268.57, &#39;pressure&#39;: 1032, &#39;sea_level&#39;: 1032, &#39;grnd_level&#39;: 977, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 84}, &#39;wind&#39;: {&#39;speed&#39;: 0.66, &#39;deg&#39;: 11, &#39;gust&#39;: 0.51}, &#39;visibility&#39;: 405, &#39;pop&#39;: 0.78, &#39;snow&#39;: {&#39;3h&#39;: 0.37}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 03:00:00&#39;}, {&#39;dt&#39;: 1733724000, &#39;main&#39;: {&#39;temp&#39;: 270.31, &#39;feels_like&#39;: 270.31, &#39;temp_min&#39;: 270.31, &#39;temp_max&#39;: 270.31, &#39;pressure&#39;: 1033, &#39;sea_level&#39;: 1033, &#39;grnd_level&#39;: 978, &#39;humidity&#39;: 96, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 92}, &#39;wind&#39;: {&#39;speed&#39;: 0.41, &#39;deg&#39;: 196, &#39;gust&#39;: 0.47}, &#39;visibility&#39;: 649, &#39;pop&#39;: 0.96, &#39;snow&#39;: {&#39;3h&#39;: 0.74}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 06:00:00&#39;}, {&#39;dt&#39;: 1733734800, &#39;main&#39;: {&#39;temp&#39;: 272.34, &#39;feels_like&#39;: 272.34, &#39;temp_min&#39;: 272.34, &#39;temp_max&#39;: 272.34, &#39;pressure&#39;: 1033, &#39;sea_level&#39;: 1033, &#39;grnd_level&#39;: 979, &#39;humidity&#39;: 98, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13n&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 1.26, &#39;deg&#39;: 255, &#39;gust&#39;: 1.66}, &#39;visibility&#39;: 511, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.93}, &#39;sys&#39;: {&#39;pod&#39;: &#39;n&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 09:00:00&#39;}, {&#39;dt&#39;: 1733745600, &#39;main&#39;: {&#39;temp&#39;: 275.08, &#39;feels_like&#39;: 272.76, &#39;temp_min&#39;: 275.08, &#39;temp_max&#39;: 275.08, &#39;pressure&#39;: 1032, &#39;sea_level&#39;: 1032, &#39;grnd_level&#39;: 978, &#39;humidity&#39;: 98, &#39;temp_kf&#39;: 0}, &#39;weather&#39;: [{&#39;id&#39;: 600, &#39;main&#39;: &#39;Snow&#39;, &#39;description&#39;: &#39;light snow&#39;, &#39;icon&#39;: &#39;13d&#39;}], &#39;clouds&#39;: {&#39;all&#39;: 100}, &#39;wind&#39;: {&#39;speed&#39;: 2.16, &#39;deg&#39;: 241, &#39;gust&#39;: 3.19}, &#39;visibility&#39;: 94, &#39;pop&#39;: 1, &#39;snow&#39;: {&#39;3h&#39;: 0.66}, &#39;sys&#39;: {&#39;pod&#39;: &#39;d&#39;}, &#39;dt_txt&#39;: &#39;2024-12-09 12:00:00&#39;}], &#39;city&#39;: {&#39;id&#39;: 3145614, &#39;name&#39;: &#39;Mo i Rana&#39;, &#39;coord&#39;: {&#39;lat&#39;: 66.3128, &#39;lon&#39;: 14.1428}, &#39;country&#39;: &#39;NO&#39;, &#39;population&#39;: 17853, &#39;timezone&#39;: 3600, &#39;sunrise&#39;: 1733303288, &#39;sunset&#39;: 1733315984}}&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cassandra.apache.org/">Cassandra webpage</a></p></li>
+<li><p><a class="reference external" href="https://hub.docker.com/_/cassandra">Cassandra Docker file</a></p></li>
+<li><p><a class="reference external" href="https://docs.datastax.com/en/cql-oss/3.3/cql/cql_reference/timeuuid_functions_r.html">UUID functions</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/ziq7FUKpCS8?si=WQUdkHFvaBmT0DBo">YouTube: Cassandra in 100 seconds</a> (2m:26s)</p></li>
+<li><p><a class="reference external" href="https://youtu.be/qMauZqJH3ZM?si=yKGZ-5cld2BK396Y">YouTube: How to use Apache Cassandra in Python</a> (14m:50s)</p></li>
+<li><p><a class="reference external" href="https://youtu.be/KZsVSfQVU4I?si=FBCi8qOfCirfVmZk">YouTube: Cassandra Database Crash Course</a> (19m:47s)</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./3_Data_sources/2_Databases"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_MySQL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MySQL</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="4_Spark.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spark</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spinning-up-a-local-cassandra-instance">Spinning up a local Cassandra instance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-the-cassandra-cluster-from-python">Connect to the Cassandra cluster from Python.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyspace">Keyspace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-table">Create a table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inserting-and-reading-data">Inserting and reading data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-sensitivity">Case sensitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asyncronous-writing">Asyncronous writing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cassandra-filtering">Cassandra filtering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partitions">Partitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-ids">Unique IDs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-in-cassandra">JSON in Cassandra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-previously-saved-json-file-forecast-json-to-memory">Read previously saved JSON file forecast.json to memory</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raw-json">Raw JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insert-the-forecast-data-into-the-table-as-text-blob">Insert the forecast data into the table as text blob</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kristian Hovde Liland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

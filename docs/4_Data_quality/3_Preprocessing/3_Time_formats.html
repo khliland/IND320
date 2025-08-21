@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -497,7 +497,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iso-standard">ISO standard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-conversion">Time conversion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -526,7 +525,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="c1"># Getting the current date and time</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -540,8 +539,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date and time is: 2024-12-04 21:23:08.050398
-Timestamp is: 1733343788.050398
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date and time is: 2025-08-21 14:48:36.640705
+Timestamp is: 1755780516.640705
 </pre></div>
 </div>
 </div>
@@ -612,8 +611,8 @@ second</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>An arbitrary format: 04/12-2024 21:23:08
-Reformatted to the standard: 2024-12-04 21:23:08
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>An arbitrary format: 21/08-2025 14:48:36
+Reformatted to the standard: 2025-08-21 14:48:36
 </pre></div>
 </div>
 </div>
@@ -628,9 +627,9 @@ Reformatted to the standard: 2024-12-04 21:23:08
 <li><p>Convert it to your local timezone.</p></li>
 <li><p>Confirm vilsually that you have handled each series correctly by plotting the resulting datetimes, achieving a perfectly straight line.</p></li>
 </ul>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<h2 class="rubric" id="resources">Resources</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.oracle.com/cd/E41183_01/DR/Date_Format_Types.html">Oracle date formats</a>.</p></li>
 <li><p><a class="reference external" href="https://www.unixtimestamp.com/">Unix timestamp</a></p></li>
@@ -639,6 +638,7 @@ Reformatted to the standard: 2024-12-04 21:23:08
 <li><p><a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">Python datetime library</a>.</p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html">Pandas datetime converter</a>.</p></li>
 </ul>
+</div>
 </section>
 </section>
 
@@ -709,7 +709,6 @@ Reformatted to the standard: 2024-12-04 21:23:08
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iso-standard">ISO standard</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-conversion">Time conversion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 

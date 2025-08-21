@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -545,13 +545,13 @@ document.write(`
 <li><p>A new conda environment can be created and prepared, e.g., as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">D2D_env</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">D2D_env</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.11.9</span> <span class="n">pip</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">conda</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.12.10</span> <span class="n">pip</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path_to_D2Dbook</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 </li>
 <li><p>If you get an error regarding Rust, you may need to install Rust separately, e.g, from <a class="reference external" href="https://www.rust-lang.org/tools/install">their webpage</a> or using <a class="reference external" href="https://formulae.brew.sh/formula/rust">Homebrew</a>.</p></li>
-<li><p>As of September 2024 the Python version has been specified above due to trouble with the Cassandra driver from DataStax in Python 3.12.</p></li>
+<li><p>As of August 2025 the Python version has been specified above to conform to the supported Python version of the Cassandra driver from DataStax.</p></li>
 </ul>
 </section>
 </section>
@@ -597,8 +597,8 @@ document.write(`
 <ul class="simple">
 <li><p>Docker installed on system</p></li>
 <li><p>“cassandra:latest” image installed in docker</p></li>
-<li><p>Python/Conda environment with Python &gt;=3.8 and &lt;=3.11.9 *</p></li>
-<li><p>*As of September 2024 there is a lack of compatibility between Python 3.12 and Cassandra drivers unless one installs additional software.</p></li>
+<li><p>Python/Conda environment with Python &gt;=3.8 and &lt;=3.12.10 *</p></li>
+<li><p>*As of August 2025 Cassandra drivers directly support up to Python 3.12.</p></li>
 </ul>
 </section>
 <section id="java">
@@ -630,7 +630,7 @@ document.write(`
 <ul>
 <li><p>More than one GitHub repository maintains these drivers. We have tested the hadoop-3.3.1 version from <a class="reference external" href="https://github.com/kontext-tech/winutils">Kontext.TECH</a> with success.</p></li>
 <li><p>At runtime, an environment variable can be set to point to the downloaded hadoop-x.y.z folder, e.g., in <em>C:\Hadoop</em> (not need on Mac/Linux, see example in <a class="reference internal" href="../3_Data_sources/2_Databases/4_Spark.html"><span class="std std-doc">Spark notebook</span></a>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HADOOP_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;C:/Hadoop/hadoop-3.3.1&quot;</span>
 </pre></div>
 </div>
@@ -655,6 +655,7 @@ document.write(`
 <li><p>Firewalls, e.g., Norton, may block the connection between Spark and Cassandra. Adding and exception in the firewall or temporarily disabling may help.</p></li>
 </ul>
 </li>
+<li><p>As of August 2025, the installed pyspark version should be 3.5.1 to be compatible with the Cassandra drivers.</p></li>
 </ul>
 </section>
 </section>

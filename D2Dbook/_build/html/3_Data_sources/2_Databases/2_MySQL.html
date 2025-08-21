@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -538,12 +538,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a connection object &#39;connection&#39; for the MySQL database &#39;u492297623_student1&#39; on port 3306 at server 145.14.151.151 with username &#39;u492297623_stud1&#39;</span>
 <span class="c1"># and password given by instructor.</span>
-<span class="kn">import</span> <span class="nn">mysql.connector</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mysql.connector</span>
 <span class="n">PWD</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../../../No_sync/password_khliland&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
 <span class="c1"># Establishing a connection to the MySQL database</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">mysql</span><span class="o">.</span><span class="n">connector</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;145.14.151.151&#39;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;srv1748.hstgr.io&#39;</span><span class="p">,</span>
     <span class="n">port</span><span class="o">=</span><span class="mi">3306</span><span class="p">,</span>
     <span class="n">user</span><span class="o">=</span><span class="s1">&#39;u492297623_stud1&#39;</span><span class="p">,</span>
     <span class="n">password</span><span class="o">=</span><span class="n">PWD</span><span class="p">,</span>
@@ -734,7 +734,7 @@ document.write(`
 </ol>
 <div class="tip admonition seealso">
 <p class="admonition-title">See also</p>
-<p>Resources</p>
+<h2 class="rubric" id="resources">Resources</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.mysql.com/">MySQL webpage</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/MySQL">Wikipedia: MySQL</a>.</p></li>

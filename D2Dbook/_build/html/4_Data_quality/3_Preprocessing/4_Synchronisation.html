@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -497,7 +497,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulation">Accumulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation">Interpolation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-delays">Time delays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -519,8 +518,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a time series with a frequency of 1 hour and a length 72*24 hours</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1979</span><span class="p">)</span>
 <span class="n">stock</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span>
@@ -536,7 +535,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the two series in the same plot</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">days</span><span class="p">,</span> <span class="n">stock</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;stock&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hours</span><span class="p">,</span> <span class="n">electricity</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;electricity&#39;</span><span class="p">)</span>
@@ -546,7 +545,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/579840f1f2f0a8cc4d29fe11876907a34924eb102aa0453f3d30dc0690afb789.png" src="../../_images/579840f1f2f0a8cc4d29fe11876907a34924eb102aa0453f3d30dc0690afb789.png" />
+<img alt="../../_images/a852094b049f4b8718ebb94512d5d7b05f6ca6af23d8d9d038912f47f36d54ae.png" src="../../_images/a852094b049f4b8718ebb94512d5d7b05f6ca6af23d8d9d038912f47f36d54ae.png" />
 </div>
 </div>
 <section id="accumulation">
@@ -566,7 +565,8 @@ document.write(`
 </ul>
 </li>
 </ul>
-<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Accumulation.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Accumulation.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Accumulation.png?raw=TRUE" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Accumulation.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Accumulation.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Accumulation.png?raw=TRUE" style="width: 700px;" />
+</a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Turn the hourly series into a daily series by taking the mean of each day</span>
@@ -777,7 +777,7 @@ Name: electricity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f3edcede0741166634b6c813f0efd72269232701f75e99137ba0e69505892247.png" src="../../_images/f3edcede0741166634b6c813f0efd72269232701f75e99137ba0e69505892247.png" />
+<img alt="../../_images/07b97379b10824b87d3a328129183c99ba3bf2a42c07d5adb2604f015614dcd4.png" src="../../_images/07b97379b10824b87d3a328129183c99ba3bf2a42c07d5adb2604f015614dcd4.png" />
 </div>
 </div>
 </section>
@@ -928,7 +928,7 @@ Name: electricity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/07861789cc79e1cfcf882e0bebaebca29f8d18cd6df270f90217a20c8beb19ad.png" src="../../_images/07861789cc79e1cfcf882e0bebaebca29f8d18cd6df270f90217a20c8beb19ad.png" />
+<img alt="../../_images/6adc615b7ff1931aef0726d374c06ced63372a39fd6ea38ed60195739e6c5fd0.png" src="../../_images/6adc615b7ff1931aef0726d374c06ced63372a39fd6ea38ed60195739e6c5fd0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1000,7 +1000,7 @@ Name: electricity, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/70d545404d09fe10edd95c03e54ea3241f98808765e41b5b73d2c2d753fe33cb.png" src="../../_images/70d545404d09fe10edd95c03e54ea3241f98808765e41b5b73d2c2d753fe33cb.png" />
+<img alt="../../_images/fa4d4586eaf3dd76d85a781decf9cf7f56e215189a6167e5ca98273355ddcc11.png" src="../../_images/fa4d4586eaf3dd76d85a781decf9cf7f56e215189a6167e5ca98273355ddcc11.png" />
 </div>
 </div>
 </section>
@@ -1019,14 +1019,16 @@ Name: electricity, dtype: float64
 </ul>
 </li>
 </ul>
-<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE" style="width: 700px;" /></a>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<a class="reference internal image-reference" href="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE"><img alt="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE" src="https://github.com/khliland/IND320/blob/main/D2Dbook/images/Industrial_process.png?raw=TRUE" style="width: 700px;" />
+</a>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<h2 class="rubric" id="resources">Resources</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html">Pandas groupby</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.core.resample.Resampler.interpolate.html">Pandas interpolation</a></p></li>
 </ul>
+</div>
 </section>
 </section>
 
@@ -1097,7 +1099,6 @@ Name: electricity, dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accumulation">Accumulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation">Interpolation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-delays">Time delays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 

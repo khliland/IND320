@@ -1,0 +1,3698 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pivot tables &#8212; Data to Decision - IND320</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5_Machine_Learning/1_Pivoting/1_Pivoting';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Forecasting" href="../2_Forecasting/1_Forecasting.html" />
+    <link rel="prev" title="Machine Learning" href="../Machine_Learning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../0_General/Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Data to Decision - IND320 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Data to Decision - IND320 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../0_General/Introduction.html">
+                    IND320 - Data to decision
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data-Driven Decision Making</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../1_Decision_making/1_Data_pipeline.html">Data pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../1_Decision_making/2_Decision_making.html">DDDM</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment 1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Power_BI.html">Power BI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Writer_Framework.html">Writer</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Sources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/1_Formats/1_Formats.html">Static and streaming data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/2_Data_formats.html">Data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/2_REST.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/4_API_Tokens.html">API Tokens</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/1_Preprocessing.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Machine_Learning.html">Machine Learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pivot tables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../2_Forecasting/1_Forecasting.html">Forecasting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../2_Forecasting/2_ML_approach.html">Machine Learning approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Forecasting/3_SARIMAX.html">SARIMAX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../3_Streaming/1_Streaming.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../3_Streaming/2_Streaming_models.html">Streaming models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Streaming/3_Model_updates.html">Model updates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/2_Graphics/1_Plotly.html">Plotly graphics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/2_Graphics/2_Plotly_interactive.html">Plotly interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/2_Graphics/3_Plotly_maps.html">Plotly maps</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/3_Dashboard_design/1_Dashboard_design.html">Dashboard design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/3_Dashboard_design/2_Colours_symbols.html">Colours and symbolics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/4_Reports/1_Reports.html">Reports</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/4_Reports/2_Example_report.html">Tips and trics with Jupyter Notebooks</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../7_Appendix/Installation.html">Installation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/5_Machine_Learning/1_Pivoting/1_Pivoting.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F5_Machine_Learning/1_Pivoting/1_Pivoting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/5_Machine_Learning/1_Pivoting/1_Pivoting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pivot tables</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sales-data-from-power-bi-examples">Sales data from Power BI examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#olympic-athletes-and-results">Olympic athletes and results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-on-multiple-functions-and-or-values">Aggregate on multiple functions and/or values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack-and-unstack">Stack and unstack</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pivot-tables">
+<h1>Pivot tables<a class="headerlink" href="#pivot-tables" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Pivoting of data is the process of aggregating data across two or more categorical variables.</p></li>
+<li><p>Closely related are:</p>
+<ul>
+<li><p>Group by, where the number of categorical variables is flexible.</p></li>
+<li><p>Cross tabulation, which is basically pivoting, but with different defaults and parameters.</p></li>
+</ul>
+</li>
+<li><p>In <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html">Pandas</a>, pivot tables are based on</p>
+<ul>
+<li><p><em>values</em>: what to aggregate</p></li>
+<li><p><em>index</em> and <em>column</em>: layout of result, and</p></li>
+<li><p><em>aggfunc</em>: how to aggregate.</p></li>
+</ul>
+</li>
+</ul>
+<section id="sales-data-from-power-bi-examples">
+<h2>Sales data from Power BI examples<a class="headerlink" href="#sales-data-from-power-bi-examples" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read SalesData.xlsx</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../../data/SalesData.xlsx&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(260096, 10)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderDate</th>
+      <th>OrderNumber</th>
+      <th>ProductKey</th>
+      <th>SalespersonKey</th>
+      <th>Salesperson</th>
+      <th>Supervisor</th>
+      <th>Manager</th>
+      <th>Channel</th>
+      <th>Quantity</th>
+      <th>UnitPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-01-12</td>
+      <td>1492762</td>
+      <td>1420</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>4.44</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-01-12</td>
+      <td>1492762</td>
+      <td>1073</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>8.83</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-01-12</td>
+      <td>1492762</td>
+      <td>264</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>10</td>
+      <td>0.96</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-01-13</td>
+      <td>1492719</td>
+      <td>1154</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>2.92</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-01-13</td>
+      <td>1492719</td>
+      <td>1527</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>2.81</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a column giving the total price</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Quantity&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;UnitPrice&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OrderDate</th>
+      <th>OrderNumber</th>
+      <th>ProductKey</th>
+      <th>SalespersonKey</th>
+      <th>Salesperson</th>
+      <th>Supervisor</th>
+      <th>Manager</th>
+      <th>Channel</th>
+      <th>Quantity</th>
+      <th>UnitPrice</th>
+      <th>TotalPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019-01-12</td>
+      <td>1492762</td>
+      <td>1420</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>4.44</td>
+      <td>26.64</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019-01-12</td>
+      <td>1492762</td>
+      <td>1073</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>8.83</td>
+      <td>52.98</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019-01-12</td>
+      <td>1492762</td>
+      <td>264</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>10</td>
+      <td>0.96</td>
+      <td>9.60</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019-01-13</td>
+      <td>1492719</td>
+      <td>1154</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>2.92</td>
+      <td>17.52</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019-01-13</td>
+      <td>1492719</td>
+      <td>1527</td>
+      <td>265</td>
+      <td>Julio Lima</td>
+      <td>Diogo Carvalho</td>
+      <td>Gabriel Azevedo</td>
+      <td>Distributor</td>
+      <td>6</td>
+      <td>2.81</td>
+      <td>16.86</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Pandas groupby() to group by Channel and sum the TotalPrice</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Channel&#39;</span><span class="p">)[</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Channel
+Distributor    6098515.78
+Online         3113650.20
+Retail         8697066.51
+Name: TotalPrice, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use Pandas pivot_table() to group by Channel and Manager and sum the TotalPrice</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Manager&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Manager</th>
+      <th>Gabriel Azevedo</th>
+      <th>Victor Castro</th>
+    </tr>
+    <tr>
+      <th>Channel</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Distributor</th>
+      <td>6098515.78</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Online</th>
+      <td>3113650.20</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Retail</th>
+      <td>NaN</td>
+      <td>8697066.51</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exchange aggfunc=&#39;sum&#39; for aggfunc=&#39;count&#39; to confirm that the dataset is not very suitable for this type of analysis</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Channel&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Manager&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TotalPrice&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Manager</th>
+      <th>Gabriel Azevedo</th>
+      <th>Victor Castro</th>
+    </tr>
+    <tr>
+      <th>Channel</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Distributor</th>
+      <td>91585.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Online</th>
+      <td>59442.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Retail</th>
+      <td>NaN</td>
+      <td>109069.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="olympic-athletes-and-results">
+<h2>Olympic athletes and results<a class="headerlink" href="#olympic-athletes-and-results" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results/">Kaggle dataset</a> scraped from <a class="reference external" href="http://www.sports-reference.com/">www.sports-reference.com/</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the athlete_events.csv file</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">athletes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../../data/athlete_events.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">athletes</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">athletes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(271116, 15)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Team</th>
+      <th>NOC</th>
+      <th>Games</th>
+      <th>Year</th>
+      <th>Season</th>
+      <th>City</th>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Medal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>A Dijiang</td>
+      <td>M</td>
+      <td>24.0</td>
+      <td>180.0</td>
+      <td>80.0</td>
+      <td>China</td>
+      <td>CHN</td>
+      <td>1992 Summer</td>
+      <td>1992</td>
+      <td>Summer</td>
+      <td>Barcelona</td>
+      <td>Basketball</td>
+      <td>Basketball Men's Basketball</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>A Lamusi</td>
+      <td>M</td>
+      <td>23.0</td>
+      <td>170.0</td>
+      <td>60.0</td>
+      <td>China</td>
+      <td>CHN</td>
+      <td>2012 Summer</td>
+      <td>2012</td>
+      <td>Summer</td>
+      <td>London</td>
+      <td>Judo</td>
+      <td>Judo Men's Extra-Lightweight</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Gunnar Nielsen Aaby</td>
+      <td>M</td>
+      <td>24.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Denmark</td>
+      <td>DEN</td>
+      <td>1920 Summer</td>
+      <td>1920</td>
+      <td>Summer</td>
+      <td>Antwerpen</td>
+      <td>Football</td>
+      <td>Football Men's Football</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Edgar Lindenau Aabye</td>
+      <td>M</td>
+      <td>34.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Denmark/Sweden</td>
+      <td>DEN</td>
+      <td>1900 Summer</td>
+      <td>1900</td>
+      <td>Summer</td>
+      <td>Paris</td>
+      <td>Tug-Of-War</td>
+      <td>Tug-Of-War Men's Tug-Of-War</td>
+      <td>Gold</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Christine Jacoba Aaftink</td>
+      <td>F</td>
+      <td>21.0</td>
+      <td>185.0</td>
+      <td>82.0</td>
+      <td>Netherlands</td>
+      <td>NED</td>
+      <td>1988 Winter</td>
+      <td>1988</td>
+      <td>Winter</td>
+      <td>Calgary</td>
+      <td>Speed Skating</td>
+      <td>Speed Skating Women's 500 metres</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check average weight of athletes</span>
+<span class="n">athlete_weight</span> <span class="o">=</span> <span class="n">athletes</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Print athlete_weight with 2 decimal places and kg suffix</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average weight of athletes: </span><span class="si">{:.2f}</span><span class="s1"> kg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">athlete_weight</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average weight of athletes: 70.70 kg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check average weight of athletes for each year</span>
+<span class="n">athlete_weight_by_year</span> <span class="o">=</span> <span class="n">athletes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Plot athlete_weight_by_year using kind=&#39;bar&#39;</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">athlete_weight_by_year</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1"># Add horizontal grid lines to the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/82c1b60a7979cf817d6018ffe3f12d4ac24189747c051442989f5c58fb3e62c3.png" src="../../_images/82c1b60a7979cf817d6018ffe3f12d4ac24189747c051442989f5c58fb3e62c3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check average weight of athletes for each sport and drop NA values</span>
+<span class="n">athlete_weight_by_sport</span> <span class="o">=</span> <span class="n">athletes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Sport&#39;</span><span class="p">)[</span><span class="s1">&#39;Weight&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">athlete_weight_by_sport</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sport
+Alpine Skiing                72.068110
+Archery                      70.011135
+Art Competitions             75.290909
+Athletics                    69.249287
+Badminton                    68.171439
+Baseball                     85.707792
+Basketball                   85.777053
+Beach Volleyball             79.089219
+Biathlon                     66.631419
+Bobsleigh                    89.250678
+Boxing                       65.249890
+Canoeing                     76.492615
+Cross Country Skiing         65.877670
+Curling                      72.131707
+Cycling                      70.067944
+Diving                       60.572741
+Equestrianism                67.803975
+Fencing                      71.387538
+Figure Skating               59.543651
+Football                     70.446834
+Freestyle Skiing             67.026835
+Golf                         71.194444
+Gymnastics                   56.916553
+Handball                     81.497151
+Hockey                       69.169909
+Ice Hockey                   80.810364
+Judo                         78.759867
+Lacrosse                     76.714286
+Luge                         77.264151
+Modern Pentathlon            70.279540
+Motorboating                 77.000000
+Nordic Combined              66.909560
+Rhythmic Gymnastics          48.760976
+Rowing                       80.035863
+Rugby                        77.533333
+Rugby Sevens                 78.939799
+Sailing                      75.975154
+Shooting                     74.027877
+Short Track Speed Skating    64.310484
+Skeleton                     74.166667
+Ski Jumping                  65.079014
+Snowboarding                 69.549189
+Softball                     67.471655
+Speed Skating                70.026352
+Swimming                     70.588492
+Synchronized Swimming        55.863529
+Table Tennis                 64.956449
+Taekwondo                    68.007475
+Tennis                       70.802291
+Trampolining                 59.322148
+Triathlon                    61.817490
+Tug-Of-War                   95.615385
+Volleyball                   78.900214
+Water Polo                   84.566446
+Weightlifting                78.726663
+Wrestling                    75.495570
+Name: Weight, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make a pivot table of athlete weights by sport and year</span>
+<span class="n">athlete_weight_sport_year</span> <span class="o">=</span> <span class="n">athletes</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Sport&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">athlete_weight_sport_year</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Year</th>
+      <th>1896</th>
+      <th>1900</th>
+      <th>1904</th>
+      <th>1906</th>
+      <th>1908</th>
+      <th>1912</th>
+      <th>1920</th>
+      <th>1924</th>
+      <th>1928</th>
+      <th>1932</th>
+      <th>...</th>
+      <th>1998</th>
+      <th>2000</th>
+      <th>2002</th>
+      <th>2004</th>
+      <th>2006</th>
+      <th>2008</th>
+      <th>2010</th>
+      <th>2012</th>
+      <th>2014</th>
+      <th>2016</th>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alpine Skiing</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>75.080645</td>
+      <td>NaN</td>
+      <td>75.906872</td>
+      <td>NaN</td>
+      <td>75.672104</td>
+      <td>NaN</td>
+      <td>75.334802</td>
+      <td>NaN</td>
+      <td>74.851455</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Archery</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>70.151961</td>
+      <td>NaN</td>
+      <td>70.391509</td>
+      <td>NaN</td>
+      <td>72.683938</td>
+      <td>NaN</td>
+      <td>71.795000</td>
+      <td>NaN</td>
+      <td>72.232323</td>
+    </tr>
+    <tr>
+      <th>Art Competitions</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79.333333</td>
+      <td>86.500000</td>
+      <td>73.955556</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Athletics</th>
+      <td>70.068966</td>
+      <td>74.526316</td>
+      <td>73.714286</td>
+      <td>74.739726</td>
+      <td>73.819444</td>
+      <td>72.239960</td>
+      <td>71.402913</td>
+      <td>69.778533</td>
+      <td>69.838565</td>
+      <td>70.306452</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>69.710613</td>
+      <td>NaN</td>
+      <td>69.894204</td>
+      <td>NaN</td>
+      <td>69.446746</td>
+      <td>NaN</td>
+      <td>68.939536</td>
+      <td>NaN</td>
+      <td>67.385732</td>
+    </tr>
+    <tr>
+      <th>Badminton</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>67.475556</td>
+      <td>NaN</td>
+      <td>68.132500</td>
+      <td>NaN</td>
+      <td>67.885246</td>
+      <td>NaN</td>
+      <td>68.016667</td>
+      <td>NaN</td>
+      <td>68.970588</td>
+    </tr>
+    <tr>
+      <th>Baseball</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>85.476190</td>
+      <td>NaN</td>
+      <td>88.026178</td>
+      <td>NaN</td>
+      <td>88.239474</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basketball</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>86.639860</td>
+      <td>NaN</td>
+      <td>86.857143</td>
+      <td>NaN</td>
+      <td>87.195652</td>
+      <td>NaN</td>
+      <td>87.409894</td>
+      <td>NaN</td>
+      <td>87.867857</td>
+    </tr>
+    <tr>
+      <th>Beach Volleyball</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>78.718750</td>
+      <td>NaN</td>
+      <td>79.520833</td>
+      <td>NaN</td>
+      <td>79.875000</td>
+      <td>NaN</td>
+      <td>79.505263</td>
+      <td>NaN</td>
+      <td>78.583333</td>
+    </tr>
+    <tr>
+      <th>Biathlon</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>65.912833</td>
+      <td>NaN</td>
+      <td>65.627660</td>
+      <td>NaN</td>
+      <td>65.083587</td>
+      <td>NaN</td>
+      <td>65.147877</td>
+      <td>NaN</td>
+      <td>65.371148</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Bobsleigh</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>84.600000</td>
+      <td>58.333333</td>
+      <td>...</td>
+      <td>93.218905</td>
+      <td>NaN</td>
+      <td>91.995781</td>
+      <td>NaN</td>
+      <td>91.890052</td>
+      <td>NaN</td>
+      <td>92.927136</td>
+      <td>NaN</td>
+      <td>93.734234</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Boxing</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>61.368421</td>
+      <td>NaN</td>
+      <td>73.000000</td>
+      <td>NaN</td>
+      <td>55.000000</td>
+      <td>73.571429</td>
+      <td>63.900000</td>
+      <td>66.416667</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>66.092105</td>
+      <td>NaN</td>
+      <td>66.101786</td>
+      <td>NaN</td>
+      <td>66.369258</td>
+      <td>NaN</td>
+      <td>67.158537</td>
+      <td>NaN</td>
+      <td>66.605166</td>
+    </tr>
+    <tr>
+      <th>Canoeing</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>78.042411</td>
+      <td>NaN</td>
+      <td>77.716590</td>
+      <td>NaN</td>
+      <td>77.951389</td>
+      <td>NaN</td>
+      <td>76.269417</td>
+      <td>NaN</td>
+      <td>77.009153</td>
+    </tr>
+    <tr>
+      <th>Cross Country Skiing</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>68.909091</td>
+      <td>69.294118</td>
+      <td>67.285714</td>
+      <td>...</td>
+      <td>65.300000</td>
+      <td>NaN</td>
+      <td>65.586162</td>
+      <td>NaN</td>
+      <td>65.816276</td>
+      <td>NaN</td>
+      <td>65.844228</td>
+      <td>NaN</td>
+      <td>66.537012</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Curling</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>72.712500</td>
+      <td>NaN</td>
+      <td>72.791667</td>
+      <td>NaN</td>
+      <td>72.186813</td>
+      <td>NaN</td>
+      <td>71.797753</td>
+      <td>NaN</td>
+      <td>70.555556</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Cycling</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>67.583333</td>
+      <td>72.769231</td>
+      <td>76.000000</td>
+      <td>71.250000</td>
+      <td>76.000000</td>
+      <td>70.692308</td>
+      <td>70.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>69.757282</td>
+      <td>NaN</td>
+      <td>69.505618</td>
+      <td>NaN</td>
+      <td>69.916149</td>
+      <td>NaN</td>
+      <td>69.173567</td>
+      <td>NaN</td>
+      <td>68.377473</td>
+    </tr>
+    <tr>
+      <th>Diving</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>76.000000</td>
+      <td>76.000000</td>
+      <td>76.000000</td>
+      <td>68.000000</td>
+      <td>62.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>59.710084</td>
+      <td>NaN</td>
+      <td>60.647959</td>
+      <td>NaN</td>
+      <td>60.483516</td>
+      <td>NaN</td>
+      <td>59.843575</td>
+      <td>NaN</td>
+      <td>60.595506</td>
+    </tr>
+    <tr>
+      <th>Equestrianism</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>63.000000</td>
+      <td>NaN</td>
+      <td>66.142857</td>
+      <td>65.400000</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>67.254237</td>
+      <td>NaN</td>
+      <td>68.340599</td>
+      <td>NaN</td>
+      <td>67.804217</td>
+      <td>NaN</td>
+      <td>67.715116</td>
+      <td>NaN</td>
+      <td>67.900285</td>
+    </tr>
+    <tr>
+      <th>Fencing</th>
+      <td>NaN</td>
+      <td>75.000000</td>
+      <td>NaN</td>
+      <td>79.000000</td>
+      <td>80.000000</td>
+      <td>81.000000</td>
+      <td>76.529412</td>
+      <td>74.166667</td>
+      <td>76.142857</td>
+      <td>76.812500</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>72.845481</td>
+      <td>NaN</td>
+      <td>72.351097</td>
+      <td>NaN</td>
+      <td>70.359133</td>
+      <td>NaN</td>
+      <td>69.742690</td>
+      <td>NaN</td>
+      <td>71.228986</td>
+    </tr>
+    <tr>
+      <th>Figure Skating</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>65.500000</td>
+      <td>58.666667</td>
+      <td>58.750000</td>
+      <td>54.333333</td>
+      <td>...</td>
+      <td>60.034965</td>
+      <td>NaN</td>
+      <td>60.516129</td>
+      <td>NaN</td>
+      <td>60.446043</td>
+      <td>NaN</td>
+      <td>60.623288</td>
+      <td>NaN</td>
+      <td>60.355263</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Football</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>60.000000</td>
+      <td>NaN</td>
+      <td>99.000000</td>
+      <td>72.600000</td>
+      <td>75.181818</td>
+      <td>72.033333</td>
+      <td>72.187500</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>70.077957</td>
+      <td>NaN</td>
+      <td>69.132029</td>
+      <td>NaN</td>
+      <td>69.791045</td>
+      <td>NaN</td>
+      <td>68.147651</td>
+      <td>NaN</td>
+      <td>68.358051</td>
+    </tr>
+    <tr>
+      <th>Freestyle Skiing</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>65.300000</td>
+      <td>NaN</td>
+      <td>65.528571</td>
+      <td>NaN</td>
+      <td>65.745690</td>
+      <td>NaN</td>
+      <td>69.263314</td>
+      <td>NaN</td>
+      <td>67.486275</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Golf</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71.194444</td>
+    </tr>
+    <tr>
+      <th>Gymnastics</th>
+      <td>68.000000</td>
+      <td>64.000000</td>
+      <td>69.400000</td>
+      <td>76.250000</td>
+      <td>68.833333</td>
+      <td>73.000000</td>
+      <td>65.000000</td>
+      <td>NaN</td>
+      <td>64.102564</td>
+      <td>61.222222</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>54.802295</td>
+      <td>NaN</td>
+      <td>55.196351</td>
+      <td>NaN</td>
+      <td>55.163432</td>
+      <td>NaN</td>
+      <td>56.299338</td>
+      <td>NaN</td>
+      <td>56.532089</td>
+    </tr>
+    <tr>
+      <th>Handball</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>80.565217</td>
+      <td>NaN</td>
+      <td>82.268293</td>
+      <td>NaN</td>
+      <td>81.593373</td>
+      <td>NaN</td>
+      <td>82.156342</td>
+      <td>NaN</td>
+      <td>83.269122</td>
+    </tr>
+    <tr>
+      <th>Hockey</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>89.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>69.285303</td>
+      <td>NaN</td>
+      <td>68.928977</td>
+      <td>NaN</td>
+      <td>68.627907</td>
+      <td>NaN</td>
+      <td>68.986523</td>
+      <td>NaN</td>
+      <td>68.802564</td>
+    </tr>
+    <tr>
+      <th>Ice Hockey</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>74.000000</td>
+      <td>78.100000</td>
+      <td>75.857143</td>
+      <td>73.631579</td>
+      <td>...</td>
+      <td>81.295775</td>
+      <td>NaN</td>
+      <td>81.230769</td>
+      <td>NaN</td>
+      <td>81.042986</td>
+      <td>NaN</td>
+      <td>81.101190</td>
+      <td>NaN</td>
+      <td>81.663657</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Judo</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>77.875315</td>
+      <td>NaN</td>
+      <td>78.612272</td>
+      <td>NaN</td>
+      <td>79.410390</td>
+      <td>NaN</td>
+      <td>77.479112</td>
+      <td>NaN</td>
+      <td>77.203704</td>
+    </tr>
+    <tr>
+      <th>Lacrosse</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>76.714286</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Luge</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>78.979381</td>
+      <td>NaN</td>
+      <td>78.871795</td>
+      <td>NaN</td>
+      <td>77.490741</td>
+      <td>NaN</td>
+      <td>79.514019</td>
+      <td>NaN</td>
+      <td>79.590909</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Modern Pentathlon</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71.000000</td>
+      <td>67.000000</td>
+      <td>72.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>66.187500</td>
+      <td>NaN</td>
+      <td>66.703125</td>
+      <td>NaN</td>
+      <td>66.208333</td>
+      <td>NaN</td>
+      <td>66.180556</td>
+      <td>NaN</td>
+      <td>66.333333</td>
+    </tr>
+    <tr>
+      <th>Motorboating</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>77.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Nordic Combined</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>68.500000</td>
+      <td>72.000000</td>
+      <td>63.250000</td>
+      <td>...</td>
+      <td>66.000000</td>
+      <td>NaN</td>
+      <td>66.184000</td>
+      <td>NaN</td>
+      <td>66.231884</td>
+      <td>NaN</td>
+      <td>65.610687</td>
+      <td>NaN</td>
+      <td>64.829268</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Rhythmic Gymnastics</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>46.642857</td>
+      <td>NaN</td>
+      <td>49.392857</td>
+      <td>NaN</td>
+      <td>50.852632</td>
+      <td>NaN</td>
+      <td>51.571429</td>
+      <td>NaN</td>
+      <td>50.395833</td>
+    </tr>
+    <tr>
+      <th>Rowing</th>
+      <td>NaN</td>
+      <td>65.333333</td>
+      <td>75.000000</td>
+      <td>79.000000</td>
+      <td>74.103448</td>
+      <td>73.052632</td>
+      <td>76.923077</td>
+      <td>69.947368</td>
+      <td>77.190476</td>
+      <td>76.000000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>80.716578</td>
+      <td>NaN</td>
+      <td>80.703041</td>
+      <td>NaN</td>
+      <td>80.768817</td>
+      <td>NaN</td>
+      <td>80.831810</td>
+      <td>NaN</td>
+      <td>79.872263</td>
+    </tr>
+    <tr>
+      <th>Rugby</th>
+      <td>NaN</td>
+      <td>71.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>74.333333</td>
+      <td>80.111111</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Rugby Sevens</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>78.939799</td>
+    </tr>
+    <tr>
+      <th>Sailing</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>82.000000</td>
+      <td>74.000000</td>
+      <td>NaN</td>
+      <td>90.000000</td>
+      <td>63.500000</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>76.350000</td>
+      <td>NaN</td>
+      <td>73.049875</td>
+      <td>NaN</td>
+      <td>73.327500</td>
+      <td>NaN</td>
+      <td>74.128686</td>
+      <td>NaN</td>
+      <td>71.266667</td>
+    </tr>
+    <tr>
+      <th>Shooting</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>109.000000</td>
+      <td>NaN</td>
+      <td>89.545455</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>73.004188</td>
+      <td>NaN</td>
+      <td>74.369176</td>
+      <td>NaN</td>
+      <td>74.670157</td>
+      <td>NaN</td>
+      <td>72.731397</td>
+      <td>NaN</td>
+      <td>73.195212</td>
+    </tr>
+    <tr>
+      <th>Short Track Speed Skating</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>64.284153</td>
+      <td>NaN</td>
+      <td>64.870968</td>
+      <td>NaN</td>
+      <td>64.213389</td>
+      <td>NaN</td>
+      <td>63.952381</td>
+      <td>NaN</td>
+      <td>64.303371</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Skeleton</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>88.000000</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>74.526316</td>
+      <td>NaN</td>
+      <td>75.309524</td>
+      <td>NaN</td>
+      <td>72.893617</td>
+      <td>NaN</td>
+      <td>73.826087</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Ski Jumping</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>70.000000</td>
+      <td>67.666667</td>
+      <td>60.400000</td>
+      <td>...</td>
+      <td>63.079268</td>
+      <td>NaN</td>
+      <td>62.343750</td>
+      <td>NaN</td>
+      <td>61.574257</td>
+      <td>NaN</td>
+      <td>61.541667</td>
+      <td>NaN</td>
+      <td>61.165803</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Snowboarding</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>68.039370</td>
+      <td>NaN</td>
+      <td>69.500000</td>
+      <td>NaN</td>
+      <td>69.934010</td>
+      <td>NaN</td>
+      <td>70.100000</td>
+      <td>NaN</td>
+      <td>69.623762</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Softball</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>68.025000</td>
+      <td>NaN</td>
+      <td>67.991525</td>
+      <td>NaN</td>
+      <td>67.783333</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Speed Skating</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>66.083333</td>
+      <td>70.800000</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>71.097264</td>
+      <td>NaN</td>
+      <td>70.908257</td>
+      <td>NaN</td>
+      <td>71.490765</td>
+      <td>NaN</td>
+      <td>71.355191</td>
+      <td>NaN</td>
+      <td>70.643875</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Swimming</th>
+      <td>NaN</td>
+      <td>89.000000</td>
+      <td>72.750000</td>
+      <td>75.285714</td>
+      <td>72.904762</td>
+      <td>68.500000</td>
+      <td>73.769231</td>
+      <td>71.888889</td>
+      <td>83.400000</td>
+      <td>66.428571</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>72.420455</td>
+      <td>NaN</td>
+      <td>72.387647</td>
+      <td>NaN</td>
+      <td>72.206736</td>
+      <td>NaN</td>
+      <td>72.547760</td>
+      <td>NaN</td>
+      <td>72.198046</td>
+    </tr>
+    <tr>
+      <th>Synchronized Swimming</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>55.880342</td>
+      <td>NaN</td>
+      <td>55.854701</td>
+      <td>NaN</td>
+      <td>56.017241</td>
+      <td>NaN</td>
+      <td>56.333333</td>
+      <td>NaN</td>
+      <td>55.618644</td>
+    </tr>
+    <tr>
+      <th>Table Tennis</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>64.872659</td>
+      <td>NaN</td>
+      <td>65.103846</td>
+      <td>NaN</td>
+      <td>65.250000</td>
+      <td>NaN</td>
+      <td>65.612069</td>
+      <td>NaN</td>
+      <td>64.688034</td>
+    </tr>
+    <tr>
+      <th>Taekwondo</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>68.331683</td>
+      <td>NaN</td>
+      <td>68.431452</td>
+      <td>NaN</td>
+      <td>68.096000</td>
+      <td>NaN</td>
+      <td>67.832031</td>
+      <td>NaN</td>
+      <td>67.411290</td>
+    </tr>
+    <tr>
+      <th>Tennis</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>86.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>84.500000</td>
+      <td>62.428571</td>
+      <td>70.666667</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>69.788618</td>
+      <td>NaN</td>
+      <td>70.732000</td>
+      <td>NaN</td>
+      <td>71.208661</td>
+      <td>NaN</td>
+      <td>72.335664</td>
+      <td>NaN</td>
+      <td>72.104895</td>
+    </tr>
+    <tr>
+      <th>Trampolining</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>62.000000</td>
+      <td>NaN</td>
+      <td>60.437500</td>
+      <td>NaN</td>
+      <td>58.000000</td>
+      <td>NaN</td>
+      <td>58.133333</td>
+      <td>NaN</td>
+      <td>58.718750</td>
+    </tr>
+    <tr>
+      <th>Triathlon</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>62.969697</td>
+      <td>NaN</td>
+      <td>62.404040</td>
+      <td>NaN</td>
+      <td>61.954545</td>
+      <td>NaN</td>
+      <td>61.165138</td>
+      <td>NaN</td>
+      <td>60.752294</td>
+    </tr>
+    <tr>
+      <th>Tug-Of-War</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>84.500000</td>
+      <td>86.285714</td>
+      <td>98.000000</td>
+      <td>101.333333</td>
+      <td>98.142857</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Volleyball</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>80.730216</td>
+      <td>NaN</td>
+      <td>81.184397</td>
+      <td>NaN</td>
+      <td>79.943463</td>
+      <td>NaN</td>
+      <td>79.902439</td>
+      <td>NaN</td>
+      <td>80.293286</td>
+    </tr>
+    <tr>
+      <th>Water Polo</th>
+      <td>NaN</td>
+      <td>95.000000</td>
+      <td>66.000000</td>
+      <td>NaN</td>
+      <td>84.666667</td>
+      <td>89.750000</td>
+      <td>90.500000</td>
+      <td>90.500000</td>
+      <td>95.000000</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>83.709957</td>
+      <td>NaN</td>
+      <td>83.729412</td>
+      <td>NaN</td>
+      <td>85.542969</td>
+      <td>NaN</td>
+      <td>86.027237</td>
+      <td>NaN</td>
+      <td>85.449612</td>
+    </tr>
+    <tr>
+      <th>Weightlifting</th>
+      <td>91.333333</td>
+      <td>NaN</td>
+      <td>85.000000</td>
+      <td>93.750000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79.857143</td>
+      <td>75.233645</td>
+      <td>78.523810</td>
+      <td>74.733333</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>79.385501</td>
+      <td>NaN</td>
+      <td>79.787149</td>
+      <td>NaN</td>
+      <td>78.397233</td>
+      <td>NaN</td>
+      <td>78.840637</td>
+      <td>NaN</td>
+      <td>79.839216</td>
+    </tr>
+    <tr>
+      <th>Wrestling</th>
+      <td>86.000000</td>
+      <td>NaN</td>
+      <td>64.500000</td>
+      <td>85.000000</td>
+      <td>77.051724</td>
+      <td>82.676471</td>
+      <td>77.269231</td>
+      <td>72.382353</td>
+      <td>71.666667</td>
+      <td>76.388889</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>78.044728</td>
+      <td>NaN</td>
+      <td>76.684751</td>
+      <td>NaN</td>
+      <td>75.865889</td>
+      <td>NaN</td>
+      <td>75.854354</td>
+      <td>NaN</td>
+      <td>78.028902</td>
+    </tr>
+  </tbody>
+</table>
+<p>56 rows × 35 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the rows for Season == Summer and Year &gt;= 2000</span>
+<span class="n">summer</span> <span class="o">=</span> <span class="n">athletes</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">athletes</span><span class="p">[</span><span class="s1">&#39;Season&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Summer&#39;</span><span class="p">,:]</span>
+<span class="n">summer2000</span> <span class="o">=</span> <span class="n">summer</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summer</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">,:]</span>
+<span class="n">summer2000</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Weight</th>
+      <th>Team</th>
+      <th>NOC</th>
+      <th>Games</th>
+      <th>Year</th>
+      <th>Season</th>
+      <th>City</th>
+      <th>Sport</th>
+      <th>Event</th>
+      <th>Medal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>A Lamusi</td>
+      <td>M</td>
+      <td>23.0</td>
+      <td>170.0</td>
+      <td>60.0</td>
+      <td>China</td>
+      <td>CHN</td>
+      <td>2012 Summer</td>
+      <td>2012</td>
+      <td>Summer</td>
+      <td>London</td>
+      <td>Judo</td>
+      <td>Judo Men's Extra-Lightweight</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>12</td>
+      <td>Jyri Tapani Aalto</td>
+      <td>M</td>
+      <td>31.0</td>
+      <td>172.0</td>
+      <td>70.0</td>
+      <td>Finland</td>
+      <td>FIN</td>
+      <td>2000 Summer</td>
+      <td>2000</td>
+      <td>Summer</td>
+      <td>Sydney</td>
+      <td>Badminton</td>
+      <td>Badminton Men's Singles</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>13</td>
+      <td>Minna Maarit Aalto</td>
+      <td>F</td>
+      <td>34.0</td>
+      <td>159.0</td>
+      <td>55.5</td>
+      <td>Finland</td>
+      <td>FIN</td>
+      <td>2000 Summer</td>
+      <td>2000</td>
+      <td>Summer</td>
+      <td>Sydney</td>
+      <td>Sailing</td>
+      <td>Sailing Women's Windsurfer</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>18</td>
+      <td>Timo Antero Aaltonen</td>
+      <td>M</td>
+      <td>31.0</td>
+      <td>189.0</td>
+      <td>130.0</td>
+      <td>Finland</td>
+      <td>FIN</td>
+      <td>2000 Summer</td>
+      <td>2000</td>
+      <td>Summer</td>
+      <td>Sydney</td>
+      <td>Athletics</td>
+      <td>Athletics Men's Shot Put</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>21</td>
+      <td>Ragnhild Margrethe Aamodt</td>
+      <td>F</td>
+      <td>27.0</td>
+      <td>163.0</td>
+      <td>NaN</td>
+      <td>Norway</td>
+      <td>NOR</td>
+      <td>2008 Summer</td>
+      <td>2008</td>
+      <td>Summer</td>
+      <td>Beijing</td>
+      <td>Handball</td>
+      <td>Handball Women's Handball</td>
+      <td>Gold</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat the pivoting step on the summer2000 data</span>
+<span class="n">awsy</span> <span class="o">=</span> <span class="n">summer2000</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Sport&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+
+<span class="c1"># Remove rows that only contain NaN values</span>
+<span class="n">awsy</span> <span class="o">=</span> <span class="n">awsy</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">awsy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Year</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Archery</th>
+      <td>70.2</td>
+      <td>70.4</td>
+      <td>72.7</td>
+      <td>71.8</td>
+      <td>72.2</td>
+    </tr>
+    <tr>
+      <th>Athletics</th>
+      <td>69.7</td>
+      <td>69.9</td>
+      <td>69.4</td>
+      <td>68.9</td>
+      <td>67.4</td>
+    </tr>
+    <tr>
+      <th>Badminton</th>
+      <td>67.5</td>
+      <td>68.1</td>
+      <td>67.9</td>
+      <td>68.0</td>
+      <td>69.0</td>
+    </tr>
+    <tr>
+      <th>Baseball</th>
+      <td>85.5</td>
+      <td>88.0</td>
+      <td>88.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basketball</th>
+      <td>86.6</td>
+      <td>86.9</td>
+      <td>87.2</td>
+      <td>87.4</td>
+      <td>87.9</td>
+    </tr>
+    <tr>
+      <th>Beach Volleyball</th>
+      <td>78.7</td>
+      <td>79.5</td>
+      <td>79.9</td>
+      <td>79.5</td>
+      <td>78.6</td>
+    </tr>
+    <tr>
+      <th>Boxing</th>
+      <td>66.1</td>
+      <td>66.1</td>
+      <td>66.4</td>
+      <td>67.2</td>
+      <td>66.6</td>
+    </tr>
+    <tr>
+      <th>Canoeing</th>
+      <td>78.0</td>
+      <td>77.7</td>
+      <td>78.0</td>
+      <td>76.3</td>
+      <td>77.0</td>
+    </tr>
+    <tr>
+      <th>Cycling</th>
+      <td>69.8</td>
+      <td>69.5</td>
+      <td>69.9</td>
+      <td>69.2</td>
+      <td>68.4</td>
+    </tr>
+    <tr>
+      <th>Diving</th>
+      <td>59.7</td>
+      <td>60.6</td>
+      <td>60.5</td>
+      <td>59.8</td>
+      <td>60.6</td>
+    </tr>
+    <tr>
+      <th>Equestrianism</th>
+      <td>67.3</td>
+      <td>68.3</td>
+      <td>67.8</td>
+      <td>67.7</td>
+      <td>67.9</td>
+    </tr>
+    <tr>
+      <th>Fencing</th>
+      <td>72.8</td>
+      <td>72.4</td>
+      <td>70.4</td>
+      <td>69.7</td>
+      <td>71.2</td>
+    </tr>
+    <tr>
+      <th>Football</th>
+      <td>70.1</td>
+      <td>69.1</td>
+      <td>69.8</td>
+      <td>68.1</td>
+      <td>68.4</td>
+    </tr>
+    <tr>
+      <th>Golf</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71.2</td>
+    </tr>
+    <tr>
+      <th>Gymnastics</th>
+      <td>54.8</td>
+      <td>55.2</td>
+      <td>55.2</td>
+      <td>56.3</td>
+      <td>56.5</td>
+    </tr>
+    <tr>
+      <th>Handball</th>
+      <td>80.6</td>
+      <td>82.3</td>
+      <td>81.6</td>
+      <td>82.2</td>
+      <td>83.3</td>
+    </tr>
+    <tr>
+      <th>Hockey</th>
+      <td>69.3</td>
+      <td>68.9</td>
+      <td>68.6</td>
+      <td>69.0</td>
+      <td>68.8</td>
+    </tr>
+    <tr>
+      <th>Judo</th>
+      <td>77.9</td>
+      <td>78.6</td>
+      <td>79.4</td>
+      <td>77.5</td>
+      <td>77.2</td>
+    </tr>
+    <tr>
+      <th>Modern Pentathlon</th>
+      <td>66.2</td>
+      <td>66.7</td>
+      <td>66.2</td>
+      <td>66.2</td>
+      <td>66.3</td>
+    </tr>
+    <tr>
+      <th>Rhythmic Gymnastics</th>
+      <td>46.6</td>
+      <td>49.4</td>
+      <td>50.9</td>
+      <td>51.6</td>
+      <td>50.4</td>
+    </tr>
+    <tr>
+      <th>Rowing</th>
+      <td>80.7</td>
+      <td>80.7</td>
+      <td>80.8</td>
+      <td>80.8</td>
+      <td>79.9</td>
+    </tr>
+    <tr>
+      <th>Rugby Sevens</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>78.9</td>
+    </tr>
+    <tr>
+      <th>Sailing</th>
+      <td>76.4</td>
+      <td>73.0</td>
+      <td>73.3</td>
+      <td>74.1</td>
+      <td>71.3</td>
+    </tr>
+    <tr>
+      <th>Shooting</th>
+      <td>73.0</td>
+      <td>74.4</td>
+      <td>74.7</td>
+      <td>72.7</td>
+      <td>73.2</td>
+    </tr>
+    <tr>
+      <th>Softball</th>
+      <td>68.0</td>
+      <td>68.0</td>
+      <td>67.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Swimming</th>
+      <td>72.4</td>
+      <td>72.4</td>
+      <td>72.2</td>
+      <td>72.5</td>
+      <td>72.2</td>
+    </tr>
+    <tr>
+      <th>Synchronized Swimming</th>
+      <td>55.9</td>
+      <td>55.9</td>
+      <td>56.0</td>
+      <td>56.3</td>
+      <td>55.6</td>
+    </tr>
+    <tr>
+      <th>Table Tennis</th>
+      <td>64.9</td>
+      <td>65.1</td>
+      <td>65.2</td>
+      <td>65.6</td>
+      <td>64.7</td>
+    </tr>
+    <tr>
+      <th>Taekwondo</th>
+      <td>68.3</td>
+      <td>68.4</td>
+      <td>68.1</td>
+      <td>67.8</td>
+      <td>67.4</td>
+    </tr>
+    <tr>
+      <th>Tennis</th>
+      <td>69.8</td>
+      <td>70.7</td>
+      <td>71.2</td>
+      <td>72.3</td>
+      <td>72.1</td>
+    </tr>
+    <tr>
+      <th>Trampolining</th>
+      <td>62.0</td>
+      <td>60.4</td>
+      <td>58.0</td>
+      <td>58.1</td>
+      <td>58.7</td>
+    </tr>
+    <tr>
+      <th>Triathlon</th>
+      <td>63.0</td>
+      <td>62.4</td>
+      <td>62.0</td>
+      <td>61.2</td>
+      <td>60.8</td>
+    </tr>
+    <tr>
+      <th>Volleyball</th>
+      <td>80.7</td>
+      <td>81.2</td>
+      <td>79.9</td>
+      <td>79.9</td>
+      <td>80.3</td>
+    </tr>
+    <tr>
+      <th>Water Polo</th>
+      <td>83.7</td>
+      <td>83.7</td>
+      <td>85.5</td>
+      <td>86.0</td>
+      <td>85.4</td>
+    </tr>
+    <tr>
+      <th>Weightlifting</th>
+      <td>79.4</td>
+      <td>79.8</td>
+      <td>78.4</td>
+      <td>78.8</td>
+      <td>79.8</td>
+    </tr>
+    <tr>
+      <th>Wrestling</th>
+      <td>78.0</td>
+      <td>76.7</td>
+      <td>75.9</td>
+      <td>75.9</td>
+      <td>78.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="aggregate-on-multiple-functions-and-or-values">
+<h3>Aggregate on multiple functions and/or values<a class="headerlink" href="#aggregate-on-multiple-functions-and-or-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat, but limit to summers of 2000-2016</span>
+<span class="n">awsy</span> <span class="o">=</span> <span class="n">summer2000</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Sport&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span><span class="s1">&#39;Height&#39;</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">])</span>
+
+<span class="c1"># Remove rows that only contain NaN values</span>
+<span class="n">awsy</span> <span class="o">=</span> <span class="n">awsy</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">awsy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="10" halign="left">mean</th>
+      <th colspan="10" halign="left">max</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th colspan="5" halign="left">Height</th>
+      <th colspan="5" halign="left">Weight</th>
+      <th colspan="5" halign="left">Height</th>
+      <th colspan="5" halign="left">Weight</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Archery</th>
+      <td>174.1</td>
+      <td>173.7</td>
+      <td>173.3</td>
+      <td>173.3</td>
+      <td>173.4</td>
+      <td>70.2</td>
+      <td>70.4</td>
+      <td>72.7</td>
+      <td>71.8</td>
+      <td>72.2</td>
+      <td>197.0</td>
+      <td>197.0</td>
+      <td>193.0</td>
+      <td>194.0</td>
+      <td>194.0</td>
+      <td>113.0</td>
+      <td>115.0</td>
+      <td>100.0</td>
+      <td>115.0</td>
+      <td>130.0</td>
+    </tr>
+    <tr>
+      <th>Athletics</th>
+      <td>176.5</td>
+      <td>176.3</td>
+      <td>176.0</td>
+      <td>176.1</td>
+      <td>175.2</td>
+      <td>69.7</td>
+      <td>69.9</td>
+      <td>69.4</td>
+      <td>68.9</td>
+      <td>67.4</td>
+      <td>205.0</td>
+      <td>207.0</td>
+      <td>206.0</td>
+      <td>208.0</td>
+      <td>208.0</td>
+      <td>165.0</td>
+      <td>165.0</td>
+      <td>165.0</td>
+      <td>160.0</td>
+      <td>165.0</td>
+    </tr>
+    <tr>
+      <th>Badminton</th>
+      <td>173.9</td>
+      <td>173.6</td>
+      <td>173.7</td>
+      <td>174.3</td>
+      <td>174.5</td>
+      <td>67.5</td>
+      <td>68.1</td>
+      <td>67.9</td>
+      <td>68.0</td>
+      <td>69.0</td>
+      <td>199.0</td>
+      <td>193.0</td>
+      <td>195.0</td>
+      <td>201.0</td>
+      <td>201.0</td>
+      <td>90.0</td>
+      <td>89.0</td>
+      <td>96.0</td>
+      <td>93.0</td>
+      <td>93.0</td>
+    </tr>
+    <tr>
+      <th>Baseball</th>
+      <td>182.4</td>
+      <td>183.5</td>
+      <td>183.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>85.5</td>
+      <td>88.0</td>
+      <td>88.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>206.0</td>
+      <td>201.0</td>
+      <td>198.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>110.0</td>
+      <td>112.0</td>
+      <td>120.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Basketball</th>
+      <td>191.0</td>
+      <td>191.6</td>
+      <td>191.7</td>
+      <td>192.4</td>
+      <td>191.9</td>
+      <td>86.6</td>
+      <td>86.9</td>
+      <td>87.2</td>
+      <td>87.4</td>
+      <td>87.9</td>
+      <td>226.0</td>
+      <td>226.0</td>
+      <td>226.0</td>
+      <td>221.0</td>
+      <td>218.0</td>
+      <td>141.0</td>
+      <td>141.0</td>
+      <td>156.0</td>
+      <td>125.0</td>
+      <td>137.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Repeat, but add margins</span>
+<span class="n">awsy</span> <span class="o">=</span> <span class="n">summer2000</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Sport&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span><span class="s1">&#39;Height&#39;</span><span class="p">],</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Remove rows that only contain NaN values</span>
+<span class="n">awsy</span> <span class="o">=</span> <span class="n">awsy</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">awsy</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">Height</th>
+      <th colspan="6" halign="left">Weight</th>
+    </tr>
+    <tr>
+      <th>Year</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+      <th>All</th>
+      <th>2000</th>
+      <th>2004</th>
+      <th>2008</th>
+      <th>2012</th>
+      <th>2016</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Archery</th>
+      <td>197.0</td>
+      <td>197.0</td>
+      <td>193.0</td>
+      <td>194.0</td>
+      <td>194.0</td>
+      <td>197.0</td>
+      <td>113.0</td>
+      <td>115.0</td>
+      <td>100.0</td>
+      <td>115.0</td>
+      <td>130.0</td>
+      <td>130.0</td>
+    </tr>
+    <tr>
+      <th>Athletics</th>
+      <td>205.0</td>
+      <td>207.0</td>
+      <td>206.0</td>
+      <td>208.0</td>
+      <td>208.0</td>
+      <td>208.0</td>
+      <td>165.0</td>
+      <td>165.0</td>
+      <td>165.0</td>
+      <td>160.0</td>
+      <td>165.0</td>
+      <td>165.0</td>
+    </tr>
+    <tr>
+      <th>Badminton</th>
+      <td>199.0</td>
+      <td>193.0</td>
+      <td>195.0</td>
+      <td>201.0</td>
+      <td>201.0</td>
+      <td>201.0</td>
+      <td>90.0</td>
+      <td>89.0</td>
+      <td>96.0</td>
+      <td>93.0</td>
+      <td>93.0</td>
+      <td>96.0</td>
+    </tr>
+    <tr>
+      <th>Baseball</th>
+      <td>206.0</td>
+      <td>201.0</td>
+      <td>198.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>206.0</td>
+      <td>110.0</td>
+      <td>112.0</td>
+      <td>120.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>120.0</td>
+    </tr>
+    <tr>
+      <th>Basketball</th>
+      <td>226.0</td>
+      <td>226.0</td>
+      <td>226.0</td>
+      <td>221.0</td>
+      <td>218.0</td>
+      <td>226.0</td>
+      <td>141.0</td>
+      <td>141.0</td>
+      <td>156.0</td>
+      <td>125.0</td>
+      <td>137.0</td>
+      <td>156.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="stack-and-unstack">
+<h3>Stack and unstack<a class="headerlink" href="#stack-and-unstack" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>These operations switch between the groupby-format and the pivot_table-format.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Groupby with two columns</span>
+<span class="n">athlete_weight_by_sport_groupby</span> <span class="o">=</span> <span class="n">athletes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Sport&#39;</span><span class="p">)[[</span><span class="s1">&#39;Weight&#39;</span><span class="p">,</span><span class="s1">&#39;Height&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">athlete_weight_by_sport_groupby</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Weight</th>
+      <th>Height</th>
+    </tr>
+    <tr>
+      <th>Sport</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Aeronautics</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Alpine Skiing</th>
+      <td>72.068110</td>
+      <td>173.489052</td>
+    </tr>
+    <tr>
+      <th>Alpinism</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Archery</th>
+      <td>70.011135</td>
+      <td>173.203085</td>
+    </tr>
+    <tr>
+      <th>Art Competitions</th>
+      <td>75.290909</td>
+      <td>174.644068</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>Tug-Of-War</th>
+      <td>95.615385</td>
+      <td>182.480000</td>
+    </tr>
+    <tr>
+      <th>Volleyball</th>
+      <td>78.900214</td>
+      <td>186.994822</td>
+    </tr>
+    <tr>
+      <th>Water Polo</th>
+      <td>84.566446</td>
+      <td>184.834648</td>
+    </tr>
+    <tr>
+      <th>Weightlifting</th>
+      <td>78.726663</td>
+      <td>167.824801</td>
+    </tr>
+    <tr>
+      <th>Wrestling</th>
+      <td>75.495570</td>
+      <td>172.358586</td>
+    </tr>
+  </tbody>
+</table>
+<p>66 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unstack the result</span>
+<span class="n">athlete_weight_by_sport_groupby</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        Sport           
+Weight  Aeronautics                NaN
+        Alpine Skiing        72.068110
+        Alpinism                   NaN
+        Archery              70.011135
+        Art Competitions     75.290909
+                               ...    
+Height  Tug-Of-War          182.480000
+        Volleyball          186.994822
+        Water Polo          184.834648
+        Weightlifting       167.824801
+        Wrestling           172.358586
+Length: 132, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Extract winter olympics.</p></li>
+<li><p>Make yearly medal statistics for all countries using pivoting to count medals.</p>
+<ul>
+<li><p>Remove all countries that have no winter olympic medals.</p></li>
+</ul>
+</li>
+<li><p>Extract the top 10 countries that have the most winter olympic medals in sum.</p></li>
+<li><p>Use the <em>noc_regions.csv</em> to exchange the NOC codes with region names.</p></li>
+<li><p>Plot the resulting 10 curves as proportions of medals per year.</p>
+<ul>
+<li><p>Place the legend outside the plot</p></li>
+</ul>
+</li>
+</ul>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html">Pandas’ group by</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html">Pandas’ cross tabulation</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html">Pandas’ pivot table</a></p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results/">Kaggle dataset: Olympic athletes</a> scraped from <a class="reference external" href="http://www.sports-reference.com/">www.sports-reference.com/</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/ETQXKwM6YMY?si=nnBpRENvqnhZYL_e">YouTube: Pivot tables with Pandas</a> (8m:59s)</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./5_Machine_Learning/1_Pivoting"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Machine_Learning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Machine Learning</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2_Forecasting/1_Forecasting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Forecasting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sales-data-from-power-bi-examples">Sales data from Power BI examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#olympic-athletes-and-results">Olympic athletes and results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-on-multiple-functions-and-or-values">Aggregate on multiple functions and/or values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stack-and-unstack">Stack and unstack</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kristian Hovde Liland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -8,7 +8,7 @@ datetime
 requests
 river
 cassandra-driver
-pyspark
+pyspark==3.5.1
 mysql.connector
 flask
 pybaselines

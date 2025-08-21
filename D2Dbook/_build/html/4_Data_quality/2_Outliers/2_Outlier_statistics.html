@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -511,7 +511,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-resolution">Time resolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -545,9 +544,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the normal probability curve from -4 to 4 with mean 0 and standard deviation 1</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -567,14 +566,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7f383b06310cdf9f8fbd8e899b761a075cd73ebe7961205ae6ba492393dbf219.png" src="../../_images/7f383b06310cdf9f8fbd8e899b761a075cd73ebe7961205ae6ba492393dbf219.png" />
+<img alt="../../_images/af95741686c06e8205e7af1b1fa9f528f3d1c2a8ffd8d7a9fa8c3f69cb202e0a.png" src="../../_images/af95741686c06e8205e7af1b1fa9f528f3d1c2a8ffd8d7a9fa8c3f69cb202e0a.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the probability of being outside +/- 3 SD in a normal distribution, i.e. P(|X| &gt; 3).</span>
 <span class="c1"># Format the result as a percentage rounded to two decimal places.</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">stats</span>
 <span class="n">prob</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probability of being outside +/- 3 SD in a normal distribution: </span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prob</span><span class="p">))</span>
 <span class="c1"># Rewrite this as the proportion of values, i.e., 1 in n, that are outside +/- 3 SD in a normal distribution.</span>
@@ -597,7 +596,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot random normal data with 1000 values with a seed of 1</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -617,7 +616,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/be876e34e6382a75d37ad8d481bac8112de02d3bbebde09cfa7751a8ea48584c.png" src="../../_images/be876e34e6382a75d37ad8d481bac8112de02d3bbebde09cfa7751a8ea48584c.png" />
+<img alt="../../_images/fb1883e2e55e4de7bd985e67d3d6eb3feb607b2a15366c134881fe79e0017fbc.png" src="../../_images/fb1883e2e55e4de7bd985e67d3d6eb3feb607b2a15366c134881fe79e0017fbc.png" />
 </div>
 </div>
 </section>
@@ -646,7 +645,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5355673165dd3f698cb7b4a81aade59121199c7941fce8bd373d8366ca83bee2.png" src="../../_images/5355673165dd3f698cb7b4a81aade59121199c7941fce8bd373d8366ca83bee2.png" />
+<img alt="../../_images/459f43fa0052ab6cbdae1ecf63d2fccf52baf1a1b6c74f78ff2f8aca351174e1.png" src="../../_images/459f43fa0052ab6cbdae1ecf63d2fccf52baf1a1b6c74f78ff2f8aca351174e1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -658,7 +657,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.53895218829654e-05
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(7.538952188296564e-05)
 </pre></div>
 </div>
 </div>
@@ -680,7 +679,7 @@ Proportion of values that are outside +/- 3 SD in a normal distribution: 1 in 37
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/adf42d762514a0d9961a8b6346459147a551a57d5392dae2d8fbbb016b3dbe42.png" src="../../_images/adf42d762514a0d9961a8b6346459147a551a57d5392dae2d8fbbb016b3dbe42.png" />
+<img alt="../../_images/6dadb9347c141710fd8fb5b1c3a907c93b2a2b5282444cee3559005cf5def5fd.png" src="../../_images/6dadb9347c141710fd8fb5b1c3a907c93b2a2b5282444cee3559005cf5def5fd.png" />
 </div>
 </div>
 </section>
@@ -794,7 +793,7 @@ Proportion: 1 in 84927
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a function that checks if n consecutive samples are above k SD or below k SD</span>
-<span class="k">def</span> <span class="nf">check_consecutive</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">SD</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_consecutive</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">SD</span><span class="p">):</span>
     <span class="n">index</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">dataUp</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">k</span><span class="o">*</span><span class="n">SD</span>
     <span class="n">dataDown</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">SD</span>
@@ -832,7 +831,7 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/adad22472381f9504ef2430aa37e612aeac3e6e75a3ec4ace810f2c2137e83a9.png" src="../../_images/adad22472381f9504ef2430aa37e612aeac3e6e75a3ec4ace810f2c2137e83a9.png" />
+<img alt="../../_images/034324bc0d0f236b213c5741ebbc6f9f4f7036604729c8c03935519d8a3d0184.png" src="../../_images/034324bc0d0f236b213c5741ebbc6f9f4f7036604729c8c03935519d8a3d0184.png" />
 </div>
 </div>
 </section>
@@ -862,7 +861,7 @@ Proportion: 1 in 84927
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the Beijing pollution data</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">pollution</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/pollution.csv&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># Extract the first 2000 samples of DEWP, TEMP and PRES</span>
 <span class="n">pdata</span> <span class="o">=</span> <span class="n">pollution</span><span class="p">[[</span><span class="s1">&#39;DEWP&#39;</span><span class="p">,</span> <span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;PRES&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">2000</span><span class="p">]</span>
@@ -884,14 +883,14 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dbb8a11016176e81ba6645e1f3fc5234d244086ecbc4f73c60d64f42d1fc9735.png" src="../../_images/dbb8a11016176e81ba6645e1f3fc5234d244086ecbc4f73c60d64f42d1fc9735.png" />
+<img alt="../../_images/6d429619f90da85d5d26215b1ca98e9432a8738dc55390b6cd9bef783212691d.png" src="../../_images/6d429619f90da85d5d26215b1ca98e9432a8738dc55390b6cd9bef783212691d.png" />
 </div>
 </div>
 <p>We use the first three years as the “in control” region and estimate mean and covariance from it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean vector and covariance matrix of the three variables for the first 3 years</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pdata</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">365</span><span class="o">*</span><span class="mi">3</span><span class="p">,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">pdata</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">365</span><span class="o">*</span><span class="mi">3</span><span class="p">,:],</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
@@ -911,7 +910,7 @@ Proportion: 1 in 84927
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Hotelling&#39;s T^2 statistic for each observation given mu and cov</span>
-<span class="k">def</span> <span class="nf">Hotellings_T2</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Hotellings_T2</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">):</span>
     <span class="n">T2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(((</span><span class="n">X</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">cov</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">mean</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
     <span class="n">F</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">T2</span>
@@ -949,7 +948,7 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/26a82e2e7789959057f80b7e814a83537731a21e97d8c0181234f72bce8f0efa.png" src="../../_images/26a82e2e7789959057f80b7e814a83537731a21e97d8c0181234f72bce8f0efa.png" />
+<img alt="../../_images/b91369004dc265b17343127ebb813f5ab572be1662f03b75bd64cf2e35e0087c.png" src="../../_images/b91369004dc265b17343127ebb813f5ab572be1662f03b75bd64cf2e35e0087c.png" />
 </div>
 </div>
 <p>Finally, we observe which observations are marked as outlying in the original series.</p>
@@ -978,7 +977,7 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4cc0bdaec2680409e0bbc3ba8e968e2a24431af17b99dd7dd8e1f4b2a82089ae.png" src="../../_images/4cc0bdaec2680409e0bbc3ba8e968e2a24431af17b99dd7dd8e1f4b2a82089ae.png" />
+<img alt="../../_images/e7dd77dd8b2e6b4b0f697f0ac8206f80602e785173b7d9343def4814ef5a37ba.png" src="../../_images/e7dd77dd8b2e6b4b0f697f0ac8206f80602e785173b7d9343def4814ef5a37ba.png" />
 </div>
 </div>
 <section id="robust-multivariate-statistics">
@@ -992,7 +991,7 @@ Proportion: 1 in 84927
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Minimum Covariance Determinant estimator from scikit-learn</span>
-<span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <span class="n">MinCovDet</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.covariance</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinCovDet</span>
 <span class="c1"># Apply the Minimum Covariance Determinant estimator to data.values[:365*3,:] and plot</span>
 <span class="n">some_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">cov</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">mcd</span> <span class="o">=</span> <span class="n">MinCovDet</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">some_data</span><span class="p">)</span>
@@ -1055,7 +1054,7 @@ Proportion: 1 in 84927
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">dct</span><span class="p">,</span> <span class="n">idct</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.fft</span><span class="w"> </span><span class="kn">import</span> <span class="n">dct</span><span class="p">,</span> <span class="n">idct</span>
 <span class="n">fourier_signal</span> <span class="o">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">pdata</span><span class="p">[</span><span class="s2">&quot;TEMP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
 <span class="c1"># Plot the Fourier transform</span>
@@ -1068,7 +1067,7 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bb52f2b58e03f549b427d505a83606b3be6d87432524bafd3308a34f636d943a.png" src="../../_images/bb52f2b58e03f549b427d505a83606b3be6d87432524bafd3308a34f636d943a.png" />
+<img alt="../../_images/91a23b77bd9512a0b86bb5a53c46e5865c7f267f56fcdae52c35295fd99b80be.png" src="../../_images/91a23b77bd9512a0b86bb5a53c46e5865c7f267f56fcdae52c35295fd99b80be.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1094,12 +1093,12 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8213490d028a1efc7f004769a0fa37f526794129018122a71b6324269a32cc2b.png" src="../../_images/8213490d028a1efc7f004769a0fa37f526794129018122a71b6324269a32cc2b.png" />
+<img alt="../../_images/e549a2706b69df4bd2f35235d277a63c8826d739f485c203c94449f5443e8db3.png" src="../../_images/e549a2706b69df4bd2f35235d277a63c8826d739f485c203c94449f5443e8db3.png" />
 </div>
 </div>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<h2 class="rubric" id="resources">Resources</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Statistical_process_control">Wikipedia: Statistical Process Control</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Six_Sigma">Wikipedia: <span class="math notranslate nohighlight">\(6\sigma\)</span></a></p></li>
@@ -1109,6 +1108,7 @@ Proportion: 1 in 84927
 <li><p><a class="reference external" href="https://www.researchgate.net/publication/2298225_A_Fast_Algorithm_for_the_Minimum_Covariance_Determinant_Estimator">An iterative method that searches for the MCD</a></p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.covariance.MinCovDet.html">scikit-learn: MinCovDet</a></p></li>
 </ul>
+</div>
 </section>
 </section>
 
@@ -1191,7 +1191,6 @@ Proportion: 1 in 84927
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-resolution">Time resolution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
 </ul>
   </nav></div>
 
