@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -191,7 +191,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Power_BI.html">Power BI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Writer_Framework.html">Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Streamlit.html">Streamlit</a></li>
 </ul>
 </details></li>
 </ul>
@@ -532,10 +532,10 @@ document.write(`
 <span class="c1"># if not already set persistently (e.g., in .bashrc or .bash_profile or Windows environment variables)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="c1"># Set the Java home path to the one you are using ((un)comment and edit as needed):</span>
+<span class="c1"># os.environ[&quot;JAVA_HOME&quot;] = &quot;C:/Program Files/Java/jre1.8.0_461&quot; # or similar on Windows (Liland&#39;s Windows, 461 is a moving target)</span>
 <span class="c1"># os.environ[&quot;JAVA_HOME&quot;] = &quot;/Library/Java/JavaVirtualMachines/zulu-18.jdk/Contents/Home&quot; (Liland&#39;s old Mac)</span>
-<span class="c1"># os.environ[&quot;JAVA_HOME&quot;] = &quot;C:/Program Files/Java/jdk1.8.0_281&quot; # or similar on Windows (Liland&#39;s Windows)</span>
-<span class="c1">#os.environ[&quot;JAVA_HOME&quot;] = &quot;/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home&quot; # Liland&#39;s Mac</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home&quot;</span> <span class="c1"># After some update</span>
+<span class="c1"># os.environ[&quot;JAVA_HOME&quot;] = &quot;/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home&quot; # (Liland&#39;s Mac)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;JAVA_HOME&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;/Library/Java/JavaVirtualMachines/microsoft-17.jdk/Contents/Home&quot;</span> <span class="c1"># (Liland&#39;s Mac updated)</span>
 
 <span class="c1"># If you are using environments in Python, you can set the environment variables like the alternative below.</span>
 <span class="c1"># The default Python environment is used if the variables are set to &quot;python&quot; (edit if needed):</span>
@@ -543,6 +543,7 @@ document.write(`
 <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYSPARK_DRIVER_PYTHON&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;python&quot;</span> <span class="c1"># or similar to &quot;/Users/kristian/miniforge3/envs/tf_M1/bin/python&quot;</span>
 
 <span class="c1"># On Windows you need to specify where the Hadoop drivers are located (uncomment and edit if needed):</span>
+<span class="c1"># os.environ[&quot;HADOOP_HOME&quot;] = &quot;C:/NMBU/hadoop-3.3.1&quot; # (Liland&#39;s Windows)</span>
 <span class="c1"># os.environ[&quot;HADOOP_HOME&quot;] = &quot;C:/Hadoop/hadoop-3.3.1&quot;</span>
 
 <span class="c1"># Set the Hadoop version to the one you are using, e.g., none:</span>
@@ -595,33 +596,27 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ivy Default Cache set to: /Users/kristian/.ivy2/cache
 The jars for the packages stored in: /Users/kristian/.ivy2/jars
 com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
-:: resolving dependencies :: org.apache.spark#spark-submit-parent-110abcd4-d19e-42dc-bc99-f9099b7093dd;1.0
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-61ceb8c3-fe25-400a-91ef-f77380146bfb;1.0
 	confs: [default]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.spark#spark-cassandra-connector_2.12;3.5.1 in central
+	found com.datastax.spark#spark-cassandra-connector_2.12;3.5.1 in central
 	found com.datastax.spark#spark-cassandra-connector-driver_2.12;3.5.1 in central
 	found org.scala-lang.modules#scala-collection-compat_2.12;2.11.0 in central
 	found org.apache.cassandra#java-driver-core-shaded;4.18.1 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.datastax.oss#native-protocol;1.5.1 in central
+	found com.datastax.oss#native-protocol;1.5.1 in central
 	found com.datastax.oss#java-driver-shaded-guava;25.1-jre-graal-sub-1 in central
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found com.typesafe#config;1.4.1 in central
+	found com.typesafe#config;1.4.1 in central
 	found org.slf4j#slf4j-api;1.7.26 in central
 	found io.dropwizard.metrics#metrics-core;4.1.18 in central
-	found org.hdrhistogram#HdrHistogram;2.1.12 in central
-	found org.reactivestreams#reactive-streams;1.0.3 in central
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found org.apache.cassandra#java-driver-mapper-runtime;4.18.1 in central
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>	found org.hdrhistogram#HdrHistogram;2.1.12 in central
+	found org.reactivestreams#reactive-streams;1.0.3 in central
+	found org.apache.cassandra#java-driver-mapper-runtime;4.18.1 in central
 	found org.apache.cassandra#java-driver-query-builder;4.18.1 in central
 	found org.apache.commons#commons-lang3;3.10 in central
 	found com.thoughtworks.paranamer#paranamer;2.8 in central
 	found org.scala-lang#scala-reflect;2.12.19 in central
-:: resolution report :: resolve 1036ms :: artifacts dl 21ms
+:: resolution report :: resolve 281ms :: artifacts dl 38ms
 	:: modules in use:
 	com.datastax.oss#java-driver-shaded-guava;25.1-jre-graal-sub-1 from central in [default]
 	com.datastax.oss#native-protocol;1.5.1 from central in [default]
@@ -645,17 +640,14 @@ com.datastax.spark#spark-cassandra-connector_2.12 added as a dependency
 	---------------------------------------------------------------------
 	|      default     |   16  |   0   |   0   |   0   ||   16  |   0   |
 	---------------------------------------------------------------------
-:: retrieving :: org.apache.spark#spark-submit-parent-110abcd4-d19e-42dc-bc99-f9099b7093dd
+:: retrieving :: org.apache.spark#spark-submit-parent-61ceb8c3-fe25-400a-91ef-f77380146bfb
 	confs: [default]
-	0 artifacts copied, 16 already retrieved (0kB/13ms)
+	0 artifacts copied, 16 already retrieved (0kB/12ms)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25/08/21 14:46:41 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25/09/02 16:11:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Setting default log level to &quot;WARN&quot;.
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25/08/21 14:46:42 WARN Utils: Service &#39;SparkUI&#39; could not bind on port 4040. Attempting port 4041.
 </pre></div>
 </div>
 </div>
@@ -753,8 +745,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|de19cf40-7e8c-11f...|  Tesla|Model S|20000.0|
-|de1c6750-7e8c-11f...|  Tesla|Model S|21000.0|
+|b2e63ce0-8806-11f...|  Tesla|Model S|20000.0|
+|b2e6b210-8806-11f...|  Tesla|Model S|21000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -771,8 +763,8 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>+--------------------+-------+-------+-------+
 |                  id|company|  model|  price|
 +--------------------+-------+-------+-------+
-|de1c6750-7e8c-11f...|  Tesla|Model S|21000.0|
-|de19cf40-7e8c-11f...|  Tesla|Model S|20000.0|
+|b2e6b210-8806-11f...|  Tesla|Model S|21000.0|
+|b2e63ce0-8806-11f...|  Tesla|Model S|20000.0|
 +--------------------+-------+-------+-------+
 </pre></div>
 </div>
@@ -813,24 +805,24 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>de1cb570-7e8c-11f0-8e45-cb201be6967f</td>
-      <td>Oldsmobile</td>
-      <td>Model 6C</td>
-      <td>135000.0</td>
+      <td>b2e6b210-8806-11f0-9c52-ddf39791f163</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>21000.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>de19cf40-7e8c-11f0-8e45-cb201be6967f</td>
+      <td>b2e63ce0-8806-11f0-9c52-ddf39791f163</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>20000.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>de1c6750-7e8c-11f0-8e45-cb201be6967f</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>21000.0</td>
+      <td>b2e70030-8806-11f0-9c52-ddf39791f163</td>
+      <td>Oldsmobile</td>
+      <td>Model 6C</td>
+      <td>135000.0</td>
     </tr>
   </tbody>
 </table>
@@ -872,17 +864,17 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>de19cf40-7e8c-11f0-8e45-cb201be6967f</td>
-      <td>Tesla</td>
-      <td>Model S</td>
-      <td>20000.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>de1c6750-7e8c-11f0-8e45-cb201be6967f</td>
+      <td>b2e6b210-8806-11f0-9c52-ddf39791f163</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b2e63ce0-8806-11f0-9c52-ddf39791f163</td>
+      <td>Tesla</td>
+      <td>Model S</td>
+      <td>20000.0</td>
     </tr>
   </tbody>
 </table>
@@ -923,7 +915,7 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
   <tbody>
     <tr>
       <th>0</th>
-      <td>de1c6750-7e8c-11f0-8e45-cb201be6967f</td>
+      <td>b2e6b210-8806-11f0-9c52-ddf39791f163</td>
       <td>Tesla</td>
       <td>Model S</td>
       <td>21000.0</td>
@@ -1113,21 +1105,21 @@ To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLeve
     </tr>
     <tr>
       <th>1</th>
-      <td>4</td>
-      <td>Volkswagen</td>
-      <td>ID.4</td>
-    </tr>
-    <tr>
-      <th>2</th>
       <td>1</td>
       <td>Tesla</td>
       <td>Model S</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>2</td>
       <td>Tesla</td>
       <td>Model 3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Volkswagen</td>
+      <td>ID.4</td>
     </tr>
     <tr>
       <th>4</th>

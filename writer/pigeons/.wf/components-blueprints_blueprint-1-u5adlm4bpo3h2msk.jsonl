@@ -1,0 +1,2 @@
+{"id": "u5adlm4bpo3h2msk", "type": "blueprints_blueprint", "content": {"key": "button@click_1"}, "handlers": {}, "parentId": "blueprints_root", "position": 1}
+{"id": "3r2pb1c0xnffvwdh", "type": "blueprints_uieventtrigger", "content": {"alias": "Button - wf-click", "refComponentId": "03f422ce-bc36-4000-8eb1-da1cc00948c9", "refEventType": "wf-click"}, "handlers": {}, "parentId": "u5adlm4bpo3h2msk", "position": 0, "x": 96, "y": 96}

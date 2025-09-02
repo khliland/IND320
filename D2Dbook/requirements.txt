@@ -24,4 +24,4 @@ sounddevice
 kaleido
 lipsum
 pymongo
-writer>=1.10.0
+streamlit

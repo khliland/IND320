@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -193,7 +193,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/1_Deployment.html">Deployment</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/2_Dashboards.html">Dashboards</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/3_Power_BI.html">Power BI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Writer_Framework.html">Writer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../2_Deployment1/1_Dashboards/4_Streamlit.html">Streamlit</a></li>
 </ul>
 </details></li>
 </ul>
@@ -567,7 +567,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.961 (± 0.018)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.955 (± 0.033)
 </pre></div>
 </div>
 </div>
@@ -1423,7 +1423,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 97.87%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
 </pre></div>
 </div>
 </div>
@@ -1471,7 +1471,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 97.87%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
 </pre></div>
 </div>
 </div>
@@ -1670,7 +1670,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <span class="n">message_length</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">messages</span>
 <span class="n">mean_length</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span> <span class="o">*</span> <span class="n">messages</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">Mean</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">is_online</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">is_online</span> <span class="ow">and</span> <span class="n">interactive</span><span class="p">:</span>
     <span class="n">figure</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">twitch_chat</span><span class="p">:</span>
@@ -1695,33 +1695,6 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">figure</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">twitch_chat</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">messages</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">message_length</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;msg&#39;</span><span class="p">])</span>
-
-<span class="nn">File ~/miniforge3/envs/ind320_25/lib/python3.12/site-packages/river/stream/twitch_chat_stream.py:161,</span> in <span class="ni">TwitchChatStream.__iter__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span> <span class="k">as</span> <span class="n">sock</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_setup_connection</span><span class="p">(</span><span class="n">sock</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">161</span>     <span class="k">yield from</span> <span class="nb">map</span><span class="p">(</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">asdict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gen_items</span><span class="p">(</span><span class="n">sock</span><span class="p">))</span>
-
-<span class="nn">File ~/miniforge3/envs/ind320_25/lib/python3.12/site-packages/river/stream/twitch_chat_stream.py:143,</span> in <span class="ni">TwitchChatStream._gen_items</span><span class="nt">(self, sock)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">143</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>         <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="k">continue</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-<img alt="../../_images/89c53977185d60baa91ee5e5faa5e78332f938e191bd11f3372e0db392379cce.png" src="../../_images/89c53977185d60baa91ee5e5faa5e78332f938e191bd11f3372e0db392379cce.png" />
-</div>
 </div>
 </section>
 <section id="synthetic-streams">
@@ -1738,11 +1711,40 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Synthetic data generator
+
+    Name  Agrawal              
+    Task  Binary classification
+ Samples  ∞                    
+Features  9                    
+ Outputs  1                    
+ Classes  2                    
+  Sparse  False                
+
+Configuration
+-------------
+classification_function  0    
+                   seed  42   
+        balance_classes  False
+           perturbation  0.0  
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[103125.48379952488, 0, 21, 2, 8, 3, 319768.96426257194, 4, 338349.74371145567] 1
+[135983.3438016299, 0, 25, 4, 14, 0, 423837.77555045625, 7, 116330.4466953698] 1
+[98262.43477649744, 0, 55, 1, 18, 6, 144088.12440813935, 19, 139095.35411533137] 0
+[133009.0417030814, 0, 68, 1, 14, 5, 233361.40250149256, 7, 478606.5361033906] 1
+[63757.29086464148, 16955.938253511093, 26, 2, 12, 4, 522851.309309752, 24, 229712.43983592128] 1
 </pre></div>
 </div>
 </div>
@@ -1792,6 +1794,17 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;month&#39;: datetime.datetime(1949, 1, 1, 0, 0)} 112
+{&#39;month&#39;: datetime.datetime(1949, 2, 1, 0, 0)} 118
+{&#39;month&#39;: datetime.datetime(1949, 3, 1, 0, 0)} 132
+{&#39;month&#39;: datetime.datetime(1949, 4, 1, 0, 0)} 129
+{&#39;month&#39;: datetime.datetime(1949, 5, 1, 0, 0)} 121
+{&#39;month&#39;: datetime.datetime(1949, 6, 1, 0, 0)} 135
+{&#39;month&#39;: datetime.datetime(1949, 7, 1, 0, 0)} 148
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1822,6 +1835,23 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
     <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_truth</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
     <span class="c1"># metric = metric.update(y_truth, y_pred).get() # For river &lt; 0.21</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1960-01-01 445.159 417.000
+1960-02-01 476.332 391.000
+1960-03-01 467.187 419.000
+1960-04-01 452.182 461.000
+1960-05-01 437.547 472.000
+1960-06-01 438.079 535.000
+1960-07-01 444.407 622.000
+1960-08-01 452.582 606.000
+1960-09-01 455.664 508.000
+1960-10-01 455.428 461.000
+1960-11-01 453.501 390.000
+1960-12-01 452.975 432.000
+R2: -0.254237
 </pre></div>
 </div>
 </div>
@@ -1864,10 +1894,44 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;January&#39;: 1.0,
+ &#39;February&#39;: 0.36787944117144233,
+ &#39;March&#39;: 0.01831563888873418,
+ &#39;April&#39;: 0.00012340980408667956,
+ &#39;May&#39;: 1.1253517471925912e-07,
+ &#39;June&#39;: 1.3887943864964021e-11,
+ &#39;July&#39;: 2.3195228302435696e-16,
+ &#39;August&#39;: 5.242885663363464e-22,
+ &#39;September&#39;: 1.603810890548638e-28,
+ &#39;October&#39;: 6.639677199580735e-36,
+ &#39;November&#39;: 3.720075976020836e-44,
+ &#39;December&#39;: 2.820770088460135e-53,
+ &#39;ordinal_date&#39;: 715510}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extract_features</span><span class="o">.</span><span class="n">transform_one</span><span class="p">({</span><span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1960</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;January&#39;: 0.00012340980408667956,
+ &#39;February&#39;: 0.01831563888873418,
+ &#39;March&#39;: 0.36787944117144233,
+ &#39;April&#39;: 1.0,
+ &#39;May&#39;: 0.36787944117144233,
+ &#39;June&#39;: 0.01831563888873418,
+ &#39;July&#39;: 0.00012340980408667956,
+ &#39;August&#39;: 1.1253517471925912e-07,
+ &#39;September&#39;: 1.3887943864964021e-11,
+ &#39;October&#39;: 2.3195228302435696e-16,
+ &#39;November&#39;: 5.242885663363464e-22,
+ &#39;December&#39;: 1.603810890548638e-28,
+ &#39;ordinal_date&#39;: 715601}
 </pre></div>
 </div>
 </div>
@@ -1921,6 +1985,23 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
     <span class="c1"># metric = metric.update(y_truth, y_pred).get() # For river &lt; 0.21</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1960-01-01 418.156 417.000
+1960-02-01 408.071 391.000
+1960-03-01 441.154 419.000
+1960-04-01 438.874 461.000
+1960-05-01 448.431 472.000
+1960-06-01 490.385 535.000
+1960-07-01 532.368 622.000
+1960-08-01 542.568 606.000
+1960-09-01 488.254 508.000
+1960-10-01 448.343 461.000
+1960-11-01 414.920 390.000
+1960-12-01 433.052 432.000
+R2: 0.743524
 </pre></div>
 </div>
 </div>

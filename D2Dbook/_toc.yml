@@ -15,7 +15,7 @@ parts:
     - file: 2_Deployment1/1_Dashboards/2_Dashboards
       sections:
       - file: 2_Deployment1/1_Dashboards/3_Power_BI
-      - file: 2_Deployment1/1_Dashboards/4_Writer_Framework
+      - file: 2_Deployment1/1_Dashboards/4_Streamlit
   - caption: Data Sources
     chapters:
     - file: 3_Data_sources/1_Formats/1_Formats

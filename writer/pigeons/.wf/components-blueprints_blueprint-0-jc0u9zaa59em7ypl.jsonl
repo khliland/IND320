@@ -1,0 +1,2 @@
+{"id": "jc0u9zaa59em7ypl", "type": "blueprints_blueprint", "content": {"key": "button@click_1"}, "handlers": {}, "isCodeManaged": false, "parentId": "blueprints_root", "position": 0}
+{"id": "q2g8y363plj7mhlo", "type": "blueprints_uieventtrigger", "content": {"alias": "Button - wf-click", "refComponentId": "bb4d0e86-619e-4367-a180-be28ab6059f4", "refEventType": "wf-click"}, "handlers": {}, "isCodeManaged": false, "outs": [], "parentId": "jc0u9zaa59em7ypl", "position": 0, "x": 96, "y": 96}
