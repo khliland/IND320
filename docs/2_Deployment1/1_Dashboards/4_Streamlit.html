@@ -494,6 +494,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-and-documentation">Examples and documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-dynamic-content">Static vs dynamic content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-vs-explicit-content">Magic vs explicit content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-sate-and-on-click-on-event">Session sate and on_click / on_event</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns-and-caching">Reruns and caching</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nb-under-construction">NB! UNDER CONSTRUCTION</a></li>
 </ul>
             </nav>
@@ -511,34 +517,193 @@ document.write(`
 <ul class="simple">
 <li><p>Maybe the most used freeware dashboard in Python.</p></li>
 <li><p>Enormous choice of elements, widgets and extensions.</p></li>
+<li><p>Can use several interactive graphics packages.</p></li>
 <li><p>Can be run as a local app in a browser or in various other environments.</p></li>
 <li><p>Create a .py file and run using the terminal command below in your favourite Python environment.</p>
 <ul>
-<li><p>First time usage prompts for an email address (press Enter if you do not want to supply it).</p></li>
+<li><p>First time local usage prompts for an email address (press Enter if you do not want to supply it).</p></li>
 <li><p>Code can be updated while the app is running.</p></li>
 <li><p>Any action performed in the app triggers a rerun of the code.</p></li>
 </ul>
 </li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">streamlit</span> <span class="n">run</span> <span class="o">/</span><span class="n">path_to_your_streamlit_folder</span><span class="o">/</span><span class="n">appname</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>run<span class="w"> </span>/path_to_your_streamlit_folder/appname.py
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Teacher&#39;s path to be used below in examples:</span>
+<span class="n">path_prefix</span> <span class="o">=</span> <span class="s2">&quot;/Users/kristian/Documents/GitHub/IND320/streamlit/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="examples-and-documentation">
+<h2>Examples and documentation<a class="headerlink" href="#examples-and-documentation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://streamlit.io/gallery">Examples</a></p></li>
+<li><p><a class="reference external" href="https://streamlit.io/playground">Live playground</a></p></li>
+<li><p><a class="reference external" href="https://docs.streamlit.io/develop/api-reference">API reference</a></p></li>
+</ul>
+</section>
+<section id="basic-concepts">
+<h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Streamlit apps rerun all Python code from top to bottom each time</p>
+<ul>
+<li><p>a user interacts with any widget (like buttons, sliders, or text inputs), or</p></li>
+<li><p>when the source code changes.</p></li>
+</ul>
+</li>
+<li><p>The session state is stored in <em>st.session_state</em></p>
+<ul>
+<li><p>Persistent across interactions.</p></li>
+<li><p>Updated before the code is rerun.</p></li>
+</ul>
+</li>
+<li><p>Caching of data is important to achieve a responsive app.</p></li>
+<li><p>Progress indicators are useful for large operations.</p></li>
+</ul>
+</section>
+<section id="static-vs-dynamic-content">
+<h2>Static vs dynamic content<a class="headerlink" href="#static-vs-dynamic-content" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Static content in Streamlit means fixed outputs—like Markdown, text, or images that do not change unless the code/script changes.</p></li>
+<li><p>Dynamic content is interactive or data-driven—updates based on user input (widgets, forms), external files, or live data sources.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># static_dynamic.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># Static Example</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;# Static Dashboard</span><span class="se">\n</span><span class="s2">This content won&#39;t change until the file is reloaded.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Dynamic Example</span>
+<span class="n">user_input</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">&quot;Type something:&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">user_input</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You entered: </span><span class="si">{</span><span class="n">user_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;static_dynamic.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="magic-vs-explicit-content">
+<h2>Magic vs explicit content<a class="headerlink" href="#magic-vs-explicit-content" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Magic: Streamlit automatically displays objects, markdown, and charts on their own line, no function needed (“magic”).</p></li>
+<li><p>Explicit: Using Streamlit functions like st.write, st.markdown, st.dataframe to control display.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># magic_explicit.py</span>
+<span class="c1"># Magic</span>
+<span class="s2">&quot;**This shows with magic!**&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]})</span>
+<span class="n">df</span>
+
+<span class="c1"># Explicit</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**This shows with explicit command!**&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;magic_explicit.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="session-sate-and-on-click-on-event">
+<h2>Session sate and on_click / on_event<a class="headerlink" href="#session-sate-and-on-click-on-event" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>st.session_state</em> persists variables across reruns, ideal for storing app state and counters.</p>
+<ul>
+<li><p><em>st.session_state</em> is automatically created, and we can extend and manipulate it.</p></li>
+</ul>
+</li>
+<li><p><em>on_click</em>/<em>on_change</em>: Assign callback functions to widgets for event-driven updates.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># session_state.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="k">if</span> <span class="s1">&#39;counter&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Increment&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">increment</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Button clicked </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2"> times&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;session_state.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reruns-and-caching">
+<h2>Reruns and caching<a class="headerlink" href="#reruns-and-caching" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Every interaction reruns the script top-to-bottom; avoid costly computations on every rerun.</p></li>
+<li><p>Use <em>&#64;st.cache_data</em> to store results of expensive operations.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># caching.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span><span class="p">;</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Simulate expensive task</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Data:&quot;</span><span class="p">,</span> <span class="n">get_data</span><span class="p">())</span>
+
+<span class="c1"># Interactive part that costs very little compute time</span>
+<span class="k">if</span> <span class="s1">&#39;counter&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Increment&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">increment</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Button clicked </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2"> times&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;caching.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="nb-under-construction">
 <h2>NB! UNDER CONSTRUCTION<a class="headerlink" href="#nb-under-construction" title="Link to this heading">#</a></h2>
-<p>static vs dynamic, magic vs explicit, session_state + on_change + on_click
-all code reruns, therefore caching is important for performance
-basic elements
-interaction
-layout
-secrets.toml</p>
+<p>Plans:</p>
+<ul class="simple">
+<li><p>basic elements</p></li>
+<li><p>interaction</p></li>
+<li><p>layout</p></li>
+<li><p>secrets.toml</p></li>
+</ul>
 <div class="tip admonition seealso">
 <p class="admonition-title">See also</p>
 <h2 class="rubric" id="resources">Resources</h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.streamlit.io/develop/api-reference">Streamlit API reference</a></p></li>
-<li><p><a class="reference external" href="https://dev.writer.com/framework/builder-basics">Writer doc basics</a></p></li>
-<li><p><a class="reference external" href="https://dev.writer.com/framework/application-state">Writer doc app state</a></p></li>
-<li><p><a class="reference external" href="https://dev.writer.com/framework/event-handlers">Writer doc event handling</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=D0D4Pa22iG0">YouTube: Streamlit: The Fastest Way To Build Python Apps?</a> (11m:56s)</p></li>
+<li><p><a class="reference external" href="https://streamlit.io/gallery">Examples</a></p></li>
+<li><p><a class="reference external" href="https://streamlit.io/playground">Live playground</a></p></li>
+<li><p><a class="reference external" href="https://docs.streamlit.io/develop/api-reference">API reference</a></p></li>
 </ul>
 </div>
 </section>
@@ -608,6 +773,12 @@ secrets.toml</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-and-documentation">Examples and documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-dynamic-content">Static vs dynamic content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-vs-explicit-content">Magic vs explicit content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-sate-and-on-click-on-event">Session sate and on_click / on_event</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns-and-caching">Reruns and caching</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nb-under-construction">NB! UNDER CONSTRUCTION</a></li>
 </ul>
   </nav></div>
