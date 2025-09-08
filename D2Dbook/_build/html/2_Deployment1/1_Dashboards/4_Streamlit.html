@@ -500,6 +500,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-vs-explicit-content">Magic vs explicit content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-sate-and-on-click-on-event">Session sate and on_click / on_event</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns-and-caching">Reruns and caching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nb-under-construction">NB! UNDER CONSTRUCTION</a></li>
 </ul>
             </nav>
@@ -687,6 +688,33 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Create a streamlit app with a single button and a single output.</p></li>
+<li><p>On first time startup:</p>
+<ul>
+<li><p>The button should show the label “Start”.</p></li>
+<li><p>The output should say “Ready”</p></li>
+<li><p>When the button is pressed:</p>
+<ul>
+<li><p>A random integer between 1 and 100 is sampled and cached.</p></li>
+<li><p>The button label is changed to “Next”.</p></li>
+<li><p>The output should show the integer.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>On subsequent button presses:</p>
+<ul>
+<li><p>If the integer is even, divide it by 2 and update the output and cache.</p></li>
+<li><p>If the integer is odd, multiply by 3 and add 1, then update the output and cache.</p></li>
+</ul>
+</li>
+<li><p>The Collatz conjecture says that after clicking the button a sufficient amount of times, the integer will reach 1, no matter what the starting point was.</p></li>
+<li><p>Extra: Let the button say “Half it” and “Triple and add one” based on the current integer shown.</p></li>
+</ul>
+</section>
 <section id="nb-under-construction">
 <h2>NB! UNDER CONSTRUCTION<a class="headerlink" href="#nb-under-construction" title="Link to this heading">#</a></h2>
 <p>Plans:</p>
@@ -779,6 +807,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-vs-explicit-content">Magic vs explicit content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-sate-and-on-click-on-event">Session sate and on_click / on_event</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns-and-caching">Reruns and caching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nb-under-construction">NB! UNDER CONSTRUCTION</a></li>
 </ul>
   </nav></div>
