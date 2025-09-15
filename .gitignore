@@ -9,3 +9,6 @@ No_sync/
 
 # Ignore pycache
 __pycache__
+
+# Ignore compiled book in D2Dbook
+D2Dbook/_build
