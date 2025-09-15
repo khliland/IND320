@@ -504,6 +504,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-interaction">Widgets and interaction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-keys-and-passwords">Storing keys and passwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
 </ul>
             </nav>
@@ -699,7 +700,7 @@ document.write(`
 <ul>
 <li><p>The button should show the label “Start”.</p></li>
 <li><p>The output should say “Ready”</p></li>
-<li><p>When the button is pressed:</p>
+<li><p>When the button is pressed the first time:</p>
 <ul>
 <li><p>A random integer between 1 and 100 is sampled and cached.</p></li>
 <li><p>The button label is changed to “Next”.</p></li>
@@ -795,7 +796,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;layout.py&quot;</span>
-<span class="c1">#!streamlit run {path_prefix}{file_name}</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
 </pre></div>
 </div>
 </div>
@@ -805,9 +806,9 @@ document.write(`
 <h2>Storing keys and passwords<a class="headerlink" href="#storing-keys-and-passwords" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A streamlit app may be dependent on login credentials or similar to interact with the world.</p></li>
-<li><p>Locally one can store secrets in .streamlit/secrets.toml</p>
+<li><p>Locally one can store secrets in <em>.streamlit/secrets.toml</em></p>
 <ul>
-<li><p>Exclude these from the GitHub sync using .gitignore!!</p></li>
+<li><p>Exclude these from the GitHub sync using <em>.gitignore</em>!!</p></li>
 </ul>
 </li>
 <li><p>For apps at streamlit.app, the secrets must be copied into the right place.</p></li>
@@ -830,11 +831,26 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>An optional file named <em>config.toml</em> can also be put in the <em>.streamlit</em> directory.</p></li>
+<li><p>Some options that can be controlled:</p>
+<ul>
+<li><p>the appeareance of the app (theme, colours, element visibility, …),</p></li>
+<li><p>warnings, exceptions and deprecations that will be shown to the users,</p></li>
+<li><p>event logging,</p></li>
+<li><p>automatic reruns on code change,</p></li>
+<li><p>server-side options, etc.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="id1">
 <h2>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Continue on the previous exercise.</p></li>
-<li><p>If the user has pressed the button more than 20 times without reaching 1, pop up a dialog asking if they really want to continue.</p>
+<li><p>If the user has pressed the button 20 times without reaching 1, pop up a dialog asking if they really want to continue.</p>
 <ul>
 <li><p>Look at the <a class="reference external" href="https://docs.streamlit.io/develop/api-reference/execution-flow/st.dialog">documentation for st.dialog()</a> to figure out out to do this (notice, especially the example at the bottom).</p></li>
 </ul>
@@ -927,6 +943,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-interaction">Widgets and interaction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-keys-and-passwords">Storing keys and passwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
 </ul>
   </nav></div>

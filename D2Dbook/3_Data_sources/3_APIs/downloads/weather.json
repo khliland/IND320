@@ -8,36 +8,36 @@
             "id": 804,
             "main": "Clouds",
             "description": "overcast clouds",
-            "icon": "04n"
+            "icon": "04d"
         }
     ],
     "base": "stations",
     "main": {
-        "temp": 288.59,
-        "feels_like": 288.49,
-        "temp_min": 288.59,
-        "temp_max": 289.44,
-        "pressure": 1010,
-        "humidity": 88,
-        "sea_level": 1010,
-        "grnd_level": 995
+        "temp": 283.59,
+        "feels_like": 283.3,
+        "temp_min": 283.59,
+        "temp_max": 284.44,
+        "pressure": 1000,
+        "humidity": 100,
+        "sea_level": 1000,
+        "grnd_level": 985
     },
     "visibility": 10000,
     "wind": {
-        "speed": 4.07,
-        "deg": 101,
-        "gust": 12.35
+        "speed": 1.66,
+        "deg": 111,
+        "gust": 3.2
     },
     "clouds": {
-        "all": 98
+        "all": 100
     },
-    "dt": 1757534104,
+    "dt": 1757920920,
     "sys": {
         "type": 2,
         "id": 2006772,
         "country": "NO",
-        "sunrise": 1757478808,
-        "sunset": 1757526850
+        "sunrise": 1757911497,
+        "sunset": 1757957941
     },
     "timezone": 7200,
     "id": 3139081,
