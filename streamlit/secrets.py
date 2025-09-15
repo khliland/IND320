@@ -4,4 +4,4 @@ import streamlit as st
 # [api] 
 # where the secret is stored after 
 # key =
-st.write("API Key:", st.secrets["api"]["key"])
+st.write("API Key:", st.secrets["api"]["second_key"])

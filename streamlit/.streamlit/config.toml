@@ -1,7 +1,7 @@
 [theme]
-# base = "dark"
+base = "dark"
 # primaryColor = "#F63366"
-# backgroundColor = "black"
+# backgroundColor = "magenta"
 
 [server]
-# runOnSave = false
+runOnSave = true
