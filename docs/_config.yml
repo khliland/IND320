@@ -1,0 +1,66 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Data to Decision - IND320
+author: Kristian Hovde Liland
+logo: logo.png
+
+# Force re-execution of notebooks on each build = force.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: book.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - references.bib
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/khliland/IND320  # Online location of your book
+  path_to_book: D2Dbook  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  
+parse:
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - substitution
+  myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
+#  myst_dmath_enable: true
+#  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+
+sphinx:
+  recursive_update: true
+  config:
+    nb_ipywidgets_js:
+      # Load RequireJS, used by the IPywidgets for dependency management
+      "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js": 
+          "integrity": "sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA="
+          "crossorigin": "anonymous"
+      # Load IPywidgets bundle for embedding.
+      "https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js":
+          "data-jupyter-widgets-cdn": "https://cdn.jsdelivr.net/npm/"
+          "crossorigin": "anonymous"
+    # Make sure Plotly can be used in Sphinx
+    suppress_warnings: ["mystnb.unknown_mime_type"]

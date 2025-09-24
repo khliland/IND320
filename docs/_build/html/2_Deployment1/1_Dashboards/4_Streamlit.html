@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Streamlit &#8212; Data to Decision - IND320</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_Deployment1/1_Dashboards/4_Streamlit';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Static and streaming data" href="../../3_Data_sources/1_Formats/1_Formats.html" />
+    <link rel="prev" title="Power BI" href="3_Power_BI.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../0_General/Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Data to Decision - IND320 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Data to Decision - IND320 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../0_General/Introduction.html">
+                    IND320 - Data to decision
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data-Driven Decision Making</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../1_Decision_making/1_Data_pipeline.html">Data pipeline</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../1_Decision_making/2_Decision_making.html">DDDM</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment 1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Deployment.html">Deployment</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="2_Dashboards.html">Dashboards</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="3_Power_BI.html">Power BI</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Streamlit</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Sources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/1_Formats/1_Formats.html">Static and streaming data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/2_Data_formats.html">Data formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/2_REST.html">REST API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/4_API_Tokens.html">API Tokens</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/1_Preprocessing.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/2_Imputation.html">Imputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../5_Machine_Learning/Machine_Learning.html">Machine Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../5_Machine_Learning/1_Pivoting/1_Pivoting.html">Pivot tables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Machine_Learning/2_Forecasting/1_Forecasting.html">Forecasting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/2_Forecasting/2_ML_approach.html">Machine Learning approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/2_Forecasting/3_SARIMAX.html">SARIMAX</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../5_Machine_Learning/3_Streaming/1_Streaming.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/3_Streaming/2_Streaming_models.html">Streaming models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../5_Machine_Learning/3_Streaming/3_Model_updates.html">Model updates</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deployment 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/2_Graphics/1_Plotly.html">Plotly graphics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/2_Graphics/2_Plotly_interactive.html">Plotly interaction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/2_Graphics/3_Plotly_maps.html">Plotly maps</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/3_Dashboard_design/1_Dashboard_design.html">Dashboard design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/3_Dashboard_design/2_Colours_symbols.html">Colours and symbolics</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../6_Deployment2/4_Reports/1_Reports.html">Reports</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../6_Deployment2/4_Reports/2_Example_report.html">Tips and trics with Jupyter Notebooks</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../7_Appendix/Installation.html">Installation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/khliland/IND320/blob/master/D2Dbook/2_Deployment1/1_Dashboards/4_Streamlit.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/khliland/IND320/issues/new?title=Issue%20on%20page%20%2F2_Deployment1/1_Dashboards/4_Streamlit.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/2_Deployment1/1_Dashboards/4_Streamlit.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Streamlit</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-and-documentation">Examples and documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-dynamic-content">Static vs dynamic content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-vs-explicit-content">Magic vs explicit content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-state-and-on-click-on-event">Session state and on_click / on_event</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns-and-caching">Reruns and caching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-interaction">Widgets and interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-keys-and-passwords">Storing keys and passwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="streamlit">
+<h1>Streamlit<a class="headerlink" href="#streamlit" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Maybe the most used freeware dashboard in Python.</p></li>
+<li><p>Enormous choice of elements, widgets and extensions.</p></li>
+<li><p>Can use several interactive graphics packages.</p></li>
+<li><p>Can be run as a local app in a browser or in various other environments.</p></li>
+<li><p>Create a .py file and run using the terminal command below in your favourite Python environment.</p>
+<ul>
+<li><p>First time local usage prompts for an email address (press Enter if you do not want to supply it).</p></li>
+<li><p>Code can be updated while the app is running.</p></li>
+<li><p>Any action performed in the app triggers a rerun of the code.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>streamlit<span class="w"> </span>run<span class="w"> </span>/path_to_your_streamlit_folder/appname.py
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Teacher&#39;s path to be used below in examples:</span>
+<span class="n">path_prefix</span> <span class="o">=</span> <span class="s2">&quot;/Users/kristian/Documents/GitHub/IND320/streamlit/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="examples-and-documentation">
+<h2>Examples and documentation<a class="headerlink" href="#examples-and-documentation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://streamlit.io/gallery">Examples</a></p></li>
+<li><p><a class="reference external" href="https://streamlit.io/playground">Live playground</a></p></li>
+<li><p><a class="reference external" href="https://docs.streamlit.io/develop/api-reference">API reference</a></p></li>
+</ul>
+</section>
+<section id="basic-concepts">
+<h2>Basic concepts<a class="headerlink" href="#basic-concepts" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Streamlit apps rerun all Python code from top to bottom each time</p>
+<ul>
+<li><p>a user interacts with any widget (like buttons, sliders, or text inputs), or</p></li>
+<li><p>when the source code changes.</p></li>
+</ul>
+</li>
+<li><p>The session state is stored in <em>st.session_state</em></p>
+<ul>
+<li><p>Persistent across interactions.</p></li>
+<li><p>Updated before the code is rerun.</p></li>
+</ul>
+</li>
+<li><p>Caching of data is important to achieve a responsive app.</p></li>
+<li><p>Progress indicators are useful for large operations.</p></li>
+</ul>
+</section>
+<section id="static-vs-dynamic-content">
+<h2>Static vs dynamic content<a class="headerlink" href="#static-vs-dynamic-content" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Static content in Streamlit means fixed outputs—like Markdown, text, or images that do not change unless the code/script changes.</p></li>
+<li><p>Dynamic content is interactive or data-driven—updates based on user input (widgets, forms), external files, or live data sources.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># static_dynamic.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># Static Example</span>
+<span class="n">st</span><span class="o">.</span><span class="n">markdown</span><span class="p">(</span><span class="s2">&quot;# Static Dashboard</span><span class="se">\n</span><span class="s2">This content won&#39;t change until the file is reloaded.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Dynamic Example</span>
+<span class="n">user_input</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span><span class="s2">&quot;Type something:&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">user_input</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You entered: </span><span class="si">{</span><span class="n">user_input</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;static_dynamic.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="magic-vs-explicit-content">
+<h2>Magic vs explicit content<a class="headerlink" href="#magic-vs-explicit-content" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Magic: Streamlit automatically displays objects, markdown, and charts on their own line, no function needed (“magic”).</p></li>
+<li><p>Explicit: Using Streamlit functions like st.write, st.markdown, st.dataframe to control display.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># magic_explicit.py</span>
+<span class="c1"># Magic</span>
+<span class="s2">&quot;**This shows with magic!**&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]})</span>
+<span class="n">df</span>
+
+<span class="c1"># Explicit</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**This shows with explicit command!**&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;magic_explicit.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="session-state-and-on-click-on-event">
+<h2>Session state and on_click / on_event<a class="headerlink" href="#session-state-and-on-click-on-event" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>st.session_state</em> persists variables across reruns, ideal for storing app state and counters.</p>
+<ul>
+<li><p><em>st.session_state</em> is automatically created, and we can extend and manipulate it.</p></li>
+</ul>
+</li>
+<li><p><em>on_click</em>/<em>on_change</em>: Assign callback functions to widgets for event-driven updates.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># session_state.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="k">if</span> <span class="s1">&#39;counter&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Increment&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">increment</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Button clicked </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2"> times&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;session_state.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reruns-and-caching">
+<h2>Reruns and caching<a class="headerlink" href="#reruns-and-caching" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Every interaction reruns the script top-to-bottom; avoid costly computations on every rerun.</p></li>
+<li><p>Use <em>&#64;st.cache_data</em> to store results of expensive operations.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># caching.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span><span class="p">;</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Simulate expensive task</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Data:&quot;</span><span class="p">,</span> <span class="n">get_data</span><span class="p">())</span>
+
+<span class="c1"># Interactive part that costs very little compute time</span>
+<span class="k">if</span> <span class="s1">&#39;counter&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">():</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="s2">&quot;Increment&quot;</span><span class="p">,</span> <span class="n">on_click</span><span class="o">=</span><span class="n">increment</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Button clicked </span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">session_state</span><span class="o">.</span><span class="n">counter</span><span class="si">}</span><span class="s2"> times&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;caching.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Create a streamlit app with a single button and a single output.</p></li>
+<li><p>On first time startup:</p>
+<ul>
+<li><p>The button should show the label “Start”.</p></li>
+<li><p>The output should say “Ready”</p></li>
+<li><p>When the button is pressed the first time:</p>
+<ul>
+<li><p>A random integer between 1 and 100 is sampled and cached.</p></li>
+<li><p>The button label is changed to “Next”.</p></li>
+<li><p>The output should show the integer.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>On subsequent button presses:</p>
+<ul>
+<li><p>If the integer is even, divide it by 2 and update the output and cache.</p></li>
+<li><p>If the integer is odd, multiply by 3 and add 1, then update the output and cache.</p></li>
+</ul>
+</li>
+<li><p>The Collatz conjecture says that after clicking the button a sufficient amount of times, the integer will reach 1, no matter what the starting point was.</p></li>
+<li><p>Extra: Let the button say “Half it” and “Triple and add one” based on the current integer shown.</p></li>
+</ul>
+</section>
+<section id="widgets-and-interaction">
+<h2>Widgets and interaction<a class="headerlink" href="#widgets-and-interaction" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We will look at some basic widgets.</p></li>
+<li><p>The full catalogue is too big for inclusion here.</p></li>
+<li><p>Below:</p>
+<ul>
+<li><p>slider (select_slider for a range),</p></li>
+<li><p>selectbox (dropdown menu),</p></li>
+<li><p>pills (toggle elements),</p></li>
+<li><p>radiobuttons (select one alternative),</p></li>
+<li><p>checkbox,</p></li>
+<li><p>toggle (yes/no switch)</p></li>
+</ul>
+</li>
+<li><p>Also useful: text_input, text_area, date_input, time_input, …</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># widgets.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">slider</span><span class="p">(</span><span class="s2">&quot;Pick a value&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">selectbox</span><span class="p">(</span><span class="s2">&quot;Select title&quot;</span><span class="p">,</span> 
+    <span class="p">(</span><span class="s2">&quot;Ms.&quot;</span><span class="p">,</span> <span class="s2">&quot;Mrs.&quot;</span><span class="p">,</span> <span class="s2">&quot;Mr.&quot;</span><span class="p">,</span> <span class="s2">&quot;Dr.&quot;</span><span class="p">,</span> <span class="s2">&quot;Prof.&quot;</span><span class="p">,</span> <span class="s2">&quot;Lady&quot;</span><span class="p">,</span> <span class="s2">&quot;Lord&quot;</span><span class="p">,</span> <span class="s2">&quot;Dutchess&quot;</span><span class="p">,</span> <span class="s2">&quot;Duke&quot;</span><span class="p">,</span> <span class="s2">&quot;Queen&quot;</span><span class="p">,</span> <span class="s2">&quot;King&quot;</span><span class="p">,</span> <span class="s2">&quot;Master&quot;</span><span class="p">,</span> <span class="s2">&quot;Mistress&quot;</span><span class="p">))</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">pills</span><span class="p">(</span><span class="s2">&quot;Select area&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Ås&quot;</span><span class="p">,</span> <span class="s2">&quot;Ski&quot;</span><span class="p">,</span> <span class="s2">&quot;Drøbak&quot;</span><span class="p">,</span> <span class="s2">&quot;Kroer&quot;</span><span class="p">,</span> <span class="s2">&quot;Vestby&quot;</span><span class="p">])</span>
+<span class="n">subject</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">radio</span><span class="p">(</span><span class="s2">&quot;Choose a subject&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Deployment&quot;</span><span class="p">,</span> <span class="s2">&quot;Data Sources&quot;</span><span class="p">,</span> <span class="s2">&quot;Data Quality&quot;</span><span class="p">,</span> <span class="s2">&quot;Machine Learning&quot;</span><span class="p">])</span>
+<span class="n">check</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">checkbox</span><span class="p">(</span><span class="s2">&quot;Please, check&quot;</span><span class="p">)</span>
+<span class="n">active</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">toggle</span><span class="p">(</span><span class="s2">&quot;Agree, or not?&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="c1"># Use st.session_state to make printout conditional</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Chosen&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">area</span><span class="p">,</span> <span class="n">subject</span><span class="p">,</span> <span class="n">check</span><span class="p">,</span> <span class="n">active</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;widgets.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="layout">
+<h2>Layout<a class="headerlink" href="#layout" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Streamlit apps can be partitioned and layered in various ways.</p></li>
+<li><p>Below:</p>
+<ul>
+<li><p>columns (vertical containers),</p></li>
+<li><p>expander (hidden information),</p></li>
+<li><p>tabs (layers of elements on the same page)</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">columns</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">border</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">left</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;This is the left column&quot;</span><span class="p">)</span>
+    <span class="n">expander</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">expander</span><span class="p">(</span><span class="s2">&quot;Soo secret&quot;</span><span class="p">)</span>
+    <span class="n">expander</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">        This is an explanation that is hidden until you click the expander.</span>
+<span class="s1">    &#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">right</span><span class="p">:</span>
+    <span class="n">tabA</span><span class="p">,</span> <span class="n">tabB</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">tabs</span><span class="p">([</span><span class="s2">&quot;Tab A&quot;</span><span class="p">,</span> <span class="s2">&quot;Tab B&quot;</span><span class="p">])</span>
+
+    <span class="n">tabA</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">&quot;This is tab A&quot;</span><span class="p">)</span>
+    <span class="n">tabA</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;You can put any elements in a tab&quot;</span><span class="p">)</span>
+
+    <span class="n">tabB</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">&quot;This is tab B&quot;</span><span class="p">)</span>
+    <span class="n">tabB</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;You can put any elements in a tab, also here&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;layout.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="storing-keys-and-passwords">
+<h2>Storing keys and passwords<a class="headerlink" href="#storing-keys-and-passwords" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A streamlit app may be dependent on login credentials or similar to interact with the world.</p></li>
+<li><p>Locally one can store secrets in <em>.streamlit/secrets.toml</em></p>
+<ul>
+<li><p>Exclude these from the GitHub sync using <em>.gitignore</em>!!</p></li>
+</ul>
+</li>
+<li><p>For apps at streamlit.app, the secrets must be copied into the right place.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+
+<span class="c1"># Assume secrets.toml has a section called </span>
+<span class="c1"># [api] </span>
+<span class="c1"># where the secret is stored after </span>
+<span class="c1"># key =</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;API Key:&quot;</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;api&quot;</span><span class="p">][</span><span class="s2">&quot;key&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;secrets.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>An optional file named <em>config.toml</em> can also be put in the <em>.streamlit</em> directory.</p></li>
+<li><p>Some options that can be controlled:</p>
+<ul>
+<li><p>the appeareance of the app (theme, colours, element visibility, …),</p></li>
+<li><p>warnings, exceptions and deprecations that will be shown to the users,</p></li>
+<li><p>event logging,</p></li>
+<li><p>automatic reruns on code change,</p></li>
+<li><p>server-side options, etc.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id1">
+<h2>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Continue on the previous exercise.</p></li>
+<li><p>If the user has pressed the button 20 times without reaching 1, pop up a dialog asking if they really want to continue.</p>
+<ul>
+<li><p>Look at the <a class="reference external" href="https://docs.streamlit.io/develop/api-reference/execution-flow/st.dialog">documentation for st.dialog()</a> to figure out out to do this (notice, especially the example at the bottom).</p></li>
+</ul>
+</li>
+</ul>
+<div class="tip admonition seealso">
+<p class="admonition-title">See also</p>
+<h2 class="rubric" id="resources">Resources</h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=D0D4Pa22iG0">YouTube: Streamlit: The Fastest Way To Build Python Apps?</a> (11m:56s)</p></li>
+<li><p><a class="reference external" href="https://streamlit.io/gallery">Examples</a></p></li>
+<li><p><a class="reference external" href="https://streamlit.io/playground">Live playground</a></p></li>
+<li><p><a class="reference external" href="https://docs.streamlit.io/develop/api-reference">API reference</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./2_Deployment1/1_Dashboards"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3_Power_BI.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Power BI</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../3_Data_sources/1_Formats/1_Formats.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Static and streaming data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-and-documentation">Examples and documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts">Basic concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-dynamic-content">Static vs dynamic content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-vs-explicit-content">Magic vs explicit content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#session-state-and-on-click-on-event">Session state and on_click / on_event</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reruns-and-caching">Reruns and caching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#widgets-and-interaction">Widgets and interaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storing-keys-and-passwords">Storing keys and passwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kristian Hovde Liland
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
