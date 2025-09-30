@@ -204,8 +204,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/2_REST.html">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
@@ -215,8 +221,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Signal and noise</a></li>
-
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Signal and noise</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_Noise_reduction.html">Noise reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Decomposition.html">Decomposition</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -491,13 +500,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Signal and noise</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Signal and noise</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -510,22 +514,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="signal-and-noise">
 <h1>Signal and noise<a class="headerlink" href="#signal-and-noise" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Any measured signal may be tainted by noise.</p></li>
-<li><p>Recovering the true signal may be impossible.</p></li>
-<li><p>However, we will look at some methods use various strategies for</p>
-<ul>
-<li><p>suppressing noise,</p></li>
-<li><p>estimating derivatives,</p></li>
-<li><p>decomposing into different frequencies,</p></li>
-<li><p>decomposing into trend, seasonal changes and residual, and</p></li>
-<li><p>exploratory data analysis.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Signal and noise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Any measured signal may be tainted by noise.</p></li>
 <li><p>Recovering the true signal may be impossible.</p></li>
@@ -599,7 +587,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/72ba589bd17e2ffd807dfd8de25b6b913bebf5a10f51640fd5ff33fabdc6e2aa.png" src="../../_images/72ba589bd17e2ffd807dfd8de25b6b913bebf5a10f51640fd5ff33fabdc6e2aa.png" />
+<img alt="../../_images/a4ca75402da7739218f02b6d3a3887577595ff1abae022d201475c9f616605f8.png" src="../../_images/a4ca75402da7739218f02b6d3a3887577595ff1abae022d201475c9f616605f8.png" />
 </div>
 </div>
 <div class="tip admonition seealso">
@@ -678,13 +666,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Signal and noise</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Signal and noise</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-to-noise-ratio-snr">Signal-to-Noise Ratio (SNR)</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

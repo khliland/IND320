@@ -202,8 +202,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../1_Formats/3_Streaming_data.html">Streaming data</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Databases</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Databases</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Spark.html">Spark</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="5_MongoDB.html">MongoDB</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../3_APIs/2_REST.html">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
@@ -213,8 +219,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -489,8 +498,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Databases</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Databases</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">Categories</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">Relational databases</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql">NoSQL</a></li>
@@ -498,9 +505,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -513,10 +517,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="databases">
 <h1>Databases<a class="headerlink" href="#databases" title="Link to this heading">#</a></h1>
-<p>This chapter will give a brief introduction to databases on a level sufficient for usage in the course. As many databases use SQL (Structured Query Language / “sequel”) or a variation of this, we will also show SQL examples.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Databases<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>This chapter will give a brief introduction to databases on a level sufficient for usage in the course. As many databases use SQL (Structured Query Language / “sequel”) or a variation of this, we will also show SQL examples.</p>
 <section id="categories">
 <h2>Categories<a class="headerlink" href="#categories" title="Link to this heading">#</a></h2>
@@ -661,8 +661,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Databases</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Databases</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#categories">Categories</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-databases">Relational databases</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql">NoSQL</a></li>
@@ -670,9 +668,6 @@ document.write(`
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

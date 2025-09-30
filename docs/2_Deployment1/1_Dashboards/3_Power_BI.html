@@ -202,8 +202,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/2_REST.html">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
@@ -213,8 +219,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -653,37 +662,37 @@ document.write(`
     <tr>
       <th>0</th>
       <td>2019-01-01</td>
-      <td>C</td>
-      <td>44</td>
-      <td>9KYHT86AFE</td>
+      <td>A</td>
+      <td>92</td>
+      <td>B4AF8Y54AL</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2019-01-02</td>
-      <td>D</td>
-      <td>23</td>
-      <td>9UG371OP7I</td>
+      <td>A</td>
+      <td>28</td>
+      <td>NYFO2DXM46</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2019-01-03</td>
-      <td>C</td>
-      <td>47</td>
-      <td>97PTO9325C</td>
+      <td>B</td>
+      <td>5</td>
+      <td>TKDW08U4QN</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2019-01-04</td>
-      <td>A</td>
-      <td>83</td>
-      <td>ADGAX8HUAU</td>
+      <td>D</td>
+      <td>41</td>
+      <td>YWV6FBREWT</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2019-01-05</td>
       <td>C</td>
-      <td>42</td>
-      <td>5BLJ6K7806</td>
+      <td>89</td>
+      <td>YWJPL2Q35Q</td>
     </tr>
     <tr>
       <th>...</th>
@@ -695,37 +704,37 @@ document.write(`
     <tr>
       <th>360</th>
       <td>2019-12-27</td>
-      <td>D</td>
-      <td>23</td>
-      <td>8SXW0HQDR6</td>
+      <td>B</td>
+      <td>92</td>
+      <td>9QXBC8VOBD</td>
     </tr>
     <tr>
       <th>361</th>
       <td>2019-12-28</td>
-      <td>A</td>
-      <td>83</td>
-      <td>78GU19TLDU</td>
+      <td>C</td>
+      <td>73</td>
+      <td>MNN8ROJ7FQ</td>
     </tr>
     <tr>
       <th>362</th>
       <td>2019-12-29</td>
-      <td>C</td>
-      <td>19</td>
-      <td>ICNLOD8KWY</td>
+      <td>A</td>
+      <td>25</td>
+      <td>1CX6XR7GVI</td>
     </tr>
     <tr>
       <th>363</th>
       <td>2019-12-30</td>
-      <td>A</td>
-      <td>58</td>
-      <td>972B3Z6JHO</td>
+      <td>D</td>
+      <td>84</td>
+      <td>10T3XRR401</td>
     </tr>
     <tr>
       <th>364</th>
       <td>2019-12-31</td>
       <td>A</td>
-      <td>15</td>
-      <td>V9WZ0P3MAZ</td>
+      <td>54</td>
+      <td>137PSDRLDE</td>
     </tr>
   </tbody>
 </table>

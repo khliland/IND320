@@ -204,8 +204,14 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/1_Formats/3_Streaming_data.html">Streaming data</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/2_Databases/1_Databases.html">Databases</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
 
+<li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../3_Data_sources/3_APIs/1_APIs.html">APIs</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/2_REST.html">REST API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/3_APIs/3_OpenWeatherMap.html">Demonstration of API using OpenWeatherMap.org</a></li>
@@ -215,8 +221,11 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Quality</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a></li>
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/1_Signal/1_Signal_and_noise.html">Signal and noise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/2_Noise_reduction.html">Noise reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/1_Signal/3_Decomposition.html">Decomposition</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../4_Data_quality/2_Outliers/1_Outliers_and_anomalies.html">Outliers and anomalies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/2_Outlier_statistics.html">Outlier statistics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/2_Outliers/3_Anomaly_detection.html">Anomaly detection</a></li>
@@ -761,8 +770,8 @@ $<span class="math notranslate nohighlight">\(\Psi(L)^n y_t = y_t + \psi_1 y_{t-
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 0)   Log Likelihood                -201.927
-Date:                Wed, 24 Sep 2025   AIC                            409.855
-Time:                        20:24:50   BIC                            418.316
+Date:                Tue, 30 Sep 2025   AIC                            409.855
+Time:                        11:59:27   BIC                            418.316
 Sample:                    01-01-1960   HQIC                           413.292
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -817,8 +826,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(0, 0, 1)   Log Likelihood                -516.522
-Date:                Wed, 24 Sep 2025   AIC                           1039.044
-Time:                        20:24:50   BIC                           1047.505
+Date:                Tue, 30 Sep 2025   AIC                           1039.044
+Time:                        11:59:27   BIC                           1047.505
 Sample:                    01-01-1960   HQIC                          1042.481
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -876,8 +885,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 1)   Log Likelihood                -172.610
-Date:                Wed, 24 Sep 2025   AIC                            353.221
-Time:                        20:24:50   BIC                            364.502
+Date:                Tue, 30 Sep 2025   AIC                            353.221
+Time:                        11:59:27   BIC                            364.502
 Sample:                    01-01-1960   HQIC                           357.804
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -950,8 +959,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 1, 1)   Log Likelihood                -137.247
-Date:                Wed, 24 Sep 2025   AIC                            280.494
-Time:                        20:24:50   BIC                            288.930
+Date:                Tue, 30 Sep 2025   AIC                            280.494
+Time:                        11:59:27   BIC                            288.930
 Sample:                    01-01-1960   HQIC                           283.920
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -990,8 +999,8 @@ Warnings:
 =================================================================================
 Dep. Variable:                       wpi   No. Observations:                  124
 Model:             SARIMAX(1, 1, [1, 4])   Log Likelihood                -137.202
-Date:                   Wed, 24 Sep 2025   AIC                            282.404
-Time:                           20:24:50   BIC                            293.653
+Date:                   Tue, 30 Sep 2025   AIC                            282.404
+Time:                           11:59:27   BIC                            293.653
 Sample:                       01-01-1960   HQIC                           286.973
                             - 10-01-1990                                         
 Covariance Type:                     opg                                         
@@ -1052,8 +1061,8 @@ Warnings:
 =========================================================================================
 Dep. Variable:                               wpi   No. Observations:                  124
 Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 4)   Log Likelihood                -135.889
-Date:                           Wed, 24 Sep 2025   AIC                            281.778
-Time:                                   20:24:50   BIC                            295.674
+Date:                           Tue, 30 Sep 2025   AIC                            281.778
+Time:                                   11:59:27   BIC                            295.674
 Sample:                               01-01-1960   HQIC                           287.421
                                     - 10-01-1990                                         
 Covariance Type:                             opg                                         
@@ -1319,8 +1328,8 @@ Warnings:
 ==========================================================================================
 Dep. Variable:                            PerEURO   No. Observations:                  179
 Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 12)   Log Likelihood                 103.848
-Date:                            Wed, 24 Sep 2025   AIC                           -157.695
-Time:                                    20:24:52   BIC                            -79.896
+Date:                            Tue, 30 Sep 2025   AIC                           -157.695
+Time:                                    11:59:29   BIC                            -79.896
 Sample:                                01-01-2000   HQIC                          -126.116
                                      - 11-01-2014                                         
 Covariance Type:                              opg                                         
