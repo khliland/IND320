@@ -510,6 +510,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-through-streamlit">Accessing through Streamlit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
 </ul>
 </li>
@@ -629,7 +630,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;68dba95fb299cc48981f1d71&#39;), ObjectId(&#39;68dba95fb299cc48981f1d72&#39;)], acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InsertManyResult([ObjectId(&#39;68dd76f7c706efef5a2a46e6&#39;), ObjectId(&#39;68dd76f7c706efef5a2a46e7&#39;)], acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -659,9 +660,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;68dba95eb299cc48981f1d70&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
-{&#39;_id&#39;: ObjectId(&#39;68dba95fb299cc48981f1d71&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
-{&#39;_id&#39;: ObjectId(&#39;68dba95fb299cc48981f1d72&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;68dd68366a9739818703389b&#39;), &#39;name&#39;: &#39;Hallvard Lavik&#39;, &#39;age&#39;: 24}
+{&#39;_id&#39;: ObjectId(&#39;68dd68366a9739818703389c&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 28}
+{&#39;_id&#39;: ObjectId(&#39;68dd68366a9739818703389d&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 16}
+{&#39;_id&#39;: ObjectId(&#39;68dd76f6c706efef5a2a46e5&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+{&#39;_id&#39;: ObjectId(&#39;68dd76f7c706efef5a2a46e6&#39;), &#39;name&#39;: &#39;Kristian&#39;, &#39;age&#39;: 27}
+{&#39;_id&#39;: ObjectId(&#39;68dd76f7c706efef5a2a46e7&#39;), &#39;name&#39;: &#39;Ihn Duck&#39;, &#39;age&#39;: 15}
 </pre></div>
 </div>
 </div>
@@ -681,7 +685,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;68dba95eb299cc48981f1d70&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;68dd76f6c706efef5a2a46e5&#39;), &#39;name&#39;: &#39;Hallvard&#39;, &#39;age&#39;: 23}
 </pre></div>
 </div>
 </div>
@@ -713,7 +717,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff00000000000000ef&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1759226207, 6), &#39;t&#39;: 239}, &#39;nModified&#39;: 3, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1759226207, 6), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xadZ\x01\x80k\xda\x8d\\\xa42i\x18\x9e\xa0\xf9\xf5\x00\xba\xc5\x14&#39;, &#39;keyId&#39;: 7512488947117719554}}, &#39;operationTime&#39;: Timestamp(1759226207, 6), &#39;updatedExisting&#39;: True}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>UpdateResult({&#39;n&#39;: 6, &#39;electionId&#39;: ObjectId(&#39;7fffffff00000000000000f0&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1759344375, 9), &#39;t&#39;: 240}, &#39;nModified&#39;: 6, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1759344375, 9), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xfa\xeb\xe5K\xc6\xe84y\x00\xa8+^=Y\x8eD\x9d\x1dM\xb5&#39;, &#39;keyId&#39;: 7512488947117719554}}, &#39;operationTime&#39;: Timestamp(1759344375, 9), &#39;updatedExisting&#39;: True}, acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -737,7 +741,62 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: None, &#39;average_age_over_20&#39;: 26.0}]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: None, &#39;average_age_over_20&#39;: 26.5}]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="accessing-through-streamlit">
+<h3>Accessing through Streamlit<a class="headerlink" href="#accessing-through-streamlit" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Several ways are possible.</p></li>
+<li><p>The Python code below assumes a secrets.toml with a [mongo] section.</p>
+<ul>
+<li><p>Exchange khliland, ind320, rhc2o, IND320, example and data with your equivalent data.</p></li>
+<li><p>Exchange “+PWD+” with the actual password.</p></li>
+<li><p>Copy to <a class="reference external" href="http://streamlit.io">streamlit.io</a> when deploying.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[mongo]</span>
+<span class="n">uri</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mongodb+srv://khliland:&quot;</span><span class="err">+</span><span class="n">PWD</span><span class="err">+</span><span class="s2">&quot;@ind320.rhc2o.mongodb.net/?retryWrites=true&amp;w=majority&amp;appName=IND320&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># mongodb.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pymongo</span>
+
+<span class="c1"># Initialize connection.</span>
+<span class="c1"># Uses st.cache_resource to only run once.</span>
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_resource</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_connection</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">MongoClient</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">secrets</span><span class="p">[</span><span class="s2">&quot;mongo&quot;</span><span class="p">][</span><span class="s2">&quot;uri&quot;</span><span class="p">])</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">init_connection</span><span class="p">()</span>
+
+<span class="c1"># Pull data from the collection.</span>
+<span class="c1"># Uses st.cache_data to only rerun when the query changes or after 10 min.</span>
+<span class="nd">@st</span><span class="o">.</span><span class="n">cache_data</span><span class="p">(</span><span class="n">ttl</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">():</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s1">&#39;example&#39;</span><span class="p">]</span>
+    <span class="n">collection</span> <span class="o">=</span> <span class="n">db</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">items</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+
+<span class="c1"># Print results.</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> years old&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path_prefix</span> <span class="o">=</span> <span class="s2">&quot;/Users/kristian/Documents/GitHub/IND320/streamlit/&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;mongodb.py&quot;</span>
+<span class="c1"># !streamlit run {path_prefix}{file_name}</span>
 </pre></div>
 </div>
 </div>
@@ -757,7 +816,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff00000000000000ef&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1759226207, 8), &#39;t&#39;: 239}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1759226207, 8), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xadZ\x01\x80k\xda\x8d\\\xa42i\x18\x9e\xa0\xf9\xf5\x00\xba\xc5\x14&#39;, &#39;keyId&#39;: 7512488947117719554}}, &#39;operationTime&#39;: Timestamp(1759226207, 8)}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff00000000000000f0&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1759344375, 10), &#39;t&#39;: 240}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1759344375, 10), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xfa\xeb\xe5K\xc6\xe84y\x00\xa8+^=Y\x8eD\x9d\x1dM\xb5&#39;, &#39;keyId&#39;: 7512488947117719554}}, &#39;operationTime&#39;: Timestamp(1759344375, 10)}, acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -775,7 +834,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 1, &#39;electionId&#39;: ObjectId(&#39;7fffffff00000000000000ef&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1759226207, 10), &#39;t&#39;: 239}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1759226207, 10), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xadZ\x01\x80k\xda\x8d\\\xa42i\x18\x9e\xa0\xf9\xf5\x00\xba\xc5\x14&#39;, &#39;keyId&#39;: 7512488947117719554}}, &#39;operationTime&#39;: Timestamp(1759226207, 10)}, acknowledged=True)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DeleteResult({&#39;n&#39;: 3, &#39;electionId&#39;: ObjectId(&#39;7fffffff00000000000000f0&#39;), &#39;opTime&#39;: {&#39;ts&#39;: Timestamp(1759344375, 14), &#39;t&#39;: 240}, &#39;ok&#39;: 1.0, &#39;$clusterTime&#39;: {&#39;clusterTime&#39;: Timestamp(1759344375, 14), &#39;signature&#39;: {&#39;hash&#39;: b&#39;\xfa\xeb\xe5K\xc6\xe84y\x00\xa8+^=Y\x8eD\x9d\x1dM\xb5&#39;, &#39;keyId&#39;: 7512488947117719554}}, &#39;operationTime&#39;: Timestamp(1759344375, 14)}, acknowledged=True)
 </pre></div>
 </div>
 </div>
@@ -870,6 +929,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading">Reading</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating">Updating</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregating">Aggregating</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-through-streamlit">Accessing through Streamlit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting">Deleting</a></li>
 </ul>
 </li>
