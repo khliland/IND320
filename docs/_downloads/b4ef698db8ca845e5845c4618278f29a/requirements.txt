@@ -19,6 +19,7 @@ hoggormplot
 scikit-learn
 ipywidgets
 plotly
+anywidget
 pydub
 sounddevice
 kaleido

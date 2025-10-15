@@ -857,7 +857,7 @@ Proportion: 1 in 84927
 <div class="math notranslate nohighlight">
 \[t^2 = (\bar{x}-\mu) \hat{\Sigma}_{\bar{x}}^{-1} (\bar{x}-\mu)^T\]</div>
 <ul class="simple">
-<li><p>In practice we estimate <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_{\bar{x}}\)</span> from “in control” data and look at single observations for <span class="math notranslate nohighlight">\(\mu\)</span>.</p></li>
+<li><p>In practice we estimate <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\hat{\Sigma}_{\bar{x}}\)</span> from “in control” data and look at single observations for <span class="math notranslate nohighlight">\(\bar{x}\)</span>, i.e., <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\frac{n-p}{p(n-1)}t^2 \sim F_{p,n-p}\]</div>
@@ -1059,7 +1059,7 @@ Proportion: 1 in 84927
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.fft</span><span class="w"> </span><span class="kn">import</span> <span class="n">dct</span><span class="p">,</span> <span class="n">idct</span>
-<span class="n">fourier_signal</span> <span class="o">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">pdata</span><span class="p">[</span><span class="s2">&quot;TEMP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">fourier_signal</span> <span class="o">=</span> <span class="n">dct</span><span class="p">(</span><span class="n">pdata</span><span class="p">[</span><span class="s2">&quot;TEMP&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s2">&quot;forward&quot;</span><span class="p">)</span>
 
 <span class="c1"># Plot the Fourier transform</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
@@ -1071,7 +1071,7 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/91a23b77bd9512a0b86bb5a53c46e5865c7f267f56fcdae52c35295fd99b80be.png" src="../../_images/91a23b77bd9512a0b86bb5a53c46e5865c7f267f56fcdae52c35295fd99b80be.png" />
+<img alt="../../_images/3241ee5fe8ca89fb8ad14fdf36eeeab805e61f6b35901babe34dfff8f51e31fd.png" src="../../_images/3241ee5fe8ca89fb8ad14fdf36eeeab805e61f6b35901babe34dfff8f51e31fd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1097,7 +1097,7 @@ Proportion: 1 in 84927
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e549a2706b69df4bd2f35235d277a63c8826d739f485c203c94449f5443e8db3.png" src="../../_images/e549a2706b69df4bd2f35235d277a63c8826d739f485c203c94449f5443e8db3.png" />
+<img alt="../../_images/2169fbc33d2e4072fe0632d5550896c4930548ad0e6fe4462077a1639a35eb6d.png" src="../../_images/2169fbc33d2e4072fe0632d5550896c4930548ad0e6fe4462077a1639a35eb6d.png" />
 </div>
 </div>
 <div class="tip admonition seealso">

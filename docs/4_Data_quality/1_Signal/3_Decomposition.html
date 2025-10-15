@@ -734,7 +734,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove frequencies below 4, i.e., a high-pass filter</span>
 <span class="n">filtered_fourier_signal</span> <span class="o">=</span> <span class="n">fourier_signal</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">filtered_fourier_signal</span><span class="p">[(</span><span class="n">W</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># &lt;- Come playe with me!</span>
+<span class="n">filtered_fourier_signal</span><span class="p">[(</span><span class="n">W</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># &lt;- Come play with me!</span>
 <span class="n">cut_signal</span> <span class="o">=</span> <span class="n">idct</span><span class="p">(</span><span class="n">filtered_fourier_signal</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s2">&quot;forward&quot;</span><span class="p">)</span>
 
 <span class="c1"># Plot the filtered signal</span>
@@ -859,7 +859,7 @@ document.write(`
 </ul>
 <p><strong>Fitting</strong>:</p>
 <ul class="simple">
-<li><p>Typically STL is fitted one component at a time.</p>
+<li><p>Simplified, one can think of STL is being fitted one component at a time.</p>
 <ul>
 <li><p>Smooth the series to estimate the trend,<br />
 <span class="math notranslate nohighlight">\(T = f_{smooth,T}(X)\)</span>.</p></li>
@@ -871,6 +871,7 @@ document.write(`
 <span class="math notranslate nohighlight">\(R = X - T - S\)</span></p></li>
 </ul>
 </li>
+<li><p>In practice, this happens within a loop where observations are given weights which are updated iteratively based on previous fits.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1046,14 +1047,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stl</span> <span class="o">=</span> <span class="n">STL</span><span class="p">(</span><span class="n">births</span><span class="p">[</span><span class="s2">&quot;Births&quot;</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stl</span> <span class="o">=</span> <span class="n">STL</span><span class="p">(</span><span class="n">births</span><span class="p">[</span><span class="s2">&quot;Births&quot;</span><span class="p">],</span> <span class="n">period</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">stl</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f8281da34bba5996bc4d70ff5f86fa4aa6826d8263c16f293550f737b7258a02.png" src="../../_images/f8281da34bba5996bc4d70ff5f86fa4aa6826d8263c16f293550f737b7258a02.png" />
+<img alt="../../_images/9d997479690b3b1fab2d32b3ab56bc08fb61080f27343c4d043ee80731f6bcf1.png" src="../../_images/9d997479690b3b1fab2d32b3ab56bc08fb61080f27343c4d043ee80731f6bcf1.png" />
 </div>
 </div>
 </section>

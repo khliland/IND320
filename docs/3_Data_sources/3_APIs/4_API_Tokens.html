@@ -500,7 +500,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barentswatch">BarentsWatch</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-functions">Convenience functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-data">Requesting data</a></li>
 </ul>
 </li>
 </ul>
@@ -568,12 +567,6 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="requesting-data">
-<h3>Requesting data<a class="headerlink" href="#requesting-data" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Now that the token is in place, we can request data for 3600 seconds before needing a new one.</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_2023_1</span> <span class="o">=</span> <span class="n">AT</span><span class="o">.</span><span class="n">get_request</span><span class="p">(</span><span class="s1">&#39;/v1/geodata/fishhealth/locality/2023/1&#39;</span><span class="p">,</span> <span class="n">token</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
@@ -691,7 +684,6 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#barentswatch">BarentsWatch</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convenience-functions">Convenience functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#requesting-data">Requesting data</a></li>
 </ul>
 </li>
 </ul>
