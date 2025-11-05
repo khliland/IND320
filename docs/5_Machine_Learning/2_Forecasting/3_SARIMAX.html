@@ -208,7 +208,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
@@ -236,7 +235,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -511,6 +509,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarima-seasonal-autoregressive-integrated-moving-average-models">SARIMA - seasonal autoregressive integrated moving average models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous-variables">Exogenous variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-model-diagnostic-tests">Interpretation of Model Diagnostic Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ljung-box-l1-q">Ljung-Box (L1) (Q)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jarque-bera-jb">Jarque-Bera (JB)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heteroskedasticity-h">Heteroskedasticity (H)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skew-and-kurtosis">Skew and Kurtosis</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarimax-prediction">SARIMAX prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questercise">Questercise</a></li>
 </ul>
@@ -562,7 +567,6 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">statsmodels.api</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sm</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
 
@@ -732,6 +736,7 @@ document.write(`
 <ul class="simple">
 <li><p>Back-shift <span class="math notranslate nohighlight">\(n\)</span> time points, i.e., extracts the measurement <span class="math notranslate nohighlight">\(n\)</span> time points before <span class="math notranslate nohighlight">\(t\)</span>.
 $<span class="math notranslate nohighlight">\(L^{n} y_{t} = y_{t-n}\)</span>$</p></li>
+<li><p>Also noted as <span class="math notranslate nohighlight">\(B^{n}\)</span> in some litterature.</p></li>
 <li><p>Combined with a vector of parameters <span class="math notranslate nohighlight">\(\Psi\)</span>, we define a polynomial function
 $<span class="math notranslate nohighlight">\(\Psi(L)^n y_t = y_t + \psi_1 y_{t-1} + \psi_2 y_{t-2} + ... + \psi_n y_{t-n}\)</span>$</p></li>
 <li><p>This will enable compact notation of the SARIMAX models, exchanging sums with the polynomial function.</p></li>
@@ -770,8 +775,8 @@ $<span class="math notranslate nohighlight">\(\Psi(L)^n y_t = y_t + \psi_1 y_{t-
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 0)   Log Likelihood                -201.927
-Date:                Wed, 15 Oct 2025   AIC                            409.855
-Time:                        18:40:20   BIC                            418.316
+Date:                Wed, 05 Nov 2025   AIC                            409.855
+Time:                        21:00:47   BIC                            418.316
 Sample:                    01-01-1960   HQIC                           413.292
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -826,8 +831,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(0, 0, 1)   Log Likelihood                -516.522
-Date:                Wed, 15 Oct 2025   AIC                           1039.044
-Time:                        18:40:20   BIC                           1047.505
+Date:                Wed, 05 Nov 2025   AIC                           1039.044
+Time:                        21:00:47   BIC                           1047.505
 Sample:                    01-01-1960   HQIC                          1042.481
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -885,8 +890,8 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 0, 1)   Log Likelihood                -172.610
-Date:                Wed, 15 Oct 2025   AIC                            353.221
-Time:                        18:40:20   BIC                            364.502
+Date:                Wed, 05 Nov 2025   AIC                            353.221
+Time:                        21:00:48   BIC                            364.502
 Sample:                    01-01-1960   HQIC                           357.804
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -959,8 +964,46 @@ Warnings:
 ==============================================================================
 Dep. Variable:                    wpi   No. Observations:                  124
 Model:               SARIMAX(1, 1, 1)   Log Likelihood                -137.247
-Date:                Wed, 15 Oct 2025   AIC                            280.494
-Time:                        18:40:20   BIC                            288.930
+Date:                Wed, 05 Nov 2025   AIC                            280.494
+Time:                        21:00:48   BIC                            288.930
+Sample:                    01-01-1960   HQIC                           283.920
+                         - 10-01-1990                                         
+Covariance Type:                  opg                                         
+==============================================================================
+                 coef    std err          z      P&gt;|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+ar.L1          0.9412      0.030     31.695      0.000       0.883       0.999
+ma.L1         -0.4656      0.088     -5.314      0.000      -0.637      -0.294
+sigma2         0.5398      0.054     10.071      0.000       0.435       0.645
+===================================================================================
+Ljung-Box (L1) (Q):                   0.05   Jarque-Bera (JB):                 9.12
+Prob(Q):                              0.82   Prob(JB):                         0.01
+Heteroskedasticity (H):              28.75   Skew:                             0.07
+Prob(H) (two-sided):                  0.00   Kurtosis:                         4.33
+===================================================================================
+
+Warnings:
+[1] Covariance matrix calculated using the outer product of gradients (complex-step).
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Fit an ARIMA(1,1,1) model</span>
+<span class="n">mod</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">tsa</span><span class="o">.</span><span class="n">statespace</span><span class="o">.</span><span class="n">SARIMAX</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;wpi&#39;</span><span class="p">],</span> <span class="n">trend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span> <span class="c1"># AIC gives us a measure of fit for comparison</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                               SARIMAX Results                                
+==============================================================================
+Dep. Variable:                    wpi   No. Observations:                  124
+Model:               SARIMAX(1, 1, 1)   Log Likelihood                -137.247
+Date:                Wed, 05 Nov 2025   AIC                            280.494
+Time:                        21:00:48   BIC                            288.930
 Sample:                    01-01-1960   HQIC                           283.920
                          - 10-01-1990                                         
 Covariance Type:                  opg                                         
@@ -999,8 +1042,8 @@ Warnings:
 =================================================================================
 Dep. Variable:                       wpi   No. Observations:                  124
 Model:             SARIMAX(1, 1, [1, 4])   Log Likelihood                -137.202
-Date:                   Wed, 15 Oct 2025   AIC                            282.404
-Time:                           18:40:20   BIC                            293.653
+Date:                   Wed, 05 Nov 2025   AIC                            282.404
+Time:                           21:00:48   BIC                            293.653
 Sample:                       01-01-1960   HQIC                           286.973
                             - 10-01-1990                                         
 Covariance Type:                     opg                                         
@@ -1032,9 +1075,13 @@ Warnings:
 <li><p>For seasons of length <span class="math notranslate nohighlight">\(s\)</span>, the seasonal part is obtained by applying an ARIMA model with lags, <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, and integration time, <span class="math notranslate nohighlight">\(D\)</span>, that are multiples of <span class="math notranslate nohighlight">\(s\)</span>, i.e., if <span class="math notranslate nohighlight">\(P=2\)</span>, the included time points would be <span class="math notranslate nohighlight">\(t-1s\)</span> and <span class="math notranslate nohighlight">\(t-2s\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
+\[ \Theta(L)^{p} \Delta^{d} y_{t} = \Phi(L)^{q} \epsilon_{t}\]</div>
+<div class="math notranslate nohighlight">
+\[ \Downarrow \]</div>
+<div class="math notranslate nohighlight">
 \[ \theta(L^{s})^{P} \Delta_{s}^{D} y_{t} = \phi(L^{s})^{Q} \epsilon_{t} \]</div>
 <ul class="simple">
-<li><p>After the seasonal part has been removed, another <span class="math notranslate nohighlight">\(ARIMA(p, d, q)\)</span> applied to <span class="math notranslate nohighlight">\(\Delta_{s}^{D} y_{t}\)</span> which is equivalent to multiplying the two models together.</p></li>
+<li><p>After the seasonal part has been removed, another <span class="math notranslate nohighlight">\(ARIMA(p, d, q)\)</span> is applied to <span class="math notranslate nohighlight">\(\Delta_{s}^{D} y_{t}\)</span> which is equivalent to multiplying the two models together.</p></li>
 <li><p>The <span class="math notranslate nohighlight">\(SARIMA(p, d, q)(P, D, Q, s)\)</span> model then becomes:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -1061,8 +1108,8 @@ Warnings:
 =========================================================================================
 Dep. Variable:                               wpi   No. Observations:                  124
 Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 4)   Log Likelihood                -135.889
-Date:                           Wed, 15 Oct 2025   AIC                            281.778
-Time:                                   18:40:20   BIC                            295.674
+Date:                           Wed, 05 Nov 2025   AIC                            281.778
+Time:                                   21:00:48   BIC                            295.674
 Sample:                               01-01-1960   HQIC                           287.421
                                     - 10-01-1990                                         
 Covariance Type:                             opg                                         
@@ -1328,8 +1375,8 @@ Warnings:
 ==========================================================================================
 Dep. Variable:                            PerEURO   No. Observations:                  179
 Model:             SARIMAX(1, 1, 1)x(1, 1, 1, 12)   Log Likelihood                 103.848
-Date:                            Wed, 15 Oct 2025   AIC                           -157.695
-Time:                                    18:40:22   BIC                            -79.896
+Date:                            Wed, 05 Nov 2025   AIC                           -157.695
+Time:                                    21:00:49   BIC                            -79.896
 Sample:                                01-01-2000   HQIC                          -126.116
                                      - 11-01-2014                                         
 Covariance Type:                              opg                                         
@@ -1385,6 +1432,64 @@ Warnings:
 <li><p>Play with the OilExchange data.</p></li>
 <li><p>See if you can improve the fit of the model by adjusting lags and removing the least significant terms in the model.</p></li>
 </ul>
+</section>
+<section id="interpretation-of-model-diagnostic-tests">
+<h2>Interpretation of Model Diagnostic Tests<a class="headerlink" href="#interpretation-of-model-diagnostic-tests" title="Link to this heading">#</a></h2>
+<section id="ljung-box-l1-q">
+<h3>Ljung-Box (L1) (Q)<a class="headerlink" href="#ljung-box-l1-q" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Purpose:</strong> Tests for autocorrelation in the residuals.</p></li>
+<li><p><strong>Null hypothesis (H₀):</strong> The residuals are independently distributed (no autocorrelation up to lag L1).</p></li>
+<li><p><strong>Result:</strong></p>
+<ul>
+<li><p><strong>Q:</strong> test statistic</p></li>
+<li><p><strong>Prob(Q):</strong> &gt;0.05 is good</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="jarque-bera-jb">
+<h3>Jarque-Bera (JB)<a class="headerlink" href="#jarque-bera-jb" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Purpose:</strong> Tests whether the residuals are normally distributed (based on skewness and kurtosis).</p></li>
+<li><p><strong>Null hypothesis (H₀):</strong> The residuals are normally distributed.</p></li>
+<li><p><strong>Result:</strong></p>
+<ul>
+<li><p><strong>JB:</strong> test statistic</p></li>
+<li><p><strong>Prob(JB):</strong> &gt;0.05 is good</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="heteroskedasticity-h">
+<h3>Heteroskedasticity (H)<a class="headerlink" href="#heteroskedasticity-h" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Purpose:</strong> Tests whether the residuals have constant variance (homoskedasticity).</p></li>
+<li><p><strong>Null hypothesis (H₀):</strong> The residuals have constant variance.</p></li>
+<li><p><strong>Result:</strong></p>
+<ul>
+<li><p><strong>H:</strong> test statistic</p></li>
+<li><p><strong>Prob(H):</strong> &gt;0.05 is good</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="skew-and-kurtosis">
+<h3>Skew and Kurtosis<a class="headerlink" href="#skew-and-kurtosis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Skew:</strong> Measures asymmetry of the residuals. 0 means symmetric; positive means right-skewed.</p></li>
+<li><p><strong>Kurtosis:</strong> Measures “tailedness” of the residuals. 3 is normal; higher means heavier tails.</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>In practice:</strong></p>
+<ul class="simple">
+<li><p>Independence and constant variance are more important for forecasting than perfect normality.</p></li>
+<li><p>Non-normality is common in real-world time series models.</p></li>
+</ul>
+</section>
 </section>
 <section id="sarimax-prediction">
 <h2>SARIMAX prediction<a class="headerlink" href="#sarimax-prediction" title="Link to this heading">#</a></h2>
@@ -1573,6 +1678,13 @@ Warnings:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarima-seasonal-autoregressive-integrated-moving-average-models">SARIMA - seasonal autoregressive integrated moving average models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exogenous-variables">Exogenous variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-model-diagnostic-tests">Interpretation of Model Diagnostic Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ljung-box-l1-q">Ljung-Box (L1) (Q)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jarque-bera-jb">Jarque-Bera (JB)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heteroskedasticity-h">Heteroskedasticity (H)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skew-and-kurtosis">Skew and Kurtosis</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sarimax-prediction">SARIMAX prediction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questercise">Questercise</a></li>
 </ul>

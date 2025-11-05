@@ -205,7 +205,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
@@ -233,7 +232,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../4_Data_quality/3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4_Data_quality/3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../4_Data_quality/3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -549,7 +547,7 @@ document.write(`
 <li><p>A new conda environment can be created and prepared, e.g., as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">D2D_env</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">D2D_env</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="n">conda</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.12.10</span> <span class="n">pip</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">conda</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.11</span> <span class="n">pip</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">path_to_D2Dbook</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -560,7 +558,7 @@ document.write(`
 </div>
 </li>
 <li><p>If you get an error regarding Rust, you may need to install Rust separately, e.g, from <a class="reference external" href="https://www.rust-lang.org/tools/install">their webpage</a> or using <a class="reference external" href="https://formulae.brew.sh/formula/rust">Homebrew</a>.</p></li>
-<li><p>As of August 2025 the Python version has been specified above to conform to the supported Python version of the Cassandra driver from DataStax.</p></li>
+<li><p>As of November 2025 the Python version has been specified above to conform to the supported Python version of the Cassandra driver from DataStax.</p></li>
 </ul>
 </section>
 </section>
@@ -606,8 +604,8 @@ document.write(`
 <ul class="simple">
 <li><p>Docker installed on system</p></li>
 <li><p>“cassandra:latest” image installed in docker</p></li>
-<li><p>Python/Conda environment with Python &gt;=3.8 and &lt;=3.12.10 *</p></li>
-<li><p>*As of August 2025 Cassandra drivers directly support up to Python 3.12.</p></li>
+<li><p>Python/Conda environment with Python &gt;=3.8 and &lt;=3.11.xx *</p></li>
+<li><p>*As of November 2025 Cassandra drivers directly support up to Python 3.11.</p></li>
 </ul>
 </section>
 <section id="java">
@@ -618,6 +616,7 @@ document.write(`
 <ul>
 <li><p><a class="reference external" href="https://learn.microsoft.com/en-gb/java/openjdk/download">Microsoft’s version of OpenJDK</a> supports all major platforms.</p></li>
 <li><p>After an OS update, a reinstall of Java may be needed.</p></li>
+<li><p>It is not recommended to go higher than Java 17 in Windows, due to limitations in Spark compatiblity (limiting writing to Cassandra).</p></li>
 </ul>
 </li>
 <li><p>Access to Java can be enabled system wide using the environment JAVA_HOME or on a script-wise level using the Python <em>os</em> package.</p>

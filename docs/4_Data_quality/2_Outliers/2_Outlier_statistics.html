@@ -208,7 +208,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
@@ -236,7 +235,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/4_Synchronisation.html">Synchronisation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../3_Preprocessing/5_Spectrograms.html">Spectrograms</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -796,7 +794,7 @@ Proportion: 1 in 84927
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a function that checks if n consecutive samples are above k SD or below k SD</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a function that checks if n consecutive samples are above k SD or below -k SD</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">check_consecutive</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">SD</span><span class="p">):</span>
     <span class="n">index</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">dataUp</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">-</span><span class="n">mu</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">k</span><span class="o">*</span><span class="n">SD</span>

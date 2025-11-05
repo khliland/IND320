@@ -208,7 +208,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/2_MySQL.html">MySQL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/3_Cassandra.html">Cassandra</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/4_Spark.html">Spark</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="../../3_Data_sources/2_Databases/5_MongoDB.html">MongoDB</a></li>
 </ul>
 </details></li>
@@ -236,7 +235,6 @@
 <li class="toctree-l2"><a class="reference internal" href="3_Time_formats.html">Time formats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4_Synchronisation.html">Synchronisation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Spectrograms</a></li>
-
 </ul>
 </details></li>
 </ul>
@@ -500,14 +498,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spectrograms</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Spectrograms</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-computation">Spectrogram computation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-on-time-series">Spectrogram on time series</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -520,26 +513,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="spectrograms">
 <h1>Spectrograms<a class="headerlink" href="#spectrograms" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Rich time series like sound recordings can be converted to spectrograms, e.g., ussing FFT methods.</p>
-<ul>
-<li><p>Spectrograms show the distribution in the frequency domain as a function of time.</p></li>
-<li><p>In practice this is implemented by a moving window technique with local FFT computations (overlapping windows) called <a class="reference external" href="https://en.wikipedia.org/wiki/Short-time_Fourier_transform">Short-time Fourier transform</a>.</p></li>
-</ul>
-</li>
-<li><p>Some limitations:</p>
-<ul>
-<li><p>The decomposition is dependent on the sampling frequency, <span class="math notranslate nohighlight">\(f_s\)</span> (samples per second), and time window length <span class="math notranslate nohighlight">\(T\)</span> seconds.</p></li>
-<li><p>The highest frequency that can be resolved is called the Nyquist frequency <span class="math notranslate nohighlight">\(= f_s/2\)</span> Hz, i.e., 22050 Hz for a 44.1 kHz sampling (due to the Fourier transform).</p></li>
-<li><p>The lowest frequency that can be resolved is the Rayleigh frequency <span class="math notranslate nohighlight">\(= 1/T\)</span> Hz, i.e., for a window of length 1152 samples (MP3) and 44.1 kHz, this results in a minimum frequency of <span class="math notranslate nohighlight">\(\frac{1}{\frac{1152}{44100 Hz}} = \frac{1}{26.1 ms} = 38.3 Hz\)</span>.</p></li>
-<li><p>Too short windows will give a “smearing effect” on the extracted frequencies (see <a class="reference external" href="https://en.wikipedia.org/wiki/Short-time_Fourier_transform">Wikipedia article</a>) where precision is low on the extracted frequencies.</p></li>
-<li><p>For time series, this means we have an upper bound (often of less interest) and a lower bound of the frequencies that can be resolved. The lower bound being “waves in the signal” <span class="math notranslate nohighlight">\(\leq\)</span> “length of the window”.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Spectrograms<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Rich time series like sound recordings can be converted to spectrograms, e.g., ussing FFT methods.</p>
 <ul>
@@ -642,6 +615,9 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Music: https://www.chosic.com/free-music/all/ </span>
 <span class="c1"># Load MP3 file Bird.mp3 and plot the spectrogram</span>
 <span class="c1"># NOTE: Needs `ffprobe` or `avprobe` installed on the computer.</span>
+<span class="c1"># Add /opt/homebrew/bin to PATH on macOS with Homebrew</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span> <span class="o">+</span> <span class="s1">&#39;/opt/homebrew/bin&#39;</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydub</span><span class="w"> </span><span class="kn">import</span> <span class="n">AudioSegment</span>
 <span class="n">song</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_mp3</span><span class="p">(</span><span class="s2">&quot;../../data/Bird.mp3&quot;</span><span class="p">)</span>
 
@@ -798,14 +774,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Spectrograms</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Spectrograms</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-computation">Spectrogram computation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrogram-on-time-series">Spectrogram on time series</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
