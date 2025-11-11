@@ -510,6 +510,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-forecasts">Streaming forecasts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#airline-passenger-data">Airline passenger data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-raw-data">Plot raw data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sarima-feature-engineering">SARIMA + feature engineering</a></li>
 </ul>
 </li>
@@ -569,7 +570,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.966 (± 0.029)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.961 (± 0.027)
 </pre></div>
 </div>
 </div>
@@ -1425,7 +1426,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
 </pre></div>
 </div>
 </div>
@@ -1473,7 +1474,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 96.81%
 </pre></div>
 </div>
 </div>
@@ -1538,6 +1539,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <h2>Dynamic models<a class="headerlink" href="#dynamic-models" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>For comparison, we can continue learning during prediction of the test set (given that labels come together with the streaming data).</p></li>
+<li><p>See the introduction on streaming models regarding strategies.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1573,12 +1575,13 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;y_test&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dynamic_pred</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dynamic_pred&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/351822fa8e7fa55038a105fd26ff882b40356c8abffbda12417a0052c5104a11.png" src="../../_images/351822fa8e7fa55038a105fd26ff882b40356c8abffbda12417a0052c5104a11.png" />
+<img alt="../../_images/118c7658cb852512ce13518a0b7356928b8da532828c4c2ff3e4575b2295cb17.png" src="../../_images/118c7658cb852512ce13518a0b7356928b8da532828c4c2ff3e4575b2295cb17.png" />
 </div>
 </div>
 <p><strong>Comment:</strong> In this case, one classification changed to the worse with the dynamic model, the rest stayed the same.</p>
@@ -1615,7 +1618,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if user is logged in (&quot;==&quot; active chat)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
-<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;cohhcarnage&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, mizkif, cohhcarnage, etc.</span>
+<span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;loosegrooves&quot;</span> <span class="c1"># Change this to the user you want to check, e.g., epicdan22, zackrawrr, summit1g, mizkif, cohhcarnage, etc.</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://decapi.me/twitch/uptime/&quot;</span><span class="o">+</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
 <span class="n">is_online</span> <span class="o">=</span> <span class="n">response</span> <span class="o">!=</span> <span class="n">user</span><span class="o">+</span><span class="s2">&quot; is offline&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_online</span><span class="p">)</span>
@@ -1623,7 +1626,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
 </div>
 </div>
@@ -1808,6 +1811,31 @@ classification_function  0
 </div>
 </div>
 </div>
+</section>
+<section id="plot-raw-data">
+<h3>Plot raw data<a class="headerlink" href="#plot-raw-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the Airline Passengers dataset</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">AirlinePassengers</span><span class="p">()</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">passengers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">dates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">])</span>
+    <span class="n">passengers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">passengers</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Passengers&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Airline Passengers Over Time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/aac0057bbb2b18f3c3676dd9bba889f91fb26a3df65bc9f866198423e845c060.png" src="../../_images/aac0057bbb2b18f3c3676dd9bba889f91fb26a3df65bc9f866198423e845c060.png" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
@@ -1837,6 +1865,7 @@ classification_function  0
     <span class="n">metric</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y_truth</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
     <span class="c1"># metric = metric.update(y_truth, y_pred).get() # For river &lt; 0.21</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1854,6 +1883,7 @@ classification_function  0
 1960-11-01 453.501 390.000
 1960-12-01 452.975 432.000
 R2: -0.254237
+--
 </pre></div>
 </div>
 </div>
@@ -2102,6 +2132,7 @@ R2: 0.743524
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-forecasts">Streaming forecasts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#airline-passenger-data">Airline passenger data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-raw-data">Plot raw data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sarima-feature-engineering">SARIMA + feature engineering</a></li>
 </ul>
 </li>
