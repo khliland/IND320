@@ -3,7 +3,7 @@ import plotly.express as px
 import streamlit as st
 
 # Local restaurants and cafes
-restaurants = pd.read_csv('../D2Dbook/data/restaurants.csv')
+restaurants = pd.read_csv('../../data/restaurants.csv')
 
 fig_restaurants = px.scatter_map(
     restaurants,
