@@ -1,0 +1,37 @@
+[project]
+name = "IND320"
+version = "2026.1.0"
+requires-python = "==3.12.*"
+dependencies = [
+    "jupyter-book",
+    "jupyterlab",
+    "jupyterlab-deck",
+    "jupyterlab_myst",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "setuptools",
+    "openpyxl",
+    "datetime",
+    "requests",
+    "river",
+    "cassandra-driver",
+    "pyspark==3.5.1",
+    "mysql.connector",
+    "flask",
+    "pybaselines",
+    "pyjstat",
+    "statsmodels",
+    "hoggorm",
+    "hoggormplot",
+    "scikit-learn",
+    "ipywidgets",
+    "plotly",
+    "anywidget",
+    "pydub",
+    "sounddevice",
+    "kaleido",
+    "lorem",
+    "pymongo",
+    "streamlit"
+]

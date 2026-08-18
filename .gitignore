@@ -12,3 +12,6 @@ __pycache__
 
 # Ignore compiled book in D2Dbook
 D2Dbook/_build
+
+# MyST build outputs
+_build
