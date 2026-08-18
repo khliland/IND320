@@ -1,5 +1,4 @@
 jupyter-book
-myst
 jupyterlab_myst
 jupyterlab-deck
 jupyterlab
