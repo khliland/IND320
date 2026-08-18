@@ -20,14 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5   # Updated to v5
         
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5   # Updated to v5
         with:
           node-version: '22'
-          # If you have a package.json, you can uncomment the next line:
-          # cache: 'npm' 
           
       - name: Install MyST CLI
         run: npm install -g mystmd
@@ -36,13 +34,13 @@ jobs:
         run: myst build D2Dbook --html
         
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6   # Updated to v6
         
       - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4   # Updated to v4
         with:
           path: 'D2Dbook/_build/html'
           
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5   # Updated to v5
