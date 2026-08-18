@@ -1,11 +1,12 @@
 jupyter-book
+myst
 jupyterlab_myst
 jupyterlab-deck
 jupyterlab
 matplotlib
 numpy
-pandas
 setuptools
+pandas
 openpyxl
 datetime
 requests

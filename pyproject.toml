@@ -4,13 +4,14 @@ version = "2026.1.0"
 requires-python = "==3.12.*"
 dependencies = [
     "jupyter-book",
+    "myst",
     "jupyterlab",
     "jupyterlab-deck",
     "jupyterlab_myst",
     "matplotlib",
     "numpy",
-    "pandas",
     "setuptools",
+    "pandas",
     "openpyxl",
     "datetime",
     "requests",
