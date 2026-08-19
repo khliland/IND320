@@ -40,6 +40,10 @@ jobs:
       - name: Build HTML Assets
         working-directory: D2Dbook
         run: jupyter-book build --html
+      - name: Inkluder Legacy-sider
+        run: |
+          mkdir -p ./D2Dbook/_build/html/legacy
+          cp -r ./legacy/* ./D2Dbook/_build/html/legacy/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
