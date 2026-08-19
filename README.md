@@ -8,7 +8,7 @@ Compiled Jupyter Notebooks are available as a [Jupyter Book](https://khliland.gi
 IND320
 ├── D2Dbook/                       <- Jupyter Notebooks
 │   ├── 0_General/
-│   ├── 1_Deployment1/1_Dashboards/
+│   ├── 1_Deployment1/
 │   ├── 2_Data_sources/
 │   ├── 3_Data_quality/
 │   ├── 4_Machine_Learning/
@@ -17,6 +17,6 @@ IND320
 │   ├── 7_Appendix/
 │   ├── data/
 │   └── images/
-├── docs/                          <- Compiled book
+├── legacy/                        <- Compiled books
 └── streamlit/                     <- Example apps
 ```

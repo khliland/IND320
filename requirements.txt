@@ -1,3 +1,5 @@
+ipykernel
+pip
 jupyter-book
 jupyterlab_myst
 jupyterlab-deck
