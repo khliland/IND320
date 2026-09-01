@@ -10,7 +10,7 @@ hist_data = [
 ]
 group_labels = ["Group A", "Group B", "Group C"]
 
-fig = ff.create_distplot(
+fig = ff.create_distplot( # Out of order
     hist_data, group_labels, bin_size=[0.1, 0.25, 0.5]
 )
 

@@ -107,3 +107,6 @@ html:
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"
+
+exclude_patterns:
+  - "No_sync"
