@@ -2,7 +2,7 @@ import streamlit as st
 
 @st.cache_data
 def get_data():
-    import time; time.sleep(2) # Simulate expensive task
+    import time; time.sleep(8) # Simulate expensive task
     return [1, 2, 3]
 
 st.write("Data:", get_data())

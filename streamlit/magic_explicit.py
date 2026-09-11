@@ -4,7 +4,8 @@ import streamlit as st
 "**This shows with magic!**"
 import pandas as pd
 df = pd.DataFrame({'A': [1,2,3]})
-df
+# Show my DataFrame with magic command
+df 
 
 # Explicit
 st.write("**This shows with explicit command!**")

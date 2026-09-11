@@ -37,6 +37,14 @@ jobs:
           node-version: 22.x
       - name: Install Jupyter Book (via myst)
         run: npm install -g jupyter-book
+      - name: Place execution cache
+        # Pre-executed notebook outputs (e.g. requiring local Docker/API) are stored in
+        # refs/cache/execution-cache since CI has no Docker/API access to (re-)execute them.
+        run: |
+          mkdir -p D2Dbook/_build
+          if git fetch origin refs/cache/execution-cache 2>/dev/null; then
+            git archive FETCH_HEAD | tar -x -C D2Dbook/_build
+          fi
       - name: Build HTML Assets
         working-directory: D2Dbook
         run: jupyter-book build --html
