@@ -47,7 +47,7 @@ jobs:
           fi
       - name: Build HTML Assets
         working-directory: D2Dbook
-        run: jupyter-book build --html
+        run: jupyter-book build --html --execute
       - name: Inkluder Legacy-sider
         run: |
           mkdir -p ./D2Dbook/_build/html/legacy
